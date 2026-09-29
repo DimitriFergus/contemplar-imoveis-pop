@@ -40,28 +40,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0001/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 2 quartos no Jardim Exemplo (CP-0001)"
+        "arquivo": "/imoveis/CP-0001/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0001/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0001"
+        "arquivo": "/imoveis/CP-0001/02.jpg",
+        "alt": "Sala de estar – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0001/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0001"
+        "arquivo": "/imoveis/CP-0001/03.jpg",
+        "alt": "Cozinha – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0001/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0001"
+        "arquivo": "/imoveis/CP-0001/04.jpg",
+        "alt": "Quarto – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0001/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0001"
-      },
-      {
-        "arquivo": "/imoveis/CP-0001/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0001"
+        "arquivo": "/imoveis/CP-0001/05.jpg",
+        "alt": "Banheiro – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -145,28 +141,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0002/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002)"
+        "arquivo": "/imoveis/CP-0002/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0002/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0002"
+        "arquivo": "/imoveis/CP-0002/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0002/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0002"
+        "arquivo": "/imoveis/CP-0002/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0002/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0002"
+        "arquivo": "/imoveis/CP-0002/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0002/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0002"
-      },
-      {
-        "arquivo": "/imoveis/CP-0002/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0002"
+        "arquivo": "/imoveis/CP-0002/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -227,7 +219,8 @@
       "aquecedor solar",
       "área de serviço coberta",
       "muro alto",
-      "lavanderia"
+      "lavanderia",
+      "churrasqueira"
     ],
     "lazer": [],
     "condicoes": {
@@ -240,28 +233,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0003/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003)"
+        "arquivo": "/imoveis/CP-0003/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0003/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0003"
+        "arquivo": "/imoveis/CP-0003/02.jpg",
+        "alt": "Sala de estar – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0003/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0003"
+        "arquivo": "/imoveis/CP-0003/03.jpg",
+        "alt": "Cozinha – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0003/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0003"
+        "arquivo": "/imoveis/CP-0003/04.jpg",
+        "alt": "Quarto – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0003/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0003"
-      },
-      {
-        "arquivo": "/imoveis/CP-0003/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0003"
+        "arquivo": "/imoveis/CP-0003/05.jpg",
+        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -341,28 +330,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0004/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004)"
+        "arquivo": "/imoveis/CP-0004/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0004/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0004"
+        "arquivo": "/imoveis/CP-0004/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0004/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0004"
+        "arquivo": "/imoveis/CP-0004/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0004/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0004"
+        "arquivo": "/imoveis/CP-0004/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0004/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0004"
-      },
-      {
-        "arquivo": "/imoveis/CP-0004/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0004"
+        "arquivo": "/imoveis/CP-0004/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -404,7 +389,7 @@
     "codigo": "CP-0005",
     "slug": "casa-em-condominio-2-quartos-com-quintal-no-jardim-ipe-ficticio-cp-0005",
     "titulo": "Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício",
-    "descricao": "Casa em condomínio de 2 quartos com 64 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 140 m². Imóvel pronto para morar. Destaques: quintal, área de serviço coberta, cozinha americana. O condomínio oferece quadra, bicicletário. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Estadual Modelo a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "descricao": "Casa em condomínio de 2 quartos com 64 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 140 m². Imóvel pronto para morar. Destaques: quintal, área de serviço coberta, cozinha americana. O condomínio oferece quadra, bicicletário, piscina. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Estadual Modelo a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "casa_condominio",
     "situacao": "pronto",
     "preco": 235000,
@@ -434,7 +419,8 @@
     ],
     "lazer": [
       "quadra",
-      "bicicletário"
+      "bicicletário",
+      "piscina"
     ],
     "condicoes": {
       "aceitaMCMV": true,
@@ -446,28 +432,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0005/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005)"
+        "arquivo": "/imoveis/CP-0005/01.jpg",
+        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0005/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0005"
+        "arquivo": "/imoveis/CP-0005/02.jpg",
+        "alt": "Sala de estar – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0005/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0005"
+        "arquivo": "/imoveis/CP-0005/03.jpg",
+        "alt": "Cozinha – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0005/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0005"
+        "arquivo": "/imoveis/CP-0005/04.jpg",
+        "alt": "Quarto – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0005/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0005"
-      },
-      {
-        "arquivo": "/imoveis/CP-0005/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0005"
+        "arquivo": "/imoveis/CP-0005/05.jpg",
+        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -542,28 +524,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0006/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006)"
+        "arquivo": "/imoveis/CP-0006/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0006/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0006"
+        "arquivo": "/imoveis/CP-0006/02.jpg",
+        "alt": "Sala de estar – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0006/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0006"
+        "arquivo": "/imoveis/CP-0006/03.jpg",
+        "alt": "Cozinha – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0006/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0006"
+        "arquivo": "/imoveis/CP-0006/04.jpg",
+        "alt": "Quarto – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0006/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0006"
-      },
-      {
-        "arquivo": "/imoveis/CP-0006/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0006"
+        "arquivo": "/imoveis/CP-0006/05.jpg",
+        "alt": "Banheiro – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -645,28 +623,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0007/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007)"
+        "arquivo": "/imoveis/CP-0007/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0007/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0007"
+        "arquivo": "/imoveis/CP-0007/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0007/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0007"
+        "arquivo": "/imoveis/CP-0007/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0007/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0007"
+        "arquivo": "/imoveis/CP-0007/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0007/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0007"
-      },
-      {
-        "arquivo": "/imoveis/CP-0007/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0007"
+        "arquivo": "/imoveis/CP-0007/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -745,28 +719,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0008/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008)"
+        "arquivo": "/imoveis/CP-0008/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0008/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0008"
+        "arquivo": "/imoveis/CP-0008/02.jpg",
+        "alt": "Sala de estar – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0008/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0008"
+        "arquivo": "/imoveis/CP-0008/03.jpg",
+        "alt": "Cozinha – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0008/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0008"
+        "arquivo": "/imoveis/CP-0008/04.jpg",
+        "alt": "Quarto – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0008/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0008"
-      },
-      {
-        "arquivo": "/imoveis/CP-0008/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0008"
+        "arquivo": "/imoveis/CP-0008/05.jpg",
+        "alt": "Banheiro – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -843,28 +813,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0009/01.svg",
-        "alt": "Ilustração da fachada de dois andares – Duplex 2 quartos no Parque das Flores Demo (CP-0009)"
+        "arquivo": "/imoveis/CP-0009/01.jpg",
+        "alt": "Fachada dos duplex, com garagem – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0009/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0009"
+        "arquivo": "/imoveis/CP-0009/02.jpg",
+        "alt": "Sala de estar – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0009/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0009"
+        "arquivo": "/imoveis/CP-0009/03.jpg",
+        "alt": "Cozinha – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0009/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0009"
+        "arquivo": "/imoveis/CP-0009/04.jpg",
+        "alt": "Quarto – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0009/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0009"
-      },
-      {
-        "arquivo": "/imoveis/CP-0009/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0009"
+        "arquivo": "/imoveis/CP-0009/05.jpg",
+        "alt": "Banheiro – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -949,28 +915,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0010/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na Vila Modelo (CP-0010)"
+        "arquivo": "/imoveis/CP-0010/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0010/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0010"
+        "arquivo": "/imoveis/CP-0010/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0010/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0010"
+        "arquivo": "/imoveis/CP-0010/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0010/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0010"
+        "arquivo": "/imoveis/CP-0010/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0010/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0010"
-      },
-      {
-        "arquivo": "/imoveis/CP-0010/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0010"
+        "arquivo": "/imoveis/CP-0010/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1050,28 +1012,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0011/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 1 quarto no Conjunto Esperança Demo (CP-0011)"
+        "arquivo": "/imoveis/CP-0011/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0011/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0011"
+        "arquivo": "/imoveis/CP-0011/02.jpg",
+        "alt": "Sala de estar – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0011/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0011"
+        "arquivo": "/imoveis/CP-0011/03.jpg",
+        "alt": "Cozinha – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0011/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0011"
+        "arquivo": "/imoveis/CP-0011/04.jpg",
+        "alt": "Quarto – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0011/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0011"
-      },
-      {
-        "arquivo": "/imoveis/CP-0011/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0011"
+        "arquivo": "/imoveis/CP-0011/05.jpg",
+        "alt": "Banheiro – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1150,28 +1108,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0012/01.svg",
-        "alt": "Ilustração da fachada de dois andares – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012)"
+        "arquivo": "/imoveis/CP-0012/01.jpg",
+        "alt": "Fachada do sobrado com garagem – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0012/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0012"
+        "arquivo": "/imoveis/CP-0012/02.jpg",
+        "alt": "Sala de estar – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0012/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0012"
+        "arquivo": "/imoveis/CP-0012/03.jpg",
+        "alt": "Cozinha – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0012/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0012"
+        "arquivo": "/imoveis/CP-0012/04.jpg",
+        "alt": "Quarto – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0012/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0012"
-      },
-      {
-        "arquivo": "/imoveis/CP-0012/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0012"
+        "arquivo": "/imoveis/CP-0012/05.jpg",
+        "alt": "Banheiro – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1254,28 +1208,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0013/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013)"
+        "arquivo": "/imoveis/CP-0013/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0013/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0013"
+        "arquivo": "/imoveis/CP-0013/02.jpg",
+        "alt": "Sala de estar – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0013/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0013"
+        "arquivo": "/imoveis/CP-0013/03.jpg",
+        "alt": "Cozinha – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0013/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0013"
+        "arquivo": "/imoveis/CP-0013/04.jpg",
+        "alt": "Quarto – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0013/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0013"
-      },
-      {
-        "arquivo": "/imoveis/CP-0013/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0013"
+        "arquivo": "/imoveis/CP-0013/05.jpg",
+        "alt": "Banheiro – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1356,28 +1306,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0014/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014)"
+        "arquivo": "/imoveis/CP-0014/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0014/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0014"
+        "arquivo": "/imoveis/CP-0014/02.jpg",
+        "alt": "Sala de estar – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0014/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0014"
+        "arquivo": "/imoveis/CP-0014/03.jpg",
+        "alt": "Cozinha – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0014/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0014"
+        "arquivo": "/imoveis/CP-0014/04.jpg",
+        "alt": "Quarto – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0014/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0014"
-      },
-      {
-        "arquivo": "/imoveis/CP-0014/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0014"
+        "arquivo": "/imoveis/CP-0014/05.jpg",
+        "alt": "Banheiro – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1419,7 +1365,7 @@
     "codigo": "CP-0015",
     "slug": "casa-em-condominio-2-quartos-na-planta-no-residencial-horizonte-demo-cp-0015",
     "titulo": "Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo",
-    "descricao": "Casa em condomínio de 2 quartos com 56 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 120 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: aquecedor solar, janelas com grade, lavanderia. O condomínio oferece playground, salão de festas. Perto de Terminal de ônibus Demo a cerca de 150 m e Mercado do Bairro (exemplo) a cerca de 200 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "descricao": "Casa em condomínio de 2 quartos com 56 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 120 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: aquecedor solar, janelas com grade, lavanderia. O condomínio oferece playground, salão de festas, piscina. Perto de Terminal de ônibus Demo a cerca de 150 m e Mercado do Bairro (exemplo) a cerca de 200 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa_condominio",
     "situacao": "na_planta",
     "previsaoEntrega": "2028-06",
@@ -1449,7 +1395,8 @@
     ],
     "lazer": [
       "playground",
-      "salão de festas"
+      "salão de festas",
+      "piscina"
     ],
     "condicoes": {
       "aceitaMCMV": true,
@@ -1461,28 +1408,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0015/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015)"
+        "arquivo": "/imoveis/CP-0015/01.jpg",
+        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0015/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0015"
+        "arquivo": "/imoveis/CP-0015/02.jpg",
+        "alt": "Sala de estar – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0015/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0015"
+        "arquivo": "/imoveis/CP-0015/03.jpg",
+        "alt": "Cozinha – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0015/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0015"
+        "arquivo": "/imoveis/CP-0015/04.jpg",
+        "alt": "Quarto – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0015/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0015"
-      },
-      {
-        "arquivo": "/imoveis/CP-0015/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0015"
+        "arquivo": "/imoveis/CP-0015/05.jpg",
+        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1566,28 +1509,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0016/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016)"
+        "arquivo": "/imoveis/CP-0016/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0016/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0016"
+        "arquivo": "/imoveis/CP-0016/02.jpg",
+        "alt": "Sala de estar – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0016/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0016"
+        "arquivo": "/imoveis/CP-0016/03.jpg",
+        "alt": "Cozinha – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0016/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0016"
+        "arquivo": "/imoveis/CP-0016/04.jpg",
+        "alt": "Quarto – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0016/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0016"
-      },
-      {
-        "arquivo": "/imoveis/CP-0016/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0016"
+        "arquivo": "/imoveis/CP-0016/05.jpg",
+        "alt": "Banheiro – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1668,28 +1607,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0017/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017)"
+        "arquivo": "/imoveis/CP-0017/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0017/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0017"
+        "arquivo": "/imoveis/CP-0017/02.jpg",
+        "alt": "Sala de estar – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0017/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0017"
+        "arquivo": "/imoveis/CP-0017/03.jpg",
+        "alt": "Cozinha – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0017/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0017"
+        "arquivo": "/imoveis/CP-0017/04.jpg",
+        "alt": "Quarto – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0017/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0017"
-      },
-      {
-        "arquivo": "/imoveis/CP-0017/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0017"
+        "arquivo": "/imoveis/CP-0017/05.jpg",
+        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1768,28 +1703,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0018/01.svg",
-        "alt": "Ilustração da fachada de dois andares – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018)"
+        "arquivo": "/imoveis/CP-0018/01.jpg",
+        "alt": "Fachada dos duplex, com garagem – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0018/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0018"
+        "arquivo": "/imoveis/CP-0018/02.jpg",
+        "alt": "Sala de estar – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0018/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0018"
+        "arquivo": "/imoveis/CP-0018/03.jpg",
+        "alt": "Cozinha – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0018/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0018"
+        "arquivo": "/imoveis/CP-0018/04.jpg",
+        "alt": "Quarto – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0018/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0018"
-      },
-      {
-        "arquivo": "/imoveis/CP-0018/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0018"
+        "arquivo": "/imoveis/CP-0018/05.jpg",
+        "alt": "Banheiro – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1873,28 +1804,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0019/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019)"
+        "arquivo": "/imoveis/CP-0019/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0019/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0019"
+        "arquivo": "/imoveis/CP-0019/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0019/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0019"
+        "arquivo": "/imoveis/CP-0019/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0019/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0019"
+        "arquivo": "/imoveis/CP-0019/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0019/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0019"
-      },
-      {
-        "arquivo": "/imoveis/CP-0019/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0019"
+        "arquivo": "/imoveis/CP-0019/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1976,28 +1903,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0020/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020)"
+        "arquivo": "/imoveis/CP-0020/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0020/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0020"
+        "arquivo": "/imoveis/CP-0020/02.jpg",
+        "alt": "Sala de estar – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0020/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0020"
+        "arquivo": "/imoveis/CP-0020/03.jpg",
+        "alt": "Cozinha – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0020/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0020"
+        "arquivo": "/imoveis/CP-0020/04.jpg",
+        "alt": "Quarto – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0020/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0020"
-      },
-      {
-        "arquivo": "/imoveis/CP-0020/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0020"
+        "arquivo": "/imoveis/CP-0020/05.jpg",
+        "alt": "Banheiro – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2081,28 +2004,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0021/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021)"
+        "arquivo": "/imoveis/CP-0021/01.jpg",
+        "alt": "Casas do condomínio fechado – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0021/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0021"
+        "arquivo": "/imoveis/CP-0021/02.jpg",
+        "alt": "Sala de estar – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0021/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0021"
+        "arquivo": "/imoveis/CP-0021/03.jpg",
+        "alt": "Cozinha – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0021/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0021"
+        "arquivo": "/imoveis/CP-0021/04.jpg",
+        "alt": "Quarto – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0021/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0021"
-      },
-      {
-        "arquivo": "/imoveis/CP-0021/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0021"
+        "arquivo": "/imoveis/CP-0021/05.jpg",
+        "alt": "Banheiro – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2176,28 +2095,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0022/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 2 quartos no Parque das Flores Demo (CP-0022)"
+        "arquivo": "/imoveis/CP-0022/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0022/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0022"
+        "arquivo": "/imoveis/CP-0022/02.jpg",
+        "alt": "Sala de estar – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0022/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0022"
+        "arquivo": "/imoveis/CP-0022/03.jpg",
+        "alt": "Cozinha – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0022/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0022"
+        "arquivo": "/imoveis/CP-0022/04.jpg",
+        "alt": "Quarto – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0022/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0022"
-      },
-      {
-        "arquivo": "/imoveis/CP-0022/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0022"
+        "arquivo": "/imoveis/CP-0022/05.jpg",
+        "alt": "Banheiro – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2277,28 +2192,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0023/01.svg",
-        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023)"
+        "arquivo": "/imoveis/CP-0023/01.jpg",
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0023/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0023"
+        "arquivo": "/imoveis/CP-0023/02.jpg",
+        "alt": "Sala de estar – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0023/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0023"
+        "arquivo": "/imoveis/CP-0023/03.jpg",
+        "alt": "Cozinha – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0023/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0023"
+        "arquivo": "/imoveis/CP-0023/04.jpg",
+        "alt": "Quarto – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0023/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0023"
-      },
-      {
-        "arquivo": "/imoveis/CP-0023/06.svg",
-        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0023"
+        "arquivo": "/imoveis/CP-0023/05.jpg",
+        "alt": "Banheiro – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2378,28 +2289,24 @@
     },
     "fotos": [
       {
-        "arquivo": "/imoveis/CP-0024/01.svg",
-        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal na Vila Modelo (CP-0024)"
+        "arquivo": "/imoveis/CP-0024/01.jpg",
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0024/02.svg",
-        "alt": "Ilustração da sala com sofá e janela ampla – CP-0024"
+        "arquivo": "/imoveis/CP-0024/02.jpg",
+        "alt": "Sala de estar – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0024/03.svg",
-        "alt": "Ilustração da cozinha com armários e bancada – CP-0024"
+        "arquivo": "/imoveis/CP-0024/03.jpg",
+        "alt": "Cozinha – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0024/04.svg",
-        "alt": "Ilustração de quarto com cama de casal e janela – CP-0024"
+        "arquivo": "/imoveis/CP-0024/04.jpg",
+        "alt": "Quarto – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
       },
       {
-        "arquivo": "/imoveis/CP-0024/05.svg",
-        "alt": "Ilustração do banheiro com box de vidro – CP-0024"
-      },
-      {
-        "arquivo": "/imoveis/CP-0024/06.svg",
-        "alt": "Ilustração do quintal com área de serviço – CP-0024"
+        "arquivo": "/imoveis/CP-0024/05.jpg",
+        "alt": "Banheiro – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
       }
     ],
     "proximidades": [

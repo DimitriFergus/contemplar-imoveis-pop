@@ -14,6 +14,8 @@ interface Props {
   titulo: string;
   videoUrl?: string;
   tour360Url?: string;
+  /** Fotos de banco de imagens (imóvel de exemplo): exibe o aviso "Imagem ilustrativa". */
+  ilustrativa?: boolean;
 }
 
 /** Converte links do YouTube em endereço de incorporação sem cookies. */
@@ -93,7 +95,7 @@ function Carrossel({
   );
 }
 
-export function Galeria({ fotos, titulo, videoUrl, tour360Url }: Props) {
+export function Galeria({ fotos, titulo, videoUrl, tour360Url, ilustrativa = false }: Props) {
   const [indice, setIndice] = useState(0);
   const [telaCheia, setTelaCheia] = useState(false);
   const [midia, setMidia] = useState<null | { tipo: 'video' | 'tour'; url: string }>(null);
@@ -152,6 +154,11 @@ export function Galeria({ fotos, titulo, videoUrl, tour360Url }: Props) {
         >
           Foto {indice + 1} de {total}
         </span>
+        {ilustrativa && (
+          <span className="absolute bottom-3 left-3 rounded-md bg-black/60 px-2 py-1 text-xs font-medium text-white">
+            Imagem ilustrativa
+          </span>
+        )}
         <div className="absolute right-3 bottom-3 flex gap-2">
           {videoUrl && (
             <Button

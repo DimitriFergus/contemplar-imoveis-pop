@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { MENSAGENS_WHATSAPP } from '@/config/site';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
-import { BarraComparar } from '@/components/comparar/BarraComparar';
+import { PainelComparacao } from '@/components/comparacao/PainelComparacao';
 import { CardImovel } from '@/components/imoveis/CardImovel';
 import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
 import { MapaListagem } from '@/components/mapa/Mapas';
@@ -42,7 +42,7 @@ export function CorpoListagem({
   const temFiltros = chipsAtivos(filtrosUrl).length > 0;
 
   return (
-    <div className="lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
+    <div className="com-painel-comparacao transition-[padding] duration-300 lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
       <aside className="hidden lg:sticky lg:top-20 lg:block lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto lg:pr-2">
         <Suspense>
           <PainelFiltros
@@ -119,7 +119,7 @@ export function CorpoListagem({
               {resultado.itens.map((i, idx) => (
                 <li key={i.id}>
                   <Suspense>
-                    <CardImovel imovel={i} nivelTitulo="h2" prioridade={idx < 2} />
+                    <CardImovel imovel={i} nivelTitulo="h2" prioridade={idx < 2} comparavel />
                   </Suspense>
                 </li>
               ))}
@@ -134,7 +134,7 @@ export function CorpoListagem({
         )}
 
         {resultado.total > 0 && <NotaPremissas />}
-        <BarraComparar />
+        <PainelComparacao />
         {temFiltros && (
           <p className="sr-only">
             Os filtros ficam salvos no endereço da página; você pode compartilhar este link.

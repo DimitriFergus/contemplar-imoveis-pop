@@ -34,7 +34,7 @@ export const SITE = {
 
 /** Dados legais exigidos pelo CRECI e pelo Código de Defesa do Consumidor. */
 export const EMPRESA = {
-  nomeEmpresarial: A_DEFINIR as string,
+  nomeEmpresarial: 'Contemplar Imobiliaria LTDA',
   cnpj: '61.569.798/0001-81',
   /** Número de inscrição no CRECI da empresa. */
   creciPJ: 'CRECI-CE 27799',
@@ -110,7 +110,6 @@ export const AGENDAMENTO = {
 /** Listagem de imóveis. */
 export const LISTAGEM = {
   porPagina: 12,
-  maxComparar: 3,
   maxSemelhantes: 4,
   /** Diferença de preço (para mais ou para menos) usada para achar imóveis semelhantes. */
   variacaoPrecoSemelhantes: 0.25,

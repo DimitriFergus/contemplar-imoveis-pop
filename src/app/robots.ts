@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', `${BASE_PATH}/favoritos`, `${BASE_PATH}/comparar`],
+        disallow: ['/api/', `${BASE_PATH}/favoritos`],
       },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,

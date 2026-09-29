@@ -49,6 +49,9 @@
   /* "Cabe no seu bolso" e mensagens positivas */
   --sucesso: #0f6b4a;
   --sucesso-suave: #e3f4ec;
+  /* Comparação: o que o imóvel perde (vermelho, contraste AA) */
+  --perda: #b42318;
+  --perda-suave: #fdecea;
   --aviso: #8a5a00;
   --aviso-suave: #fff4d6;
   --info-suave: var(--marinho-100);
@@ -94,6 +97,8 @@
     --whatsapp: #128c4a;
     --sucesso: #5fd3a3;
     --sucesso-suave: #10322a;
+    --perda: #fda29b;
+    --perda-suave: #3d1a17;
     --aviso: #f5c451;
     --aviso-suave: #3a2d0c;
     --info-suave: #1a2744;
@@ -148,6 +153,8 @@
   --color-whatsapp: var(--whatsapp);
   --color-sucesso: var(--sucesso);
   --color-sucesso-suave: var(--sucesso-suave);
+  --color-perda: var(--perda);
+  --color-perda-suave: var(--perda-suave);
   --color-aviso: var(--aviso);
   --color-aviso-suave: var(--aviso-suave);
   --color-info-suave: var(--info-suave);
@@ -234,6 +241,18 @@
   .numero-destaque {
     font-variant-numeric: tabular-nums;
     @apply font-heading font-extrabold tracking-tight;
+  }
+}
+
+/* Painel de comparação: abre espaço à direita no computador e esconde o WhatsApp flutuante no celular. */
+@media (min-width: 1024px) {
+  html[data-comparando-lateral] .com-painel-comparacao {
+    padding-right: 23rem;
+  }
+}
+@media (max-width: 1023.98px) {
+  html[data-comparando] .whatsapp-flutuante {
+    display: none;
   }
 }
 

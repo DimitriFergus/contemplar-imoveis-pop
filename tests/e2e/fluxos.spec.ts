@@ -206,8 +206,8 @@ test.describe('Leads', () => {
   });
 });
 
-test.describe('Favoritos e comparador', () => {
-  test('favorita, vê nos favoritos e compara dois imóveis', async ({ page }) => {
+test.describe('Favoritos e comparação', () => {
+  test('favorita e vê o imóvel nos favoritos', async ({ page }) => {
     await page.goto('/imoveis', { waitUntil: 'networkidle' });
     const cards = page.getByTestId('card-imovel');
     await cards
@@ -215,23 +215,41 @@ test.describe('Favoritos e comparador', () => {
       .getByRole('button', { name: /Salvar .* nos favoritos/ })
       .click();
     await expect(page.getByRole('link', { name: /Favoritos \(1 imóvel salvo\)/ })).toBeVisible();
-    await cards
-      .nth(0)
-      .getByRole('button', { name: /^Comparar/ })
-      .click();
-    await cards
-      .nth(1)
-      .getByRole('button', { name: /^Comparar/ })
-      .click();
-
     await page.goto('/favoritos', { waitUntil: 'networkidle' });
     await expect(page.getByTestId('card-imovel')).toHaveCount(1);
+    await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
+  });
 
-    await page.goto('/comparar', { waitUntil: 'networkidle' });
-    const tabela = page.getByRole('table', { name: 'Comparação de imóveis' });
-    await expect(tabela.getByRole('columnheader')).toHaveCount(2);
-    await expect(tabela.getByRole('rowheader', { name: 'Financiamento aceito' })).toBeVisible();
-    await tabela.getByRole('button', { name: 'Remover' }).first().click();
-    await expect(tabela.getByRole('columnheader')).toHaveCount(1);
+  test('compara imóveis na listagem com ganhos em verde e perdas em vermelho', async ({ page }) => {
+    await page.goto('/imoveis', { waitUntil: 'networkidle' });
+    const cards = page.getByTestId('card-imovel');
+    await cards
+      .nth(0)
+      .getByRole('button', { name: /^Comparar imóvel/ })
+      .click();
+    const painel = page.getByRole('complementary', { name: 'Comparação de imóveis' });
+    await expect(painel).toContainText('Comparação iniciada');
+    await expect(cards.nth(0)).toContainText('Imóvel base');
+    await expect(cards.nth(1)).toContainText(/Comparado ao CP-\d{4}: ganha em \d+ · perde em \d+/);
+
+    await cards
+      .nth(1)
+      .getByRole('button', { name: /^Comparar com este/ })
+      .click();
+    await expect(painel).toContainText(/Ganha em \d+/);
+    await expect(painel).toContainText(/Perde em \d+/);
+    await expect(painel.getByRole('link', { name: /Ver anúncio do CP-\d{4}/ })).toBeVisible();
+
+    await painel.getByRole('button', { name: 'Encerrar comparação' }).click();
+    await expect(painel).toHaveCount(0);
+  });
+
+  test('a comparação não aparece fora da área de imóveis', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'networkidle' });
+    await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
+    await page.goto('/imoveis/casas', { waitUntil: 'networkidle' });
+    await page.getByTestId('card-imovel').first().getByRole('heading').getByRole('link').click();
+    await expect(page).toHaveURL(/-cp-\d{4}$/);
+    await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
   });
 });

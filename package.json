@@ -16,7 +16,8 @@
     "importar": "tsx scripts/importar-imoveis.ts",
     "gerar-exemplos": "tsx scripts/gerar-exemplos.ts",
     "prebuild": "npm run importar",
-    "predev": "npm run importar"
+    "predev": "npm run importar",
+    "fotos-exemplo": "tsx scripts/baixar-fotos-exemplo.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

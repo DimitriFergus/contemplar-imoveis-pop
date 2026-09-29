@@ -1,6 +1,6 @@
 # Contemplar Imóveis Pop
 
-Site imobiliário da **Contemplar Imóveis Pop** (Grupo Ordnas): imóveis populares a partir de R$ 150 mil, com busca por **preço ou por parcela**, **Cabe no Meu Bolso**, simulador SAC/Price, custo total de aquisição, WhatsApp inteligente, favoritos e comparador sem login.
+Site imobiliário da **Contemplar Imóveis Pop** (Grupo Ordnas): imóveis populares a partir de R$ 150 mil, com busca por **preço ou por parcela**, **Cabe no Meu Bolso**, simulador SAC/Price, custo total de aquisição, WhatsApp inteligente, favoritos e comparação na listagem (ganhos em verde, perdas em vermelho) sem login.
 
 > Fase 1 lançada com **24 imóveis fictícios** (`exemplo: true`) e modo demonstração. Veja [`docs/PENDENCIAS.md`](docs/PENDENCIAS.md) antes de publicar.
 
@@ -24,6 +24,7 @@ npx playwright install chromium   # (uma vez) navegador para os testes E2E
 npm run dev                 # desenvolvimento em http://localhost:3000 (roda a importação antes)
 npm run importar            # valida dados/imoveis.csv e gera src/data/*.json
 npm run gerar-exemplos      # recria os 24 imóveis fictícios (sobrescreve a planilha!)
+npm run fotos-exemplo       # baixa/otimiza as fotos CC0 dos imóveis de exemplo (dados/fotos-exemplo.json)
 
 npm run build && npm start  # produção local
 npm run lint                # ESLint
@@ -63,7 +64,7 @@ dados/                      planilha (fonte da verdade na Fase 1), corretores e 
 public/imoveis/<CODIGO>/    fotos por imóvel (01.jpg, 02.jpg...) + CREDITOS.md
 scripts/                    importar-imoveis.ts, gerar-exemplos.ts, ilustracoes.ts, capturas e lighthouse
 src/app/                    rotas (App Router), sitemap, robots, manifest, imagens Open Graph
-src/components/             ui (shadcn), layout, busca, imoveis, simulador, leads, comparar, conteudo, mapa
+src/components/             ui (shadcn), layout, busca, imoveis, simulador, leads, comparacao, favoritos, conteudo, mapa
 src/config/                 site.ts, financiamento.ts, custos-aquisicao.ts, pendencias.ts  ← todas as regras de negócio
 src/content/                FAQ, glossário, jornada, documentos, depoimentos
 src/data/                   JSON gerado pela importação (não editar à mão)
@@ -87,7 +88,7 @@ Princípios: páginas só falam com `repositorio`; nenhum número de regra de ne
 | `/imoveis/[slug]`                                                                 | Anúncio: galeria, selos, simulador embutido, custo total, mapa aproximado, perto de você, agendamento, semelhantes, JSON-LD, OG dinâmico |
 | `/simulador`                                                                      | "Quanto posso pagar?" (Cabe no Meu Bolso) e "Simular financiamento" (tabela e gráfico)                                                   |
 | `/minha-casa-minha-vida`, `/como-comprar`                                         | Guias (checklist imprimível)                                                                                                             |
-| `/favoritos`, `/comparar`                                                         | Salvos no navegador, sem login                                                                                                           |
+| `/favoritos`                                                                      | Salvos no navegador, sem login                                                                                                           |
 | `/anuncie`, `/contato`, `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`    | Institucional                                                                                                                            |
 | `POST /api/leads`                                                                 | Zod + honeypot + limite por IP → `LEADS_WEBHOOK_URL` (ou log)                                                                            |
 | `GET /api/imoveis/contagem`, `/api/imoveis/resumos`                               | Contagem ao vivo dos filtros; resumos para favoritos/comparador                                                                          |

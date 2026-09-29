@@ -35,7 +35,6 @@ export function MenuCelular() {
             {[
               ...LINKS_PRINCIPAIS,
               { href: '/favoritos', rotulo: 'Meus favoritos' },
-              { href: '/comparar', rotulo: 'Comparar imóveis' },
               { href: '/contato', rotulo: 'Contato' },
             ].map((l) => (
               <li key={l.href}>

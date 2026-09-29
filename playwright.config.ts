@@ -5,6 +5,9 @@ const PORTA = Number(process.env.PORTA_E2E ?? 3100);
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
+  // O servidor local otimiza as fotos sob demanda (AVIF/WebP): menos paralelismo evita lentidão.
+  workers: process.env.CI ? 2 : 3,
+  timeout: 60_000,
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {

@@ -8,7 +8,6 @@ import { JsonLd } from '@/components/comum/JsonLd';
 import { Selo } from '@/components/comum/Selo';
 import { Trilha } from '@/components/comum/Trilha';
 import { AcoesImovel } from '@/components/imoveis/AcoesImovel';
-import { BotaoComparar } from '@/components/imoveis/BotaoComparar';
 import { BotaoCompartilhar } from '@/components/imoveis/BotaoCompartilhar';
 import { CardImovel } from '@/components/imoveis/CardImovel';
 import { FichaTecnica } from '@/components/imoveis/FichaTecnica';
@@ -101,6 +100,7 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
           titulo={imovel.titulo}
           videoUrl={imovel.videoUrl}
           tour360Url={imovel.tour360Url}
+          ilustrativa={imovel.exemplo}
         />
       </div>
 
@@ -211,7 +211,6 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
               </div>
             )}
             <div className="flex flex-wrap gap-2 lg:hidden">
-              <BotaoComparar id={imovel.id} codigo={imovel.codigo} />
               <BotaoCompartilhar
                 titulo={imovel.titulo}
                 texto={`${imovel.titulo} — ${formatarPreco(imovel.preco)} (cód. ${imovel.codigo})`}

@@ -4,11 +4,10 @@ Enquanto houver campos `A_DEFINIR`, o site mostra um alerta no canto da tela **e
 
 ## 1. Campos A_DEFINIR (obrigatórios)
 
-Já preenchidos em `src/config/site.ts`: CNPJ 61.569.798/0001-81, CRECI-CE 27799, WhatsApp (85) 99210-4920 e endereço (Rua P, 150 – Parque Montenegro II, Prefeito José Walter, Fortaleza – CE, CEP 60751-380).
+Já preenchidos em `src/config/site.ts`: razão social Contemplar Imobiliaria LTDA, CNPJ 61.569.798/0001-81, CRECI-CE 27799, WhatsApp (85) 99210-4920 e endereço (Rua P, 150 – Parque Montenegro II, Prefeito José Walter, Fortaleza – CE, CEP 60751-380).
 
 | Item                                                        | Onde alterar                                                        | Observação                                                                               |
 | ----------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Nome empresarial (razão social)                             | `src/config/site.ts` → `EMPRESA.nomeEmpresarial`                    | Exibido no rodapé, anúncios e política de privacidade                                    |
 | E-mail de contato                                           | `CONTATO.email`                                                     | O e-mail também é o canal LGPD na política de privacidade                                |
 | CRECI e WhatsApp dos corretores                             | `dados/corretores.csv`                                              | Hoje há só o corretor fictício `corretor-exemplo`                                        |
 | Cidade base, UF e bairros                                   | `CIDADE_BASE`, `UF_BASE`, `BAIRROS_EXEMPLO`, `CIDADE_BASE_DEFINIDA` | Hoje: "Cidade Exemplo"/"EX" e bairros fictícios                                          |
@@ -23,14 +22,14 @@ Já preenchidos em `src/config/site.ts`: CNPJ 61.569.798/0001-81, CRECI-CE 27799
 
 ## 2. Conteúdo e identidade
 
-| Item                                    | Situação                                                                                                                                                                 |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Identidade visual                       | Paleta derivada do logo (azul-marinho #041A4B e laranja #F28234). Validar com a marca; o logo disponível tem só 302×252 px — enviar versão vetorial (SVG) ou PNG em alta |
-| Fotos reais dos imóveis                 | Hoje são ilustrações próprias (SVG). Substituir e registrar créditos em `public/imoveis/CREDITOS.md`                                                                     |
-| Depoimentos                             | Os 3 atuais são ilustrativos e só aparecem no modo demonstração. Coletar depoimentos reais com autorização por escrito                                                   |
-| Política de Privacidade e Termos de Uso | Minutas; revisar com assessoria jurídica (definir encarregado/DPO e prazos de retenção)                                                                                  |
-| Redes sociais                           | `REDES_SOCIAIS` em `src/config/site.ts` está vazio                                                                                                                       |
-| Horário de atendimento                  | Confirmar `EMPRESA.horarioAtendimento`                                                                                                                                   |
+| Item                                    | Situação                                                                                                                                                                         |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Identidade visual                       | Paleta derivada do logo (azul-marinho #041A4B e laranja #F28234). Validar com a marca; o logo disponível tem só 302×252 px — enviar versão vetorial (SVG) ou PNG em alta         |
+| Fotos reais dos imóveis                 | Hoje são fotos ilustrativas de bancos de imagens CC0 (ver `public/imoveis/CREDITOS.md`), coerentes com o tipo de cada imóvel. Substituir pelas fotos reais e registrar a autoria |
+| Depoimentos                             | Os 3 atuais são ilustrativos e só aparecem no modo demonstração. Coletar depoimentos reais com autorização por escrito                                                           |
+| Política de Privacidade e Termos de Uso | Minutas; revisar com assessoria jurídica (definir encarregado/DPO e prazos de retenção)                                                                                          |
+| Redes sociais                           | `REDES_SOCIAIS` em `src/config/site.ts` está vazio                                                                                                                               |
+| Horário de atendimento                  | Confirmar `EMPRESA.horarioAtendimento`                                                                                                                                           |
 
 ## 3. Técnicas
 

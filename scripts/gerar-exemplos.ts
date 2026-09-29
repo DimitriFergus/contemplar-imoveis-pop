@@ -1,13 +1,14 @@
 /**
- * Gera os 24 imóveis FICTÍCIOS de demonstração em `dados/imoveis.csv`, com ilustrações em
- * `public/imoveis/<CODIGO>/`, além de `dados/corretores.csv` e `dados/MODELO_IMOVEIS.csv`.
+ * Gera os 24 imóveis FICTÍCIOS de demonstração em `dados/imoveis.csv`, além de
+ * `dados/corretores.csv` e `dados/MODELO_IMOVEIS.csv`. As fotos (CC0) vêm de
+ * `dados/fotos-exemplo.json` e são baixadas por `npm run fotos-exemplo`.
  *
- * Uso: npm run gerar-exemplos   (depois: npm run importar)
+ * Uso: npm run gerar-exemplos   (depois: npm run fotos-exemplo e npm run importar)
  *
  * ATENÇÃO: sobrescreve dados/imoveis.csv. Use só para recriar a base de demonstração.
  * O resultado é determinístico (mesma semente = mesmos imóveis).
  */
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { BAIRROS_EXEMPLO, CIDADE_BASE, UF_BASE } from '../src/config/site';
 import { FAIXAS } from '../src/config/financiamento';
@@ -16,17 +17,6 @@ import { ROTULO_TIPO } from '../src/lib/rotulos';
 import { escreverCSV } from '../src/lib/utils/csv';
 import { slugImovel } from '../src/lib/utils/slug';
 import type { Imovel, Proximidade, SituacaoImovel, TipoImovel } from '../src/types';
-import {
-  PALETAS,
-  areaExterna,
-  banheiro,
-  cozinha,
-  fachadaCasa,
-  fachadaPredio,
-  fachadaSobrado,
-  quarto,
-  sala,
-} from './ilustracoes';
 
 const RAIZ = path.resolve(import.meta.dirname, '..');
 
@@ -371,69 +361,46 @@ function descricao(
   return partes.join(' ');
 }
 
-async function gerarFotos(
+type Papel = 'fachada' | 'sala' | 'cozinha' | 'quarto' | 'banheiro' | 'quintal' | 'lazer';
+type ManifestoFotos = { imoveis: Record<string, { papel: Papel }[]> };
+
+const FACHADA: Record<TipoImovel, string> = {
+  apartamento: 'Fachada do prédio residencial',
+  casa: 'Fachada da casa com jardim na frente',
+  casa_condominio: 'Casas do condomínio fechado',
+  duplex: 'Fachada dos duplex, com garagem',
+  sobrado: 'Fachada do sobrado com garagem',
+  kitnet: 'Fachada do prédio',
+};
+const AMBIENTE: Record<Exclude<Papel, 'fachada'>, string> = {
+  sala: 'Sala de estar',
+  cozinha: 'Cozinha',
+  quarto: 'Quarto',
+  banheiro: 'Banheiro',
+  quintal: 'Quintal gramado com churrasqueira',
+  lazer: 'Piscina do condomínio',
+};
+
+/** Fotos do imóvel (arquivos .jpg gerados por scripts/baixar-fotos-exemplo.ts). */
+function fotosDoImovel(
   codigo: string,
   e: Especificacao,
-  tituloImovel: string,
-  lazer: string[],
-  indice: number,
-) {
-  const pasta = path.join(RAIZ, 'public', 'imoveis', codigo);
-  await rm(pasta, { recursive: true, force: true });
-  await mkdir(pasta, { recursive: true });
-  const p = PALETAS[indice % PALETAS.length] ?? PALETAS[0]!;
-  const t = `${tituloImovel} (${codigo})`;
-  const fotos: { svg: string; alt: string }[] = [];
-  if (e.tipo === 'apartamento')
-    fotos.push({
-      svg: fachadaPredio(p, inteiro(4, 6), `Fachada do prédio – ${codigo}`),
-      alt: `Ilustração da fachada do prédio – ${t}`,
-    });
-  else if (e.tipo === 'sobrado' || e.tipo === 'duplex')
-    fotos.push({
-      svg: fachadaSobrado(p, `Fachada – ${codigo}`),
-      alt: `Ilustração da fachada de dois andares – ${t}`,
-    });
-  else
-    fotos.push({
-      svg: fachadaCasa(p, e.quartos, `Fachada – ${codigo}`),
-      alt: `Ilustração da fachada térrea – ${t}`,
-    });
-  fotos.push({
-    svg: sala(p, `Sala – ${codigo}`),
-    alt: `Ilustração da sala com sofá e janela ampla – ${codigo}`,
-  });
-  fotos.push({
-    svg: cozinha(p, `Cozinha – ${codigo}`),
-    alt: `Ilustração da cozinha com armários e bancada – ${codigo}`,
-  });
-  fotos.push({
-    svg: quarto(p, `Quarto – ${codigo}`),
-    alt: `Ilustração de quarto com cama de casal e janela – ${codigo}`,
-  });
-  fotos.push({
-    svg: banheiro(p, `Banheiro – ${codigo}`),
-    alt: `Ilustração do banheiro com box de vidro – ${codigo}`,
-  });
-  if (e.tipo !== 'apartamento' || lazer.length)
-    fotos.push({
-      svg: areaExterna(p, `Área externa – ${codigo}`, lazer.length > 0),
-      alt: lazer.length
-        ? `Ilustração da área de lazer do condomínio com piscina e playground – ${codigo}`
-        : `Ilustração do quintal com área de serviço – ${codigo}`,
-    });
-  await Promise.all(
-    fotos.map((f, i) =>
-      writeFile(path.join(pasta, `${String(i + 1).padStart(2, '0')}.svg`), f.svg),
-    ),
-  );
-  return fotos.map((f, i) => ({
-    arquivo: `/imoveis/${codigo}/${String(i + 1).padStart(2, '0')}.svg`,
-    alt: f.alt,
+  titulo: string,
+  manifesto: ManifestoFotos,
+): Imovel['fotos'] {
+  // Mantém o consumo do gerador aleatório da versão anterior (dados idênticos).
+  if (e.tipo === 'apartamento') inteiro(4, 6);
+  const itens = manifesto.imoveis[codigo] ?? [];
+  return itens.map((f, i) => ({
+    arquivo: `/imoveis/${codigo}/${String(i + 1).padStart(2, '0')}.jpg`,
+    alt: `${f.papel === 'fachada' ? FACHADA[e.tipo] : AMBIENTE[f.papel]} – ${titulo} (${codigo}), imagem ilustrativa`,
   }));
 }
 
 async function main() {
+  const manifesto = JSON.parse(
+    await readFile(path.join(RAIZ, 'dados', 'fotos-exemplo.json'), 'utf8'),
+  ) as ManifestoFotos;
   const tetoFaixa3 = FAIXAS.find((f) => f.id === 'faixa3')?.tetoImovel ?? 0;
   const imoveis: Imovel[] = [];
   for (const [idx, e] of ESPECIFICACOES.entries()) {
@@ -450,6 +417,11 @@ async function main() {
       caracteristicas.unshift('varanda');
     const lazer =
       ehPredio || e.tipo === 'casa_condominio' ? sortear(LAZER_CONDOMINIO, inteiro(2, 5)) : [];
+    // Coerência com as fotos: piscina e quintal só aparecem se estiverem na descrição.
+    const papeis = (manifesto.imoveis[codigo] ?? []).map((f) => f.papel);
+    if (papeis.includes('lazer') && !lazer.includes('piscina')) lazer.push('piscina');
+    if (papeis.includes('quintal') && !caracteristicas.includes('churrasqueira'))
+      caracteristicas.push('churrasqueira');
     const preco = precoCoerente(e);
     const condicoes: Imovel['condicoes'] = {
       aceitaMCMV:
@@ -513,7 +485,7 @@ async function main() {
       publicadoEm: publicado.toISOString(),
       atualizadoEm: new Date(Date.UTC(2026, 8, 20, 12)).toISOString(),
     };
-    imovel.fotos = await gerarFotos(codigo, e, tit, lazer, idx);
+    imovel.fotos = fotosDoImovel(codigo, e, tit, manifesto);
     imoveis.push(imovel);
   }
 
@@ -535,11 +507,6 @@ async function main() {
         [['corretor-exemplo', 'Equipe de corretores (exemplo)', 'A_DEFINIR', 'A_DEFINIR', '']],
       ),
   );
-  await writeFile(
-    path.join(RAIZ, 'public', 'imoveis', 'CREDITOS.md'),
-    `# Créditos das imagens\n\nTodas as imagens em \`public/imoveis/CP-0001\` a \`CP-0024\` são **ilustrações vetoriais próprias**, geradas pelo script \`scripts/gerar-exemplos.ts\` (arquivo \`scripts/ilustracoes.ts\`) para o site da Contemplar Imóveis Pop. Não contêm fotografias nem elementos de terceiros e trazem a marcação "Imagem ilustrativa".\n\nLicença: uso livre pela Contemplar Imóveis / Grupo Ordnas.\n\nAo adicionar fotos reais, registre aqui a autoria e a licença de cada conjunto de fotos, por exemplo:\n\n| Código | Autor/fonte | Licença/autorização | Data |\n|---|---|---|---|\n| CP-0000 | Fotógrafo X (contratado) | Cessão de direitos, contrato nº ... | 2026-10-01 |\n`,
-  );
-
   const precos = imoveis.map((i) => i.preco).sort((a, b) => a - b);
   const contagem = imoveis.reduce<Record<string, number>>(
     (acc, i) => ({ ...acc, [i.tipo]: (acc[i.tipo] ?? 0) + 1 }),

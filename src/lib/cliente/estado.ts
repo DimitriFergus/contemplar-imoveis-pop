@@ -1,12 +1,19 @@
 'use client';
 
-import { LISTAGEM } from '@/config/site';
 import type { IdFaixa, SistemaAmortizacao } from '@/config/financiamento';
 import type { UTM } from '@/lib/utils/utm';
 import { criarArmazenado, useArmazenado } from './armazenamento';
 
 export const favoritos = criarArmazenado<string[]>('cp:favoritos', []);
-export const comparar = criarArmazenado<string[]>('cp:comparar', []);
+/** Comparação na listagem: imóvel base e o imóvel que está sendo comparado com ele. */
+export interface EstadoComparacao {
+  base: string | null;
+  comparado: string | null;
+}
+export const comparacao = criarArmazenado<EstadoComparacao>('cp:comparacao', {
+  base: null,
+  comparado: null,
+});
 export const leituraFacil = criarArmazenado<boolean>('cp:leitura-facil', false);
 /** UTM da primeira visita, guardada só durante a sessão do navegador. */
 export const utmSessao = criarArmazenado<UTM | null>('cp:utm', null, 'sessao');
@@ -48,15 +55,17 @@ export function useFavoritos() {
   };
 }
 
-export function useComparar() {
-  const ids = useArmazenado(comparar);
+export function useComparacao() {
+  const estado = useArmazenado(comparacao);
   return {
-    ids,
-    max: LISTAGEM.maxComparar,
-    cheio: ids.length >= LISTAGEM.maxComparar,
-    estaNaLista: (id: string) => ids.includes(id),
-    alternar: (id: string) => comparar.gravar((l) => alternarNaLista(l, id, LISTAGEM.maxComparar)),
-    remover: (id: string) => comparar.gravar((l) => l.filter((x) => x !== id)),
-    limpar: () => comparar.apagar(),
+    ...estado,
+    /** Define o imóvel base (primeiro passo da comparação). */
+    definirBase: (id: string) => comparacao.gravar({ base: id, comparado: null }),
+    /** Escolhe o imóvel que será comparado com a base (abre o pop-up). */
+    compararCom: (id: string) => comparacao.gravar((e) => ({ ...e, comparado: id })),
+    /** Troca: o imóvel comparado vira a nova base. */
+    tornarBase: (id: string) => comparacao.gravar({ base: id, comparado: null }),
+    fecharComparado: () => comparacao.gravar((e) => ({ ...e, comparado: null })),
+    encerrar: () => comparacao.apagar(),
   };
 }

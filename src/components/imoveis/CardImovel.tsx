@@ -6,6 +6,7 @@ import { ROTULO_SITUACAO, ROTULO_STATUS, ROTULO_TIPO } from '@/lib/rotulos';
 import { formatarMesAno } from '@/lib/utils/formatar';
 import { cn } from '@/lib/utils';
 import type { ImovelResumo } from '@/types';
+import { DiferencasCard } from '@/components/comparacao/DiferencasCard';
 import { BotaoComparar } from './BotaoComparar';
 import { BotaoFavoritar } from './BotaoFavoritar';
 import { FichaTecnica } from './FichaTecnica';
@@ -21,7 +22,8 @@ interface Props {
   /** Título em h2 (listagem) ou h3 (seções). */
   nivelTitulo?: 'h2' | 'h3';
   className?: string;
-  mostrarComparar?: boolean;
+  /** Mostra a comparação (botão + ganhos/perdas). Só na listagem de imóveis. */
+  comparavel?: boolean;
 }
 
 export function CardImovel({
@@ -29,7 +31,7 @@ export function CardImovel({
   prioridade = false,
   nivelTitulo = 'h3',
   className,
-  mostrarComparar = true,
+  comparavel = false,
 }: Props) {
   const Titulo = nivelTitulo;
   const indisponivel = i.status !== 'disponivel';
@@ -37,6 +39,7 @@ export function CardImovel({
     <article
       className={cn(
         'group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-card ring-1 ring-border transition-shadow hover:shadow-card-hover',
+        'has-[[data-comparacao=base]]:ring-3 has-[[data-comparacao=base]]:ring-primary has-[[data-comparacao=comparado]]:ring-3 has-[[data-comparacao=comparado]]:ring-destaque',
         className,
       )}
       data-testid="card-imovel"
@@ -59,6 +62,11 @@ export function CardImovel({
           <SeloIlustrativo exemplo={i.exemplo} />
         </div>
         <BotaoFavoritar id={i.id} codigo={i.codigo} className="absolute top-2.5 right-2.5" />
+        {i.exemplo && !indisponivel && (
+          <span className="absolute bottom-3 left-3 rounded-md bg-black/55 px-1.5 py-0.5 text-[0.7rem] font-medium text-white">
+            Imagem ilustrativa
+          </span>
+        )}
         {i.totalFotos > 1 && (
           <span className="absolute right-3 bottom-3 inline-flex items-center gap-1 rounded-full bg-black/60 px-2 py-1 text-xs font-semibold text-white">
             <Camera className="size-3.5" aria-hidden /> {i.totalFotos}
@@ -96,14 +104,17 @@ export function CardImovel({
           areaUtilM2={i.areaUtilM2}
         />
         <SelosCondicoes condicoes={i.condicoes} situacao={i.situacao} limite={2} />
-        <div className="mt-auto flex items-center justify-between gap-2 pt-1 text-sm text-muted-foreground">
-          <span>
+        {comparavel && <DiferencasCard imovel={i} />}
+        <div className="mt-auto space-y-2 pt-1 text-sm text-muted-foreground">
+          <p>
             Cód. {i.codigo}
             {i.previsaoEntrega && i.situacao !== 'pronto' && i.situacao !== 'usado'
               ? ` · ${ROTULO_SITUACAO[i.situacao]}: entrega ${formatarMesAno(i.previsaoEntrega)}`
               : ''}
-          </span>
-          {mostrarComparar && <BotaoComparar id={i.id} codigo={i.codigo} compacto />}
+          </p>
+          {comparavel && (
+            <BotaoComparar id={i.id} codigo={i.codigo} className="w-full justify-center" />
+          )}
         </div>
       </div>
     </article>

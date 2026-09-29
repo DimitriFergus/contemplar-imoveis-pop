@@ -3,7 +3,6 @@ import { formatarPreco } from '@/lib/utils/formatar';
 import { mensagemImovel } from '@/lib/utils/whatsapp';
 import type { Foto } from '@/types';
 import { AgendarVisita } from './AgendarVisita';
-import { BotaoComparar } from './BotaoComparar';
 import { BotaoCompartilhar } from './BotaoCompartilhar';
 import { BotaoFavoritar } from './BotaoFavoritar';
 import { PrecoParcela } from './PrecoParcela';
@@ -53,7 +52,6 @@ export function AcoesImovel({
             <BotaoFavoritar id={id} codigo={codigo} variante="texto" />
             <BotaoCompartilhar titulo={titulo} texto={textoCompartilhar} codigo={codigo} />
           </div>
-          <BotaoComparar id={id} codigo={codigo} />
         </div>
       </div>
     );

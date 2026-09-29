@@ -12,7 +12,7 @@ import { IconeWhatsApp } from '@/components/comum/IconeWhatsApp';
 export function WhatsAppFlutuante() {
   const pathname = usePathname();
   const utm = useArmazenado(utmSessao);
-  const ehAnuncio = /^\/imoveis\/[^/]+-cp-\d{4}$/.test(pathname);
+  const ehAnuncio = /^\/imoveis\/[^/]+-cp-\d{4}\/?$/.test(pathname);
   if (ehAnuncio) return null;
   return (
     <a
@@ -20,7 +20,7 @@ export function WhatsAppFlutuante() {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => rastrear('clique_whatsapp', { local: 'flutuante' })}
-      className="fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg ring-4 ring-background transition-transform hover:scale-105"
+      className="whatsapp-flutuante fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg ring-4 ring-background transition-transform hover:scale-105"
       aria-label="Conversar pelo WhatsApp"
       data-nao-imprimir
     >

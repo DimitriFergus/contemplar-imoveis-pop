@@ -2,15 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { BASE_PATH } from '@/config/site';
-import type { ImovelResumo } from '@/types';
+import type { Foto, ImovelResumo } from '@/types';
 
-let promessa: Promise<ImovelResumo[]> | null = null;
+export type ResumoComFotos = ImovelResumo & { fotos: Foto[] };
+
+let promessa: Promise<ResumoComFotos[]> | null = null;
 
 /** Carrega (uma vez por página) os resumos de todos os imóveis. */
-export function carregarResumos(): Promise<ImovelResumo[]> {
+export function carregarResumos(): Promise<ResumoComFotos[]> {
   promessa ??= fetch(`${BASE_PATH}/dados/resumos.json`)
     .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-    .then((d: { imoveis: ImovelResumo[] }) => d.imoveis)
+    .then((d: { imoveis: ResumoComFotos[] }) => d.imoveis)
     .catch((e: unknown) => {
       promessa = null;
       throw e;
@@ -19,7 +21,7 @@ export function carregarResumos(): Promise<ImovelResumo[]> {
 }
 
 export function useTodosResumos(ativo = true) {
-  const [imoveis, setImoveis] = useState<ImovelResumo[] | null>(null);
+  const [imoveis, setImoveis] = useState<ResumoComFotos[] | null>(null);
   const [erro, setErro] = useState(false);
   useEffect(() => {
     if (!ativo) return;

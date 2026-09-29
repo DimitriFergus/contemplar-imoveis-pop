@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Trilha } from '@/components/comum/Trilha';
-import { ListaFavoritos } from '@/components/comparar/ListaFavoritos';
+import { ListaFavoritos } from '@/components/favoritos/ListaFavoritos';
 
 export const metadata: Metadata = {
   title: 'Meus favoritos',
