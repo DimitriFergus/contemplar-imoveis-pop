@@ -22,6 +22,8 @@ import {
 } from '@/config/site';
 import { BuscaHero } from '@/components/busca/BuscaHero';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
+import { FaixasMcmv, type FaixaComImoveis } from '@/components/conteudo/FaixasMcmv';
+import { condicoesNaFaixa, limiteImovelPorFaixa } from '@/lib/financiamento';
 import { Carrossel } from '@/components/comum/Carrossel';
 import { JsonLd } from '@/components/comum/JsonLd';
 import { Secao } from '@/components/comum/Secao';
@@ -35,7 +37,7 @@ import { Button } from '@/components/ui/button';
 import { FAQ_HOME } from '@/content/faq';
 import { paraQueryString } from '@/lib/busca/filtros';
 import { repositorio } from '@/lib/repositorio';
-import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
+import { formatarPrecoCurto } from '@/lib/utils/formatar';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -67,8 +69,40 @@ const ATALHOS = [
 ];
 
 export default async function PaginaInicial() {
-  const [destaques, bairros] = await Promise.all([repositorio.destaques(8), repositorio.bairros()]);
-  const faixasMcmv = FAIXAS.filter((f) => f.programa === 'MCMV');
+  const [destaques, bairros, resumos] = await Promise.all([
+    repositorio.destaques(8),
+    repositorio.bairros(),
+    repositorio.listarResumos(),
+  ]);
+  // Para cada faixa do MCMV: até quanto a renda permite comprar e quais imóveis se encaixam.
+  const faixasMcmv: FaixaComImoveis[] = FAIXAS.filter((f) => f.programa === 'MCMV').map((f) => {
+    const limite = limiteImovelPorFaixa(f);
+    return {
+      id: f.id,
+      nome: f.nome,
+      rendaMinima: f.rendaMinima,
+      rendaMaxima: f.rendaMaxima,
+      podeTerSubsidio: f.podeTerSubsidio,
+      limite,
+      imoveis: resumos
+        .filter(
+          (i) =>
+            i.status === 'disponivel' && i.condicoes.aceitaMCMV && i.preco <= limite.precoMaximo,
+        )
+        .sort((a, b) => a.preco - b.preco)
+        .map((i) => ({
+          id: i.id,
+          slug: i.slug,
+          codigo: i.codigo,
+          titulo: i.titulo,
+          tipo: i.tipo,
+          bairro: i.bairro,
+          preco: i.preco,
+          foto: i.foto,
+          ...condicoesNaFaixa(i.preco, f),
+        })),
+    };
+  });
 
   return (
     <>
@@ -185,23 +219,12 @@ export default async function PaginaInicial() {
           </>
         }
       >
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {faixasMcmv.map((f) => (
-            <li key={f.id} className="rounded-2xl border bg-card p-5">
-              <p className="text-sm font-bold tracking-wide text-destaque-texto uppercase">
-                {f.nome}
-              </p>
-              <p className="mt-2 text-xl font-bold">
-                {f.rendaMinima > 0 ? `${formatarPreco(f.rendaMinima)} a ` : 'Até '}
-                {formatarPreco(f.rendaMaxima ?? 0)}
-              </p>
-              <p className="text-sm text-muted-foreground">de renda familiar por mês</p>
-              <p className="mt-3 text-[0.95rem]">
-                {f.podeTerSubsidio ? 'Pode ter subsídio do governo' : 'Juros menores que o mercado'}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <p className="-mt-2 mb-4 font-semibold text-primary">
+          Toque na sua faixa para ver os imóveis que cabem na sua renda.
+        </p>
+        <Suspense>
+          <FaixasMcmv faixas={faixasMcmv} />
+        </Suspense>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
             <Link href="/minha-casa-minha-vida">Entender o Minha Casa, Minha Vida</Link>

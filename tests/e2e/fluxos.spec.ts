@@ -257,3 +257,27 @@ test.describe('Favoritos e comparação', () => {
     await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
   });
 });
+
+test.describe('Minha Casa, Minha Vida e checklist', () => {
+  test('faixa do MCMV na home abre os imóveis compatíveis com a renda', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'networkidle' });
+    await page.getByRole('button', { name: /Faixa 1/ }).click();
+    const dialogo = page.getByRole('dialog');
+    await expect(dialogo).toContainText(/permite imóveis de até R\$/);
+    await expect(dialogo.getByRole('link', { name: /CP-\d{4}/ }).first()).toBeVisible();
+    await expect(dialogo.getByRole('link', { name: 'Fazer minha simulação' })).toBeVisible();
+    await dialogo.getByRole('link', { name: 'Fazer minha simulação' }).click();
+    await expect(page).toHaveURL(/\/simulador$/);
+  });
+
+  test('como comprar oferece o checklist em PDF', async ({ page, request }) => {
+    await page.goto('/como-comprar', { waitUntil: 'networkidle' });
+    const link = page.getByRole('link', { name: /Baixar checklist em PDF/ });
+    await expect(link).toBeVisible();
+    const href = (await link.getAttribute('href')) ?? '';
+    const resp = await request.get(href);
+    expect(resp.status()).toBe(200);
+    expect(resp.headers()['content-type']).toContain('pdf');
+    expect((await resp.body()).subarray(0, 4).toString()).toBe('%PDF');
+  });
+});

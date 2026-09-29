@@ -15,9 +15,10 @@
     "test:e2e": "playwright test",
     "importar": "tsx scripts/importar-imoveis.ts",
     "gerar-exemplos": "tsx scripts/gerar-exemplos.ts",
-    "prebuild": "npm run importar",
-    "predev": "npm run importar",
-    "fotos-exemplo": "tsx scripts/baixar-fotos-exemplo.ts"
+    "prebuild": "npm run importar && npm run pdf-checklist",
+    "predev": "npm run importar && npm run pdf-checklist",
+    "fotos-exemplo": "tsx scripts/baixar-fotos-exemplo.ts",
+    "pdf-checklist": "tsx scripts/gerar-pdf-checklist.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -39,10 +40,12 @@
     "@tailwindcss/postcss": "^4",
     "@types/leaflet": "^1.9.22",
     "@types/node": "^24.19.0",
+    "@types/pdfkit": "^0.17.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.7",
+    "pdfkit": "^0.20.2",
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "sharp": "^0.35.5",

@@ -5,3 +5,4 @@ export * from './simulacao';
 export * from './capacidade';
 export * from './custo-aquisicao';
 export * from './parcela-anuncio';
+export * from './por-faixa';

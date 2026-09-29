@@ -1,16 +1,40 @@
+import { FileDown } from 'lucide-react';
+import { BASE_PATH } from '@/config/site';
+import { Button } from '@/components/ui/button';
 import { DOCUMENTOS } from '@/content/jornada';
 import { BotaoImprimir } from './BotaoImprimir';
 
-/** Checklist de documentos com versão para impressão (CSS @media print). */
+/** PDF gerado no build por scripts/gerar-pdf-checklist.ts. */
+export const ARQUIVO_PDF_CHECKLIST = `${BASE_PATH}/documentos/checklist-compra-contemplar.pdf`;
+
+/** Checklist de documentos com PDF para baixar e versão para impressão (CSS @media print). */
 export function ChecklistDocumentos() {
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3" data-nao-imprimir>
-        <p className="text-muted-foreground">
-          Marque o que você já tem. Dá para imprimir e levar na mão.
-        </p>
-        <BotaoImprimir />
+      <div
+        className="mb-5 flex flex-col gap-4 rounded-2xl bg-info-suave p-4 sm:flex-row sm:items-center sm:justify-between"
+        data-nao-imprimir
+      >
+        <div>
+          <p className="font-bold text-primary">Leve esta lista impressa</p>
+          <p className="text-[0.95rem] text-foreground">
+            O PDF traz os documentos, os valores para separar (entrada, ITBI e cartório), o passo a
+            passo e espaço para anotações.
+          </p>
+        </div>
+        <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+          <Button asChild size="lg" variant="destaque">
+            <a href={ARQUIVO_PDF_CHECKLIST} download="checklist-compra-contemplar.pdf">
+              <FileDown className="size-5" aria-hidden /> Baixar PDF para imprimir
+              <span className="sr-only"> (arquivo PDF, 2 páginas)</span>
+            </a>
+          </Button>
+          <BotaoImprimir />
+        </div>
       </div>
+      <p className="mb-4 text-muted-foreground" data-nao-imprimir>
+        Ou marque aqui mesmo o que você já tem:
+      </p>
       <div className="grid gap-4 md:grid-cols-2">
         {DOCUMENTOS.map((g) => (
           <fieldset key={g.titulo} className="rounded-2xl border bg-card p-5" data-imprimir-quebra>

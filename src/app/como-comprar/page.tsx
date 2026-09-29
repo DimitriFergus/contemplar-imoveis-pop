@@ -1,9 +1,13 @@
+import { FileDown } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MENSAGENS_WHATSAPP } from '@/config/site';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { Trilha } from '@/components/comum/Trilha';
-import { ChecklistDocumentos } from '@/components/conteudo/ChecklistDocumentos';
+import {
+  ARQUIVO_PDF_CHECKLIST,
+  ChecklistDocumentos,
+} from '@/components/conteudo/ChecklistDocumentos';
 import { Jornada } from '@/components/conteudo/Jornada';
 import { Button } from '@/components/ui/button';
 
@@ -32,6 +36,11 @@ export default function PaginaComoComprar() {
       <div className="mt-8 flex flex-col gap-3 sm:flex-row" data-nao-imprimir>
         <Button asChild size="lg" variant="destaque">
           <Link href="/simulador">Começar pela simulação</Link>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <a href={ARQUIVO_PDF_CHECKLIST} download="checklist-compra-contemplar.pdf">
+            <FileDown className="size-5" aria-hidden /> Baixar checklist em PDF
+          </a>
         </Button>
         <BotaoWhatsApp
           mensagem={MENSAGENS_WHATSAPP.geral}

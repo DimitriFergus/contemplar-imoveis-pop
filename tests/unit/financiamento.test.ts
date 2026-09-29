@@ -23,6 +23,8 @@ import {
   tabelaAmortizacao,
   taxaMensal,
   valorFinanciavelPorParcela,
+  limiteImovelPorFaixa,
+  condicoesNaFaixa,
 } from '@/lib/financiamento';
 
 /**
@@ -324,5 +326,35 @@ describe('parcela estimada do anúncio', () => {
   it('muda de faixa de referência acima do teto da Faixa 3', () => {
     expect(parcelaEstimadaAnuncio(450_000).faixaReferencia.id).toBe('faixa4');
     expect(parcelaEstimadaAnuncio(2_000_000).faixaReferencia.id).toBe('sbpe');
+  });
+});
+
+describe('imóveis por faixa do MCMV', () => {
+  it('calcula o preço máximo pela renda do topo da faixa, sem passar do teto', () => {
+    for (const faixa of FAIXAS.filter((f) => f.programa === 'MCMV')) {
+      const l = limiteImovelPorFaixa(faixa);
+      expect(l.rendaReferencia).toBe(faixa.rendaMaxima);
+      expect(l.parcelaMaxima).toBeCloseTo(
+        (faixa.rendaMaxima ?? 0) * COMPROMETIMENTO_MAXIMO_RENDA,
+        6,
+      );
+      if (faixa.tetoImovel) expect(l.precoMaximo).toBeLessThanOrEqual(faixa.tetoImovel);
+      expect(l.entradaEstimada).toBeCloseTo(l.precoMaximo * (1 - faixa.cotaMaximaFinanciamento), 6);
+    }
+  });
+
+  it('a renda mínima sugerida para o imóvel de preço máximo não passa da renda da faixa', () => {
+    for (const faixa of FAIXAS.filter((f) => f.programa === 'MCMV')) {
+      const l = limiteImovelPorFaixa(faixa);
+      const { rendaMinima } = condicoesNaFaixa(l.precoMaximo, faixa);
+      expect(rendaMinima).toBeLessThanOrEqual(l.rendaReferencia + 0.01);
+    }
+  });
+
+  it('faixas de renda maior compram imóveis de valor maior', () => {
+    const precos = FAIXAS.filter((f) => f.programa === 'MCMV').map(
+      (f) => limiteImovelPorFaixa(f).precoMaximo,
+    );
+    expect([...precos].sort((a, b) => a - b)).toEqual(precos);
   });
 });

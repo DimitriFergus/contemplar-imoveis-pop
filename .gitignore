@@ -50,3 +50,6 @@ next-env.d.ts
 # fotos originais (backup local gerado pelo importador)
 /dados/fotos-originais/
 /out/
+
+# PDF gerado no build (npm run pdf-checklist)
+/public/documentos/
