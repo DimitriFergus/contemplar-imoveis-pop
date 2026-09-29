@@ -244,16 +244,9 @@
   }
 }
 
-/* Painel de comparação: abre espaço à direita no computador e esconde o WhatsApp flutuante no celular. */
-@media (min-width: 1024px) {
-  html[data-comparando-lateral] .com-painel-comparacao {
-    padding-right: 23rem;
-  }
-}
-@media (max-width: 1023.98px) {
-  html[data-comparando] .whatsapp-flutuante {
-    display: none;
-  }
+/* Cartão de comparação: esconde o WhatsApp flutuante (mesmo canto da tela). */
+html[data-comparando] .whatsapp-flutuante {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

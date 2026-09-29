@@ -42,7 +42,7 @@ export function CorpoListagem({
   const temFiltros = chipsAtivos(filtrosUrl).length > 0;
 
   return (
-    <div className="com-painel-comparacao transition-[padding] duration-300 lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
+    <div className="lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
       <aside className="hidden lg:sticky lg:top-20 lg:block lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto lg:pr-2">
         <Suspense>
           <PainelFiltros

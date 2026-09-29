@@ -9,7 +9,16 @@ import { cn } from '@/lib/utils';
 const INTERVALO_MS = 3500;
 
 /** Fotos que se sucedem com efeito de esmaecimento (pausa ao passar o mouse). */
-export function FotosFade({ fotos, className }: { fotos: Foto[]; className?: string }) {
+export function FotosFade({
+  fotos,
+  className,
+  compacta = false,
+}: {
+  fotos: Foto[];
+  className?: string;
+  /** Miniatura: sem legenda nem pontinhos (o card já indica que a imagem é ilustrativa). */
+  compacta?: boolean;
+}) {
   const [atual, setAtual] = useState(0);
   const [pausado, setPausado] = useState(false);
 
@@ -37,7 +46,7 @@ export function FotosFade({ fotos, className }: { fotos: Foto[]; className?: str
           alt={i === atual ? f.alt : ''}
           aria-hidden={i !== atual}
           fill
-          sizes="(min-width: 1024px) 352px, 100vw"
+          sizes={compacta ? '128px' : '(min-width: 1024px) 352px, 100vw'}
           className={cn(
             'object-cover transition-opacity duration-1000 ease-in-out motion-reduce:transition-none',
             i === atual ? 'opacity-100' : 'opacity-0',
@@ -45,10 +54,12 @@ export function FotosFade({ fotos, className }: { fotos: Foto[]; className?: str
           loading={i === 0 ? 'eager' : 'lazy'}
         />
       ))}
-      <span className="absolute bottom-2 left-2 rounded-md bg-black/55 px-1.5 py-0.5 text-[0.7rem] text-white">
-        Imagem ilustrativa
-      </span>
-      {fotos.length > 1 && (
+      {!compacta && (
+        <span className="absolute bottom-2 left-2 rounded-md bg-black/55 px-1.5 py-0.5 text-[0.7rem] text-white">
+          Imagem ilustrativa
+        </span>
+      )}
+      {!compacta && fotos.length > 1 && (
         <div
           className="absolute right-2 bottom-2 flex gap-1"
           role="group"

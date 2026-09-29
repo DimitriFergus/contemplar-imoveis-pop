@@ -228,7 +228,7 @@ test.describe('Favoritos e comparação', () => {
       .getByRole('button', { name: /^Comparar imóvel/ })
       .click();
     const painel = page.getByRole('complementary', { name: 'Comparação de imóveis' });
-    await expect(painel).toContainText('Comparação iniciada');
+    await expect(painel).toContainText(/Base: CP-\d{4}/);
     await expect(cards.nth(0)).toContainText('Imóvel base');
     await expect(cards.nth(1)).toContainText(/Comparado ao CP-\d{4}: ganha em \d+ · perde em \d+/);
 
@@ -236,9 +236,13 @@ test.describe('Favoritos e comparação', () => {
       .nth(1)
       .getByRole('button', { name: /^Comparar com este/ })
       .click();
-    await expect(painel).toContainText(/Ganha em \d+/);
-    await expect(painel).toContainText(/Perde em \d+/);
-    await expect(painel.getByRole('link', { name: /Ver anúncio do CP-\d{4}/ })).toBeVisible();
+    await expect(painel).toContainText(/Ganha \d+/);
+    await expect(painel).toContainText(/Perde \d+/);
+    await expect(painel.getByRole('link', { name: /Ver anúncio/ })).toBeVisible();
+    // Cartão compacto: não pode ocupar mais que metade da largura no computador
+    const caixa = await painel.boundingBox();
+    const largura = page.viewportSize()?.width ?? 0;
+    expect(caixa?.width ?? 0).toBeLessThanOrEqual(Math.max(330, largura * 0.5));
 
     await painel.getByRole('button', { name: 'Encerrar comparação' }).click();
     await expect(painel).toHaveCount(0);
