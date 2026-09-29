@@ -1,6 +1,7 @@
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { formatarPreco } from '@/lib/utils/formatar';
 import { mensagemImovel } from '@/lib/utils/whatsapp';
+import type { Foto } from '@/types';
 import { AgendarVisita } from './AgendarVisita';
 import { BotaoComparar } from './BotaoComparar';
 import { BotaoCompartilhar } from './BotaoCompartilhar';
@@ -14,11 +15,24 @@ interface Props {
   preco: number;
   parcela: number;
   disponivel: boolean;
+  bairro: string;
+  foto: Foto | null;
   modo: 'lateral' | 'barra';
 }
 
 /** Cartão de ações: lateral fixa no desktop e barra fixa no rodapé do celular. */
-export function AcoesImovel({ id, codigo, titulo, preco, parcela, disponivel, modo }: Props) {
+export function AcoesImovel({
+  id,
+  codigo,
+  titulo,
+  preco,
+  parcela,
+  disponivel,
+  bairro,
+  foto,
+  modo,
+}: Props) {
+  const imovel = { codigo, titulo, preco, bairro, foto };
   const mensagem = mensagemImovel({ codigo, titulo });
   const textoCompartilhar = `${titulo} — ${formatarPreco(preco)} (cód. ${codigo})`;
   if (modo === 'lateral') {
@@ -34,9 +48,7 @@ export function AcoesImovel({ id, codigo, titulo, preco, parcela, disponivel, mo
             rotulo="Tenho interesse (WhatsApp)"
             size="lg"
           />
-          {disponivel && (
-            <AgendarVisita codigo={codigo} titulo={titulo} mensagemWhatsApp={mensagem} />
-          )}
+          {disponivel && <AgendarVisita {...imovel} mensagemWhatsApp={mensagem} />}
           <div className="grid grid-cols-2 gap-2">
             <BotaoFavoritar id={id} codigo={codigo} variante="texto" />
             <BotaoCompartilhar titulo={titulo} texto={textoCompartilhar} codigo={codigo} />
@@ -62,8 +74,7 @@ export function AcoesImovel({ id, codigo, titulo, preco, parcela, disponivel, mo
         />
         {disponivel && (
           <AgendarVisita
-            codigo={codigo}
-            titulo={titulo}
+            {...imovel}
             mensagemWhatsApp={mensagem}
             tamanho="default"
             rotulo="Agendar"

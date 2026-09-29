@@ -22,6 +22,7 @@ import {
 } from '@/config/site';
 import { BuscaHero } from '@/components/busca/BuscaHero';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
+import { Carrossel } from '@/components/comum/Carrossel';
 import { JsonLd } from '@/components/comum/JsonLd';
 import { Secao } from '@/components/comum/Secao';
 import { Termo } from '@/components/comum/Termo';
@@ -146,16 +147,13 @@ export default async function PaginaInicial() {
         }
       >
         <Suspense>
-          <ul
-            className="rolagem-horizontal -mx-4 flex gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:px-0"
-            aria-label="Lista de imóveis em destaque (role para o lado)"
-          >
+          <Carrossel rotulo="Imóveis em destaque (use as setas ou arraste para o lado)">
             {destaques.map((i, idx) => (
               <li key={i.id} className="w-[85%] max-w-sm shrink-0 sm:w-80">
                 <CardImovel imovel={i} prioridade={idx === 0} />
               </li>
             ))}
-          </ul>
+          </Carrossel>
         </Suspense>
         <NotaPremissas className="mt-4" />
       </Secao>

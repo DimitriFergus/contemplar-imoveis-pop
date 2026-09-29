@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { EMPRESA, LISTAGEM, SITE, estaDefinido } from '@/config/site';
+import { EMPRESA, LISTAGEM, estaDefinido } from '@/config/site';
 import { JsonLd } from '@/components/comum/JsonLd';
 import { Selo } from '@/components/comum/Selo';
 import { Trilha } from '@/components/comum/Trilha';
@@ -280,12 +280,16 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
                 Corretor responsável
               </h2>
               <p>
-                {corretor?.nome ?? 'Equipe Contemplar'} · CRECI{' '}
-                {corretor && estaDefinido(corretor.creci) ? corretor.creci : 'a definir'}
+                {corretor && estaDefinido(corretor.creci)
+                  ? `${corretor.nome} · CRECI ${corretor.creci}`
+                  : 'Equipe de corretores Contemplar'}
               </p>
               <p className="text-muted-foreground">
-                {estaDefinido(EMPRESA.nomeEmpresarial) ? EMPRESA.nomeEmpresarial : SITE.nome} ·{' '}
-                {estaDefinido(EMPRESA.creciPJ) ? EMPRESA.creciPJ : 'CRECI PJ a definir'}
+                {estaDefinido(EMPRESA.nomeEmpresarial)
+                  ? EMPRESA.nomeEmpresarial
+                  : 'Contemplar Imóveis'}
+                {estaDefinido(EMPRESA.creciPJ) ? ` · ${EMPRESA.creciPJ}` : ''}
+                {estaDefinido(EMPRESA.cnpj) ? ` · CNPJ ${EMPRESA.cnpj}` : ''}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Anúncio publicado em {formatarData(imovel.publicadoEm)} e atualizado em{' '}
@@ -305,6 +309,8 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
                 preco={imovel.preco}
                 parcela={parcela}
                 disponivel={disponivel}
+                bairro={imovel.bairro}
+                foto={imovel.fotos[0] ?? null}
                 modo="lateral"
               />
             </Suspense>
@@ -318,6 +324,8 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
         preco={imovel.preco}
         parcela={parcela}
         disponivel={disponivel}
+        bairro={imovel.bairro}
+        foto={imovel.fotos[0] ?? null}
         modo="barra"
       />
 

@@ -14,7 +14,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { BotaoLeituraFacil } from './BotaoLeituraFacil';
 import { LINKS_PRINCIPAIS } from './navegacao';
 
 export function MenuCelular() {
@@ -58,7 +57,6 @@ export function MenuCelular() {
             size="lg"
             className="w-full"
           />
-          <BotaoLeituraFacil className="w-full" />
         </div>
       </SheetContent>
     </Sheet>

@@ -33,11 +33,10 @@ export default function PaginaSobre() {
           compra.
         </p>
         <p className="text-base text-muted-foreground">
-          {estaDefinido(EMPRESA.nomeEmpresarial)
-            ? EMPRESA.nomeEmpresarial
-            : 'Razão social a definir'}{' '}
-          · CNPJ {estaDefinido(EMPRESA.cnpj) ? EMPRESA.cnpj : 'a definir'} ·{' '}
-          {estaDefinido(EMPRESA.creciPJ) ? EMPRESA.creciPJ : 'CRECI PJ a definir'}
+          {estaDefinido(EMPRESA.nomeEmpresarial) ? EMPRESA.nomeEmpresarial : 'Contemplar Imóveis'} ·
+          CNPJ {EMPRESA.cnpj} · {EMPRESA.creciPJ}
+          <br />
+          {EMPRESA.endereco}
         </p>
       </div>
       <Button asChild size="lg" className="mt-8">

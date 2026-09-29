@@ -1,6 +1,7 @@
-import { BadgeCheck, Camera, Users } from 'lucide-react';
+import { BadgeCheck, Camera, Clock, MapPin, Navigation, Phone, Users } from 'lucide-react';
 import type { Metadata } from 'next';
-import { MENSAGENS_WHATSAPP } from '@/config/site';
+import { CONTATO, EMPRESA, MENSAGENS_WHATSAPP, estaDefinido } from '@/config/site';
+import { Button } from '@/components/ui/button';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { Trilha } from '@/components/comum/Trilha';
 import { FormularioLead } from '@/components/leads/FormularioLead';
@@ -108,6 +109,49 @@ export default function PaginaAnuncie() {
           </p>
         </section>
       </div>
+
+      <section aria-labelledby="titulo-endereco" className="mt-14">
+        <h2 id="titulo-endereco" className="text-2xl font-extrabold">
+          Venha nos visitar
+        </h2>
+        <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_22rem]">
+          <div className="aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-border sm:aspect-[16/9]">
+            <iframe
+              src={`https://www.google.com/maps?q=${encodeURIComponent(EMPRESA.enderecoMapa)}&output=embed`}
+              title={`Mapa do Google com o endereço da Contemplar Imóveis: ${EMPRESA.endereco}`}
+              className="size-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <div className="space-y-4 rounded-2xl border bg-card p-5">
+            <div className="flex gap-3">
+              <MapPin className="mt-1 size-5 shrink-0 text-primary" aria-hidden />
+              <address className="not-italic">{EMPRESA.endereco}</address>
+            </div>
+            <p className="flex gap-3">
+              <Clock className="mt-1 size-5 shrink-0 text-primary" aria-hidden />
+              <span>{EMPRESA.horarioAtendimento}</span>
+            </p>
+            {estaDefinido(CONTATO.telefoneExibicao) && (
+              <p className="flex gap-3">
+                <Phone className="mt-1 size-5 shrink-0 text-primary" aria-hidden />
+                <span>WhatsApp: {CONTATO.telefoneExibicao}</span>
+              </p>
+            )}
+            <Button asChild variant="outline" size="lg" className="w-full">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EMPRESA.enderecoMapa)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Navigation className="size-5" aria-hidden /> Como chegar (Google Maps)
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

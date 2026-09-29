@@ -35,17 +35,20 @@ export const SITE = {
 /** Dados legais exigidos pelo CRECI e pelo Código de Defesa do Consumidor. */
 export const EMPRESA = {
   nomeEmpresarial: A_DEFINIR as string,
-  cnpj: A_DEFINIR as string,
-  /** Número de inscrição no CRECI da pessoa jurídica, ex.: "CRECI/XX 00000-J". */
-  creciPJ: A_DEFINIR as string,
-  endereco: A_DEFINIR as string,
+  cnpj: '61.569.798/0001-81',
+  /** Número de inscrição no CRECI da empresa. */
+  creciPJ: 'CRECI-CE 27799',
+  endereco:
+    'Rua P, 150 – Parque Montenegro II, Prefeito José Walter, Fortaleza – CE, CEP 60751-380',
+  /** Texto usado para localizar o endereço no Google Maps (página "Anuncie seu imóvel"). */
+  enderecoMapa: 'Rua P, 150, Parque Montenegro II, Prefeito José Walter, Fortaleza - CE, 60751-380',
   horarioAtendimento: 'Segunda a sexta, das 8h às 18h; sábado, das 8h às 12h',
 };
 
 export const CONTATO = {
   /** WhatsApp principal no formato internacional, só dígitos: 55 + DDD + número. */
-  whatsapp: A_DEFINIR as string,
-  telefoneExibicao: A_DEFINIR as string,
+  whatsapp: '5585992104920',
+  telefoneExibicao: '(85) 99210-4920',
   email: A_DEFINIR as string,
 };
 
@@ -98,9 +101,9 @@ export const AGENDAMENTO = {
   /** 0 = domingo, 6 = sábado. */
   diasSemanaIndisponiveis: [0],
   periodos: [
-    { valor: 'manha', rotulo: 'Manhã (8h às 12h)' },
-    { valor: 'tarde', rotulo: 'Tarde (13h às 18h)' },
-    { valor: 'noite', rotulo: 'Noite (18h às 20h)' },
+    { valor: 'manha', rotulo: 'Manhã', horario: '8h às 12h' },
+    { valor: 'tarde', rotulo: 'Tarde', horario: '13h às 18h' },
+    { valor: 'noite', rotulo: 'Noite', horario: '18h às 20h' },
   ],
 } as const;
 

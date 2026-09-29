@@ -4,7 +4,6 @@ import { CONTATO, EMPRESA, REDES_SOCIAIS, SITE, estaDefinido } from '@/config/si
 import { Logo } from '@/components/marca/Logo';
 import { ROTULO_TIPO_PLURAL, SLUG_CATEGORIA_TIPO } from '@/lib/rotulos';
 import { formatarPrecoCurto } from '@/lib/utils/formatar';
-import { BotaoLeituraFacil } from './BotaoLeituraFacil';
 import { BotaoApagarDados } from './BotaoApagarDados';
 
 const exibir = (valor: string, rotuloPendente: string) =>
@@ -23,7 +22,6 @@ export function Rodape() {
           <p className="text-muted-foreground">
             {SITE.slogan}. Imóveis populares a partir de {formatarPrecoCurto(SITE.precoAPartirDe)}.
           </p>
-          <BotaoLeituraFacil />
         </div>
         <nav aria-label="Imóveis">
           <h2 className="mb-3 text-base font-bold">Imóveis</h2>
@@ -63,8 +61,23 @@ export function Rodape() {
         </nav>
         <div className="space-y-2 text-[0.95rem]">
           <h2 className="mb-3 text-base font-bold">Contato</h2>
-          <p>WhatsApp: {exibir(CONTATO.telefoneExibicao, 'a definir')}</p>
-          <p>E-mail: {exibir(CONTATO.email, 'a definir')}</p>
+          {estaDefinido(CONTATO.telefoneExibicao) && (
+            <p>
+              WhatsApp:{' '}
+              <a
+                className="font-semibold underline-offset-2 hover:underline"
+                href={`https://wa.me/${CONTATO.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {CONTATO.telefoneExibicao}
+              </a>
+            </p>
+          )}
+          {estaDefinido(CONTATO.email) && <p>E-mail: {CONTATO.email}</p>}
+          {estaDefinido(EMPRESA.endereco) && (
+            <address className="not-italic">{EMPRESA.endereco}</address>
+          )}
           <p className="text-muted-foreground">{EMPRESA.horarioAtendimento}</p>
           {REDES_SOCIAIS.length > 0 && (
             <ul className="flex gap-3">
@@ -82,12 +95,11 @@ export function Rodape() {
       <div className="border-t">
         <div className="container-site space-y-3 py-6 text-sm text-muted-foreground">
           <p className="font-semibold text-foreground">
-            {exibir(EMPRESA.nomeEmpresarial, `${SITE.nome} (razão social a definir)`)} · CNPJ{' '}
-            {exibir(EMPRESA.cnpj, 'a definir')} · {exibir(EMPRESA.creciPJ, 'CRECI PJ a definir')}
+            {exibir(EMPRESA.nomeEmpresarial, 'Contemplar Imóveis')} · CNPJ{' '}
+            {exibir(EMPRESA.cnpj, 'a definir')} · {exibir(EMPRESA.creciPJ, 'CRECI a definir')}
           </p>
           <p>
-            {SITE.nome} é uma marca da Contemplar Imóveis, empresa do {SITE.grupo}.{' '}
-            {estaDefinido(EMPRESA.endereco) ? EMPRESA.endereco : ''}
+            {SITE.nome} é uma marca da Contemplar Imóveis, empresa do {SITE.grupo}.
           </p>
           <p>{AVISO_SIMULACAO}</p>
           <p>

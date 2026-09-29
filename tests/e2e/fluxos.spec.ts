@@ -197,7 +197,7 @@ test.describe('Leads', () => {
       .filter({ has: page.locator('input[name="data-visita"]') })
       .first()
       .click();
-    await dialogo.getByText('Manhã (8h às 12h)').click();
+    await dialogo.getByText('Manhã', { exact: true }).click();
     await dialogo.getByLabel('Seu nome').fill('Visitante Teste');
     await dialogo.getByLabel('WhatsApp com DDD').fill('11987654321');
     await dialogo.getByRole('checkbox', { name: /Concordo/ }).check();

@@ -13,7 +13,7 @@ const csp = [
   "img-src 'self' data: blob: https://tile.openstreetmap.org",
   "font-src 'self'",
   `connect-src 'self'${desenvolvimento ? ' ws: wss:' : ''}`,
-  'frame-src https://www.youtube-nocookie.com https://my.matterport.com https://kuula.co',
+  'frame-src https://www.google.com https://www.youtube-nocookie.com https://my.matterport.com https://kuula.co',
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

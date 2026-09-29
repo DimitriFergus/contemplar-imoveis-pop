@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MENSAGENS_WHATSAPP } from '@/config/site';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { Logo } from '@/components/marca/Logo';
+import { BotaoLeituraFacil } from './BotaoLeituraFacil';
 import { LinkFavoritos } from './LinkFavoritos';
 import { MenuCelular } from './MenuCelular';
 import { LINKS_PRINCIPAIS } from './navegacao';
@@ -25,7 +26,8 @@ export function Cabecalho() {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
+          <BotaoLeituraFacil />
           <LinkFavoritos />
           <BotaoWhatsApp
             mensagem={MENSAGENS_WHATSAPP.geral}

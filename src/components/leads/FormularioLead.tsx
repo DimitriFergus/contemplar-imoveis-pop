@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { rastrear } from '@/lib/analytics';
 import { utmSessao } from '@/lib/cliente/estado';
 import { FAIXAS } from '@/config/financiamento';
-import { MODO_ESTATICO } from '@/config/site';
+import { AGENDAMENTO, MODO_ESTATICO } from '@/config/site';
 import { comOrigem, linkWhatsApp } from '@/lib/utils/whatsapp';
 import { formatarPreco } from '@/lib/utils/formatar';
 import type { OrigemLead } from '@/types';
@@ -37,6 +37,10 @@ interface Props {
   /** Campos adicionais controlados por fora (ex.: data e período da visita). */
   dadosAdicionais?: Record<string, string | undefined>;
   antesDosCampos?: ReactNode;
+  /** Conteúdo exibido logo acima do botão de envio (ex.: resumo do agendamento). */
+  antesDoBotao?: ReactNode;
+  /** Título dos campos de contato (ex.: "3. Seus dados"). */
+  tituloCampos?: ReactNode;
   className?: string;
   aoEnviar?: () => void;
 }
@@ -54,6 +58,8 @@ export function FormularioLead({
   camposExtras = [],
   dadosAdicionais = {},
   antesDosCampos,
+  antesDoBotao,
+  tituloCampos,
   className,
   aoEnviar,
 }: Props) {
@@ -100,7 +106,12 @@ export function FormularioLead({
         `Olá! Meu nome é ${corpo.nome}.`,
         codigoImovel ? `Imóvel: ${codigoImovel}` : '',
         dadosAdicionais.dataVisitaPreferida
-          ? `Visita: ${dadosAdicionais.dataVisitaPreferida.split('-').reverse().join('/')} (${dadosAdicionais.periodoPreferido ?? ''})`
+          ? `Visita: ${dadosAdicionais.dataVisitaPreferida.split('-').reverse().join('/')}${(() => {
+              const p = AGENDAMENTO.periodos.find(
+                (x) => x.valor === dadosAdicionais.periodoPreferido,
+              );
+              return p ? ` – ${p.rotulo} (${p.horario})` : '';
+            })()}`
           : '',
         faixa ? `Faixa de renda: ${faixa.nome}` : '',
         corpo.email ? `E-mail: ${corpo.email}` : '',
@@ -181,6 +192,7 @@ export function FormularioLead({
   return (
     <form onSubmit={enviar} className={cn('space-y-4', className)} noValidate={false}>
       {antesDosCampos}
+      {tituloCampos && <h3 className="pt-1 text-lg font-bold">{tituloCampos}</h3>}
       <div>
         <label htmlFor={`${id}-nome`} className="mb-1 block font-semibold">
           Seu nome
@@ -329,6 +341,7 @@ export function FormularioLead({
           {erroGeral}
         </p>
       )}
+      {antesDoBotao}
       <Button type="submit" size="lg" variant="destaque" className="w-full" disabled={enviando}>
         {enviando && <Loader2 className="size-5 animate-spin" aria-hidden />}
         {enviando ? 'Enviando…' : textoBotao}

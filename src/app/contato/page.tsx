@@ -1,4 +1,4 @@
-import { Clock, Mail, MessageCircle } from 'lucide-react';
+import { Clock, Mail, MapPin, MessageCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { CONTATO, EMPRESA, MENSAGENS_WHATSAPP, estaDefinido } from '@/config/site';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
@@ -32,9 +32,14 @@ export default function PaginaContato() {
               <MessageCircle className="size-5 text-primary" aria-hidden /> WhatsApp:{' '}
               {estaDefinido(CONTATO.telefoneExibicao) ? CONTATO.telefoneExibicao : 'a definir'}
             </li>
-            <li className="flex items-center gap-3">
-              <Mail className="size-5 text-primary" aria-hidden /> E-mail:{' '}
-              {estaDefinido(CONTATO.email) ? CONTATO.email : 'a definir'}
+            {estaDefinido(CONTATO.email) && (
+              <li className="flex items-center gap-3">
+                <Mail className="size-5 text-primary" aria-hidden /> E-mail: {CONTATO.email}
+              </li>
+            )}
+            <li className="flex items-start gap-3">
+              <MapPin className="mt-1 size-5 shrink-0 text-primary" aria-hidden />
+              <address className="not-italic">{EMPRESA.endereco}</address>
             </li>
             <li className="flex items-center gap-3">
               <Clock className="size-5 text-primary" aria-hidden /> {EMPRESA.horarioAtendimento}

@@ -4,24 +4,22 @@ Enquanto houver campos `A_DEFINIR`, o site mostra um alerta no canto da tela **e
 
 ## 1. Campos A_DEFINIR (obrigatórios)
 
-| Item                                                        | Onde alterar                                                        | Observação                                                                                                  |
-| ----------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Nome empresarial (razão social)                             | `src/config/site.ts` → `EMPRESA.nomeEmpresarial`                    | Exibido no rodapé, anúncios e política de privacidade                                                       |
-| CNPJ                                                        | `EMPRESA.cnpj`                                                      | Rodapé e página Sobre                                                                                       |
-| CRECI da pessoa jurídica                                    | `EMPRESA.creciPJ`                                                   | Obrigatório em todo anúncio (ex.: "CRECI/XX 00000-J")                                                       |
-| Endereço comercial                                          | `EMPRESA.endereco`                                                  | Rodapé                                                                                                      |
-| WhatsApp principal                                          | `CONTATO.whatsapp`                                                  | Formato 55 + DDD + número, só dígitos. Sem ele, os botões abrem o WhatsApp para a pessoa escolher o contato |
-| Telefone exibido e e-mail                                   | `CONTATO.telefoneExibicao`, `CONTATO.email`                         | O e-mail também é o canal LGPD na política de privacidade                                                   |
-| CRECI e WhatsApp dos corretores                             | `dados/corretores.csv`                                              | Hoje há só o corretor fictício `corretor-exemplo`                                                           |
-| Cidade base, UF e bairros                                   | `CIDADE_BASE`, `UF_BASE`, `BAIRROS_EXEMPLO`, `CIDADE_BASE_DEFINIDA` | Hoje: "Cidade Exemplo"/"EX" e bairros fictícios                                                             |
-| Centro do mapa                                              | `CENTRO_MAPA`                                                       | Coordenadas provisórias (os imóveis de exemplo foram posicionados ao redor delas)                           |
-| Teto MCMV Faixas 1 e 2 do município                         | `src/config/financiamento.ts` → `TETO_FAIXA_1_2_MUNICIPIO`          | Varia de R$ 210 mil a R$ 275 mil; usado o menor valor até a consulta oficial                                |
-| ITBI do município (e alíquota reduzida SFH/MCMV, se houver) | `src/config/custos-aquisicao.ts` → `CUSTOS_POR_MUNICIPIO`           | Hoje 2% genérico; confirmar lei municipal                                                                   |
-| Custo de registro/cartório                                  | `registroCartorioEstimado`                                          | Hoje 1,5% estimado; confirmar tabela do cartório do estado                                                  |
-| Taxas de referência SBPE                                    | `FAIXAS` (id `sbpe`)                                                | Confirmar com bancos parceiros                                                                              |
-| Revalidar faixas, tetos e taxas do MCMV                     | `FAIXAS`, `REFERENCIA_FINANCIAMENTO`                                | Valores de referência de set/2026; conferir no site da Caixa e do Ministério das Cidades                    |
-| Seguros (MIP/DFI) e taxa de administração                   | `SEGUROS_E_TAXA_ADM_ESTIMADOS`                                      | Estimativa; confirmar com o banco parceiro                                                                  |
-| URL pública                                                 | variável `NEXT_PUBLIC_SITE_URL` na Vercel                           | Necessária para canonical, sitemap, Open Graph e JSON-LD                                                    |
+Já preenchidos em `src/config/site.ts`: CNPJ 61.569.798/0001-81, CRECI-CE 27799, WhatsApp (85) 99210-4920 e endereço (Rua P, 150 – Parque Montenegro II, Prefeito José Walter, Fortaleza – CE, CEP 60751-380).
+
+| Item                                                        | Onde alterar                                                        | Observação                                                                               |
+| ----------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Nome empresarial (razão social)                             | `src/config/site.ts` → `EMPRESA.nomeEmpresarial`                    | Exibido no rodapé, anúncios e política de privacidade                                    |
+| E-mail de contato                                           | `CONTATO.email`                                                     | O e-mail também é o canal LGPD na política de privacidade                                |
+| CRECI e WhatsApp dos corretores                             | `dados/corretores.csv`                                              | Hoje há só o corretor fictício `corretor-exemplo`                                        |
+| Cidade base, UF e bairros                                   | `CIDADE_BASE`, `UF_BASE`, `BAIRROS_EXEMPLO`, `CIDADE_BASE_DEFINIDA` | Hoje: "Cidade Exemplo"/"EX" e bairros fictícios                                          |
+| Centro do mapa                                              | `CENTRO_MAPA`                                                       | Coordenadas provisórias (os imóveis de exemplo foram posicionados ao redor delas)        |
+| Teto MCMV Faixas 1 e 2 do município                         | `src/config/financiamento.ts` → `TETO_FAIXA_1_2_MUNICIPIO`          | Varia de R$ 210 mil a R$ 275 mil; usado o menor valor até a consulta oficial             |
+| ITBI do município (e alíquota reduzida SFH/MCMV, se houver) | `src/config/custos-aquisicao.ts` → `CUSTOS_POR_MUNICIPIO`           | Hoje 2% genérico; confirmar lei municipal                                                |
+| Custo de registro/cartório                                  | `registroCartorioEstimado`                                          | Hoje 1,5% estimado; confirmar tabela do cartório do estado                               |
+| Taxas de referência SBPE                                    | `FAIXAS` (id `sbpe`)                                                | Confirmar com bancos parceiros                                                           |
+| Revalidar faixas, tetos e taxas do MCMV                     | `FAIXAS`, `REFERENCIA_FINANCIAMENTO`                                | Valores de referência de set/2026; conferir no site da Caixa e do Ministério das Cidades |
+| Seguros (MIP/DFI) e taxa de administração                   | `SEGUROS_E_TAXA_ADM_ESTIMADOS`                                      | Estimativa; confirmar com o banco parceiro                                               |
+| URL pública                                                 | variável `NEXT_PUBLIC_SITE_URL` na Vercel                           | Necessária para canonical, sitemap, Open Graph e JSON-LD                                 |
 
 ## 2. Conteúdo e identidade
 
@@ -45,4 +43,3 @@ Enquanto houver campos `A_DEFINIR`, o site mostra um alerta no canto da tela **e
 | Lighthouse            | Medir novamente após o deploy (PageSpeed Insights) — ver relatório no README                                                                                            |
 | Domínio e HTTPS       | Configurar domínio na Vercel; o cabeçalho HSTS já está ativo                                                                                                            |
 | Leads no GitHub Pages | A versão publicada no Pages é estática: formulários enviam pelo WhatsApp e não ficam registrados. Para gravar leads (webhook/CRM), publicar a versão completa na Vercel |
-| Número do WhatsApp    | Enquanto `CONTATO.whatsapp` estiver A_DEFINIR, os botões abrem o WhatsApp para a pessoa escolher o contato — prioridade para o site publicado                           |
