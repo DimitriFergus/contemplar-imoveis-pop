@@ -1,0 +1,2439 @@
+[
+  {
+    "id": "cp-0001",
+    "codigo": "CP-0001",
+    "slug": "casa-2-quartos-no-jardim-exemplo-cp-0001",
+    "titulo": "Casa 2 quartos no Jardim Exemplo",
+    "descricao": "Casa de 2 quartos com 58 m² de área útil, localizada no bairro Jardim Exemplo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: cozinha americana, piso cerâmico, portão eletrônico. Perto de Parque Linear Demo a cerca de 380 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "preco": 160000,
+    "iptuAnual": 800,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Exemplo",
+    "localizacaoAproximada": {
+      "lat": -23.54,
+      "lng": -46.649,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 58,
+    "areaTerrenoM2": 125,
+    "caracteristicas": [
+      "cozinha americana",
+      "piso cerâmico",
+      "portão eletrônico",
+      "muro alto"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0001/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 2 quartos no Jardim Exemplo (CP-0001)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0001/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0001"
+      },
+      {
+        "arquivo": "/imoveis/CP-0001/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0001"
+      },
+      {
+        "arquivo": "/imoveis/CP-0001/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0001"
+      },
+      {
+        "arquivo": "/imoveis/CP-0001/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0001"
+      },
+      {
+        "arquivo": "/imoveis/CP-0001/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0001"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "lazer",
+        "nome": "Parque Linear Demo",
+        "distanciaMetros": 380
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 430
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Jardim",
+        "distanciaMetros": 550
+      },
+      {
+        "tipo": "escola",
+        "nome": "EMEF Horizonte Fictício",
+        "distanciaMetros": 590
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 710
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-01T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0002",
+    "codigo": "CP-0002",
+    "slug": "apartamento-2-quartos-na-planta-no-parque-das-flores-demo-cp-0002",
+    "titulo": "Apartamento 2 quartos na planta no Parque das Flores Demo",
+    "descricao": "Apartamento de 2 quartos com 44 m² de área útil, localizado no bairro Parque das Flores Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: janelas amplas, varanda, interfone. O condomínio oferece salão de festas, playground, quadra, espaço pet. Perto de Padaria e Mercearia Modelo a cerca de 430 m e Terminal de ônibus Demo a cerca de 460 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2027-12",
+    "preco": 191000,
+    "condominioMensal": 240,
+    "iptuAnual": 450,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Parque das Flores Demo",
+    "localizacaoAproximada": {
+      "lat": -23.561,
+      "lng": -46.618,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 44,
+    "caracteristicas": [
+      "janelas amplas",
+      "varanda",
+      "interfone",
+      "portaria 24 horas"
+    ],
+    "lazer": [
+      "salão de festas",
+      "playground",
+      "quadra",
+      "espaço pet"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0002/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0002/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0002"
+      },
+      {
+        "arquivo": "/imoveis/CP-0002/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0002"
+      },
+      {
+        "arquivo": "/imoveis/CP-0002/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0002"
+      },
+      {
+        "arquivo": "/imoveis/CP-0002/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0002"
+      },
+      {
+        "arquivo": "/imoveis/CP-0002/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0002"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 430
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 460
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 690
+      },
+      {
+        "tipo": "saude",
+        "nome": "Clínica da Família Modelo Parque",
+        "distanciaMetros": 740
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-03T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0003",
+    "codigo": "CP-0003",
+    "slug": "casa-2-quartos-com-quintal-no-residencial-horizonte-demo-cp-0003",
+    "titulo": "Casa 2 quartos com quintal no Residencial Horizonte Demo",
+    "descricao": "Casa de 2 quartos com 62 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel pronto para morar. Destaques: quintal, aquecedor solar, área de serviço coberta. Perto de Terminal de ônibus Demo a cerca de 270 m e UBS Demo Residencial a cerca de 400 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "pronto",
+    "preco": 188000,
+    "iptuAnual": 750,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Residencial Horizonte Demo",
+    "localizacaoAproximada": {
+      "lat": -23.568,
+      "lng": -46.643,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 62,
+    "areaTerrenoM2": 150,
+    "caracteristicas": [
+      "quintal",
+      "aquecedor solar",
+      "área de serviço coberta",
+      "muro alto",
+      "lavanderia"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0003/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0003"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0003"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0003"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0003"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0003"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 270
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Residencial",
+        "distanciaMetros": 400
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Feira livre de sábado (exemplo)",
+        "distanciaMetros": 700
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 730
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-05T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0004",
+    "codigo": "CP-0004",
+    "slug": "apartamento-2-quartos-com-varanda-no-jardim-exemplo-cp-0004",
+    "titulo": "Apartamento 2 quartos com varanda no Jardim Exemplo",
+    "descricao": "Apartamento de 2 quartos com 48 m² de área útil, localizado no bairro Jardim Exemplo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, piso cerâmico, elevador. O condomínio oferece bicicletário, salão de festas, quadra, churrasqueira, espaço pet. Perto de Estação Modelo a cerca de 80 m e Padaria e Mercearia Modelo a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "pronto",
+    "preco": 197000,
+    "condominioMensal": 300,
+    "iptuAnual": 680,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Exemplo",
+    "localizacaoAproximada": {
+      "lat": -23.544,
+      "lng": -46.643,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 48,
+    "caracteristicas": [
+      "cozinha americana",
+      "piso cerâmico",
+      "elevador",
+      "portaria 24 horas",
+      "varanda"
+    ],
+    "lazer": [
+      "bicicletário",
+      "salão de festas",
+      "quadra",
+      "churrasqueira",
+      "espaço pet"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0004/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0004/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0004"
+      },
+      {
+        "arquivo": "/imoveis/CP-0004/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0004"
+      },
+      {
+        "arquivo": "/imoveis/CP-0004/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0004"
+      },
+      {
+        "arquivo": "/imoveis/CP-0004/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0004"
+      },
+      {
+        "arquivo": "/imoveis/CP-0004/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0004"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 80
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 190
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Parque Linear Demo",
+        "distanciaMetros": 250
+      },
+      {
+        "tipo": "escola",
+        "nome": "Creche Municipal Pequeno Demo",
+        "distanciaMetros": 290
+      },
+      {
+        "tipo": "saude",
+        "nome": "Clínica da Família Modelo Jardim",
+        "distanciaMetros": 810
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-07T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0005",
+    "codigo": "CP-0005",
+    "slug": "casa-em-condominio-2-quartos-com-quintal-no-jardim-ipe-ficticio-cp-0005",
+    "titulo": "Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício",
+    "descricao": "Casa em condomínio de 2 quartos com 64 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 140 m². Imóvel pronto para morar. Destaques: quintal, área de serviço coberta, cozinha americana. O condomínio oferece quadra, bicicletário. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Estadual Modelo a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "casa_condominio",
+    "situacao": "pronto",
+    "preco": 235000,
+    "condominioMensal": 280,
+    "iptuAnual": 660,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Ipê Fictício",
+    "localizacaoAproximada": {
+      "lat": -23.524,
+      "lng": -46.631,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 64,
+    "areaTerrenoM2": 140,
+    "caracteristicas": [
+      "quintal",
+      "área de serviço coberta",
+      "cozinha americana",
+      "garagem coberta",
+      "muro alto",
+      "aquecedor solar"
+    ],
+    "lazer": [
+      "quadra",
+      "bicicletário"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0005/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0005"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0005"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0005"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0005"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0005"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 100
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 440
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Mercado do Bairro (exemplo)",
+        "distanciaMetros": 680
+      },
+      {
+        "tipo": "saude",
+        "nome": "Clínica da Família Modelo Jardim",
+        "distanciaMetros": 910
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-09T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0006",
+    "codigo": "CP-0006",
+    "slug": "casa-3-quartos-com-quintal-no-conjunto-esperanca-demo-cp-0006",
+    "titulo": "Casa 3 quartos com quintal no Conjunto Esperança Demo",
+    "descricao": "Casa de 3 quartos com 78 m² de área útil, localizada no bairro Conjunto Esperança Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 200 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: aquecedor solar, janelas com grade, lavanderia. Perto de Escola Estadual Modelo a cerca de 220 m e Praça Exemplo a cerca de 250 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "preco": 202000,
+    "iptuAnual": 760,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Conjunto Esperança Demo",
+    "localizacaoAproximada": {
+      "lat": -23.55,
+      "lng": -46.602,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "areaUtilM2": 78,
+    "areaTerrenoM2": 200,
+    "caracteristicas": [
+      "aquecedor solar",
+      "janelas com grade",
+      "lavanderia",
+      "quintal",
+      "churrasqueira",
+      "piso cerâmico"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0006/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0006"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0006"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0006"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0006"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0006"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 220
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 250
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 420
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 590
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Conjunto",
+        "distanciaMetros": 1290
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-11T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0007",
+    "codigo": "CP-0007",
+    "slug": "apartamento-2-quartos-no-conjunto-esperanca-demo-cp-0007",
+    "titulo": "Apartamento 2 quartos no Conjunto Esperança Demo",
+    "descricao": "Apartamento de 2 quartos com 46 m² de área útil, localizado no bairro Conjunto Esperança Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: elevador, piso cerâmico, área de serviço. O condomínio oferece bicicletário, churrasqueira. Perto de Supermercado Demo a cerca de 130 m e Estação Modelo a cerca de 380 m.",
+    "tipo": "apartamento",
+    "situacao": "usado",
+    "preco": 152000,
+    "condominioMensal": 250,
+    "iptuAnual": 260,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Conjunto Esperança Demo",
+    "localizacaoAproximada": {
+      "lat": -23.55,
+      "lng": -46.602,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 46,
+    "caracteristicas": [
+      "elevador",
+      "piso cerâmico",
+      "área de serviço",
+      "interfone",
+      "portaria 24 horas"
+    ],
+    "lazer": [
+      "bicicletário",
+      "churrasqueira"
+    ],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": false,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": true,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0007/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0007"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0007"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0007"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0007"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0007"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 130
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 380
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 410
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Conjunto",
+        "distanciaMetros": 730
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 740
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-13T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0008",
+    "codigo": "CP-0008",
+    "slug": "casa-2-quartos-na-planta-no-residencial-horizonte-demo-cp-0008",
+    "titulo": "Casa 2 quartos na planta no Residencial Horizonte Demo",
+    "descricao": "Casa de 2 quartos com 55 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portão eletrônico, churrasqueira, aquecedor solar. Perto de Padaria e Mercearia Modelo a cerca de 200 m e Terminal de ônibus Demo a cerca de 360 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2028-03",
+    "preco": 169000,
+    "iptuAnual": 600,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Residencial Horizonte Demo",
+    "localizacaoAproximada": {
+      "lat": -23.566,
+      "lng": -46.648,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 55,
+    "areaTerrenoM2": 125,
+    "caracteristicas": [
+      "portão eletrônico",
+      "churrasqueira",
+      "aquecedor solar",
+      "garagem coberta"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0008/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0008/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0008"
+      },
+      {
+        "arquivo": "/imoveis/CP-0008/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0008"
+      },
+      {
+        "arquivo": "/imoveis/CP-0008/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0008"
+      },
+      {
+        "arquivo": "/imoveis/CP-0008/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0008"
+      },
+      {
+        "arquivo": "/imoveis/CP-0008/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0008"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 200
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 360
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 640
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Parque Linear Demo",
+        "distanciaMetros": 830
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Residencial",
+        "distanciaMetros": 1250
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-15T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0009",
+    "codigo": "CP-0009",
+    "slug": "duplex-2-quartos-no-parque-das-flores-demo-cp-0009",
+    "titulo": "Duplex 2 quartos no Parque das Flores Demo",
+    "descricao": "Duplex de 2 quartos com 72 m² de área útil, localizado no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, lavanderia, churrasqueira. Perto de Estação Modelo a cerca de 130 m e Escola Municipal Exemplo a cerca de 240 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "duplex",
+    "situacao": "pronto",
+    "preco": 273000,
+    "iptuAnual": 310,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Parque das Flores Demo",
+    "localizacaoAproximada": {
+      "lat": -23.563,
+      "lng": -46.619,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 72,
+    "caracteristicas": [
+      "cozinha americana",
+      "lavanderia",
+      "churrasqueira",
+      "garagem coberta"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0009/01.svg",
+        "alt": "Ilustração da fachada de dois andares – Duplex 2 quartos no Parque das Flores Demo (CP-0009)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0009/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0009"
+      },
+      {
+        "arquivo": "/imoveis/CP-0009/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0009"
+      },
+      {
+        "arquivo": "/imoveis/CP-0009/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0009"
+      },
+      {
+        "arquivo": "/imoveis/CP-0009/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0009"
+      },
+      {
+        "arquivo": "/imoveis/CP-0009/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0009"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 130
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 240
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 440
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Parque",
+        "distanciaMetros": 730
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 1050
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-17T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0010",
+    "codigo": "CP-0010",
+    "slug": "apartamento-2-quartos-na-vila-modelo-cp-0010",
+    "titulo": "Apartamento 2 quartos na Vila Modelo",
+    "descricao": "Apartamento de 2 quartos com 50 m² de área útil, localizado no bairro Vila Modelo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: piso laminado nos quartos, piso cerâmico, elevador. O condomínio oferece academia ao ar livre, churrasqueira, quadra. Perto de Terminal de ônibus Demo a cerca de 80 m e Supermercado Demo a cerca de 530 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "em_construcao",
+    "previsaoEntrega": "2027-03",
+    "preco": 235000,
+    "condominioMensal": 330,
+    "iptuAnual": 540,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Vila Modelo",
+    "localizacaoAproximada": {
+      "lat": -23.536,
+      "lng": -46.616,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 50,
+    "caracteristicas": [
+      "piso laminado nos quartos",
+      "piso cerâmico",
+      "elevador",
+      "cozinha americana",
+      "área de serviço",
+      "medidor de água individual"
+    ],
+    "lazer": [
+      "academia ao ar livre",
+      "churrasqueira",
+      "quadra"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0010/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na Vila Modelo (CP-0010)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0010/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0010"
+      },
+      {
+        "arquivo": "/imoveis/CP-0010/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0010"
+      },
+      {
+        "arquivo": "/imoveis/CP-0010/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0010"
+      },
+      {
+        "arquivo": "/imoveis/CP-0010/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0010"
+      },
+      {
+        "arquivo": "/imoveis/CP-0010/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0010"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 80
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 530
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 700
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 1040
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Vila",
+        "distanciaMetros": 1400
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-19T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0011",
+    "codigo": "CP-0011",
+    "slug": "casa-1-quarto-no-conjunto-esperanca-demo-cp-0011",
+    "titulo": "Casa 1 quarto no Conjunto Esperança Demo",
+    "descricao": "Casa de 1 quarto com 50 m² de área útil, localizada no bairro Conjunto Esperança Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 100 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, churrasqueira, muro alto. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Municipal Exemplo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "preco": 150000,
+    "iptuAnual": 660,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Conjunto Esperança Demo",
+    "localizacaoAproximada": {
+      "lat": -23.55,
+      "lng": -46.6,
+      "raioMetros": 400
+    },
+    "quartos": 1,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 0,
+    "areaUtilM2": 50,
+    "areaTerrenoM2": 100,
+    "caracteristicas": [
+      "área de serviço coberta",
+      "churrasqueira",
+      "muro alto",
+      "piso cerâmico",
+      "cozinha americana",
+      "portão eletrônico"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": true,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0011/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 1 quarto no Conjunto Esperança Demo (CP-0011)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0011/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0011"
+      },
+      {
+        "arquivo": "/imoveis/CP-0011/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0011"
+      },
+      {
+        "arquivo": "/imoveis/CP-0011/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0011"
+      },
+      {
+        "arquivo": "/imoveis/CP-0011/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0011"
+      },
+      {
+        "arquivo": "/imoveis/CP-0011/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0011"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 100
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 350
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 390
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Conjunto",
+        "distanciaMetros": 490
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 650
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-21T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0012",
+    "codigo": "CP-0012",
+    "slug": "sobrado-3-quartos-com-quintal-na-vila-modelo-cp-0012",
+    "titulo": "Sobrado 3 quartos com quintal na Vila Modelo",
+    "descricao": "Sobrado de 3 quartos com 90 m² de área útil, localizado no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: quintal, cozinha americana, piso cerâmico. Perto de Estação Modelo a cerca de 90 m e Padaria e Mercearia Modelo a cerca de 130 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "sobrado",
+    "situacao": "pronto",
+    "preco": 420000,
+    "iptuAnual": 430,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Vila Modelo",
+    "localizacaoAproximada": {
+      "lat": -23.534,
+      "lng": -46.618,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "areaUtilM2": 90,
+    "areaTerrenoM2": 180,
+    "caracteristicas": [
+      "quintal",
+      "cozinha americana",
+      "piso cerâmico",
+      "garagem coberta",
+      "área de serviço coberta"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0012/01.svg",
+        "alt": "Ilustração da fachada de dois andares – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0012/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0012"
+      },
+      {
+        "arquivo": "/imoveis/CP-0012/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0012"
+      },
+      {
+        "arquivo": "/imoveis/CP-0012/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0012"
+      },
+      {
+        "arquivo": "/imoveis/CP-0012/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0012"
+      },
+      {
+        "arquivo": "/imoveis/CP-0012/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0012"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 90
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 130
+      },
+      {
+        "tipo": "escola",
+        "nome": "Creche Municipal Pequeno Demo",
+        "distanciaMetros": 610
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 940
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Vila",
+        "distanciaMetros": 1120
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-23T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0013",
+    "codigo": "CP-0013",
+    "slug": "apartamento-3-quartos-na-planta-no-jardim-ipe-ficticio-cp-0013",
+    "titulo": "Apartamento 3 quartos na planta no Jardim Ipê Fictício",
+    "descricao": "Apartamento de 3 quartos com 58 m² de área útil, localizado no bairro Jardim Ipê Fictício. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: área de serviço, piso cerâmico, portaria 24 horas. O condomínio oferece piscina, academia ao ar livre, espaço pet. Perto de Escola Estadual Modelo a cerca de 250 m e Estação Modelo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2028-06",
+    "preco": 251000,
+    "condominioMensal": 220,
+    "iptuAnual": 860,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Ipê Fictício",
+    "localizacaoAproximada": {
+      "lat": -23.528,
+      "lng": -46.633,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 58,
+    "caracteristicas": [
+      "área de serviço",
+      "piso cerâmico",
+      "portaria 24 horas",
+      "cozinha americana"
+    ],
+    "lazer": [
+      "piscina",
+      "academia ao ar livre",
+      "espaço pet"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0013/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0013/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0013"
+      },
+      {
+        "arquivo": "/imoveis/CP-0013/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0013"
+      },
+      {
+        "arquivo": "/imoveis/CP-0013/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0013"
+      },
+      {
+        "arquivo": "/imoveis/CP-0013/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0013"
+      },
+      {
+        "arquivo": "/imoveis/CP-0013/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0013"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 250
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 350
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Jardim",
+        "distanciaMetros": 440
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Mercado do Bairro (exemplo)",
+        "distanciaMetros": 640
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 1050
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-25T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0014",
+    "codigo": "CP-0014",
+    "slug": "casa-3-quartos-com-quintal-no-jardim-exemplo-cp-0014",
+    "titulo": "Casa 3 quartos com quintal no Jardim Exemplo",
+    "descricao": "Casa de 3 quartos com 70 m² de área útil, localizada no bairro Jardim Exemplo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 160 m². Imóvel pronto para morar. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Mercado do Bairro (exemplo) a cerca de 130 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "pronto",
+    "preco": 219000,
+    "iptuAnual": 640,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Exemplo",
+    "localizacaoAproximada": {
+      "lat": -23.538,
+      "lng": -46.642,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 70,
+    "areaTerrenoM2": 160,
+    "caracteristicas": [
+      "quintal",
+      "garagem coberta",
+      "aquecedor solar",
+      "área de serviço coberta",
+      "portão eletrônico",
+      "janelas com grade",
+      "piso cerâmico"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0014/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0014/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0014"
+      },
+      {
+        "arquivo": "/imoveis/CP-0014/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0014"
+      },
+      {
+        "arquivo": "/imoveis/CP-0014/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0014"
+      },
+      {
+        "arquivo": "/imoveis/CP-0014/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0014"
+      },
+      {
+        "arquivo": "/imoveis/CP-0014/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0014"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Mercado do Bairro (exemplo)",
+        "distanciaMetros": 130
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 430
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 540
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 900
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Jardim",
+        "distanciaMetros": 1090
+      }
+    ],
+    "destaque": false,
+    "status": "reservado",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-27T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0015",
+    "codigo": "CP-0015",
+    "slug": "casa-em-condominio-2-quartos-na-planta-no-residencial-horizonte-demo-cp-0015",
+    "titulo": "Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo",
+    "descricao": "Casa em condomínio de 2 quartos com 56 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 120 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: aquecedor solar, janelas com grade, lavanderia. O condomínio oferece playground, salão de festas. Perto de Terminal de ônibus Demo a cerca de 150 m e Mercado do Bairro (exemplo) a cerca de 200 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa_condominio",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2028-06",
+    "preco": 199000,
+    "condominioMensal": 190,
+    "iptuAnual": 600,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Residencial Horizonte Demo",
+    "localizacaoAproximada": {
+      "lat": -23.567,
+      "lng": -46.643,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 56,
+    "areaTerrenoM2": 120,
+    "caracteristicas": [
+      "aquecedor solar",
+      "janelas com grade",
+      "lavanderia",
+      "quintal",
+      "muro alto"
+    ],
+    "lazer": [
+      "playground",
+      "salão de festas"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0015/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0015/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0015"
+      },
+      {
+        "arquivo": "/imoveis/CP-0015/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0015"
+      },
+      {
+        "arquivo": "/imoveis/CP-0015/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0015"
+      },
+      {
+        "arquivo": "/imoveis/CP-0015/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0015"
+      },
+      {
+        "arquivo": "/imoveis/CP-0015/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0015"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 150
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Mercado do Bairro (exemplo)",
+        "distanciaMetros": 200
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 260
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Centro Esportivo Modelo",
+        "distanciaMetros": 440
+      },
+      {
+        "tipo": "saude",
+        "nome": "Clínica da Família Modelo Residencial",
+        "distanciaMetros": 1490
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-29T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0016",
+    "codigo": "CP-0016",
+    "slug": "apartamento-1-quarto-com-varanda-na-vila-modelo-cp-0016",
+    "titulo": "Apartamento 1 quarto com varanda na Vila Modelo",
+    "descricao": "Apartamento de 1 quarto com 41 m² de área útil, localizado no bairro Vila Modelo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: varanda, piso laminado nos quartos, medidor de água individual. O condomínio oferece quadra, churrasqueira, salão de festas. Perto de Terminal de ônibus Demo a cerca de 90 m e Supermercado Demo a cerca de 480 m. Aceita Minha Casa, Minha Vida, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "pronto",
+    "preco": 190000,
+    "condominioMensal": 260,
+    "iptuAnual": 370,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Vila Modelo",
+    "localizacaoAproximada": {
+      "lat": -23.533,
+      "lng": -46.622,
+      "raioMetros": 400
+    },
+    "quartos": 1,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 0,
+    "areaUtilM2": 41,
+    "caracteristicas": [
+      "varanda",
+      "piso laminado nos quartos",
+      "medidor de água individual",
+      "piso cerâmico",
+      "cozinha americana",
+      "área de serviço"
+    ],
+    "lazer": [
+      "quadra",
+      "churrasqueira",
+      "salão de festas"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": false,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0016/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0016/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0016"
+      },
+      {
+        "arquivo": "/imoveis/CP-0016/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0016"
+      },
+      {
+        "arquivo": "/imoveis/CP-0016/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0016"
+      },
+      {
+        "arquivo": "/imoveis/CP-0016/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0016"
+      },
+      {
+        "arquivo": "/imoveis/CP-0016/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0016"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 90
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 480
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 550
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 780
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Vila",
+        "distanciaMetros": 830
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-08-31T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0017",
+    "codigo": "CP-0017",
+    "slug": "casa-2-quartos-com-quintal-no-parque-das-flores-demo-cp-0017",
+    "titulo": "Casa 2 quartos com quintal no Parque das Flores Demo",
+    "descricao": "Casa de 2 quartos com 66 m² de área útil, localizada no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 175 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: quintal, garagem coberta, área de serviço coberta. Perto de Padaria e Mercearia Modelo a cerca de 120 m e ponto de ônibus a cerca de 340 m. Aceita uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "preco": 201000,
+    "iptuAnual": 370,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Parque das Flores Demo",
+    "localizacaoAproximada": {
+      "lat": -23.563,
+      "lng": -46.623,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 66,
+    "areaTerrenoM2": 175,
+    "caracteristicas": [
+      "quintal",
+      "garagem coberta",
+      "área de serviço coberta",
+      "aquecedor solar",
+      "piso cerâmico",
+      "churrasqueira",
+      "janelas com grade"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": true,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0017/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0017/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0017"
+      },
+      {
+        "arquivo": "/imoveis/CP-0017/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0017"
+      },
+      {
+        "arquivo": "/imoveis/CP-0017/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0017"
+      },
+      {
+        "arquivo": "/imoveis/CP-0017/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0017"
+      },
+      {
+        "arquivo": "/imoveis/CP-0017/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0017"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 120
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 340
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Parque",
+        "distanciaMetros": 550
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 560
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 600
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-02T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0018",
+    "codigo": "CP-0018",
+    "slug": "duplex-3-quartos-com-quintal-no-jardim-ipe-ficticio-cp-0018",
+    "titulo": "Duplex 3 quartos com quintal no Jardim Ipê Fictício",
+    "descricao": "Duplex de 3 quartos com 86 m² de área útil, localizado no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, muro alto, quintal. Perto de Posto de Saúde Exemplo Jardim a cerca de 320 m e Escola Municipal Exemplo a cerca de 380 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "duplex",
+    "situacao": "usado",
+    "preco": 280000,
+    "iptuAnual": 550,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Ipê Fictício",
+    "localizacaoAproximada": {
+      "lat": -23.524,
+      "lng": -46.637,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "areaUtilM2": 86,
+    "caracteristicas": [
+      "área de serviço coberta",
+      "muro alto",
+      "quintal",
+      "janelas com grade",
+      "piso cerâmico",
+      "garagem coberta"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": true,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0018/01.svg",
+        "alt": "Ilustração da fachada de dois andares – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0018/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0018"
+      },
+      {
+        "arquivo": "/imoveis/CP-0018/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0018"
+      },
+      {
+        "arquivo": "/imoveis/CP-0018/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0018"
+      },
+      {
+        "arquivo": "/imoveis/CP-0018/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0018"
+      },
+      {
+        "arquivo": "/imoveis/CP-0018/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0018"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Jardim",
+        "distanciaMetros": 320
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 380
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 460
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 600
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Parque Linear Demo",
+        "distanciaMetros": 950
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-04T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0019",
+    "codigo": "CP-0019",
+    "slug": "apartamento-2-quartos-no-residencial-horizonte-demo-cp-0019",
+    "titulo": "Apartamento 2 quartos no Residencial Horizonte Demo",
+    "descricao": "Apartamento de 2 quartos com 52 m² de área útil, localizado no bairro Residencial Horizonte Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: medidor de água individual, piso laminado nos quartos, área de serviço. O condomínio oferece academia ao ar livre, bicicletário, quadra, piscina, churrasqueira. Perto de Padaria e Mercearia Modelo a cerca de 190 m e ponto de ônibus a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "usado",
+    "preco": 175000,
+    "condominioMensal": 240,
+    "iptuAnual": 620,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Residencial Horizonte Demo",
+    "localizacaoAproximada": {
+      "lat": -23.57,
+      "lng": -46.641,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 52,
+    "caracteristicas": [
+      "medidor de água individual",
+      "piso laminado nos quartos",
+      "área de serviço",
+      "interfone"
+    ],
+    "lazer": [
+      "academia ao ar livre",
+      "bicicletário",
+      "quadra",
+      "piscina",
+      "churrasqueira"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": true,
+      "aceitaPermuta": true,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0019/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0019/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0019"
+      },
+      {
+        "arquivo": "/imoveis/CP-0019/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0019"
+      },
+      {
+        "arquivo": "/imoveis/CP-0019/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0019"
+      },
+      {
+        "arquivo": "/imoveis/CP-0019/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0019"
+      },
+      {
+        "arquivo": "/imoveis/CP-0019/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0019"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 190
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 190
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 250
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Parque Linear Demo",
+        "distanciaMetros": 990
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Residencial",
+        "distanciaMetros": 1270
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-06T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0020",
+    "codigo": "CP-0020",
+    "slug": "casa-3-quartos-na-planta-no-jardim-ipe-ficticio-cp-0020",
+    "titulo": "Casa 3 quartos na planta no Jardim Ipê Fictício",
+    "descricao": "Casa de 3 quartos com 72 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Praça Exemplo a cerca de 410 m e ponto de ônibus a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2028-06",
+    "preco": 247000,
+    "iptuAnual": 750,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Jardim Ipê Fictício",
+    "localizacaoAproximada": {
+      "lat": -23.522,
+      "lng": -46.634,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 1,
+    "vagas": 2,
+    "areaUtilM2": 72,
+    "areaTerrenoM2": 150,
+    "caracteristicas": [
+      "quintal",
+      "garagem coberta",
+      "aquecedor solar",
+      "janelas com grade",
+      "cozinha americana",
+      "churrasqueira",
+      "piso cerâmico"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0020/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0020/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0020"
+      },
+      {
+        "arquivo": "/imoveis/CP-0020/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0020"
+      },
+      {
+        "arquivo": "/imoveis/CP-0020/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0020"
+      },
+      {
+        "arquivo": "/imoveis/CP-0020/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0020"
+      },
+      {
+        "arquivo": "/imoveis/CP-0020/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0020"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 410
+      },
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 440
+      },
+      {
+        "tipo": "escola",
+        "nome": "Creche Municipal Pequeno Demo",
+        "distanciaMetros": 450
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Jardim",
+        "distanciaMetros": 530
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 630
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-08T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0021",
+    "codigo": "CP-0021",
+    "slug": "casa-em-condominio-3-quartos-com-quintal-na-vila-modelo-cp-0021",
+    "titulo": "Casa em condomínio 3 quartos com quintal na Vila Modelo",
+    "descricao": "Casa em condomínio de 3 quartos com 82 m² de área útil, localizada no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: cozinha americana, portão eletrônico, lavanderia. O condomínio oferece piscina, playground. Perto de Estação Modelo a cerca de 110 m e Padaria e Mercearia Modelo a cerca de 250 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa_condominio",
+    "situacao": "pronto",
+    "preco": 341000,
+    "condominioMensal": 200,
+    "iptuAnual": 280,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Vila Modelo",
+    "localizacaoAproximada": {
+      "lat": -23.538,
+      "lng": -46.616,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "areaUtilM2": 82,
+    "areaTerrenoM2": 180,
+    "caracteristicas": [
+      "cozinha americana",
+      "portão eletrônico",
+      "lavanderia",
+      "churrasqueira",
+      "quintal",
+      "janelas com grade"
+    ],
+    "lazer": [
+      "piscina",
+      "playground"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0021/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0021/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0021"
+      },
+      {
+        "arquivo": "/imoveis/CP-0021/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0021"
+      },
+      {
+        "arquivo": "/imoveis/CP-0021/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0021"
+      },
+      {
+        "arquivo": "/imoveis/CP-0021/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0021"
+      },
+      {
+        "arquivo": "/imoveis/CP-0021/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0021"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Estação Modelo",
+        "distanciaMetros": 110
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 250
+      },
+      {
+        "tipo": "escola",
+        "nome": "Creche Municipal Pequeno Demo",
+        "distanciaMetros": 270
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Vila",
+        "distanciaMetros": 580
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-10T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0022",
+    "codigo": "CP-0022",
+    "slug": "casa-2-quartos-no-parque-das-flores-demo-cp-0022",
+    "titulo": "Casa 2 quartos no Parque das Flores Demo",
+    "descricao": "Casa de 2 quartos com 54 m² de área útil, localizada no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 110 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: churrasqueira, área de serviço coberta, piso cerâmico. Perto de Terminal de ônibus Demo a cerca de 210 m e Escola Estadual Modelo a cerca de 450 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "preco": 157000,
+    "iptuAnual": 640,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Parque das Flores Demo",
+    "localizacaoAproximada": {
+      "lat": -23.559,
+      "lng": -46.619,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 54,
+    "areaTerrenoM2": 110,
+    "caracteristicas": [
+      "churrasqueira",
+      "área de serviço coberta",
+      "piso cerâmico",
+      "aquecedor solar",
+      "cozinha americana"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0022/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 2 quartos no Parque das Flores Demo (CP-0022)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0022/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0022"
+      },
+      {
+        "arquivo": "/imoveis/CP-0022/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0022"
+      },
+      {
+        "arquivo": "/imoveis/CP-0022/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0022"
+      },
+      {
+        "arquivo": "/imoveis/CP-0022/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0022"
+      },
+      {
+        "arquivo": "/imoveis/CP-0022/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0022"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 210
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Estadual Modelo",
+        "distanciaMetros": 450
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 480
+      },
+      {
+        "tipo": "saude",
+        "nome": "Posto de Saúde Exemplo Parque",
+        "distanciaMetros": 650
+      }
+    ],
+    "destaque": false,
+    "status": "vendido",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-12T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0023",
+    "codigo": "CP-0023",
+    "slug": "apartamento-2-quartos-na-planta-no-conjunto-esperanca-demo-cp-0023",
+    "titulo": "Apartamento 2 quartos na planta no Conjunto Esperança Demo",
+    "descricao": "Apartamento de 2 quartos com 47 m² de área útil, localizado no bairro Conjunto Esperança Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portaria 24 horas, interfone, área de serviço. O condomínio oferece espaço pet, playground, piscina, salão de festas. Perto de ponto de ônibus a cerca de 470 m e Padaria e Mercearia Modelo a cerca de 730 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "apartamento",
+    "situacao": "na_planta",
+    "previsaoEntrega": "2027-12",
+    "preco": 176000,
+    "condominioMensal": 180,
+    "iptuAnual": 520,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Conjunto Esperança Demo",
+    "localizacaoAproximada": {
+      "lat": -23.549,
+      "lng": -46.6,
+      "raioMetros": 400
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 1,
+    "vagas": 1,
+    "areaUtilM2": 47,
+    "caracteristicas": [
+      "portaria 24 horas",
+      "interfone",
+      "área de serviço",
+      "varanda",
+      "elevador"
+    ],
+    "lazer": [
+      "espaço pet",
+      "playground",
+      "piscina",
+      "salão de festas"
+    ],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": true
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0023/01.svg",
+        "alt": "Ilustração da fachada do prédio – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0023/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0023"
+      },
+      {
+        "arquivo": "/imoveis/CP-0023/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0023"
+      },
+      {
+        "arquivo": "/imoveis/CP-0023/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0023"
+      },
+      {
+        "arquivo": "/imoveis/CP-0023/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0023"
+      },
+      {
+        "arquivo": "/imoveis/CP-0023/06.svg",
+        "alt": "Ilustração da área de lazer do condomínio com piscina e playground – CP-0023"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Ponto de ônibus (linha exemplo)",
+        "distanciaMetros": 470
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Padaria e Mercearia Modelo",
+        "distanciaMetros": 730
+      },
+      {
+        "tipo": "escola",
+        "nome": "Escola Municipal Exemplo",
+        "distanciaMetros": 830
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 960
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Conjunto",
+        "distanciaMetros": 1260
+      }
+    ],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-14T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0024",
+    "codigo": "CP-0024",
+    "slug": "casa-3-quartos-com-quintal-na-vila-modelo-cp-0024",
+    "titulo": "Casa 3 quartos com quintal na Vila Modelo",
+    "descricao": "Casa de 3 quartos com 88 m² de área útil, localizada no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 240 m². Imóvel pronto para morar. Destaques: quintal, janelas com grade, lavanderia. Perto de Terminal de ônibus Demo a cerca de 140 m e UBS Demo Vila a cerca de 600 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "tipo": "casa",
+    "situacao": "pronto",
+    "preco": 340000,
+    "iptuAnual": 430,
+    "cidade": "Cidade Exemplo",
+    "uf": "EX",
+    "bairro": "Vila Modelo",
+    "localizacaoAproximada": {
+      "lat": -23.539,
+      "lng": -46.622,
+      "raioMetros": 400
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "areaUtilM2": 88,
+    "areaTerrenoM2": 240,
+    "caracteristicas": [
+      "quintal",
+      "janelas com grade",
+      "lavanderia",
+      "muro alto",
+      "piso cerâmico",
+      "área de serviço coberta"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": true,
+      "aceitaFGTS": true,
+      "aceitaSBPE": true,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0024/01.svg",
+        "alt": "Ilustração da fachada térrea – Casa 3 quartos com quintal na Vila Modelo (CP-0024)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0024/02.svg",
+        "alt": "Ilustração da sala com sofá e janela ampla – CP-0024"
+      },
+      {
+        "arquivo": "/imoveis/CP-0024/03.svg",
+        "alt": "Ilustração da cozinha com armários e bancada – CP-0024"
+      },
+      {
+        "arquivo": "/imoveis/CP-0024/04.svg",
+        "alt": "Ilustração de quarto com cama de casal e janela – CP-0024"
+      },
+      {
+        "arquivo": "/imoveis/CP-0024/05.svg",
+        "alt": "Ilustração do banheiro com box de vidro – CP-0024"
+      },
+      {
+        "arquivo": "/imoveis/CP-0024/06.svg",
+        "alt": "Ilustração do quintal com área de serviço – CP-0024"
+      }
+    ],
+    "proximidades": [
+      {
+        "tipo": "transporte",
+        "nome": "Terminal de ônibus Demo",
+        "distanciaMetros": 140
+      },
+      {
+        "tipo": "saude",
+        "nome": "UBS Demo Vila",
+        "distanciaMetros": 600
+      },
+      {
+        "tipo": "mercado",
+        "nome": "Supermercado Demo",
+        "distanciaMetros": 620
+      },
+      {
+        "tipo": "escola",
+        "nome": "Creche Municipal Pequeno Demo",
+        "distanciaMetros": 720
+      },
+      {
+        "tipo": "lazer",
+        "nome": "Praça Exemplo",
+        "distanciaMetros": 1020
+      }
+    ],
+    "destaque": false,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": true,
+    "publicadoEm": "2026-09-16T00:00:00.000Z",
+    "atualizadoEm": "2026-09-20T00:00:00.000Z"
+  }
+]

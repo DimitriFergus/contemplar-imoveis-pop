@@ -1,0 +1,271 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/* Modo escuro segue a preferência do sistema operacional. */
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+/*
+ * Tokens de design — Contemplar Imóveis Pop
+ * Identidade: azul-marinho (confiança) e laranja (ação e otimismo) do logo da Contemplar,
+ * com neutros quentes e bastante respiro. A fotografia do imóvel é quem dá a cor na página.
+ */
+:root {
+  --marinho-900: #041a4b;
+  --marinho-800: #0b2a6b;
+  --marinho-700: #163a86;
+  --marinho-100: #e6ecf8;
+  --laranja-500: #f28234;
+  --laranja-600: #d9691c;
+  --laranja-100: #fdecdd;
+
+  --background: #fffdf9;
+  --foreground: #1b1f2a;
+  --card: #ffffff;
+  --card-foreground: #1b1f2a;
+  --popover: #ffffff;
+  --popover-foreground: #1b1f2a;
+  --primary: var(--marinho-900);
+  --primary-foreground: #ffffff;
+  --secondary: #f4efe7;
+  --secondary-foreground: #1b1f2a;
+  --muted: #f6f2eb;
+  --muted-foreground: #585e6c;
+  --accent: #f4efe7;
+  --accent-foreground: #1b1f2a;
+  --destructive: #b42318;
+  --border: #e7e0d4;
+  --input: #cfc6b7;
+  --ring: #163a86;
+
+  /* Ação principal (CTA): laranja com texto marinho — contraste 6,6:1 */
+  --destaque: var(--laranja-500);
+  --destaque-foreground: var(--marinho-900);
+  --destaque-suave: var(--laranja-100);
+  /* Laranja para texto/ícones sobre fundo claro (contraste ≥ 4,5:1) */
+  --destaque-texto: #b0500e;
+  /* WhatsApp: verde escurecido para contraste AA com texto branco */
+  --whatsapp: #0f7a3d;
+  /* "Cabe no seu bolso" e mensagens positivas */
+  --sucesso: #0f6b4a;
+  --sucesso-suave: #e3f4ec;
+  --aviso: #8a5a00;
+  --aviso-suave: #fff4d6;
+  --info-suave: var(--marinho-100);
+
+  --radius: 0.875rem;
+  --sombra-card: 0 1px 2px rgb(27 31 42 / 0.06), 0 4px 16px rgb(27 31 42 / 0.06);
+  --sombra-card-hover: 0 2px 4px rgb(27 31 42 / 0.08), 0 12px 28px rgb(27 31 42 / 0.1);
+
+  /* Gráfico do simulador (validado: daltonismo e contraste, claro e escuro) */
+  --grafico-amortizacao: #2f5bb7;
+  --grafico-juros: #e0701f;
+  --chart-1: var(--marinho-800);
+  --chart-2: var(--laranja-500);
+  --chart-3: #2e7d6b;
+  --chart-4: #8f96a3;
+  --chart-5: #c9a227;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d1322;
+    --foreground: #eef1f7;
+    --card: #141c2f;
+    --card-foreground: #eef1f7;
+    --popover: #172035;
+    --popover-foreground: #eef1f7;
+    --primary: #c7d5f7;
+    --primary-foreground: #041a4b;
+    --secondary: #1d2740;
+    --secondary-foreground: #eef1f7;
+    --muted: #1a2339;
+    --muted-foreground: #aab3c5;
+    --accent: #1d2740;
+    --accent-foreground: #eef1f7;
+    --destructive: #f97066;
+    --border: #2a3552;
+    --input: #3a4766;
+    --ring: #8fb0ff;
+    --destaque: #f5944f;
+    --destaque-foreground: #041a4b;
+    --destaque-suave: #3a2615;
+    --destaque-texto: #f5944f;
+    --whatsapp: #128c4a;
+    --sucesso: #5fd3a3;
+    --sucesso-suave: #10322a;
+    --aviso: #f5c451;
+    --aviso-suave: #3a2d0c;
+    --info-suave: #1a2744;
+    --sombra-card: 0 1px 2px rgb(0 0 0 / 0.3);
+    --sombra-card-hover: 0 8px 24px rgb(0 0 0 / 0.4);
+    --grafico-amortizacao: #5a82dc;
+    --grafico-juros: #d06a22;
+    --chart-1: #8fb0ff;
+    --chart-2: #f5944f;
+  }
+}
+
+/* Modo leitura fácil: fonte maior, contraste reforçado e links sublinhados. */
+:root.leitura-facil {
+  --muted-foreground: #2f3440;
+  --border: #b9af9f;
+  --input: #8a8272;
+}
+@media (prefers-color-scheme: dark) {
+  :root.leitura-facil {
+    --muted-foreground: #dfe4ee;
+    --border: #5a6788;
+    --input: #7a88aa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--fonte-texto);
+  --font-heading: var(--fonte-titulo);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-destaque: var(--destaque);
+  --color-destaque-foreground: var(--destaque-foreground);
+  --color-destaque-suave: var(--destaque-suave);
+  --color-destaque-texto: var(--destaque-texto);
+  --color-whatsapp: var(--whatsapp);
+  --color-sucesso: var(--sucesso);
+  --color-sucesso-suave: var(--sucesso-suave);
+  --color-aviso: var(--aviso);
+  --color-aviso-suave: var(--aviso-suave);
+  --color-info-suave: var(--info-suave);
+  --color-marinho: var(--marinho-900);
+  --color-grafico-amortizacao: var(--grafico-amortizacao);
+  --color-grafico-juros: var(--grafico-juros);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --shadow-card: var(--sombra-card);
+  --shadow-card-hover: var(--sombra-card-hover);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    font-size: 100%; /* 16px, respeitando a configuração do navegador */
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  html.leitura-facil {
+    font-size: 118.75%; /* 19px */
+  }
+  html.leitura-facil a:not([data-sem-sublinhado]) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-balance;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: var(--primary);
+  }
+  select {
+    @apply h-11 w-full rounded-lg border border-input bg-background px-3 text-base text-foreground;
+  }
+  input[type='date'] {
+    @apply h-11;
+  }
+}
+
+@layer utilities {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .rolagem-horizontal {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rolagem-horizontal::-webkit-scrollbar {
+    display: none;
+  }
+  .rolagem-horizontal > * {
+    scroll-snap-align: start;
+  }
+  .numero-destaque {
+    font-variant-numeric: tabular-nums;
+    @apply font-heading font-extrabold tracking-tight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Impressão: checklist de documentos e páginas de conteúdo limpas. */
+@media print {
+  header,
+  footer,
+  nav,
+  [data-nao-imprimir] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  [data-imprimir-quebra] {
+    break-inside: avoid;
+  }
+}

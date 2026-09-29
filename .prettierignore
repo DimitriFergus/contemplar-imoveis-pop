@@ -1,0 +1,12 @@
+.next
+node_modules
+package-lock.json
+playwright-report
+test-results
+public/imoveis
+src/data/*.json
+src/components/ui
+contemplar prompt
+assets
+dados
+.next
