@@ -49,3 +49,4 @@ next-env.d.ts
 
 # fotos originais (backup local gerado pelo importador)
 /dados/fotos-originais/
+/out/

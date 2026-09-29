@@ -10,6 +10,7 @@ import { CENTRO_MAPA } from '@/config/site';
 import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
 import type { ImovelResumo } from '@/types';
 import { ATRIBUICAO_OSM, URL_TILES_OSM } from './tiles';
+import { caminhoPublico } from '@/lib/utils/caminho';
 
 function iconePreco(preco: number, indisponivel: boolean) {
   return L.divIcon({
@@ -51,7 +52,7 @@ export default function MapaListagemLeaflet({ imoveis }: { imoveis: ImovelResumo
               {i.foto && (
                 <div className="relative mb-2 aspect-[3/2] overflow-hidden rounded-lg bg-muted">
                   <Image
-                    src={i.foto.arquivo}
+                    src={caminhoPublico(i.foto.arquivo)}
                     alt={i.foto.alt}
                     fill
                     sizes="240px"

@@ -8,13 +8,13 @@ const TITULO = `Imóveis à venda em ${CIDADE_BASE}`;
 const DESCRICAO = `Casas e apartamentos a partir de ${formatarPrecoCurto(SITE.precoAPartirDe)}, com Minha Casa, Minha Vida e FGTS. Filtre por preço ou pela parcela que cabe no seu bolso.`;
 
 export async function generateMetadata({ searchParams }: PageProps<'/imoveis'>): Promise<Metadata> {
-  return metadadosListagem('/imoveis', await searchParams, TITULO, DESCRICAO);
+  return metadadosListagem('/imoveis', searchParams, TITULO, DESCRICAO);
 }
 
 export default async function PaginaImoveis({ searchParams }: PageProps<'/imoveis'>) {
   return (
     <PaginaListagem
-      params={await searchParams}
+      searchParams={searchParams}
       caminho="/imoveis"
       titulo={TITULO}
       introducao="Encontre o imóvel pelo preço ou pela parcela mensal. Todos os valores mostram o preço total e a parcela estimada."

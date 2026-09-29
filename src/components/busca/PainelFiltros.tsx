@@ -3,7 +3,7 @@
 import { SlidersHorizontal } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useId, useState, type FormEvent, type ReactNode } from 'react';
+import { useId, useState, type FormEvent, type ReactNode } from 'react';
 import {
   OPCOES_AREA_MINIMA,
   OPCOES_MINIMO_COMODOS,
@@ -21,7 +21,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { paraQueryString, type Filtros } from '@/lib/busca/query';
+import { aplicarFiltros, paraQueryString, type Filtros } from '@/lib/busca/query';
+import { useTodosResumos } from '@/lib/cliente/resumos';
 import { useArmazenado, useMontado } from '@/lib/cliente/armazenamento';
 import { perfilBolso } from '@/lib/cliente/estado';
 import {
@@ -128,7 +129,6 @@ export function PainelFiltros({ filtros, bairros, caminho, fixos = {}, totalAtua
   const router = useRouter();
   const idForm = useId();
   const [rascunho, setRascunho] = useState<Filtros>(filtros);
-  const [contagem, setContagem] = useState<number>(totalAtual);
   const [aberto, setAberto] = useState(false);
   const perfil = useArmazenado(perfilBolso);
   const montado = useMontado();
@@ -148,24 +148,11 @@ export function PainelFiltros({ filtros, bairros, caminho, fixos = {}, totalAtua
       };
     });
 
-  // Contagem ao vivo para o botão "Ver X imóveis".
-  useEffect(() => {
-    if (rascunho === filtros) return; // estado inicial: já temos o total da página
-    const controle = new AbortController();
-    const t = setTimeout(() => {
-      fetch(
-        `/api/imoveis/contagem${paraQueryString({ ...rascunho, ...fixos, ordem: undefined, visao: undefined, pagina: undefined })}`,
-        { signal: controle.signal },
-      )
-        .then((r) => (r.ok ? r.json() : null))
-        .then((d: { total: number } | null) => d && setContagem(d.total))
-        .catch(() => {});
-    }, 250);
-    return () => {
-      clearTimeout(t);
-      controle.abort();
-    };
-  }, [rascunho, filtros, fixos]);
+  // Contagem ao vivo para o botão "Ver X imóveis" (calculada no navegador).
+  const alterado = rascunho !== filtros;
+  const { imoveis: todos } = useTodosResumos(alterado);
+  const contagem =
+    alterado && todos ? aplicarFiltros(todos, { ...rascunho, ...fixos }).length : totalAtual;
 
   const aplicar = (e?: FormEvent) => {
     e?.preventDefault();

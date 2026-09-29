@@ -17,6 +17,7 @@ import {
 } from '@/lib/rotulos';
 import { formatarArea, formatarBRL, formatarPreco } from '@/lib/utils/formatar';
 import type { ImovelResumo } from '@/types';
+import { caminhoPublico } from '@/lib/utils/caminho';
 
 const FINANCIAMENTOS: ChaveCondicao[] = [
   'aceitaMCMV',
@@ -110,7 +111,7 @@ export function TabelaComparacao() {
                   <div className="relative mb-2 aspect-[3/2] overflow-hidden rounded-xl bg-muted">
                     {i.foto && (
                       <Image
-                        src={i.foto.arquivo}
+                        src={caminhoPublico(i.foto.arquivo)}
                         alt={i.foto.alt}
                         fill
                         sizes="300px"

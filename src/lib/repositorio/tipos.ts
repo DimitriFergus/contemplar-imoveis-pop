@@ -1,4 +1,4 @@
-import type { Filtros, Pagina } from '@/lib/busca/filtros';
+import type { Filtros, ResultadoBusca } from '@/lib/busca/query';
 import type { Corretor, Imovel, ImovelResumo } from '@/types';
 
 export interface BairroComTotal {
@@ -7,10 +7,7 @@ export interface BairroComTotal {
   total: number;
 }
 
-export interface ResultadoBusca extends Pagina<ImovelResumo> {
-  /** Todos os resultados filtrados (sem paginação), usados no mapa. */
-  todos: ImovelResumo[];
-}
+export type { ResultadoBusca };
 
 /**
  * Contrato de acesso aos dados. As páginas dependem só desta interface.

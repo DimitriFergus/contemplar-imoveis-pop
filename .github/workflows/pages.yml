@@ -1,0 +1,72 @@
+# Publica a versão estática do site no GitHub Pages a cada push na branch main.
+# Endereço: https://<usuário>.github.io/<repositório>/
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    name: Lint, tipos e testes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+
+  construir:
+    name: Build estático
+    needs: verificar
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_MODO_ESTATICO: 'true'
+      NEXT_PUBLIC_MODO_DEMO: 'true'
+      NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+      NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # O GitHub Pages não tem servidor: a rota de leads (POST) fica de fora e os
+      # formulários enviam o contato pelo WhatsApp (ver MODO_ESTATICO em src/config/site.ts).
+      - name: Remover rotas que exigem servidor
+        run: rm -rf src/app/api
+      - run: npm run build
+      - name: Ajustar arquivos exportados
+        run: node scripts/corrigir-exportacao.mjs out
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  publicar:
+    name: Publicar
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacao.outputs.page_url }}
+    steps:
+      - id: publicacao
+        uses: actions/deploy-pages@v4

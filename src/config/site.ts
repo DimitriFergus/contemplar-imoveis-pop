@@ -19,7 +19,13 @@ export const SITE = {
   descricao:
     'Casas e apartamentos a partir de R$ 150 mil, com Minha Casa, Minha Vida, FGTS e entrada facilitada. Descubra quanto você pode pagar e fale com a gente pelo WhatsApp.',
   /** URL pública do site, sem barra no final. Pode ser sobrescrita por NEXT_PUBLIC_SITE_URL. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : 'http://localhost:3000'),
   idioma: 'pt-BR',
   grupo: 'Grupo Ordnas',
   /** Posicionamento de preço da marca ("imóveis a partir de ..."). */
@@ -127,3 +133,12 @@ export const LIMITE_LEADS = {
 
 /** Camada de analytics fica desativada até haver configuração (e consentimento, se aplicável). */
 export const ANALYTICS_ATIVO = process.env.NEXT_PUBLIC_ANALYTICS_ATIVO === 'true';
+
+/**
+ * Versão estática (GitHub Pages): sem servidor. Filtros rodam no navegador e os formulários
+ * são enviados pelo WhatsApp. Definido no workflow de publicação.
+ */
+export const MODO_ESTATICO = process.env.NEXT_PUBLIC_MODO_ESTATICO === 'true';
+
+/** Prefixo do endereço quando o site fica numa subpasta (ex.: /contemplar-imoveis-pop). */
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';

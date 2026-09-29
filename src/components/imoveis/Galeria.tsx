@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import type { Foto } from '@/types';
 import { cn } from '@/lib/utils';
+import { caminhoPublico } from '@/lib/utils/caminho';
 
 interface Props {
   fotos: Foto[];
@@ -78,7 +79,7 @@ function Carrossel({
           aria-hidden={i !== indice}
         >
           <Image
-            src={f.arquivo}
+            src={caminhoPublico(f.arquivo)}
             alt={f.alt}
             fill
             sizes={telaCheia ? '100vw' : '(min-width: 1024px) 60vw, 100vw'}
@@ -206,7 +207,7 @@ export function Galeria({ fotos, titulo, videoUrl, tour360Url }: Props) {
                 )}
               >
                 <Image
-                  src={f.arquivo}
+                  src={caminhoPublico(f.arquivo)}
                   alt=""
                   fill
                   sizes="96px"

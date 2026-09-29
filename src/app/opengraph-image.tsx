@@ -2,6 +2,8 @@ import { ImageResponse } from 'next/og';
 import { SITE } from '@/config/site';
 import { formatarPrecoCurto } from '@/lib/utils/formatar';
 
+export const dynamic = 'force-static';
+
 export const alt = `${SITE.nome} — ${SITE.slogan}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';

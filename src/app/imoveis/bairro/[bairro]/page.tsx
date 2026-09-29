@@ -5,6 +5,12 @@ import { PaginaListagem } from '@/components/busca/PaginaListagem';
 import { repositorio } from '@/lib/repositorio';
 import { metadadosListagem } from '@/lib/seo';
 
+export async function generateStaticParams() {
+  return (await repositorio.bairros()).map((b) => ({ bairro: b.slug }));
+}
+
+export const dynamicParams = false;
+
 async function obterBairro(slug: string) {
   const bairros = await repositorio.bairros();
   return bairros.find((b) => b.slug === slug) ?? null;
@@ -19,7 +25,7 @@ export async function generateMetadata({
   if (!bairro) return { title: 'Bairro não encontrado' };
   return metadadosListagem(
     `/imoveis/bairro/${slug}`,
-    await searchParams,
+    searchParams,
     `Imóveis à venda no ${bairro.nome}, ${CIDADE_BASE}`,
     `${bairro.total} imóveis à venda no bairro ${bairro.nome}: casas e apartamentos com parcelas que cabem no bolso.`,
   );
@@ -35,7 +41,7 @@ export default async function PaginaBairro({
   const caminho = `/imoveis/bairro/${slug}`;
   return (
     <PaginaListagem
-      params={await searchParams}
+      searchParams={searchParams}
       caminho={caminho}
       fixos={{ bairro: slug }}
       titulo={`Imóveis no ${bairro.nome}`}

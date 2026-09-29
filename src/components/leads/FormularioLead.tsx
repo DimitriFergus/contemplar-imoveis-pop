@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input';
 import { rastrear } from '@/lib/analytics';
 import { utmSessao } from '@/lib/cliente/estado';
 import { FAIXAS } from '@/config/financiamento';
+import { MODO_ESTATICO } from '@/config/site';
+import { comOrigem, linkWhatsApp } from '@/lib/utils/whatsapp';
 import { formatarPreco } from '@/lib/utils/formatar';
 import type { OrigemLead } from '@/types';
 import { cn } from '@/lib/utils';
@@ -81,6 +83,35 @@ export function FormularioLead({
       utm: utmSessao.ler() ?? undefined,
       ...dadosAdicionais,
     };
+    if (corpo.site) return; // honeypot preenchido: ignora
+    if (MODO_ESTATICO) {
+      // Versão estática (sem servidor): valida aqui e envia o contato pelo WhatsApp.
+      const errosLocais: Erros = {};
+      if (corpo.nome.length < 2) errosLocais.nome = 'Informe seu nome';
+      const digitos = corpo.whatsapp.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '');
+      if (!/^[1-9]{2}9?\d{8}$/.test(digitos))
+        errosLocais.whatsapp = 'Informe um WhatsApp válido com DDD';
+      if (!corpo.consentimentoLGPD)
+        errosLocais.consentimentoLGPD = 'É preciso concordar com a Política de Privacidade';
+      setErros(errosLocais);
+      if (Object.keys(errosLocais).length) return;
+      const faixa = FAIXAS.find((f) => f.id === corpo.rendaFamiliarFaixa);
+      const linhas = [
+        `Olá! Meu nome é ${corpo.nome}.`,
+        codigoImovel ? `Imóvel: ${codigoImovel}` : '',
+        dadosAdicionais.dataVisitaPreferida
+          ? `Visita: ${dadosAdicionais.dataVisitaPreferida.split('-').reverse().join('/')} (${dadosAdicionais.periodoPreferido ?? ''})`
+          : '',
+        faixa ? `Faixa de renda: ${faixa.nome}` : '',
+        corpo.email ? `E-mail: ${corpo.email}` : '',
+        corpo.mensagem ?? '',
+      ].filter(Boolean);
+      window.open(linkWhatsApp(comOrigem(linhas.join('\n'), corpo.utm)), '_blank', 'noopener');
+      rastrear('envio_lead', { origem, codigo: codigoImovel, canal: 'whatsapp' });
+      setEnviado(true);
+      aoEnviar?.();
+      return;
+    }
     setEnviando(true);
     setErros({});
     setErroGeral('');
@@ -116,10 +147,13 @@ export function FormularioLead({
         data-testid="confirmacao-lead"
       >
         <CheckCircle2 className="mx-auto size-12 text-sucesso" aria-hidden />
-        <h3 className="mt-3 text-xl font-bold">Recebemos seu contato!</h3>
+        <h3 className="mt-3 text-xl font-bold">
+          {MODO_ESTATICO ? 'Quase lá!' : 'Recebemos seu contato!'}
+        </h3>
         <p className="mt-2 text-muted-foreground">
-          Um corretor vai falar com você pelo WhatsApp em breve, no horário de atendimento. Se
-          preferir, fale agora:
+          {MODO_ESTATICO
+            ? 'Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar. Se não abriu, use o botão abaixo:'
+            : 'Um corretor vai falar com você pelo WhatsApp em breve, no horário de atendimento. Se preferir, fale agora:'}
         </p>
         <BotaoWhatsApp
           mensagem={mensagemWhatsApp}

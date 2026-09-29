@@ -3,6 +3,8 @@ import { SITE } from '@/config/site';
 import { repositorio } from '@/lib/repositorio';
 import { SLUG_CATEGORIA_TIPO } from '@/lib/rotulos';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [imoveis, bairros] = await Promise.all([repositorio.listar(), repositorio.bairros()]);
   const tipos = new Set(imoveis.map((i) => i.tipo));

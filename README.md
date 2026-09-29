@@ -6,14 +6,14 @@ Site imobiliário da **Contemplar Imóveis Pop** (Grupo Ordnas): imóveis popula
 
 ## Stack
 
-| Camada | Tecnologia |
-|---|---|
-| Framework | Next.js 16.3 (App Router, Turbopack) + React 19.2 + TypeScript 5.9 estrito |
-| Estilo | Tailwind CSS 4.3 + shadcn/ui (Radix) + lucide-react |
-| Validação | Zod 4 (dados, formulários e API) |
-| Mapa | Leaflet + OpenStreetMap (sem chave de API) |
-| Testes | Vitest 5 (unidades) + Playwright 1.63 (E2E, celular e desktop) |
-| Hospedagem | Vercel |
+| Camada     | Tecnologia                                                                 |
+| ---------- | -------------------------------------------------------------------------- |
+| Framework  | Next.js 16.3 (App Router, Turbopack) + React 19.2 + TypeScript 5.9 estrito |
+| Estilo     | Tailwind CSS 4.3 + shadcn/ui (Radix) + lucide-react                        |
+| Validação  | Zod 4 (dados, formulários e API)                                           |
+| Mapa       | Leaflet + OpenStreetMap (sem chave de API)                                 |
+| Testes     | Vitest 5 (unidades) + Playwright 1.63 (E2E, celular e desktop)             |
+| Hospedagem | Vercel                                                                     |
 
 ## Comandos
 
@@ -36,12 +36,24 @@ bash scripts/lighthouse.sh http://localhost:3000 3 / /imoveis   # Lighthouse mob
 
 Copie `.env.example` para `.env.local` e ajuste. Em produção, defina as mesmas variáveis na Vercel.
 
-## Deploy na Vercel
+## Publicação no GitHub Pages (ativa)
+
+Cada push na `main` dispara o workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml): lint, tipos e testes, depois build da **versão estática** (`NEXT_PUBLIC_MODO_ESTATICO=true`) e publicação em `https://<usuário>.github.io/<repositório>/`.
+
+Diferenças da versão estática (sem servidor):
+
+- filtros, ordenação, paginação e contagem rodam no navegador (a partir de `/dados/resumos.json`);
+- os formulários **não gravam leads**: validam no navegador e abrem o WhatsApp com os dados do contato;
+- cabeçalhos de segurança (CSP, HSTS) e otimização de imagens do Next não se aplicam.
+
+Para testar a versão estática localmente: `rm -rf src/app/api` (em uma cópia), `NEXT_PUBLIC_MODO_ESTATICO=true NEXT_PUBLIC_BASE_PATH=/contemplar-imoveis-pop npm run build` e `node scripts/corrigir-exportacao.mjs out`.
+
+## Deploy na Vercel (versão completa, com servidor)
 
 1. Crie um repositório Git com este projeto e envie ao GitHub.
-2. Na Vercel: *Add New → Project* → importe o repositório (framework detectado: Next.js).
-3. Em *Environment Variables*, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO` e `LEADS_WEBHOOK_URL`.
-4. *Deploy*. Cada push gera uma pré-visualização por branch; a `main` vai para produção.
+2. Na Vercel: _Add New → Project_ → importe o repositório (framework detectado: Next.js).
+3. Em _Environment Variables_, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO` e `LEADS_WEBHOOK_URL`.
+4. _Deploy_. Cada push gera uma pré-visualização por branch; a `main` vai para produção.
 5. O `prebuild` roda `npm run importar`: se a planilha tiver erro, o deploy é bloqueado e o site anterior continua no ar.
 
 ## Arquitetura
@@ -66,19 +78,19 @@ Princípios: páginas só falam com `repositorio`; nenhum número de regra de ne
 
 ### Rotas
 
-| Rota | Conteúdo |
-|---|---|
-| `/` | Hero com busca preço/parcela, atalhos, destaques, jornada, MCMV, depoimentos, FAQ |
-| `/imoveis` | Listagem com filtros (painel inferior no celular), chips, ordenação, lista/mapa, paginação |
-| `/imoveis/casas`, `/apartamentos`, `/casas-em-condominio`, `/duplex`, `/sobrados` | Categorias |
-| `/imoveis/bairro/[bairro]` | Imóveis por bairro |
-| `/imoveis/[slug]` | Anúncio: galeria, selos, simulador embutido, custo total, mapa aproximado, perto de você, agendamento, semelhantes, JSON-LD, OG dinâmico |
-| `/simulador` | "Quanto posso pagar?" (Cabe no Meu Bolso) e "Simular financiamento" (tabela e gráfico) |
-| `/minha-casa-minha-vida`, `/como-comprar` | Guias (checklist imprimível) |
-| `/favoritos`, `/comparar` | Salvos no navegador, sem login |
-| `/anuncie`, `/contato`, `/sobre`, `/politica-de-privacidade`, `/termos-de-uso` | Institucional |
-| `POST /api/leads` | Zod + honeypot + limite por IP → `LEADS_WEBHOOK_URL` (ou log) |
-| `GET /api/imoveis/contagem`, `/api/imoveis/resumos` | Contagem ao vivo dos filtros; resumos para favoritos/comparador |
+| Rota                                                                              | Conteúdo                                                                                                                                 |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                                                                               | Hero com busca preço/parcela, atalhos, destaques, jornada, MCMV, depoimentos, FAQ                                                        |
+| `/imoveis`                                                                        | Listagem com filtros (painel inferior no celular), chips, ordenação, lista/mapa, paginação                                               |
+| `/imoveis/casas`, `/apartamentos`, `/casas-em-condominio`, `/duplex`, `/sobrados` | Categorias                                                                                                                               |
+| `/imoveis/bairro/[bairro]`                                                        | Imóveis por bairro                                                                                                                       |
+| `/imoveis/[slug]`                                                                 | Anúncio: galeria, selos, simulador embutido, custo total, mapa aproximado, perto de você, agendamento, semelhantes, JSON-LD, OG dinâmico |
+| `/simulador`                                                                      | "Quanto posso pagar?" (Cabe no Meu Bolso) e "Simular financiamento" (tabela e gráfico)                                                   |
+| `/minha-casa-minha-vida`, `/como-comprar`                                         | Guias (checklist imprimível)                                                                                                             |
+| `/favoritos`, `/comparar`                                                         | Salvos no navegador, sem login                                                                                                           |
+| `/anuncie`, `/contato`, `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`    | Institucional                                                                                                                            |
+| `POST /api/leads`                                                                 | Zod + honeypot + limite por IP → `LEADS_WEBHOOK_URL` (ou log)                                                                            |
+| `GET /api/imoveis/contagem`, `/api/imoveis/resumos`                               | Contagem ao vivo dos filtros; resumos para favoritos/comparador                                                                          |
 
 ## Leads
 

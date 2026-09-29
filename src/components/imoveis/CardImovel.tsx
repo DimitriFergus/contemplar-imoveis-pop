@@ -13,6 +13,7 @@ import { PrecoParcela } from './PrecoParcela';
 import { SeloCabeNoBolso } from './SeloCabeNoBolso';
 import { SeloIlustrativo } from './SeloIlustrativo';
 import { SelosCondicoes } from './SelosCondicoes';
+import { caminhoPublico } from '@/lib/utils/caminho';
 
 interface Props {
   imovel: ImovelResumo;
@@ -43,7 +44,7 @@ export function CardImovel({
       <div className="relative aspect-[3/2] overflow-hidden bg-muted">
         {i.foto ? (
           <Image
-            src={i.foto.arquivo}
+            src={caminhoPublico(i.foto.arquivo)}
             alt={i.foto.alt}
             fill
             sizes="(min-width: 1280px) 400px, (min-width: 768px) 50vw, 100vw"

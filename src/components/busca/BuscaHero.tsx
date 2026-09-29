@@ -3,7 +3,7 @@
 import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useId, useState, type FormEvent } from 'react';
-import { OPCOES_PARCELA_MAXIMA, OPCOES_PRECO_MAXIMO } from '@/config/site';
+import { BASE_PATH, OPCOES_PARCELA_MAXIMA, OPCOES_PRECO_MAXIMO } from '@/config/site';
 import { Button } from '@/components/ui/button';
 import { paraQueryString } from '@/lib/busca/query';
 import { ROTULO_TIPO_PLURAL } from '@/lib/rotulos';
@@ -38,7 +38,7 @@ export function BuscaHero({ bairros }: { bairros: BairroComTotal[] }) {
 
   return (
     <form
-      action="/imoveis"
+      action={`${BASE_PATH}/imoveis`}
       method="get"
       onSubmit={buscar}
       className="rounded-2xl bg-card p-4 text-card-foreground shadow-card-hover ring-1 ring-border sm:p-5"

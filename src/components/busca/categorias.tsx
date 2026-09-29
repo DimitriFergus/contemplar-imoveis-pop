@@ -23,13 +23,13 @@ export function criarPaginaCategoria(tipo: TipoImovel) {
   const introducao = INTRODUCOES[tipo];
 
   async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-    return metadadosListagem(caminho, await searchParams, titulo, introducao ?? titulo);
+    return metadadosListagem(caminho, searchParams, titulo, introducao ?? titulo);
   }
 
   async function Pagina({ searchParams }: Props) {
     return (
       <PaginaListagem
-        params={await searchParams}
+        searchParams={searchParams}
         caminho={caminho}
         fixos={{ tipo: [tipo] }}
         titulo={titulo}

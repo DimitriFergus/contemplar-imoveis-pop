@@ -1,7 +1,7 @@
 import 'server-only';
 import { z } from 'zod';
 import { LISTAGEM } from '@/config/site';
-import { aplicarFiltros, ordenar, paginar, type Filtros } from '@/lib/busca/filtros';
+import { aplicarFiltros, buscarEmLista, ordenar, type Filtros } from '@/lib/busca/query';
 import { corretorSchema, imovelSchema } from '@/lib/schemas/imovel';
 import { slugify } from '@/lib/utils/slug';
 import dadosCorretores from '@/data/corretores.json';
@@ -38,8 +38,7 @@ export const repositorioLocal: RepositorioImoveis = {
   },
 
   async buscar(filtros: Filtros) {
-    const todos = ordenar(aplicarFiltros(resumos, filtros), filtros.ordem);
-    return { ...paginar(todos, filtros.pagina ?? 1, LISTAGEM.porPagina), todos };
+    return buscarEmLista(resumos, filtros);
   },
 
   async contar(filtros) {
