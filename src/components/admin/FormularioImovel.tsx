@@ -3,11 +3,12 @@
 import { Eye, Plus, Save, Send, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { AJUDA_STATUS_PAINEL, ROTULO_STATUS_PAINEL } from '@/lib/admin/rotulos';
-import { salvarImovel } from '@/lib/admin/acoes-imoveis';
+import { salvarImovel } from '@/lib/admin/operacoes';
+import { usePainel } from '@/lib/admin/sessao';
 import { SITUACOES_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE } from '@/lib/constantes';
 import {
   ROTULO_CONDICAO,
@@ -43,16 +44,27 @@ interface Props {
   inicial: RascunhoImovel;
   corretores: { id: string; nome: string }[];
   ehAdmin: boolean;
+  /** Chamado depois de salvar um imóvel existente (para recarregar o histórico). */
+  aoSalvar?: () => void;
 }
 
-export function FormularioImovel({ id, codigo, slug, inicial, corretores, ehAdmin }: Props) {
+export function FormularioImovel({
+  id,
+  codigo,
+  slug,
+  inicial,
+  corretores,
+  ehAdmin,
+  aoSalvar,
+}: Props) {
   const router = useRouter();
+  const sessao = usePainel();
   const [r, setR] = useState(inicial);
   const [erros, setErros] = useState<Record<string, string>>({});
   const [resultado, setResultado] = useState<{ tom: 'sucesso' | 'erro'; texto: string } | null>(
     null,
   );
-  const [salvando, iniciar] = useTransition();
+  const [salvando, setSalvando] = useState(false);
   const [alterado, setAlterado] = useState(false);
 
   const mudar = <K extends keyof RascunhoImovel>(campo: K, valor: RascunhoImovel[K]) => {
@@ -81,30 +93,35 @@ export function FormularioImovel({ id, codigo, slug, inicial, corretores, ehAdmi
       return;
     }
     setErros({});
-    iniciar(async () => {
-      const resp = await salvarImovel(id, validacao.data);
-      if (!resp.ok) {
-        setErros(
-          Object.fromEntries(Object.entries(resp.erros ?? {}).map(([k, v]) => [k, mensagem(v)])),
-        );
-        setResultado({ tom: 'erro', texto: resp.mensagem });
-        return;
+    void (async () => {
+      setSalvando(true);
+      try {
+        const resp = await salvarImovel(sessao, id, validacao.data);
+        if (!resp.ok) {
+          setErros(
+            Object.fromEntries(Object.entries(resp.erros ?? {}).map(([k, v]) => [k, mensagem(v)])),
+          );
+          setResultado({ tom: 'erro', texto: resp.mensagem });
+          return;
+        }
+        setAlterado(false);
+        setR(dados);
+        if (id === null) {
+          router.replace(`/admin/imoveis/editar?id=${resp.id}&novo=1`);
+        } else {
+          setResultado({
+            tom: 'sucesso',
+            texto:
+              dados.status === 'rascunho'
+                ? 'Rascunho salvo.'
+                : 'Salvo! O site já foi atualizado com as mudanças.',
+          });
+          aoSalvar?.();
+        }
+      } finally {
+        setSalvando(false);
       }
-      setAlterado(false);
-      setR(dados);
-      if (id === null) {
-        router.replace(`/admin/imoveis/${resp.id}?novo=1`);
-      } else {
-        setResultado({
-          tom: 'sucesso',
-          texto:
-            dados.status === 'rascunho'
-              ? 'Rascunho salvo.'
-              : 'Salvo! O site já foi atualizado com as mudanças.',
-        });
-        router.refresh();
-      }
-    });
+    })();
   }
 
   const precisaPrevisao = r.situacao === 'na_planta' || r.situacao === 'em_construcao';
@@ -580,7 +597,7 @@ export function FormularioImovel({ id, codigo, slug, inicial, corretores, ehAdmi
           </div>
           {id && slug && (
             <Button asChild variant="outline">
-              <Link href={`/admin/imoveis/${id}/previa`}>
+              <Link href={`/admin/imoveis/previa?id=${id}`}>
                 <Eye aria-hidden /> Pré-visualizar
               </Link>
             </Button>

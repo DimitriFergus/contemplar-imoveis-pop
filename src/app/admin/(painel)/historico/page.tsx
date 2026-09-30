@@ -1,43 +1,43 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
+import { Carregando } from '@/components/admin/Carregando';
 import { HistoricoAlteracoes } from '@/components/admin/HistoricoAlteracoes';
 import { Cartao, TituloPagina } from '@/components/admin/ui';
-import { listarCorretores } from '@/lib/admin/consultas';
-import { exigirSessao } from '@/lib/admin/sessao';
-import type { LinhaAuditoria } from '@/lib/supabase/tipos';
+import { historico, listarCorretores } from '@/lib/admin/consultas';
+import { usePainel } from '@/lib/admin/sessao';
+import { useConsulta } from '@/lib/admin/useConsulta';
 import { cn } from '@/lib/utils';
 
-export const metadata: Metadata = { title: 'Histórico' };
+const ABAS = [
+  { valor: '', rotulo: 'Tudo' },
+  { valor: 'precos', rotulo: 'Mudanças de preço' },
+  { valor: 'imoveis', rotulo: 'Imóveis' },
+  { valor: 'leads', rotulo: 'Leads' },
+];
 
-export default async function PaginaHistorico({ searchParams }: PageProps<'/admin/historico'>) {
-  const { filtro } = await searchParams;
-  const { supabase } = await exigirSessao({ apenasAdmin: true });
-  let q = supabase
-    .from('auditoria')
-    .select('*')
-    .order('criado_em', { ascending: false })
-    .limit(300);
-  if (filtro === 'precos') q = q.eq('campo', 'preco');
-  if (filtro === 'leads') q = q.eq('tabela', 'leads');
-  if (filtro === 'imoveis') q = q.eq('tabela', 'imoveis');
-  const [{ data }, corretores] = await Promise.all([q, listarCorretores(supabase)]);
-  const nomes = Object.fromEntries(corretores.map((c) => [c.id, c.nome]));
-
-  const abas = [
-    { valor: undefined, rotulo: 'Tudo' },
-    { valor: 'precos', rotulo: 'Mudanças de preço' },
-    { valor: 'imoveis', rotulo: 'Imóveis' },
-    { valor: 'leads', rotulo: 'Leads' },
-  ];
+function Registro() {
+  const { supabase } = usePainel();
+  const filtro = useSearchParams().get('filtro') ?? '';
+  const { dados } = useConsulta(
+    () =>
+      Promise.all([
+        historico(supabase, {
+          limite: 300,
+          campo: filtro === 'precos' ? 'preco' : undefined,
+          tabela: filtro === 'leads' || filtro === 'imoveis' ? filtro : undefined,
+        }),
+        listarCorretores(supabase),
+      ]),
+    `${filtro}`,
+  );
 
   return (
     <>
-      <TituloPagina
-        titulo="Histórico de alterações"
-        descricao="Registro automático de quem alterou o quê, com valor antigo e novo."
-      />
       <nav aria-label="Filtros do histórico" className="mb-4 flex flex-wrap gap-2">
-        {abas.map((a) => (
+        {ABAS.map((a) => (
           <Link
             key={a.rotulo}
             href={a.valor ? `/admin/historico?filtro=${a.valor}` : '/admin/historico'}
@@ -53,15 +53,36 @@ export default async function PaginaHistorico({ searchParams }: PageProps<'/admi
         ))}
       </nav>
       <Cartao>
-        <HistoricoAlteracoes
-          itens={(data ?? []) as LinhaAuditoria[]}
-          nomesCorretores={nomes}
-          mostrarRegistro={(a) => ({
-            href: `/admin/${a.tabela}/${a.registro_id}`,
-            rotulo: a.tabela === 'imoveis' ? 'ver imóvel' : 'ver lead',
-          })}
-        />
+        {!dados ? (
+          <Carregando />
+        ) : (
+          <HistoricoAlteracoes
+            itens={dados[0]}
+            nomesCorretores={Object.fromEntries(dados[1].map((c) => [c.id, c.nome]))}
+            mostrarRegistro={(a) => ({
+              href:
+                a.tabela === 'imoveis'
+                  ? `/admin/imoveis/editar?id=${a.registro_id}`
+                  : `/admin/leads/ver?id=${a.registro_id}`,
+              rotulo: a.tabela === 'imoveis' ? 'ver imóvel' : 'ver lead',
+            })}
+          />
+        )}
       </Cartao>
+    </>
+  );
+}
+
+export default function PaginaHistorico() {
+  return (
+    <>
+      <TituloPagina
+        titulo="Histórico de alterações"
+        descricao="Registro automático de quem alterou o quê, com valor antigo e novo."
+      />
+      <Suspense fallback={<Carregando />}>
+        <Registro />
+      </Suspense>
     </>
   );
 }

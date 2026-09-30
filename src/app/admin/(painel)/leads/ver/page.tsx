@@ -1,20 +1,21 @@
+'use client';
+
 import { Trash2 } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useState } from 'react';
+import { Carregando } from '@/components/admin/Carregando';
 import { FormularioLeadPainel } from '@/components/admin/FormularioLeadPainel';
 import { HistoricoAlteracoes } from '@/components/admin/HistoricoAlteracoes';
 import { SeloEtapa } from '@/components/admin/Selos';
-import { Cartao, TituloPagina } from '@/components/admin/ui';
+import { Aviso, Cartao, TituloPagina } from '@/components/admin/ui';
 import { IconeWhatsApp } from '@/components/comum/IconeWhatsApp';
 import { Button } from '@/components/ui/button';
-import { excluirLead } from '@/lib/admin/acoes-leads';
-import { COLUNAS_LEAD, historicoDoRegistro, listarCorretores } from '@/lib/admin/consultas';
+import { historico, listarCorretores, obterLead } from '@/lib/admin/consultas';
+import { excluirLead } from '@/lib/admin/operacoes';
 import { ROTULO_FAIXA_RENDA, ROTULO_ORIGEM, ROTULO_PERIODO } from '@/lib/admin/rotulos';
-import { exigirSessao } from '@/lib/admin/sessao';
-import type { LinhaLead } from '@/lib/supabase/tipos';
-
-export const metadata: Metadata = { title: 'Lead' };
+import { usePainel } from '@/lib/admin/sessao';
+import { useConsulta } from '@/lib/admin/useConsulta';
 
 const DATA_HORA = new Intl.DateTimeFormat('pt-BR', {
   dateStyle: 'long',
@@ -22,20 +23,36 @@ const DATA_HORA = new Intl.DateTimeFormat('pt-BR', {
   timeZone: 'America/Fortaleza',
 });
 
-export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id]'>) {
-  const { id } = await params;
-  if (!/^[0-9a-f-]{36}$/i.test(id)) notFound();
-  const { supabase, ehAdmin } = await exigirSessao();
-  const [{ data }, corretores, historico] = await Promise.all([
-    supabase.from('leads').select(COLUNAS_LEAD).eq('id', id).maybeSingle<LinhaLead>(),
-    listarCorretores(supabase),
-    historicoDoRegistro(supabase, 'leads', id),
-  ]);
-  if (!data) notFound();
-  const l = data;
+function Lead() {
+  const sessao = usePainel();
+  const { supabase, ehAdmin } = sessao;
+  const router = useRouter();
+  const id = useSearchParams().get('id') ?? '';
+  const [erro, setErro] = useState<string>();
+  const { dados, recarregar } = useConsulta(
+    () =>
+      Promise.all([
+        obterLead(supabase, id),
+        listarCorretores(supabase),
+        historico(supabase, { tabela: 'leads', id }),
+      ]),
+    `${id}`,
+  );
+
+  if (!dados) return <Carregando />;
+  const [l, corretores, hist] = dados;
+  if (!l)
+    return (
+      <div className="rounded-2xl border border-dashed bg-card p-10 text-center" role="alert">
+        <p className="text-lg font-bold">Lead não encontrado</p>
+        <p className="text-muted-foreground">
+          Ele não existe ou é de outro corretor. <Link href="/admin/leads">Voltar</Link>
+        </p>
+      </div>
+    );
+
   const nomes = Object.fromEntries(corretores.map((c) => [c.id, c.nome]));
   const telefone = l.whatsapp.replace(/^55(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
-
   const linhas: [string, string | null][] = [
     ['Recebido em', DATA_HORA.format(new Date(l.criado_em))],
     ['Origem', ROTULO_ORIGEM[l.origem] ?? l.origem],
@@ -60,12 +77,7 @@ export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id
   ];
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <p className="mb-2 text-sm">
-        <Link href="/admin/leads" className="text-primary underline">
-          ← Leads
-        </Link>
-      </p>
+    <>
       <TituloPagina
         titulo={
           <span className="flex flex-wrap items-center gap-3">
@@ -80,6 +92,11 @@ export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id
           </Button>
         }
       />
+      {erro && (
+        <Aviso tom="erro" className="mb-4">
+          {erro}
+        </Aviso>
+      )}
       <div className="grid gap-6 lg:grid-cols-[1fr_22rem]">
         <div className="space-y-6">
           <Cartao titulo="Dados do contato">
@@ -98,7 +115,7 @@ export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id
                   <dd className="font-semibold">
                     {l.imovel_id ? (
                       <Link
-                        href={`/admin/imoveis/${l.imovel_id}`}
+                        href={`/admin/imoveis/editar?id=${l.imovel_id}`}
                         className="text-primary underline"
                       >
                         {l.codigo_imovel}
@@ -118,18 +135,20 @@ export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id
             )}
           </Cartao>
           <Cartao titulo="Histórico">
-            <HistoricoAlteracoes itens={historico} nomesCorretores={nomes} />
+            <HistoricoAlteracoes itens={hist} nomesCorretores={nomes} />
           </Cartao>
         </div>
         <div className="space-y-6">
           <Cartao titulo="Atendimento">
             <FormularioLeadPainel
+              key={l.atualizado_em}
               id={l.id}
               etapa={l.etapa}
               observacoes={l.observacoes ?? ''}
               motivoPerda={l.motivo_perda ?? ''}
               corretorId={l.corretor_id ?? ''}
               corretores={ehAdmin ? corretores.map((c) => ({ id: c.id, nome: c.nome })) : null}
+              aoSalvar={() => void recarregar()}
             />
           </Cartao>
           {ehAdmin && (
@@ -137,15 +156,37 @@ export default async function PaginaLead({ params }: PageProps<'/admin/leads/[id
               <p className="mb-3 text-sm text-muted-foreground">
                 Use quando a pessoa pedir a exclusão dos dados dela. Não dá para desfazer.
               </p>
-              <form action={excluirLead.bind(null, l.id)}>
-                <Button type="submit" variant="destructive" size="sm">
-                  <Trash2 aria-hidden /> Excluir lead
-                </Button>
-              </form>
+              <Button
+                variant="destructive"
+                size="sm"
+                onClick={async () => {
+                  if (!window.confirm(`Excluir os dados de ${l.nome} definitivamente?`)) return;
+                  const r = await excluirLead(sessao, l.id);
+                  if (r.ok) router.replace('/admin/leads?aviso=excluido');
+                  else setErro(r.erro);
+                }}
+              >
+                <Trash2 aria-hidden /> Excluir lead
+              </Button>
             </Cartao>
           )}
         </div>
       </div>
+    </>
+  );
+}
+
+export default function PaginaLead() {
+  return (
+    <div className="mx-auto max-w-4xl">
+      <p className="mb-2 text-sm">
+        <Link href="/admin/leads" className="text-primary underline">
+          ← Leads
+        </Link>
+      </p>
+      <Suspense fallback={<Carregando />}>
+        <Lead />
+      </Suspense>
     </div>
   );
 }

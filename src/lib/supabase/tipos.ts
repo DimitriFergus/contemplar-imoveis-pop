@@ -1,6 +1,5 @@
 /** Linhas das tabelas (supabase/migrations). Mantidas à mão para não depender de geração de tipos. */
 import type { Foto } from '@/types';
-import type { StatusPainel } from '@/lib/schemas/imovel';
 
 export type Papel = 'admin' | 'corretor';
 
@@ -37,7 +36,7 @@ export interface LinhaImovel {
   id: string;
   codigo: string;
   slug: string;
-  status: StatusPainel;
+  status: 'rascunho' | 'publicado' | 'reservado' | 'vendido';
   corretor_id: string;
   destaque: boolean;
   exemplo: boolean;

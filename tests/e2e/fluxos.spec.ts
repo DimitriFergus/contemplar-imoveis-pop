@@ -16,7 +16,7 @@ test.describe('Buscar e filtrar', () => {
     await busca.getByText('Buscar por parcela').click();
     await busca.getByLabel('Parcela até').selectOption('1500');
     await busca.getByRole('button', { name: 'Buscar' }).click();
-    await expect(page).toHaveURL(/\/imoveis\?parcelaMax=1500/);
+    await expect(page).toHaveURL(/\/imoveis\/?\?parcelaMax=1500/);
     await expect(
       page.getByRole('link', { name: /Remover filtro: Parcela até R\$ 1\.500/ }),
     ).toBeVisible();
@@ -57,7 +57,7 @@ test.describe('Buscar e filtrar', () => {
       await expect(card.getByText('Casa', { exact: true })).toBeVisible();
     }
     await page.getByRole('link', { name: 'Remover filtro: Casas' }).click();
-    await expect(page).toHaveURL(/\/imoveis$/);
+    await expect(page).toHaveURL(/\/imoveis\/?$/);
   });
 
   test('ordenação por menor preço', async ({ page }) => {
@@ -79,12 +79,12 @@ test.describe('Anúncio', () => {
       waitUntil: 'networkidle',
     });
     await page.getByTestId('card-imovel').first().getByRole('heading').getByRole('link').click();
-    await expect(page).toHaveURL(/\/imoveis\/.+-cp-\d{4}$/);
+    await expect(page).toHaveURL(/\/imoveis\/.+-cp-\d{4}\/?$/);
     const titulo = await page.getByRole('heading', { level: 1 }).innerText();
     const codigo =
       page
         .url()
-        .match(/cp-\d{4}$/)?.[0]
+        .match(/cp-\d{4}(?=\/?$)/)?.[0]
         .toUpperCase() ?? '';
 
     // Parcela sempre acompanhada do preço total e do aviso de simulação
@@ -115,7 +115,7 @@ test.describe('Anúncio', () => {
   test('JSON-LD de anúncio imobiliário com preço em BRL', async ({ page }) => {
     await page.goto('/imoveis/casas', { waitUntil: 'networkidle' });
     await page.getByTestId('card-imovel').first().getByRole('heading').getByRole('link').click();
-    await expect(page).toHaveURL(/-cp-\d{4}$/);
+    await expect(page).toHaveURL(/-cp-\d{4}\/?$/);
     const blocos = await page.locator('script[type="application/ld+json"]').allTextContents();
     const anuncio = blocos
       .map((b) => JSON.parse(b))
@@ -169,6 +169,7 @@ test.describe('Leads', () => {
   test('API recusa lead sem consentimento e aceita honeypot silenciosamente', async ({
     request,
   }) => {
+    test.skip(Boolean(process.env.E2E_ESTATICO), 'Sem servidor (GitHub Pages) não há /api/leads');
     const semConsentimento = await request.post('/api/leads', {
       data: {
         origem: 'formulario_contato',
@@ -260,7 +261,7 @@ test.describe('Favoritos e comparação', () => {
     await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
     await page.goto('/imoveis/casas', { waitUntil: 'networkidle' });
     await page.getByTestId('card-imovel').first().getByRole('heading').getByRole('link').click();
-    await expect(page).toHaveURL(/-cp-\d{4}$/);
+    await expect(page).toHaveURL(/-cp-\d{4}\/?$/);
     await expect(page.getByRole('button', { name: /^Comparar/ })).toHaveCount(0);
   });
 });
@@ -274,7 +275,7 @@ test.describe('Minha Casa, Minha Vida e checklist', () => {
     await expect(dialogo.getByRole('link', { name: /CP-\d{4}/ }).first()).toBeVisible();
     await expect(dialogo.getByRole('link', { name: 'Fazer minha simulação' })).toBeVisible();
     await dialogo.getByRole('link', { name: 'Fazer minha simulação' }).click();
-    await expect(page).toHaveURL(/\/simulador$/);
+    await expect(page).toHaveURL(/\/simulador\/?$/);
   });
 
   test('como comprar oferece o checklist em PDF', async ({ page, request }) => {

@@ -1,23 +1,40 @@
 'use client';
 
 import { LogIn } from 'lucide-react';
-import { useActionState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { entrar, type EstadoFormulario } from '@/lib/admin/acoes-acesso';
+import { entrar } from '@/lib/admin/operacoes';
 import { Aviso, Campo } from './ui';
 
 export function FormularioEntrar() {
-  const [estado, acao, enviando] = useActionState<EstadoFormulario, FormData>(entrar, {});
+  const router = useRouter();
+  const [erro, setErro] = useState<string>();
+  const [enviando, setEnviando] = useState(false);
+
+  async function enviar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    setEnviando(true);
+    const r = await entrar(String(form.get('email') ?? ''), String(form.get('senha') ?? ''));
+    if (r.erro) {
+      setErro(r.erro);
+      setEnviando(false);
+      return;
+    }
+    router.replace('/admin');
+  }
+
   return (
-    <form action={acao} className="space-y-4">
+    <form onSubmit={enviar} className="space-y-4">
       <Campo rotulo="E-mail" id="email">
         <Input id="email" name="email" type="email" autoComplete="username" required />
       </Campo>
       <Campo rotulo="Senha" id="senha">
         <Input id="senha" name="senha" type="password" autoComplete="current-password" required />
       </Campo>
-      {estado.erro && <Aviso tom="erro">{estado.erro}</Aviso>}
+      {erro && <Aviso tom="erro">{erro}</Aviso>}
       <Button type="submit" size="lg" className="w-full" disabled={enviando}>
         <LogIn aria-hidden /> {enviando ? 'Entrando…' : 'Entrar'}
       </Button>

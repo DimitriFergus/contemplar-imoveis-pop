@@ -23,7 +23,10 @@ export default defineConfig({
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: `npm run start -- -p ${PORTA}`,
+    // E2E_ESTATICO=1: testa a exportação estática (como no GitHub Pages) servindo a pasta out.
+    command: process.env.E2E_ESTATICO
+      ? `node scripts/servir-estatico.mjs out ${PORTA}`
+      : `npm run start -- -p ${PORTA}`,
     url: `http://localhost:${PORTA}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

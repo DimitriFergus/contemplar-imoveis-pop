@@ -1,15 +1,17 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import { FormularioSenha } from '@/components/admin/FormularioSenha';
 import { Cartao, TituloPagina } from '@/components/admin/ui';
-import { exigirSessao } from '@/lib/admin/sessao';
+import { usePainel } from '@/lib/admin/sessao';
+import { useConsulta } from '@/lib/admin/useConsulta';
 
-export const metadata: Metadata = { title: 'Minha conta' };
-
-export default async function PaginaConta() {
-  const { perfil, email, supabase, nivelAtual } = await exigirSessao();
-  const { data } = await supabase.auth.mfa.listFactors();
-  const temMfa = (data?.totp.length ?? 0) > 0;
+export default function PaginaConta() {
+  const { perfil, email, supabase, nivelAtual } = usePainel();
+  const { dados: temMfa } = useConsulta(async () => {
+    const { data } = await supabase.auth.mfa.listFactors();
+    return (data?.totp.length ?? 0) > 0;
+  }, '');
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
@@ -33,13 +35,15 @@ export default async function PaginaConta() {
           <div>
             <dt className="text-sm text-muted-foreground">Verificação em duas etapas</dt>
             <dd className="font-semibold">
-              {temMfa
-                ? `Ativa${nivelAtual === 'aal2' ? ' (confirmada nesta sessão)' : ''}`
-                : 'Desativada'}
+              {temMfa === undefined
+                ? '…'
+                : temMfa
+                  ? `Ativa${nivelAtual === 'aal2' ? ' (confirmada nesta sessão)' : ''}`
+                  : 'Desativada'}
             </dd>
           </div>
         </dl>
-        {!temMfa && (
+        {temMfa === false && (
           <p className="mt-4 text-sm">
             Recomendado:{' '}
             <Link href="/admin/mfa?ativar=1" className="font-semibold text-primary underline">

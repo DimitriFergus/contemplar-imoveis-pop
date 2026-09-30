@@ -1,11 +1,18 @@
-# Publica a versão estática do site no GitHub Pages a cada push na branch main.
+# Publica o site (e o painel /admin) no GitHub Pages.
 # Endereço: https://<usuário>.github.io/<repositório>/
+#
+# - A cada push na main: lint, tipos, testes, build e publicação.
+# - A cada 10 minutos: confere se algo mudou no banco (imóveis/corretores cadastrados pelo
+#   painel). Se mudou, gera as páginas de novo para o Google e as prévias de compartilhamento.
+#   (O site já mostra as mudanças na hora, lendo do banco no navegador.)
 name: Publicar no GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '*/10 * * * *'
 
 permissions:
   contents: read
@@ -14,11 +21,37 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
+
+env:
+  # Chaves PÚBLICAS do Supabase (a chave secreta nunca vai para o site).
+  NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
 
 jobs:
+  checar:
+    name: Checar mudanças no banco
+    runs-on: ubuntu-latest
+    outputs:
+      publicar: ${{ steps.comparar.outputs.publicar }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: comparar
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "publicar=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          atual=$(node scripts/versao-dados.mjs)
+          publicada=$(curl -fsS "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/dados/versao.txt" || echo "nenhuma")
+          echo "Banco: $atual | Site: $publicada"
+          if [ "$atual" != "$publicada" ]; then echo "publicar=true" >> "$GITHUB_OUTPUT"; else echo "publicar=false" >> "$GITHUB_OUTPUT"; fi
+
   verificar:
     name: Lint, tipos e testes
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,7 +66,8 @@ jobs:
 
   construir:
     name: Build estático
-    needs: verificar
+    needs: [checar, verificar]
+    if: always() && needs.checar.outputs.publicar == 'true' && (needs.verificar.result == 'success' || needs.verificar.result == 'skipped')
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_MODO_ESTATICO: 'true'
@@ -48,15 +82,17 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      # O GitHub Pages não tem servidor: a rota de leads (POST) e o painel /admin ficam de fora e os
-      # formulários enviam o contato pelo WhatsApp (ver MODO_ESTATICO em src/config/site.ts).
+      # Sem servidor no GitHub Pages: as rotas /api ficam de fora. O painel /admin e os
+      # formulários falam direto com o Supabase pelo navegador (regras de segurança no banco).
       - name: Remover rotas que exigem servidor
         run: |
-          rm -rf src/app/api src/app/admin src/proxy.ts
+          rm -rf src/app/api
           sed -i 's/export const dynamicParams = true;/export const dynamicParams = false;/' 'src/app/imoveis/bairro/[bairro]/page.tsx'
       - run: npm run build
       - name: Ajustar arquivos exportados
-        run: node scripts/corrigir-exportacao.mjs out
+        run: |
+          node scripts/corrigir-exportacao.mjs out
+          node scripts/versao-dados.mjs out
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

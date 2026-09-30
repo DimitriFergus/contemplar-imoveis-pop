@@ -13,9 +13,9 @@ import {
   Inbox,
 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { sair } from '@/lib/admin/acoes-acesso';
+import { sair } from '@/lib/admin/operacoes';
 import { cn } from '@/lib/utils';
 
 const ITENS = [
@@ -37,6 +37,7 @@ export function NavegacaoPainel({
   ehAdmin: boolean;
 }) {
   const caminho = usePathname();
+  const router = useRouter();
   const [aberto, setAberto] = useState(false);
   const ativo = (href: string) =>
     href === '/admin' ? caminho === href : caminho === href || caminho.startsWith(`${href}/`);
@@ -101,14 +102,18 @@ export function NavegacaoPainel({
           <p className="text-sm text-white/70">
             {papel === 'admin' ? 'Administrador' : 'Corretor'}
           </p>
-          <form action={sair} className="mt-3">
+          <div className="mt-3">
             <button
-              type="submit"
+              type="button"
+              onClick={async () => {
+                await sair();
+                router.replace('/admin/entrar');
+              }}
               className="flex min-h-11 items-center gap-2 rounded-lg text-sm font-semibold text-white/85 hover:text-white"
             >
               <LogOut className="size-4" aria-hidden /> Sair
             </button>
-          </form>
+          </div>
         </div>
       </nav>
     </>

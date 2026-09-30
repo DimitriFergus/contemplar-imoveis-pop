@@ -55,7 +55,7 @@ async function entrar(page: Page, conta: ContaTeste) {
 /** Entra e espera o login concluir (painel ou tela do MFA) antes de seguir. */
 async function entrarNoPainel(page: Page, conta: ContaTeste) {
   await entrar(page, conta);
-  await page.waitForURL(/\/admin(\/mfa)?$/, { timeout: 20_000 });
+  await page.waitForURL(/\/admin\/?(mfa\/?)?$/, { timeout: 20_000 });
 }
 
 test('sem login, o painel manda para a tela de entrada', async ({ page }) => {
@@ -85,8 +85,10 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
   await page.getByLabel('Área útil (m²)').fill('60');
   await page.getByRole('button', { name: 'Salvar rascunho' }).click();
 
-  await expect(page).toHaveURL(/\/admin\/imoveis\/[0-9a-f-]{36}\?novo=1/, { timeout: 20_000 });
-  imovelA.id = page.url().match(/imoveis\/([0-9a-f-]{36})/)?.[1] ?? '';
+  await expect(page).toHaveURL(/\/admin\/imoveis\/editar\/?\?id=[0-9a-f-]{36}&novo=1/, {
+    timeout: 20_000,
+  });
+  imovelA.id = page.url().match(/id=([0-9a-f-]{36})/)?.[1] ?? '';
   await expect(page.getByText(/Rascunho criado com o código CP-\d{4}/)).toBeVisible();
   imovelA.codigo = (await page.getByText(/Rascunho criado/).innerText()).match(/CP-\d{4}/)![0];
 
@@ -109,7 +111,7 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
   await expect(page.getByText('Salvo! O site já foi atualizado')).toBeVisible({ timeout: 20_000 });
 
   // Pré-visualização e site público atualizado na hora.
-  await page.goto(`/admin/imoveis/${imovelA.id}/previa`);
+  await page.goto(`/admin/imoveis/previa?id=${imovelA.id}`);
   await expect(page.getByRole('heading', { level: 1, name: titulo })).toBeVisible();
   const { data } = await servico().from('imoveis').select('slug').eq('id', imovelA.id).single();
   imovelA.slug = data!.slug as string;
@@ -119,7 +121,7 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
 
 test('mudança de preço fica no histórico com destaque', async ({ page }) => {
   await entrarNoPainel(page, corretorA);
-  await page.goto(`/admin/imoveis/${imovelA.id}`);
+  await page.goto(`/admin/imoveis/editar?id=${imovelA.id}`);
   await page.getByLabel('Preço (R$)').fill('179900');
   await page.getByRole('button', { name: 'Salvar', exact: true }).click();
   await expect(page.getByText('Salvo! O site já foi atualizado')).toBeVisible({ timeout: 20_000 });
@@ -132,30 +134,32 @@ test('mudança de preço fica no histórico com destaque', async ({ page }) => {
 
 test('duplicar imóvel cria uma cópia em rascunho', async ({ page }) => {
   await entrarNoPainel(page, corretorA);
-  await page.goto(`/admin/imoveis/${imovelA.id}`);
+  await page.goto(`/admin/imoveis/editar?id=${imovelA.id}`);
   await page.getByRole('button', { name: 'Duplicar imóvel' }).click();
   await expect(page.getByText(/Cópia criada como rascunho/)).toBeVisible({ timeout: 20_000 });
   await expect(page.getByLabel('Título do anúncio')).toHaveValue(/Casa teste E2E/);
   await expect(page.locator('img[src*="/storage/v1/object/public/imoveis/"]')).toHaveCount(1);
 });
 
-test('lead do site chega ao corretor do imóvel', async ({ page, request }) => {
-  const resp = await request.post('/api/leads', {
-    data: {
-      origem: 'formulario_imovel',
-      nome: 'Cliente Teste E2E',
-      whatsapp: '(85) 99999-0000',
-      codigoImovel: imovelA.codigo,
-      consentimentoLGPD: true,
-    },
-  });
-  expect(resp.status()).toBe(201);
+test('lead do site chega ao corretor do imóvel', async ({ page }) => {
+  // O visitante pede contato na página do imóvel (grava pelo servidor ou direto no banco).
+  await page.goto(`/imoveis/${imovelA.slug}`, { waitUntil: 'networkidle' });
+  const contato = page.locator('section[aria-labelledby="titulo-contato"]');
+  await contato.getByLabel('Seu nome').fill('Cliente Teste E2E');
+  await contato.getByLabel('WhatsApp com DDD').fill('(85) 99999-0000');
+  await contato.getByRole('checkbox', { name: /Concordo/ }).check();
+  await contato.getByRole('button', { name: 'Quero receber contato' }).click();
+  await expect(contato.getByText('Recebemos seu contato!')).toBeVisible({ timeout: 20_000 });
 
   await entrarNoPainel(page, corretorA);
   await page.goto('/admin/leads');
   const cartao = page.getByTestId('cartao-lead').filter({ hasText: 'Cliente Teste E2E' });
   await expect(cartao).toBeVisible();
+  const gravou = page.waitForResponse(
+    (r) => r.url().includes('/rest/v1/leads') && r.request().method() === 'PATCH' && r.ok(),
+  );
   await cartao.getByRole('combobox').selectOption('em_atendimento');
+  await gravou;
   await page.reload();
   await expect(
     page
@@ -164,7 +168,7 @@ test('lead do site chega ao corretor do imóvel', async ({ page, request }) => {
   ).toBeVisible();
 
   const download = page.waitForEvent('download');
-  await page.getByRole('link', { name: /Exportar planilha/ }).click();
+  await page.getByRole('button', { name: /Exportar planilha/ }).click();
   expect((await download).suggestedFilename()).toMatch(/^leads-contemplar-.*\.xlsx$/);
 });
 
@@ -174,8 +178,9 @@ test('um corretor não vê nem altera imóveis e leads de outro', async ({ page 
 
   await page.goto('/admin/imoveis');
   await expect(page.getByText(imovelA.codigo)).toHaveCount(0);
-  const resp = await page.goto(`/admin/imoveis/${imovelA.id}`);
-  expect(resp?.status()).toBe(404);
+  await page.goto(`/admin/imoveis/editar?id=${imovelA.id}`);
+  await expect(page.getByText('Imóvel não encontrado')).toBeVisible();
+  await expect(page.getByLabel('Título do anúncio')).toHaveCount(0);
 
   await page.goto('/admin/leads');
   await expect(page.getByText('Cliente Teste E2E')).toHaveCount(0);

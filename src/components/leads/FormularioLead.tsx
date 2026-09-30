@@ -10,6 +10,7 @@ import { rastrear } from '@/lib/analytics';
 import { utmSessao } from '@/lib/cliente/estado';
 import { FAIXAS } from '@/config/financiamento';
 import { AGENDAMENTO, MODO_ESTATICO } from '@/config/site';
+import { SUPABASE_CONFIGURADO } from '@/lib/supabase/config';
 import { comOrigem, linkWhatsApp } from '@/lib/utils/whatsapp';
 import { formatarPreco } from '@/lib/utils/formatar';
 import type { OrigemLead } from '@/types';
@@ -68,6 +69,7 @@ export function FormularioLead({
   const [enviado, setEnviado] = useState(false);
   const [erros, setErros] = useState<Erros>({});
   const [erroGeral, setErroGeral] = useState('');
+  const [gravadoNoCrm, setGravadoNoCrm] = useState(false);
 
   async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -101,6 +103,35 @@ export function FormularioLead({
         errosLocais.consentimentoLGPD = 'É preciso concordar com a Política de Privacidade';
       setErros(errosLocais);
       if (Object.keys(errosLocais).length) return;
+
+      // Com o Supabase: grava direto no CRM do painel (função segura registrar_lead).
+      if (SUPABASE_CONFIGURADO) {
+        setEnviando(true);
+        setErroGeral('');
+        try {
+          const { clienteAnonimo } = await import('@/lib/supabase/anonimo');
+          const { error } = await clienteAnonimo().rpc('registrar_lead', { dados: corpo });
+          if (!error) {
+            rastrear('envio_lead', { origem, codigo: codigoImovel });
+            setGravadoNoCrm(true);
+            setEnviado(true);
+            aoEnviar?.();
+            return;
+          }
+          if (error.hint === 'limite') {
+            setErroGeral(
+              'Muitas tentativas em pouco tempo. Aguarde alguns minutos ou fale pelo WhatsApp.',
+            );
+            return;
+          }
+          // Outro erro: segue pelo WhatsApp para não perder o contato.
+        } catch {
+          // Sem conexão com o banco: segue pelo WhatsApp.
+        } finally {
+          setEnviando(false);
+        }
+      }
+
       const faixa = FAIXAS.find((f) => f.id === corpo.rendaFamiliarFaixa);
       const linhas = [
         `Olá! Meu nome é ${corpo.nome}.`,
@@ -159,10 +190,10 @@ export function FormularioLead({
       >
         <CheckCircle2 className="mx-auto size-12 text-sucesso" aria-hidden />
         <h3 className="mt-3 text-xl font-bold">
-          {MODO_ESTATICO ? 'Quase lá!' : 'Recebemos seu contato!'}
+          {MODO_ESTATICO && !gravadoNoCrm ? 'Quase lá!' : 'Recebemos seu contato!'}
         </h3>
         <p className="mt-2 text-muted-foreground">
-          {MODO_ESTATICO
+          {MODO_ESTATICO && !gravadoNoCrm
             ? 'Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar. Se não abriu, use o botão abaixo:'
             : 'Um corretor vai falar com você pelo WhatsApp em breve, no horário de atendimento. Se preferir, fale agora:'}
         </p>

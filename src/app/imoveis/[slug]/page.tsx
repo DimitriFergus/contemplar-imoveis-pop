@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { LISTAGEM } from '@/config/site';
+import { LISTAGEM, MODO_ESTATICO } from '@/config/site';
 import { DetalheImovel } from '@/components/imoveis/DetalheImovel';
+import { ImovelAoVivo } from '@/components/imoveis/ImovelAoVivo';
 import { parcelaEstimadaAnuncio } from '@/lib/financiamento';
 import { repositorio } from '@/lib/repositorio';
+import { SUPABASE_CONFIGURADO } from '@/lib/supabase/config';
 import { formatarPreco } from '@/lib/utils/formatar';
 
 /** Páginas geradas no build (SSG) e revalidadas a cada hora. */
@@ -43,5 +45,8 @@ export default async function PaginaImovel({ params }: PageProps<'/imoveis/[slug
     repositorio.semelhantes(imovel, LISTAGEM.maxSemelhantes),
     repositorio.obterCorretor(imovel.corretorResponsavelId),
   ]);
+  // GitHub Pages: a página confere no banco, ao abrir, se o anúncio mudou depois do build.
+  if (MODO_ESTATICO && SUPABASE_CONFIGURADO)
+    return <ImovelAoVivo inicial={imovel} corretor={corretor} semelhantes={semelhantes} />;
   return <DetalheImovel imovel={imovel} corretor={corretor} semelhantes={semelhantes} />;
 }

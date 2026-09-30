@@ -1,7 +1,8 @@
 # Manual do painel administrativo
 
-O painel fica em **seusite.com.br/admin**. Nele a equipe cadastra imóveis, envia fotos,
-publica anúncios e acompanha os contatos (leads) que chegam pelo site.
+O painel fica em **/admin** no endereço do site (hoje:
+**https://dimitrifergus.github.io/contemplar-imoveis-pop/admin/**). Nele a equipe cadastra
+imóveis, envia fotos, publica anúncios e acompanha os contatos (leads) que chegam pelo site.
 
 ---
 
@@ -73,7 +74,10 @@ ao salvar.
 | **Reservado** | Aparece com o aviso "Reservado".                          |
 | **Vendido**   | Aparece com o aviso "Vendido" e sugere imóveis parecidos. |
 
-Ao salvar, **o site é atualizado na hora** (não precisa esperar nem pedir para ninguém).
+Ao salvar, **o site mostra a mudança na hora**: a busca, a página do imóvel e os
+favoritos leem os dados direto do banco. No GitHub Pages, as páginas "de vitrine" (página
+inicial, bairros, resultado no Google e prévia ao compartilhar no WhatsApp) são regeradas
+sozinhas em até uns 15 minutos.
 
 ### Pré-visualizar
 
@@ -170,22 +174,43 @@ A senha provisória do primeiro administrador fica no arquivo `ACESSO_ADMIN_PROV
 No Supabase, em **Authentication → Sign In / Providers**, desative _Allow new users to sign up_
 (as contas são criadas só pelo painel).
 
-### 7.3 Publicar na Vercel
+### 7.3 Publicar
 
-1. **vercel.com → Add New → Project** → importe o repositório do GitHub.
-2. Em **Environment Variables**, cadastre `NEXT_PUBLIC_SUPABASE_URL`,
-   `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `NEXT_PUBLIC_SITE_URL`
-   (endereço final do site) e `NEXT_PUBLIC_MODO_DEMO=true` enquanto houver imóveis de exemplo.
-   **Não** cadastre `SUPABASE_DB_URL` nem `NEXT_PUBLIC_MODO_ESTATICO`.
-3. **Deploy**. Cada push na branch `main` publica de novo.
-4. No Supabase, **Authentication → URL Configuration → Site URL**: coloque o endereço do site.
+**GitHub Pages (atual, gratuito).** O workflow `.github/workflows/pages.yml` publica a cada
+push na `main` e, a cada 10 minutos, confere se algo mudou no banco para regerar as páginas.
+Ele precisa de duas **variáveis** do repositório (GitHub → Settings → Secrets and variables →
+Actions → _Variables_): `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+(são chaves públicas). A chave secreta **não** vai para o GitHub.
+
+Sem servidor, o painel e os formulários falam direto com o Supabase pelo navegador. A
+segurança não depende do site: as regras RLS do banco decidem o que cada pessoa pode ver e
+alterar, e os leads entram só pela função `registrar_lead` (valida os dados e limita abusos).
+
+Criar/desativar pessoas da equipe usa a função **equipe** do Supabase (Edge Function, roda nos
+servidores do Supabase com a chave secreta). Instalar/atualizar, uma vez:
+
+```bash
+npx supabase login                                   # abre o navegador para autorizar
+npx supabase functions deploy equipe --project-ref SEU-PROJETO
+```
+
+**Vercel (opcional, com servidor).** O mesmo código roda na Vercel com atualização instantânea
+de todas as páginas: importe o repositório, cadastre `NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `NEXT_PUBLIC_SITE_URL` e
+`NEXT_PUBLIC_MODO_DEMO=true` e faça o deploy. **Não** cadastre `SUPABASE_DB_URL` nem
+`NEXT_PUBLIC_MODO_ESTATICO`.
 
 ### 7.4 Estrutura (para quem mantém o código)
 
-- `supabase/migrations/`: SQL versionado (tabelas, RLS, gatilhos de auditoria, Storage).
+- `supabase/migrations/`: SQL versionado (tabelas, RLS, auditoria, Storage, `registrar_lead`).
+- `supabase/functions/equipe/`: Edge Function da gestão da equipe.
 - `supabase/seed.sql`: dados mínimos (corretor de exemplo).
-- `src/lib/repositorio/supabase.ts`: o site público lê daqui quando o Supabase está configurado;
-  sem ele, lê `src/data` (GitHub Pages e desenvolvimento). As páginas não mudam.
-- `src/lib/admin/`: sessão (DAL), Server Actions e consultas do painel.
-- `src/proxy.ts`: renova a sessão e protege `/admin`.
+- `src/lib/repositorio/supabase.ts`: o site lê daqui (no build e no servidor) quando o Supabase
+  está configurado; sem ele, lê `src/data`. As páginas não mudam.
+- `src/lib/cliente/ao-vivo.ts`: leitura ao vivo no navegador (versão estática).
+- `src/lib/admin/`: sessão, consultas e operações do painel (rodam no navegador).
+- `scripts/versao-dados.mjs`: impressão digital dos dados, usada pelo workflow para saber se
+  precisa regerar o site.
 - Testes do painel: `tests/e2e/painel.spec.ts` (criam contas de teste e apagam no final).
+  Para testar a versão estática: build com `NEXT_PUBLIC_MODO_ESTATICO=true` (sem `src/app/api`)
+  e `E2E_ESTATICO=1 npx playwright test`.

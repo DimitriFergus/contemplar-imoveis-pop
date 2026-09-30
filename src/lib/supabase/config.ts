@@ -8,9 +8,8 @@ export const SUPABASE_CHAVE_PUBLICA =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
   '';
 
-export const SUPABASE_CONFIGURADO =
-  Boolean(SUPABASE_URL && SUPABASE_CHAVE_PUBLICA) &&
-  process.env.NEXT_PUBLIC_MODO_ESTATICO !== 'true';
+/** Vale também na versão estática (GitHub Pages): o navegador fala direto com o Supabase. */
+export const SUPABASE_CONFIGURADO = Boolean(SUPABASE_URL && SUPABASE_CHAVE_PUBLICA);
 
 /** Bucket do Storage com as fotos dos imóveis. */
 export const BUCKET_FOTOS = 'imoveis';

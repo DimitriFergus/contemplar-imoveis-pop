@@ -1,6 +1,5 @@
-import 'server-only';
-import { notFound } from 'next/navigation';
-import { COLUNAS_IMOVEL } from '@/lib/repositorio/supabase';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { COLUNAS_IMOVEL } from '@/lib/repositorio/linha';
 import type {
   LinhaAuditoria,
   LinhaCorretor,
@@ -8,15 +7,19 @@ import type {
   LinhaLead,
   LinhaPerfil,
 } from '@/lib/supabase/tipos';
-import type { SessaoValida } from './sessao';
 
-type Cliente = SessaoValida['supabase'];
+/** Consultas do painel. Rodam com a sessão de quem está logado (RLS decide o que aparece). */
 
-/** Imóveis que a pessoa pode ver no painel (RLS: corretor só os seus; admin todos). */
+export type ImovelDaLista = Omit<LinhaImovel, 'dados' | 'publicado_em' | 'criado_em'>;
+
+function termoSeguro(busca?: string) {
+  return busca?.replace(/[%,()*]/g, ' ').trim() || '';
+}
+
 export async function listarImoveisPainel(
-  supabase: Cliente,
+  supabase: SupabaseClient,
   filtros: { status?: string; busca?: string; corretor?: string },
-) {
+): Promise<ImovelDaLista[]> {
   let q = supabase
     .from('imoveis')
     .select(
@@ -26,27 +29,28 @@ export async function listarImoveisPainel(
     .limit(500);
   if (filtros.status) q = q.eq('status', filtros.status);
   if (filtros.corretor) q = q.eq('corretor_id', filtros.corretor);
-  if (filtros.busca) {
-    const termo = filtros.busca.replace(/[%,()]/g, ' ').trim();
-    if (termo) q = q.or(`titulo.ilike.%${termo}%,bairro.ilike.%${termo}%,codigo.ilike.%${termo}%`);
-  }
+  const termo = termoSeguro(filtros.busca);
+  if (termo) q = q.or(`titulo.ilike.%${termo}%,bairro.ilike.%${termo}%,codigo.ilike.%${termo}%`);
   const { data, error } = await q;
   if (error) throw new Error(error.message);
-  return data as Omit<LinhaImovel, 'dados' | 'publicado_em' | 'criado_em'>[];
+  return data as ImovelDaLista[];
 }
 
-export async function obterImovelPainel(supabase: Cliente, id: string): Promise<LinhaImovel> {
-  if (!/^[0-9a-f-]{36}$/i.test(id)) notFound();
+/** null = não existe ou a pessoa não tem acesso (as duas coisas parecem iguais, de propósito). */
+export async function obterImovelPainel(
+  supabase: SupabaseClient,
+  id: string,
+): Promise<LinhaImovel | null> {
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
   const { data } = await supabase
     .from('imoveis')
     .select(COLUNAS_IMOVEL)
     .eq('id', id)
     .maybeSingle<LinhaImovel>();
-  if (!data) notFound();
   return data;
 }
 
-export async function listarCorretores(supabase: Cliente): Promise<LinhaCorretor[]> {
+export async function listarCorretores(supabase: SupabaseClient): Promise<LinhaCorretor[]> {
   const { data } = await supabase
     .from('corretores')
     .select('id, nome, creci, whatsapp, foto, ativo')
@@ -54,7 +58,7 @@ export async function listarCorretores(supabase: Cliente): Promise<LinhaCorretor
   return (data ?? []) as LinhaCorretor[];
 }
 
-export async function listarPerfis(supabase: Cliente): Promise<LinhaPerfil[]> {
+export async function listarPerfis(supabase: SupabaseClient): Promise<LinhaPerfil[]> {
   const { data } = await supabase
     .from('perfis')
     .select('id, nome, email, papel, corretor_id, ativo, criado_em')
@@ -62,18 +66,19 @@ export async function listarPerfis(supabase: Cliente): Promise<LinhaPerfil[]> {
   return (data ?? []) as LinhaPerfil[];
 }
 
-export async function historicoDoRegistro(
-  supabase: Cliente,
-  tabela: 'imoveis' | 'leads',
-  id: string,
+export async function historico(
+  supabase: SupabaseClient,
+  filtro: { tabela?: 'imoveis' | 'leads'; id?: string; campo?: string; limite?: number },
 ): Promise<LinhaAuditoria[]> {
-  const { data } = await supabase
+  let q = supabase
     .from('auditoria')
     .select('*')
-    .eq('tabela', tabela)
-    .eq('registro_id', id)
     .order('criado_em', { ascending: false })
-    .limit(200);
+    .limit(filtro.limite ?? 200);
+  if (filtro.tabela) q = q.eq('tabela', filtro.tabela);
+  if (filtro.id) q = q.eq('registro_id', filtro.id);
+  if (filtro.campo) q = q.eq('campo', filtro.campo);
+  const { data } = await q;
   return (data ?? []) as LinhaAuditoria[];
 }
 
@@ -81,7 +86,7 @@ export const COLUNAS_LEAD =
   'id, criado_em, atualizado_em, origem, nome, whatsapp, email, renda_faixa, codigo_imovel, imovel_id, mensagem, data_visita, periodo_visita, utm, consentimento_lgpd, etapa, corretor_id, motivo_perda, observacoes';
 
 export async function listarLeads(
-  supabase: Cliente,
+  supabase: SupabaseClient,
   filtros: { etapa?: string; busca?: string; corretor?: string; limite?: number },
 ): Promise<LinhaLead[]> {
   let q = supabase
@@ -92,12 +97,20 @@ export async function listarLeads(
   if (filtros.etapa) q = q.eq('etapa', filtros.etapa);
   if (filtros.corretor === 'sem') q = q.is('corretor_id', null);
   else if (filtros.corretor) q = q.eq('corretor_id', filtros.corretor);
-  if (filtros.busca) {
-    const termo = filtros.busca.replace(/[%,()]/g, ' ').trim();
-    if (termo)
-      q = q.or(`nome.ilike.%${termo}%,whatsapp.ilike.%${termo}%,codigo_imovel.ilike.%${termo}%`);
-  }
+  const termo = termoSeguro(filtros.busca);
+  if (termo)
+    q = q.or(`nome.ilike.%${termo}%,whatsapp.ilike.%${termo}%,codigo_imovel.ilike.%${termo}%`);
   const { data, error } = await q;
   if (error) throw new Error(error.message);
   return (data ?? []) as LinhaLead[];
+}
+
+export async function obterLead(supabase: SupabaseClient, id: string): Promise<LinhaLead | null> {
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
+  const { data } = await supabase
+    .from('leads')
+    .select(COLUNAS_LEAD)
+    .eq('id', id)
+    .maybeSingle<LinhaLead>();
+  return data;
 }

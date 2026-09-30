@@ -1,13 +1,14 @@
 'use client';
 
 import { Save } from 'lucide-react';
-import { useActionState, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import { atualizarLead, type EstadoLead } from '@/lib/admin/acoes-leads';
+import { Input } from '@/components/ui/input';
+import { atualizarLead, type Resultado } from '@/lib/admin/operacoes';
 import { ROTULO_ETAPA } from '@/lib/admin/rotulos';
+import { usePainel } from '@/lib/admin/sessao';
 import { ETAPAS_LEAD, type EtapaLead } from '@/lib/supabase/tipos';
 import { AreaTexto, Aviso, Campo, Selecao } from './ui';
-import { Input } from '@/components/ui/input';
 
 export function FormularioLeadPainel({
   id,
@@ -16,6 +17,7 @@ export function FormularioLeadPainel({
   motivoPerda,
   corretorId,
   corretores,
+  aoSalvar,
 }: {
   id: string;
   etapa: EtapaLead;
@@ -23,15 +25,30 @@ export function FormularioLeadPainel({
   motivoPerda: string;
   corretorId: string;
   corretores: { id: string; nome: string }[] | null;
+  aoSalvar?: () => void;
 }) {
-  const [estado, acao, salvando] = useActionState<EstadoLead, FormData>(
-    atualizarLead.bind(null, id),
-    {},
-  );
+  const sessao = usePainel();
+  const [estado, setEstado] = useState<Resultado>({});
+  const [salvando, setSalvando] = useState(false);
   const [etapaAtual, setEtapaAtual] = useState(etapa);
 
+  async function enviar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    setSalvando(true);
+    const r = await atualizarLead(sessao, id, {
+      etapa: etapaAtual,
+      observacoes: String(form.get('observacoes') ?? ''),
+      motivoPerda: String(form.get('motivo_perda') ?? ''),
+      corretorId: corretores ? String(form.get('corretor_id') ?? '') : undefined,
+    });
+    setSalvando(false);
+    setEstado(r);
+    if (r.ok) aoSalvar?.();
+  }
+
   return (
-    <form action={acao} className="space-y-4">
+    <form onSubmit={enviar} className="space-y-4">
       <Campo rotulo="Etapa do funil" id="etapa">
         <Selecao
           id="etapa"

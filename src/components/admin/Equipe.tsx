@@ -1,23 +1,43 @@
 'use client';
 
 import { KeyRound, UserPlus } from 'lucide-react';
-import { useActionState, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import {
-  alternarAtivo,
-  atualizarCorretor,
-  criarMembro,
-  redefinirSenha,
-  type EstadoEquipe,
-} from '@/lib/admin/acoes-equipe';
+import { atualizarCorretor, chamarEquipe, type Resultado } from '@/lib/admin/operacoes';
+import { usePainel } from '@/lib/admin/sessao';
 import type { LinhaCorretor, LinhaPerfil } from '@/lib/supabase/tipos';
 import { Aviso, Campo, Selecao } from './ui';
 
-export function FormularioNovoMembro() {
-  const [estado, acao, salvando] = useActionState<EstadoEquipe, FormData>(criarMembro, {});
+function useEnvio(aoConcluir?: () => void) {
+  const [estado, setEstado] = useState<Resultado>({});
+  const [ocupado, setOcupado] = useState(false);
+  const executar = async (operacao: () => Promise<Resultado>) => {
+    setOcupado(true);
+    const r = await operacao();
+    setOcupado(false);
+    setEstado(r);
+    if (r.ok) aoConcluir?.();
+    return r;
+  };
+  return { estado, ocupado, executar };
+}
+
+export function FormularioNovoMembro({ aoCriar }: { aoCriar: () => void }) {
+  const sessao = usePainel();
+  const { estado, ocupado, executar } = useEnvio(aoCriar);
+
+  async function enviar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formulario = e.currentTarget;
+    const r = await executar(() =>
+      chamarEquipe(sessao, 'criar', Object.fromEntries(new FormData(formulario))),
+    );
+    if (r.ok) formulario.reset();
+  }
+
   return (
-    <form action={acao} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <form onSubmit={enviar} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Campo rotulo="Nome completo" id="novo-nome" obrigatorio>
         <Input id="novo-nome" name="nome" required />
       </Campo>
@@ -54,8 +74,8 @@ export function FormularioNovoMembro() {
       <div className="space-y-3 sm:col-span-2 lg:col-span-3">
         {estado.erro && <Aviso tom="erro">{estado.erro}</Aviso>}
         {estado.ok && <Aviso tom="sucesso">{estado.ok}</Aviso>}
-        <Button type="submit" disabled={salvando}>
-          <UserPlus aria-hidden /> {salvando ? 'Criando…' : 'Criar acesso'}
+        <Button type="submit" disabled={ocupado}>
+          <UserPlus aria-hidden /> {ocupado ? 'Criando…' : 'Criar acesso'}
         </Button>
       </div>
     </form>
@@ -66,21 +86,19 @@ export function CartaoMembro({
   perfil,
   corretor,
   ehVoce,
+  aoAlterar,
 }: {
   perfil: LinhaPerfil | null;
   corretor: LinhaCorretor | null;
   ehVoce: boolean;
+  aoAlterar: () => void;
 }) {
+  const sessao = usePainel();
   const [editando, setEditando] = useState(false);
   const [trocandoSenha, setTrocandoSenha] = useState(false);
-  const [estadoCorretor, acaoCorretor, salvandoCorretor] = useActionState<EstadoEquipe, FormData>(
-    atualizarCorretor.bind(null, corretor?.id ?? ''),
-    {},
-  );
-  const [estadoSenha, acaoSenha, salvandoSenha] = useActionState<EstadoEquipe, FormData>(
-    redefinirSenha.bind(null, perfil?.id ?? ''),
-    {},
-  );
+  const corretorEnvio = useEnvio(aoAlterar);
+  const senhaEnvio = useEnvio();
+  const ativoEnvio = useEnvio(aoAlterar);
 
   return (
     <div className="rounded-2xl border bg-card p-4 shadow-card">
@@ -123,7 +141,12 @@ export function CartaoMembro({
               <Button
                 size="sm"
                 variant={perfil.ativo ? 'destructive' : 'default'}
-                onClick={() => alternarAtivo(perfil.id, !perfil.ativo)}
+                disabled={ativoEnvio.ocupado}
+                onClick={() =>
+                  ativoEnvio.executar(() =>
+                    chamarEquipe(sessao, perfil.ativo ? 'desativar' : 'ativar', { id: perfil.id }),
+                  )
+                }
               >
                 {perfil.ativo ? 'Desativar' : 'Reativar'}
               </Button>
@@ -131,9 +154,27 @@ export function CartaoMembro({
           )}
         </div>
       </div>
+      {ativoEnvio.estado.erro && (
+        <Aviso tom="erro" className="mt-3">
+          {ativoEnvio.estado.erro}
+        </Aviso>
+      )}
 
       {editando && corretor && (
-        <form action={acaoCorretor} className="mt-4 grid gap-3 border-t pt-4 sm:grid-cols-3">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const f = new FormData(e.currentTarget);
+            void corretorEnvio.executar(() =>
+              atualizarCorretor(sessao, corretor.id, {
+                nome: String(f.get('nome') ?? ''),
+                creci: String(f.get('creci') ?? ''),
+                whatsapp: String(f.get('whatsapp') ?? ''),
+              }),
+            );
+          }}
+          className="mt-4 grid gap-3 border-t pt-4 sm:grid-cols-3"
+        >
           <Campo rotulo="Nome no anúncio" id={`nome-${corretor.id}`}>
             <Input id={`nome-${corretor.id}`} name="nome" defaultValue={corretor.nome} />
           </Campo>
@@ -148,17 +189,28 @@ export function CartaoMembro({
             />
           </Campo>
           <div className="flex flex-wrap items-center gap-3 sm:col-span-3">
-            <Button type="submit" size="sm" disabled={salvandoCorretor}>
+            <Button type="submit" size="sm" disabled={corretorEnvio.ocupado}>
               Salvar
             </Button>
-            {estadoCorretor.erro && <span className="text-perda">{estadoCorretor.erro}</span>}
-            {estadoCorretor.ok && <span className="text-sucesso">{estadoCorretor.ok}</span>}
+            {corretorEnvio.estado.erro && (
+              <span className="text-perda">{corretorEnvio.estado.erro}</span>
+            )}
+            {corretorEnvio.estado.ok && (
+              <span className="text-sucesso">{corretorEnvio.estado.ok}</span>
+            )}
           </div>
         </form>
       )}
 
       {trocandoSenha && perfil && (
-        <form action={acaoSenha} className="mt-4 flex flex-wrap items-end gap-3 border-t pt-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const senha = String(new FormData(e.currentTarget).get('senha') ?? '');
+            void senhaEnvio.executar(() => chamarEquipe(sessao, 'senha', { id: perfil.id, senha }));
+          }}
+          className="mt-4 flex flex-wrap items-end gap-3 border-t pt-4"
+        >
           <Campo
             rotulo="Nova senha provisória"
             id={`senha-${perfil.id}`}
@@ -166,11 +218,11 @@ export function CartaoMembro({
           >
             <Input id={`senha-${perfil.id}`} name="senha" minLength={10} autoComplete="off" />
           </Campo>
-          <Button type="submit" size="sm" disabled={salvandoSenha}>
+          <Button type="submit" size="sm" disabled={senhaEnvio.ocupado}>
             Definir senha
           </Button>
-          {estadoSenha.erro && <p className="w-full text-perda">{estadoSenha.erro}</p>}
-          {estadoSenha.ok && <p className="w-full text-sucesso">{estadoSenha.ok}</p>}
+          {senhaEnvio.estado.erro && <p className="w-full text-perda">{senhaEnvio.estado.erro}</p>}
+          {senhaEnvio.estado.ok && <p className="w-full text-sucesso">{senhaEnvio.estado.ok}</p>}
         </form>
       )}
     </div>

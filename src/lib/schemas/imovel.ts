@@ -128,19 +128,7 @@ export const imovelFormularioSchema = imovelBaseSchema
   });
 export type ImovelFormulario = z.infer<typeof imovelFormularioSchema>;
 
-/** Conteúdo guardado na coluna "dados" do banco (o resto são colunas próprias). */
-export const CAMPOS_FORA_DE_DADOS = [
-  'id',
-  'codigo',
-  'slug',
-  'fotos',
-  'destaque',
-  'status',
-  'corretorResponsavelId',
-  'exemplo',
-  'publicadoEm',
-  'atualizadoEm',
-] as const;
+export { CAMPOS_FORA_DE_DADOS } from '@/lib/repositorio/linha';
 
 export const corretorSchema = z.object({
   id: z.string().min(1),

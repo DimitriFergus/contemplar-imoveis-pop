@@ -4,12 +4,15 @@ import { BuscaHero } from '@/components/busca/BuscaHero';
 import { CardImovel } from '@/components/imoveis/CardImovel';
 import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
 import { Button } from '@/components/ui/button';
+import { ImovelNovoAoVivo } from '@/components/imoveis/ImovelAoVivo';
+import { MODO_ESTATICO } from '@/config/site';
 import { repositorio } from '@/lib/repositorio';
+import { SUPABASE_CONFIGURADO } from '@/lib/supabase/config';
 
 /** 404 útil: busca e imóveis em destaque. */
 export default async function NaoEncontrado() {
   const [destaques, bairros] = await Promise.all([repositorio.destaques(3), repositorio.bairros()]);
-  return (
+  const conteudo = (
     <div className="container-site py-10">
       <div className="mx-auto max-w-2xl text-center">
         <SearchX className="mx-auto size-14 text-muted-foreground" aria-hidden />
@@ -34,5 +37,11 @@ export default async function NaoEncontrado() {
       </ul>
       <NotaPremissas className="mt-6" />
     </div>
+  );
+  // GitHub Pages: imóvel cadastrado depois do último build ainda não tem página; busca no banco.
+  return MODO_ESTATICO && SUPABASE_CONFIGURADO ? (
+    <ImovelNovoAoVivo>{conteudo}</ImovelNovoAoVivo>
+  ) : (
+    conteudo
   );
 }

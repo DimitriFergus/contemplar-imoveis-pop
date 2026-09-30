@@ -48,15 +48,18 @@ Copie `.env.example` para `.env.local` e ajuste. Em produção, defina as mesmas
 
 ## Publicação no GitHub Pages (ativa)
 
-Cada push na `main` dispara o workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml): lint, tipos e testes, depois build da **versão estática** (`NEXT_PUBLIC_MODO_ESTATICO=true`) e publicação em `https://<usuário>.github.io/<repositório>/`.
+Cada push na `main` dispara o workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml): lint, tipos e testes, depois build da **versão estática** (`NEXT_PUBLIC_MODO_ESTATICO=true`) lendo os imóveis do Supabase, e publicação em `https://<usuário>.github.io/<repositório>/`. A cada 10 minutos o workflow confere a impressão digital dos dados (`scripts/versao-dados.mjs`) e regera o site se algo mudou no painel.
 
-Diferenças da versão estática (sem servidor):
+Como funciona sem servidor:
 
-- filtros, ordenação, paginação e contagem rodam no navegador (a partir de `/dados/resumos.json`);
-- os formulários **não gravam leads**: validam no navegador e abrem o WhatsApp com os dados do contato;
+- **painel `/admin`**: roda no navegador e fala direto com o Supabase (login, MFA, RLS, Storage); a gestão da equipe usa a Edge Function `supabase/functions/equipe`;
+- **leads**: os formulários chamam a função `registrar_lead` do banco (validação, honeypot e limite por WhatsApp/minuto) e o lead cai no CRM na hora; se o banco falhar, o contato segue pelo WhatsApp;
+- **dados ao vivo**: busca, favoritos, comparação e página do imóvel leem o banco ao abrir; imóvel novo ainda sem página gerada é mostrado pela página 404 (que busca no banco);
 - cabeçalhos de segurança (CSP, HSTS) e otimização de imagens do Next não se aplicam.
 
-Para testar a versão estática localmente: `rm -rf src/app/api` (em uma cópia), `NEXT_PUBLIC_MODO_ESTATICO=true NEXT_PUBLIC_BASE_PATH=/contemplar-imoveis-pop npm run build` e `node scripts/corrigir-exportacao.mjs out`.
+Variáveis do repositório (Settings → Secrets and variables → Actions → _Variables_): `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (públicas).
+
+Testar a versão estática localmente (em uma cópia): `rm -rf src/app/api`, `NEXT_PUBLIC_MODO_ESTATICO=true npm run build`, `node scripts/corrigir-exportacao.mjs out` e `E2E_ESTATICO=1 npx playwright test` (serve `out` com `scripts/servir-estatico.mjs`).
 
 ## Deploy na Vercel (versão completa, com servidor)
 

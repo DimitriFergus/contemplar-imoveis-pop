@@ -1,28 +1,14 @@
-import ExcelJS from 'exceljs';
-import { listarCorretores, listarLeads } from '@/lib/admin/consultas';
-import {
-  ROTULO_ETAPA,
-  ROTULO_FAIXA_RENDA,
-  ROTULO_ORIGEM,
-  ROTULO_PERIODO,
-} from '@/lib/admin/rotulos';
-import { exigirSessao } from '@/lib/admin/sessao';
+'use client';
 
-/** Planilha XLSX com os leads que a pessoa pode ver (as regras RLS valem aqui também). */
-export async function GET(request: Request) {
-  const { supabase, ehAdmin } = await exigirSessao();
-  const url = new URL(request.url);
-  const [leads, corretores] = await Promise.all([
-    listarLeads(supabase, {
-      busca: url.searchParams.get('busca') ?? undefined,
-      corretor: url.searchParams.get('corretor') ?? undefined,
-      etapa: url.searchParams.get('etapa') ?? undefined,
-      limite: 10_000,
-    }),
-    ehAdmin ? listarCorretores(supabase) : Promise.resolve([]),
-  ]);
-  const nomes = new Map(corretores.map((c) => [c.id, c.nome]));
+import type { LinhaLead } from '@/lib/supabase/tipos';
+import { ROTULO_ETAPA, ROTULO_FAIXA_RENDA, ROTULO_ORIGEM, ROTULO_PERIODO } from './rotulos';
 
+/**
+ * Gera a planilha XLSX dos leads no próprio navegador e baixa o arquivo.
+ * A biblioteca (exceljs) só é carregada quando alguém clica em exportar.
+ */
+export async function exportarLeadsXlsx(leads: LinhaLead[], nomesCorretores: Map<string, string>) {
+  const { default: ExcelJS } = await import('exceljs');
   const livro = new ExcelJS.Workbook();
   livro.creator = 'Contemplar Imóveis';
   const aba = livro.addWorksheet('Leads', { views: [{ state: 'frozen', ySplit: 1 }] });
@@ -55,7 +41,7 @@ export async function GET(request: Request) {
       renda: l.renda_faixa ? (ROTULO_FAIXA_RENDA[l.renda_faixa] ?? l.renda_faixa) : '',
       visita: l.data_visita ? l.data_visita.split('-').reverse().join('/') : '',
       periodo: l.periodo_visita ? (ROTULO_PERIODO[l.periodo_visita] ?? '') : '',
-      corretor: l.corretor_id ? (nomes.get(l.corretor_id) ?? l.corretor_id) : '',
+      corretor: l.corretor_id ? (nomesCorretores.get(l.corretor_id) ?? l.corretor_id) : '',
       mensagem: l.mensagem ?? '',
       observacoes: l.observacoes ?? '',
       motivo: l.motivo_perda ?? '',
@@ -72,12 +58,14 @@ export async function GET(request: Request) {
   aba.autoFilter = { from: 'A1', to: 'O1' };
 
   const buffer = await livro.xlsx.writeBuffer();
-  const hoje = new Date().toISOString().slice(0, 10);
-  return new Response(buffer as ArrayBuffer, {
-    headers: {
-      'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'Content-Disposition': `attachment; filename="leads-contemplar-${hoje}.xlsx"`,
-      'Cache-Control': 'private, no-store',
-    },
+  const blob = new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `leads-contemplar-${new Date().toISOString().slice(0, 10)}.xlsx`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 10_000);
 }

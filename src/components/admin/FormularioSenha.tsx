@@ -1,15 +1,28 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { trocarSenha, type EstadoFormulario } from '@/lib/admin/acoes-acesso';
+import { trocarSenha, type Resultado } from '@/lib/admin/operacoes';
 import { Aviso, Campo } from './ui';
 
 export function FormularioSenha() {
-  const [estado, acao, salvando] = useActionState<EstadoFormulario, FormData>(trocarSenha, {});
+  const [estado, setEstado] = useState<Resultado>({});
+  const [salvando, setSalvando] = useState(false);
+
+  async function enviar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formulario = e.currentTarget;
+    const form = new FormData(formulario);
+    setSalvando(true);
+    const r = await trocarSenha(String(form.get('senha')), String(form.get('confirmacao')));
+    setSalvando(false);
+    setEstado(r);
+    if (r.ok) formulario.reset();
+  }
+
   return (
-    <form action={acao} className="space-y-4">
+    <form onSubmit={enviar} className="space-y-4">
       <Campo rotulo="Nova senha" id="senha" ajuda="Mínimo de 10 caracteres.">
         <Input id="senha" name="senha" type="password" autoComplete="new-password" required />
       </Campo>

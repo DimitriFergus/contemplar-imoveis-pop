@@ -4,7 +4,8 @@ import { CalendarClock, Home } from 'lucide-react';
 import Link from 'next/link';
 import { useOptimistic, useState, useTransition } from 'react';
 import { IconeWhatsApp } from '@/components/comum/IconeWhatsApp';
-import { moverLead } from '@/lib/admin/acoes-leads';
+import { moverLead } from '@/lib/admin/operacoes';
+import { usePainel } from '@/lib/admin/sessao';
 import { COR_ETAPA, ROTULO_ETAPA, ROTULO_ORIGEM, ROTULO_PERIODO } from '@/lib/admin/rotulos';
 import { ETAPAS_LEAD, type EtapaLead, type LinhaLead } from '@/lib/supabase/tipos';
 import { cn } from '@/lib/utils';
@@ -36,10 +37,14 @@ function haQuanto(iso: string) {
 export function QuadroLeads({
   leads,
   nomesCorretores,
+  aoMover,
 }: {
   leads: LeadDoQuadro[];
   nomesCorretores: Record<string, string>;
+  /** Atualiza a lista na tela depois que o banco confirmou a mudança. */
+  aoMover?: (id: string, etapa: EtapaLead) => void;
 }) {
+  const sessao = usePainel();
   const [otimistas, mover] = useOptimistic(
     leads,
     (atual, { id, etapa }: { id: string; etapa: EtapaLead }) =>
@@ -53,8 +58,9 @@ export function QuadroLeads({
   const trocar = (id: string, etapa: EtapaLead) =>
     iniciar(async () => {
       mover({ id, etapa });
-      const r = await moverLead(id, etapa);
-      setErro(r.ok ? undefined : r.mensagem);
+      const r = await moverLead(sessao, id, etapa);
+      setErro(r.erro);
+      if (r.ok) aoMover?.(id, etapa);
     });
 
   return (
@@ -115,7 +121,7 @@ export function QuadroLeads({
                     >
                       <div className="flex items-start justify-between gap-2">
                         <Link
-                          href={`/admin/leads/${l.id}`}
+                          href={`/admin/leads/ver?id=${l.id}`}
                           className="font-bold text-primary hover:underline"
                         >
                           {l.nome}

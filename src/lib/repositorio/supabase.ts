@@ -7,8 +7,7 @@ import type { Corretor, Imovel } from '@/types';
 import { linhaParaImovelValido } from './converter';
 import { criarRepositorioEmMemoria } from './memoria';
 
-export const COLUNAS_IMOVEL =
-  'id, codigo, slug, status, corretor_id, destaque, exemplo, dados, fotos, titulo, tipo, bairro, preco, publicado_em, criado_em, atualizado_em';
+import { COLUNAS_IMOVEL } from './linha';
 
 /**
  * Implementação Supabase: lê os imóveis publicados, reservados e vendidos com a chave pública
