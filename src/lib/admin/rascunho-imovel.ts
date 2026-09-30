@@ -123,13 +123,19 @@ export function rascunhoVazio(padrao: {
   };
 }
 
-/** "1.234,56" / "1234.56" / "" → número (ou undefined). */
-function numero(v: string): number | undefined {
-  const limpo = v.trim().replace(/\s/g, '');
+/**
+ * Texto digitado → número (ou undefined). Aceita "R$ 180.000,00", "180.000", "180000",
+ * "65,5 m²". Com `milhar`, "180.000" é cento e oitenta mil (ponto separando milhar);
+ * latitude e longitude usam `milhar = false`, porque lá o ponto é a casa decimal.
+ */
+function numero(v: string, milhar = true): number | undefined {
+  const limpo = v.replace(/R\$|m²|m2|\s/gi, '');
   if (!limpo) return undefined;
-  const normalizado = /,\d{1,2}$/.test(limpo)
-    ? limpo.replace(/\./g, '').replace(',', '.')
-    : limpo.replace(/,/g, '.');
+  let normalizado: string;
+  if (/,\d+$/.test(limpo) && (milhar || !limpo.includes('.')))
+    normalizado = limpo.replace(/\./g, '').replace(',', '.');
+  else if (milhar && /^-?\d{1,3}(\.\d{3})+$/.test(limpo)) normalizado = limpo.replace(/\./g, '');
+  else normalizado = limpo.replace(/,/g, '.');
   return Number(normalizado);
 }
 
@@ -156,8 +162,8 @@ export function paraEntrada(r: RascunhoImovel) {
     bairro: r.bairro.trim(),
     localizacaoAproximada: {
       // Arredondado (~100 m) para não expor o endereço exato no site.
-      lat: arredondar(numero(r.lat)),
-      lng: arredondar(numero(r.lng)),
+      lat: arredondar(numero(r.lat, false)),
+      lng: arredondar(numero(r.lng, false)),
       raioMetros: numero(r.raioMetros),
     },
     quartos: numero(r.quartos),
@@ -169,7 +175,11 @@ export function paraEntrada(r: RascunhoImovel) {
     caracteristicas: lista(r.caracteristicas),
     lazer: lista(r.lazer),
     condicoes: r.condicoes,
-    fotos: r.fotos.map((f) => ({ arquivo: f.arquivo, alt: f.alt.trim() })),
+    fotos: r.fotos.map((f, n) => ({
+      arquivo: f.arquivo,
+      // Sem descrição digitada, usa o título (texto para leitores de tela e para o Google).
+      alt: f.alt.trim() || `${r.titulo.trim() || 'Imóvel'} - foto ${n + 1}`,
+    })),
     videoUrl: opcional(r.videoUrl),
     tour360Url: opcional(r.tour360Url),
     proximidades: r.proximidades.map((p) => ({

@@ -7,6 +7,7 @@ import {
 } from '@/lib/repositorio/converter';
 import { imovelFormularioSchema, imovelSchema } from '@/lib/schemas/imovel';
 import { caminhoDaFoto } from '@/lib/supabase/config';
+import { paraEntrada, rascunhoVazio } from '@/lib/admin/rascunho-imovel';
 import type { LinhaImovel } from '@/lib/supabase/tipos';
 import dadosImoveis from '@/data/imoveis.json';
 import type { Imovel } from '@/types';
@@ -107,5 +108,39 @@ describe('fotos no Storage', () => {
       caminhoDaFoto('https://abc.supabase.co/storage/v1/object/public/imoveis/uuid/01.webp'),
     ).toBe('uuid/01.webp');
     expect(caminhoDaFoto('/imoveis/CP-0001/01.jpg')).toBeNull();
+  });
+});
+
+describe('formulário do painel: texto digitado → imóvel', () => {
+  const preenchido = () => ({
+    ...rascunhoVazio({ cidade: 'Fortaleza', uf: 'CE', corretorId: 'c1' }),
+    titulo: 'Casa 2 quartos com quintal no Jangurussu',
+    descricao: 'Casa térrea com dois quartos, quintal amplo e perto de escola e posto de saúde.',
+    preco: 'R$ 180.000',
+    condominioMensal: '',
+    iptuAnual: '350,50',
+    bairro: 'Jangurussu',
+    lat: '-3,8431',
+    lng: '-38.5198',
+    areaUtilM2: '65,5 m²',
+    fotos: [
+      { arquivo: 'https://x.supabase.co/storage/v1/object/public/imoveis/a/1.webp', alt: '' },
+    ],
+  });
+
+  it('aceita valores escritos como a pessoa digita', () => {
+    const entrada = paraEntrada(preenchido());
+    expect(entrada.preco).toBe(180_000);
+    expect(entrada.iptuAnual).toBe(350.5);
+    expect(entrada.areaUtilM2).toBe(65.5);
+    expect(entrada.localizacaoAproximada.lat).toBe(-3.843);
+    expect(entrada.localizacaoAproximada.lng).toBe(-38.52);
+    expect(imovelFormularioSchema.safeParse(entrada).success).toBe(true);
+  });
+
+  it('foto sem descrição usa o título', () => {
+    expect(paraEntrada(preenchido()).fotos[0]?.alt).toBe(
+      'Casa 2 quartos com quintal no Jangurussu - foto 1',
+    );
   });
 });

@@ -160,10 +160,18 @@ test.describe('Leads', () => {
       .getByLabel('Como podemos ajudar?')
       .fill('Quero saber mais sobre imóveis de 2 quartos.');
     await page.getByRole('checkbox', { name: /Concordo/ }).check();
+    // O WhatsApp abre sozinho, já com a mensagem e os dados preenchidos.
+    const aba = page.waitForEvent('popup');
     await page.getByRole('button', { name: 'Enviar mensagem' }).click();
+    const whatsapp = await aba;
+    await expect.poll(() => whatsapp.url()).toMatch(/wa\.me\/|whatsapp\.com\//);
+    const texto = new URL(whatsapp.url()).searchParams.get('text') ?? '';
+    expect(texto).toContain('Meu nome é Pessoa de Teste');
+    expect(texto).toContain('Quero saber mais sobre imóveis de 2 quartos.');
     const confirmacao = page.getByTestId('confirmacao-lead');
     await expect(confirmacao).toContainText('Recebemos seu contato!');
-    await expect(confirmacao.getByRole('link', { name: 'Falar agora no WhatsApp' })).toBeVisible();
+    const botao = confirmacao.getByRole('link', { name: 'Abrir o WhatsApp com a mensagem' });
+    await expect(botao).toHaveAttribute('href', /Pessoa%20de%20Teste/);
   });
 
   test('API recusa lead sem consentimento e aceita honeypot silenciosamente', async ({

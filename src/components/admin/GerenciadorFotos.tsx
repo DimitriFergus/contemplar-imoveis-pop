@@ -4,8 +4,7 @@ import { ArrowDown, ArrowUp, GripVertical, ImagePlus, Loader2, Star, Trash2 } fr
 import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { comprimirFoto, LADO_MAXIMO_FOTO } from '@/lib/admin/imagem';
-import { BUCKET_FOTOS } from '@/lib/supabase/config';
-import { clienteNavegador } from '@/lib/supabase/navegador';
+import { enviarFoto, guardarFotoPendente } from '@/lib/admin/fotos-pendentes';
 import { cn } from '@/lib/utils';
 import type { Foto } from '@/types';
 import { classeCampo } from './ui';
@@ -27,30 +26,16 @@ export function GerenciadorFotos({ imovelId, fotos, onChange, erros }: Props) {
   const atual = useRef(fotos);
   atual.current = fotos;
 
-  if (!imovelId) {
-    return (
-      <p className="rounded-xl border border-dashed p-5 text-center text-muted-foreground">
-        Salve o rascunho primeiro. Depois disso você poderá enviar as fotos aqui.
-      </p>
-    );
-  }
-
   async function enviar(arquivos: FileList | File[]) {
     const lista = [...arquivos].filter((a) => a.type.startsWith('image/'));
     if (!lista.length) return;
     setFalhas([]);
     setEnviando((n) => n + lista.length);
-    const supabase = clienteNavegador();
     for (const arquivo of lista) {
       try {
         const blob = await comprimirFoto(arquivo);
-        const caminho = `${imovelId}/${crypto.randomUUID()}.webp`;
-        const { error } = await supabase.storage.from(BUCKET_FOTOS).upload(caminho, blob, {
-          contentType: 'image/webp',
-          cacheControl: '31536000',
-        });
-        if (error) throw new Error(error.message);
-        const url = supabase.storage.from(BUCKET_FOTOS).getPublicUrl(caminho).data.publicUrl;
+        // Imóvel ainda não salvo: a foto fica no navegador e sobe junto com o salvamento.
+        const url = imovelId ? await enviarFoto(imovelId, blob) : guardarFotoPendente(blob);
         onChange([...atual.current, { arquivo: url, alt: '' }]);
       } catch (e) {
         setFalhas((f) => [...f, `${arquivo.name}: ${(e as Error).message}`]);
@@ -106,6 +91,7 @@ export function GerenciadorFotos({ imovelId, fotos, onChange, erros }: Props) {
         <p className="text-xs text-muted-foreground">
           As fotos são reduzidas para no máximo {LADO_MAXIMO_FOTO} px e convertidas para WebP antes
           do envio.
+          {!imovelId && ' Elas são enviadas quando você salvar ou publicar o imóvel.'}
         </p>
         <input
           ref={entrada}

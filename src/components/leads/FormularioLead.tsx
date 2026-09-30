@@ -48,6 +48,25 @@ interface Props {
 
 type Erros = Partial<Record<string, string>>;
 
+/**
+ * Abre a aba ainda no clique: depois de esperar o banco, o navegador (principalmente no
+ * celular) bloqueia janelas novas. Quando a resposta chega, a aba vai para o WhatsApp.
+ */
+function abrirAbaVazia(): Window | null {
+  const aba = window.open('', '_blank');
+  if (aba) {
+    aba.opener = null;
+    aba.document.title = 'Abrindo o WhatsApp…';
+    aba.document.body.textContent = 'Abrindo o WhatsApp…';
+  }
+  return aba;
+}
+
+function abrirWhatsApp(aba: Window | null, link: string) {
+  if (aba && !aba.closed) aba.location.href = link;
+  else window.open(link, '_blank', 'noopener');
+}
+
 export function FormularioLead({
   origem,
   codigoImovel,
@@ -70,6 +89,33 @@ export function FormularioLead({
   const [erros, setErros] = useState<Erros>({});
   const [erroGeral, setErroGeral] = useState('');
   const [gravadoNoCrm, setGravadoNoCrm] = useState(false);
+  const [mensagemFinal, setMensagemFinal] = useState(mensagemWhatsApp);
+
+  /** Mensagem do WhatsApp com os dados que a pessoa acabou de preencher. */
+  function montarMensagem(corpo: {
+    nome: string;
+    email?: string;
+    rendaFamiliarFaixa?: string;
+    mensagem?: string;
+  }): string {
+    const faixa = FAIXAS.find((f) => f.id === corpo.rendaFamiliarFaixa);
+    const periodo = AGENDAMENTO.periodos.find((x) => x.valor === dadosAdicionais.periodoPreferido);
+    const visita = dadosAdicionais.dataVisitaPreferida
+      ? `Visita: ${dadosAdicionais.dataVisitaPreferida.split('-').reverse().join('/')}${
+          periodo ? ` – ${periodo.rotulo} (${periodo.horario})` : ''
+        }`
+      : '';
+    return [
+      `Olá! Meu nome é ${corpo.nome}. ${mensagemWhatsApp.replace(/^Olá!\s*/, '')}`,
+      codigoImovel && !mensagemWhatsApp.includes(codigoImovel) ? `Imóvel: ${codigoImovel}` : '',
+      visita,
+      faixa ? `Faixa de renda: ${faixa.nome}` : '',
+      corpo.email ? `E-mail: ${corpo.email}` : '',
+      corpo.mensagem ?? '',
+    ]
+      .filter(Boolean)
+      .join('\n');
+  }
 
   async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -92,8 +138,19 @@ export function FormularioLead({
       ...dadosAdicionais,
     };
     if (corpo.site) return; // honeypot preenchido: ignora
+
+    const mensagemPronta = montarMensagem(corpo);
+    const concluir = (aba: Window | null, noCrm: boolean) => {
+      abrirWhatsApp(aba, linkWhatsApp(comOrigem(mensagemPronta, corpo.utm)));
+      rastrear('envio_lead', { origem, codigo: codigoImovel, canal: 'whatsapp' });
+      setMensagemFinal(mensagemPronta);
+      setGravadoNoCrm(noCrm);
+      setEnviado(true);
+      aoEnviar?.();
+    };
+
     if (MODO_ESTATICO) {
-      // Versão estática (sem servidor): valida aqui e envia o contato pelo WhatsApp.
+      // Versão estática (sem servidor): valida aqui.
       const errosLocais: Erros = {};
       if (corpo.nome.length < 2) errosLocais.nome = 'Informe seu nome';
       const digitos = corpo.whatsapp.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '');
@@ -104,56 +161,36 @@ export function FormularioLead({
       setErros(errosLocais);
       if (Object.keys(errosLocais).length) return;
 
-      // Com o Supabase: grava direto no CRM do painel (função segura registrar_lead).
-      if (SUPABASE_CONFIGURADO) {
-        setEnviando(true);
-        setErroGeral('');
-        try {
-          const { clienteAnonimo } = await import('@/lib/supabase/anonimo');
-          const { error } = await clienteAnonimo().rpc('registrar_lead', { dados: corpo });
-          if (!error) {
-            rastrear('envio_lead', { origem, codigo: codigoImovel });
-            setGravadoNoCrm(true);
-            setEnviado(true);
-            aoEnviar?.();
-            return;
-          }
-          if (error.hint === 'limite') {
-            setErroGeral(
-              'Muitas tentativas em pouco tempo. Aguarde alguns minutos ou fale pelo WhatsApp.',
-            );
-            return;
-          }
-          // Outro erro: segue pelo WhatsApp para não perder o contato.
-        } catch {
-          // Sem conexão com o banco: segue pelo WhatsApp.
-        } finally {
-          setEnviando(false);
-        }
+      if (!SUPABASE_CONFIGURADO) {
+        concluir(null, false);
+        return;
       }
-
-      const faixa = FAIXAS.find((f) => f.id === corpo.rendaFamiliarFaixa);
-      const linhas = [
-        `Olá! Meu nome é ${corpo.nome}.`,
-        codigoImovel ? `Imóvel: ${codigoImovel}` : '',
-        dadosAdicionais.dataVisitaPreferida
-          ? `Visita: ${dadosAdicionais.dataVisitaPreferida.split('-').reverse().join('/')}${(() => {
-              const p = AGENDAMENTO.periodos.find(
-                (x) => x.valor === dadosAdicionais.periodoPreferido,
-              );
-              return p ? ` – ${p.rotulo} (${p.horario})` : '';
-            })()}`
-          : '',
-        faixa ? `Faixa de renda: ${faixa.nome}` : '',
-        corpo.email ? `E-mail: ${corpo.email}` : '',
-        corpo.mensagem ?? '',
-      ].filter(Boolean);
-      window.open(linkWhatsApp(comOrigem(linhas.join('\n'), corpo.utm)), '_blank', 'noopener');
-      rastrear('envio_lead', { origem, codigo: codigoImovel, canal: 'whatsapp' });
-      setEnviado(true);
-      aoEnviar?.();
+      // Com o Supabase: grava no CRM do painel (função segura registrar_lead) e abre o WhatsApp.
+      const aba = abrirAbaVazia();
+      setEnviando(true);
+      setErroGeral('');
+      let gravou = false;
+      try {
+        const { clienteAnonimo } = await import('@/lib/supabase/anonimo');
+        const { error } = await clienteAnonimo().rpc('registrar_lead', { dados: corpo });
+        if (error?.hint === 'limite') {
+          aba?.close();
+          setErroGeral(
+            'Muitas tentativas em pouco tempo. Aguarde alguns minutos ou fale pelo WhatsApp.',
+          );
+          return;
+        }
+        gravou = !error; // outro erro: segue pelo WhatsApp para não perder o contato
+      } catch {
+        // Sem conexão com o banco: segue pelo WhatsApp.
+      } finally {
+        setEnviando(false);
+      }
+      concluir(aba, gravou);
       return;
     }
+
+    const aba = abrirAbaVazia();
     setEnviando(true);
     setErros({});
     setErroGeral('');
@@ -165,17 +202,17 @@ export function FormularioLead({
       });
       const dados = (await resp.json().catch(() => ({}))) as { erros?: Erros; mensagem?: string };
       if (!resp.ok) {
+        aba?.close();
         setErros(dados.erros ?? {});
         setErroGeral(
           dados.mensagem ?? 'Não foi possível enviar. Tente novamente ou fale pelo WhatsApp.',
         );
         return;
       }
-      rastrear('envio_lead', { origem, codigo: codigoImovel });
-      setEnviado(true);
-      aoEnviar?.();
+      concluir(aba, true);
     } catch {
-      setErroGeral('Sem conexão no momento. Verifique sua internet ou fale pelo WhatsApp.');
+      // Sem conexão com o servidor: segue pelo WhatsApp para não perder o contato.
+      concluir(aba, false);
     } finally {
       setEnviando(false);
     }
@@ -190,18 +227,17 @@ export function FormularioLead({
       >
         <CheckCircle2 className="mx-auto size-12 text-sucesso" aria-hidden />
         <h3 className="mt-3 text-xl font-bold">
-          {MODO_ESTATICO && !gravadoNoCrm ? 'Quase lá!' : 'Recebemos seu contato!'}
+          {gravadoNoCrm ? 'Recebemos seu contato!' : 'Quase lá!'}
         </h3>
         <p className="mt-2 text-muted-foreground">
-          {MODO_ESTATICO && !gravadoNoCrm
-            ? 'Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar. Se não abriu, use o botão abaixo:'
-            : 'Um corretor vai falar com você pelo WhatsApp em breve, no horário de atendimento. Se preferir, fale agora:'}
+          Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar. Se não abriu, use o
+          botão abaixo:
         </p>
         <BotaoWhatsApp
-          mensagem={mensagemWhatsApp}
+          mensagem={mensagemFinal}
           local={`confirmacao_${origem}`}
           codigoImovel={codigoImovel}
-          rotulo="Falar agora no WhatsApp"
+          rotulo="Abrir o WhatsApp com a mensagem"
           size="lg"
           className="mt-4 w-full sm:w-auto"
         />

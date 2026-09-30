@@ -103,9 +103,7 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
   await expect(page.locator('img[src*="/storage/v1/object/public/imoveis/"]')).toHaveCount(1);
   await expect(page.locator('img[src$=".webp"]')).toHaveCount(1);
 
-  // Descrição (alt) obrigatória.
-  await page.getByRole('button', { name: 'Publicar' }).click();
-  await expect(page.locator('#foto-alt-0-erro')).toBeVisible();
+  // Descrição (alt) vazia usa o título; aqui a pessoa escreve uma própria.
   await alt.fill('Fachada da casa de teste com portão');
   await page.getByRole('button', { name: 'Publicar' }).click();
   await expect(page.getByText('Salvo! O site já foi atualizado')).toBeVisible({ timeout: 20_000 });

@@ -83,7 +83,15 @@ function Edicao() {
       />
       {params.get('novo') && (
         <Aviso tom="sucesso" className="mb-4">
-          Rascunho criado com o código {linha.codigo}. Agora envie as fotos e publique.
+          {linha.status === 'rascunho'
+            ? `Rascunho criado com o código ${linha.codigo}.${linha.fotos.length ? '' : ' Agora envie as fotos e publique.'}`
+            : `Imóvel ${linha.codigo} cadastrado com ${linha.fotos.length} ${linha.fotos.length === 1 ? 'foto' : 'fotos'} e publicado no site.`}
+        </Aviso>
+      )}
+      {params.get('falhas') && (
+        <Aviso tom="erro" className="mb-4">
+          {params.get('falhas')} foto(s) não foram enviadas (conexão ou arquivo). Envie de novo na
+          seção Fotos e salve.
         </Aviso>
       )}
       {params.get('duplicado') && (

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { AJUDA_STATUS_PAINEL, ROTULO_STATUS_PAINEL } from '@/lib/admin/rotulos';
+import { enviarFotosPendentes } from '@/lib/admin/fotos-pendentes';
 import { salvarImovel } from '@/lib/admin/operacoes';
 import { usePainel } from '@/lib/admin/sessao';
 import { SITUACOES_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE } from '@/lib/constantes';
@@ -34,8 +35,47 @@ function mensagem(m: string) {
     return `Muito longo (máximo ${m.match(/(\d+) characters/)?.[1]} letras)`;
   if (/invalid url/i.test(m)) return 'Endereço (link) inválido';
   if (/expected number to be >0/i.test(m)) return 'Precisa ser maior que zero';
+  if (/expected number to be >=\s*(-?\d+)/i.test(m))
+    return `Mínimo ${m.match(/>=\s*(-?\d+)/)?.[1]}`;
+  if (/expected number to be <=\s*(-?\d+)/i.test(m))
+    return `Máximo ${m.match(/<=\s*(-?\d+)/)?.[1]}`;
+  if (/expected int/i.test(m)) return 'Use número inteiro, sem vírgula';
+  if (/expected string to have >=\s*(\d+)/i.test(m))
+    return `Muito curto (mínimo ${m.match(/>=\s*(\d+)/)?.[1]} letras)`;
   return m;
 }
+
+/** Nome dos campos na lista "Confira em vermelho: ...". */
+const ROTULO_CAMPO: Record<string, string> = {
+  titulo: 'Título',
+  descricao: 'Descrição',
+  previsaoEntrega: 'Previsão de entrega',
+  preco: 'Preço',
+  condominioMensal: 'Condomínio',
+  iptuAnual: 'IPTU',
+  bairro: 'Bairro',
+  cidade: 'Cidade',
+  uf: 'UF',
+  lat: 'Latitude',
+  lng: 'Longitude',
+  raioMetros: 'Raio no mapa',
+  quartos: 'Quartos',
+  suites: 'Suítes',
+  banheiros: 'Banheiros',
+  vagas: 'Vagas',
+  areaUtilM2: 'Área útil',
+  areaTerrenoM2: 'Terreno',
+  caracteristicas: 'Destaques do imóvel',
+  lazer: 'Lazer',
+  fotos: 'Fotos',
+  alt: 'Descrição da foto',
+  proximidades: 'Perto do imóvel',
+  nome: 'Perto do imóvel (nome)',
+  distanciaMetros: 'Perto do imóvel (metros)',
+  videoUrl: 'Link do vídeo',
+  tour360Url: 'Link do tour 360°',
+  corretorResponsavelId: 'Corretor responsável',
+};
 
 interface Props {
   id: string | null;
@@ -77,47 +117,94 @@ export function FormularioImovel({
     'aria-describedby': erros[campo] ? `${idCampo}-erro` : undefined,
   });
 
+  function mostrarErros(issues: { path: PropertyKey[]; message: string }[]) {
+    const novos: Record<string, string> = {};
+    for (const i of issues) {
+      const caminho = i.path.map(String);
+      const texto = mensagem(i.message);
+      novos[caminho.join('.') || 'geral'] ??= texto;
+      // Erro de um item da lista (ex.: caracteristicas.0) aparece no campo da lista.
+      if (caminho.length > 1 && caminho[0] !== 'localizacaoAproximada')
+        novos[caminho[0]!] ??= `${ROTULO_CAMPO[caminho[0]!] ?? caminho[0]}: ${texto}`;
+    }
+    setErros(novos);
+    const campos = [
+      ...new Set(
+        issues.map(
+          (i) => ROTULO_CAMPO[String(i.path.at(-1))] ?? ROTULO_CAMPO[String(i.path[0])] ?? 'Outros',
+        ),
+      ),
+    ];
+    setResultado({ tom: 'erro', texto: `Confira em vermelho: ${campos.join(', ')}.` });
+    requestAnimationFrame(() => {
+      const alvo = document.querySelector<HTMLElement>(
+        'form [aria-invalid="true"], form [role="alert"]',
+      );
+      alvo?.scrollIntoView({ block: 'center' });
+      alvo?.focus({ preventScroll: true });
+    });
+  }
+
   function salvar(statusForcado?: StatusPainel) {
     const dados = { ...r, status: statusForcado ?? r.status };
     const entrada = paraEntrada(dados);
     const validacao = imovelFormularioSchema.safeParse(entrada);
     if (!validacao.success) {
-      const novos: Record<string, string> = {};
-      for (const i of validacao.error.issues)
-        novos[i.path.map(String).join('.') || 'geral'] ??= mensagem(i.message);
-      setErros(novos);
-      setResultado({ tom: 'erro', texto: 'Confira os campos destacados em vermelho.' });
-      requestAnimationFrame(() =>
-        document.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(),
-      );
+      mostrarErros(validacao.error.issues);
       return;
     }
     setErros({});
     void (async () => {
       setSalvando(true);
       try {
-        const resp = await salvarImovel(sessao, id, validacao.data);
-        if (!resp.ok) {
-          setErros(
-            Object.fromEntries(Object.entries(resp.erros ?? {}).map(([k, v]) => [k, mensagem(v)])),
+        const falhou = (resp: { mensagem: string; erros?: Record<string, string> }) => {
+          if (resp.erros && Object.keys(resp.erros).length)
+            mostrarErros(
+              Object.entries(resp.erros).map(([k, v]) => ({ path: k.split('.'), message: v })),
+            );
+          else setResultado({ tom: 'erro', texto: resp.mensagem });
+        };
+
+        if (id === null) {
+          // Imóvel novo, tudo no mesmo clique: cria o imóvel, envia as fotos para a pasta
+          // dele (o Storage só aceita fotos de imóvel existente) e grava fotos + status.
+          const novo = await salvarImovel(sessao, null, {
+            ...validacao.data,
+            status: 'rascunho',
+            fotos: [],
+          });
+          if (!novo.ok) return falhou(novo);
+          setAlterado(false);
+          let falhas = 0;
+          if (validacao.data.fotos.length) {
+            setResultado({ tom: 'sucesso', texto: 'Enviando as fotos…' });
+            const envio = await enviarFotosPendentes(novo.id, validacao.data.fotos);
+            falhas = envio.falhas;
+            const final = await salvarImovel(sessao, novo.id, {
+              ...validacao.data,
+              fotos: envio.fotos,
+              status: envio.fotos.length ? validacao.data.status : 'rascunho',
+            });
+            if (!final.ok) falhas = validacao.data.fotos.length;
+          }
+          router.replace(
+            `/admin/imoveis/editar?id=${novo.id}&novo=1${falhas ? `&falhas=${falhas}` : ''}`,
           );
-          setResultado({ tom: 'erro', texto: resp.mensagem });
           return;
         }
+
+        const resp = await salvarImovel(sessao, id, validacao.data);
+        if (!resp.ok) return falhou(resp);
         setAlterado(false);
         setR(dados);
-        if (id === null) {
-          router.replace(`/admin/imoveis/editar?id=${resp.id}&novo=1`);
-        } else {
-          setResultado({
-            tom: 'sucesso',
-            texto:
-              dados.status === 'rascunho'
-                ? 'Rascunho salvo.'
-                : 'Salvo! O site já foi atualizado com as mudanças.',
-          });
-          aoSalvar?.();
-        }
+        setResultado({
+          tom: 'sucesso',
+          texto:
+            dados.status === 'rascunho'
+              ? 'Rascunho salvo.'
+              : 'Salvo! O site já foi atualizado com as mudanças.',
+        });
+        aoSalvar?.();
       } finally {
         setSalvando(false);
       }
@@ -503,6 +590,11 @@ export function FormularioImovel({
           >
             <Plus aria-hidden /> Adicionar local
           </Button>
+          {erro('proximidades') && (
+            <p className="text-sm font-medium text-destructive" role="alert">
+              {erro('proximidades')}. Preencha o nome e a distância em metros, ou remova o local.
+            </p>
+          )}
         </div>
       </Cartao>
 
@@ -610,7 +702,7 @@ export function FormularioImovel({
             <Save aria-hidden />
             {salvando ? 'Salvando…' : r.status === 'rascunho' ? 'Salvar rascunho' : 'Salvar'}
           </Button>
-          {r.status === 'rascunho' && id && (
+          {r.status === 'rascunho' && (
             <Button
               type="button"
               variant="destaque"
