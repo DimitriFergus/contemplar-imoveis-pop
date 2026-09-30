@@ -83,7 +83,7 @@ export function CardImovel({
         <SeloCabeNoBolso preco={i.preco} className="self-start" />
         <PrecoParcela preco={i.preco} parcela={i.parcelaEstimada} />
         <div>
-          <Titulo className="text-lg leading-snug font-bold">
+          <Titulo className="text-lg leading-snug font-bold wrap-anywhere">
             <Link
               href={`/imoveis/${i.slug}`}
               className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:rounded-2xl focus-visible:after:outline focus-visible:after:outline-3 focus-visible:after:outline-ring"
