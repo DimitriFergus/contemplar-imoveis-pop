@@ -180,13 +180,11 @@ async function importar(atualizar: boolean) {
         .webp({ quality: 80 })
         .toBuffer();
       const caminho = `${id}/${String(n + 1).padStart(2, '0')}.webp`;
-      const { error } = await supabase.storage
-        .from(BUCKET)
-        .upload(caminho, webp, {
-          contentType: 'image/webp',
-          upsert: true,
-          cacheControl: '31536000',
-        });
+      const { error } = await supabase.storage.from(BUCKET).upload(caminho, webp, {
+        contentType: 'image/webp',
+        upsert: true,
+        cacheControl: '31536000',
+      });
       if (error) falhar(`${imovel.codigo}, foto ${path.basename(arquivo)}: ${error.message}`);
       fotos.push({
         arquivo: supabase.storage.from(BUCKET).getPublicUrl(caminho).data.publicUrl,
