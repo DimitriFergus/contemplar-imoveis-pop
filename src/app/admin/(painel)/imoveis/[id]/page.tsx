@@ -1,7 +1,8 @@
 import { Copy, ExternalLink, Trash2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FormularioImovel, rascunhoDeImovel } from '@/components/admin/FormularioImovel';
+import { FormularioImovel } from '@/components/admin/FormularioImovel';
+import { rascunhoDeImovel } from '@/lib/admin/rascunho-imovel';
 import { HistoricoAlteracoes } from '@/components/admin/HistoricoAlteracoes';
 import { SeloStatus } from '@/components/admin/Selos';
 import { Aviso, Cartao, TituloPagina } from '@/components/admin/ui';

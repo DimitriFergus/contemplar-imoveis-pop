@@ -1,4 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
+import { servico, supabaseDisponivel } from './apoio/painel';
+
+// Com o Supabase configurado, os formulários gravam leads de verdade: apaga os de teste no fim.
+test.afterAll(async () => {
+  if (supabaseDisponivel)
+    await servico().from('leads').delete().in('nome', ['Pessoa de Teste', 'Visitante Teste']);
+});
 
 const ehCelular = (page: Page) => (page.viewportSize()?.width ?? 1280) < 1024;
 

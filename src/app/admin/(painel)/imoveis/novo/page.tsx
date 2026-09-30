@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FormularioImovel, rascunhoVazio } from '@/components/admin/FormularioImovel';
+import { FormularioImovel } from '@/components/admin/FormularioImovel';
+import { rascunhoVazio } from '@/lib/admin/rascunho-imovel';
 import { Aviso, TituloPagina } from '@/components/admin/ui';
 import { CIDADE_BASE, UF_BASE } from '@/config/site';
 import { listarCorretores } from '@/lib/admin/consultas';

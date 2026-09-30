@@ -52,15 +52,21 @@ async function entrar(page: Page, conta: ContaTeste) {
   await page.getByRole('button', { name: 'Entrar' }).click();
 }
 
+/** Entra e espera o login concluir (painel ou tela do MFA) antes de seguir. */
+async function entrarNoPainel(page: Page, conta: ContaTeste) {
+  await entrar(page, conta);
+  await page.waitForURL(/\/admin(\/mfa)?$/, { timeout: 20_000 });
+}
+
 test('sem login, o painel manda para a tela de entrada', async ({ page }) => {
   await page.goto('/admin/imoveis');
   await expect(page).toHaveURL(/\/admin\/entrar/);
   await entrar(page, { ...corretorA, senha: 'senha-errada-123' });
-  await expect(page.getByRole('alert')).toContainText('E-mail ou senha incorretos');
+  await expect(page.getByText('E-mail ou senha incorretos')).toBeVisible();
 });
 
 test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
-  await entrar(page, corretorA);
+  await entrarNoPainel(page, corretorA);
   await expect(page.getByRole('heading', { name: /Olá, Teste/ })).toBeVisible();
 
   await page.goto('/admin/imoveis/novo');
@@ -112,7 +118,7 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
 });
 
 test('mudança de preço fica no histórico com destaque', async ({ page }) => {
-  await entrar(page, corretorA);
+  await entrarNoPainel(page, corretorA);
   await page.goto(`/admin/imoveis/${imovelA.id}`);
   await page.getByLabel('Preço (R$)').fill('179900');
   await page.getByRole('button', { name: 'Salvar', exact: true }).click();
@@ -125,7 +131,7 @@ test('mudança de preço fica no histórico com destaque', async ({ page }) => {
 });
 
 test('duplicar imóvel cria uma cópia em rascunho', async ({ page }) => {
-  await entrar(page, corretorA);
+  await entrarNoPainel(page, corretorA);
   await page.goto(`/admin/imoveis/${imovelA.id}`);
   await page.getByRole('button', { name: 'Duplicar imóvel' }).click();
   await expect(page.getByText(/Cópia criada como rascunho/)).toBeVisible({ timeout: 20_000 });
@@ -145,14 +151,16 @@ test('lead do site chega ao corretor do imóvel', async ({ page, request }) => {
   });
   expect(resp.status()).toBe(201);
 
-  await entrar(page, corretorA);
+  await entrarNoPainel(page, corretorA);
   await page.goto('/admin/leads');
   const cartao = page.getByTestId('cartao-lead').filter({ hasText: 'Cliente Teste E2E' });
   await expect(cartao).toBeVisible();
   await cartao.getByRole('combobox').selectOption('em_atendimento');
   await page.reload();
   await expect(
-    page.getByRole('region', { name: /Em atendimento/ }).getByText('Cliente Teste E2E'),
+    page
+      .getByRole('region', { name: /Em atendimento/ })
+      .getByRole('link', { name: 'Cliente Teste E2E', exact: true }),
   ).toBeVisible();
 
   const download = page.waitForEvent('download');
@@ -161,7 +169,7 @@ test('lead do site chega ao corretor do imóvel', async ({ page, request }) => {
 });
 
 test('um corretor não vê nem altera imóveis e leads de outro', async ({ page }) => {
-  await entrar(page, corretorB);
+  await entrarNoPainel(page, corretorB);
   await expect(page.getByRole('heading', { name: /Olá, Teste/ })).toBeVisible();
 
   await page.goto('/admin/imoveis');
@@ -195,7 +203,7 @@ test('um corretor não vê nem altera imóveis e leads de outro', async ({ page 
 });
 
 test('admin precisa do app autenticador (MFA) e vê tudo', async ({ page }) => {
-  await entrar(page, admin);
+  await entrarNoPainel(page, admin);
   await expect(page).toHaveURL(/\/admin\/mfa/);
   await page.getByRole('button', { name: 'Gerar QR Code' }).click();
   const segredo = (await page.locator('code').innerText()).trim();
