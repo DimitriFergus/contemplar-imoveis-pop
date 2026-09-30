@@ -1,4 +1,8 @@
+import { existsSync } from 'node:fs';
 import { defineConfig, devices } from '@playwright/test';
+
+// Chaves do Supabase para os testes do painel (tests/e2e/painel.spec.ts).
+if (existsSync('.env.local')) process.loadEnvFile('.env.local');
 
 const PORTA = Number(process.env.PORTA_E2E ?? 3100);
 

@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { LIMITE_LEADS } from '@/config/site';
+import { bancoDeLeadsAtivo, gravarLeadNoBanco } from '@/lib/leads/gravar';
 import { permitirRequisicao } from '@/lib/leads/limite';
 import { leadEntradaSchema } from '@/lib/schemas/lead';
 import type { Lead } from '@/types';
@@ -18,9 +19,10 @@ function mascarar(whatsapp: string) {
   return whatsapp.replace(/^(\d{4})\d+(\d{2})$/, '$1*****$2');
 }
 
-async function enviarParaWebhook(lead: Lead) {
+async function enviarParaWebhook(lead: Lead, gravadoNoBanco: boolean) {
   const url = process.env.LEADS_WEBHOOK_URL;
   if (!url) {
+    if (gravadoNoBanco) return;
     // Sem webhook: registra no log do servidor (dados mascarados fora do desenvolvimento).
     const registro =
       process.env.NODE_ENV === 'development'
@@ -88,14 +90,30 @@ export async function POST(request: Request) {
   delete dados.site;
   const lead: Lead = { ...dados, id: randomUUID(), criadoEm: new Date().toISOString() };
 
+  // 1) Banco (CRM do painel /admin), quando o Supabase está configurado.
+  let gravadoNoBanco = false;
   try {
-    await enviarParaWebhook(lead);
+    gravadoNoBanco = await gravarLeadNoBanco(lead);
+  } catch (e) {
+    console.error('[lead] falha ao gravar no banco', (e as Error).message, { id: lead.id });
+  }
+
+  // 2) Webhook (n8n, Make, planilha...), como cópia extra ou destino principal.
+  try {
+    await enviarParaWebhook(lead, gravadoNoBanco);
   } catch (e) {
     console.error('[lead] falha ao enviar para o webhook', (e as Error).message, { id: lead.id });
+    if (!gravadoNoBanco)
+      return Response.json(
+        { mensagem: 'Não conseguimos registrar agora. Fale com a gente pelo WhatsApp.' },
+        { status: 502 },
+      );
+  }
+  // Banco configurado, mas a gravação falhou e não há webhook: o lead se perderia.
+  if (!gravadoNoBanco && bancoDeLeadsAtivo() && !process.env.LEADS_WEBHOOK_URL)
     return Response.json(
       { mensagem: 'Não conseguimos registrar agora. Fale com a gente pelo WhatsApp.' },
       { status: 502 },
     );
-  }
   return Response.json({ ok: true, id: lead.id }, { status: 201 });
 }

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ImageResponse } from 'next/og';
+import sharp from 'sharp';
 import { SITE } from '@/config/site';
 import { parcelaEstimadaAnuncio } from '@/lib/financiamento';
 import { repositorio } from '@/lib/repositorio';
@@ -19,6 +20,21 @@ export async function generateStaticParams() {
 
 async function fotoComoDataUri(arquivo: string | undefined): Promise<string | null> {
   if (!arquivo) return null;
+  // Foto enviada pelo painel (Storage do Supabase).
+  if (/^https?:\/\//.test(arquivo)) {
+    try {
+      const resp = await fetch(arquivo, { signal: AbortSignal.timeout(8000) });
+      if (!resp.ok) return null;
+      // O gerador de imagem não lê WebP: converte para JPEG.
+      const jpeg = await sharp(Buffer.from(await resp.arrayBuffer()))
+        .resize({ width: 800, withoutEnlargement: true })
+        .jpeg({ quality: 80 })
+        .toBuffer();
+      return `data:image/jpeg;base64,${jpeg.toString('base64')}`;
+    } catch {
+      return null;
+    }
+  }
   try {
     const dados = await readFile(path.join(process.cwd(), 'public', arquivo));
     const ext = path.extname(arquivo).slice(1).toLowerCase();

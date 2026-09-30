@@ -4,15 +4,26 @@ const desenvolvimento = process.env.NODE_ENV === 'development';
 /** Versão estática para o GitHub Pages (definida no workflow .github/workflows/pages.yml). */
 const estatico = process.env.NEXT_PUBLIC_MODO_ESTATICO === 'true';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+/** Origem do Supabase (fotos no Storage, login e envio de fotos pelo painel). */
+const supabase = (() => {
+  try {
+    return process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL)
+      : null;
+  } catch {
+    return null;
+  }
+})();
+const origemSupabase = supabase ? ` ${supabase.origin}` : '';
 
 /** Política de segurança de conteúdo: só o próprio site, tiles do OpenStreetMap e vídeos incorporados. */
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${desenvolvimento ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://tile.openstreetmap.org",
+  `img-src 'self' data: blob: https://tile.openstreetmap.org${origemSupabase}`,
   "font-src 'self'",
-  `connect-src 'self'${desenvolvimento ? ' ws: wss:' : ''}`,
+  `connect-src 'self'${origemSupabase}${desenvolvimento ? ' ws: wss:' : ''}`,
   'frame-src https://www.google.com https://www.youtube-nocookie.com https://my.matterport.com https://kuula.co',
   "frame-ancestors 'none'",
   "base-uri 'self'",
@@ -27,6 +38,16 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     // Sem servidor de imagens no GitHub Pages.
     unoptimized: estatico,
+    // Fotos enviadas pelo painel ficam no Storage do Supabase.
+    remotePatterns: supabase
+      ? [
+          {
+            protocol: supabase.protocol.replace(':', '') as 'https' | 'http',
+            hostname: supabase.hostname,
+            pathname: '/storage/v1/object/public/**',
+          },
+        ]
+      : [],
   },
   // A imagem Open Graph dos anúncios lê a primeira foto do disco.
   outputFileTracingIncludes: {

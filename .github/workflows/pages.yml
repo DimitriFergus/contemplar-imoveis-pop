@@ -48,10 +48,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      # O GitHub Pages não tem servidor: a rota de leads (POST) fica de fora e os
+      # O GitHub Pages não tem servidor: a rota de leads (POST) e o painel /admin ficam de fora e os
       # formulários enviam o contato pelo WhatsApp (ver MODO_ESTATICO em src/config/site.ts).
       - name: Remover rotas que exigem servidor
-        run: rm -rf src/app/api
+        run: |
+          rm -rf src/app/api src/app/admin src/proxy.ts
+          sed -i 's/export const dynamicParams = true;/export const dynamicParams = false;/' 'src/app/imoveis/bairro/[bairro]/page.tsx'
       - run: npm run build
       - name: Ajustar arquivos exportados
         run: node scripts/corrigir-exportacao.mjs out

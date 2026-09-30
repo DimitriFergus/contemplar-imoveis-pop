@@ -9,7 +9,9 @@ export async function generateStaticParams() {
   return (await repositorio.bairros()).map((b) => ({ bairro: b.slug }));
 }
 
-export const dynamicParams = false;
+// Bairros novos cadastrados no painel ganham página na hora (bairro inexistente dá 404).
+// No GitHub Pages (exportação estática) o workflow troca para false.
+export const dynamicParams = true;
 
 async function obterBairro(slug: string) {
   const bairros = await repositorio.bairros();

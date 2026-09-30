@@ -2,18 +2,21 @@
 
 Site imobiliário da **Contemplar Imóveis Pop** (Grupo Ordnas): imóveis populares a partir de R$ 150 mil, com busca por **preço ou por parcela**, **Cabe no Meu Bolso**, simulador SAC/Price, custo total de aquisição, WhatsApp inteligente, favoritos e comparação na listagem (ganhos em verde, perdas em vermelho) sem login.
 
+> **Fase 1.5:** painel administrativo em `/admin` (Supabase: banco, login com MFA e fotos) para cadastrar imóveis e atender leads. Manual em linguagem simples: [`docs/MANUAL_ADMIN.md`](docs/MANUAL_ADMIN.md).
+>
 > Fase 1 lançada com **24 imóveis fictícios** (`exemplo: true`) e modo demonstração. Veja [`docs/PENDENCIAS.md`](docs/PENDENCIAS.md) antes de publicar.
 
 ## Stack
 
-| Camada     | Tecnologia                                                                 |
-| ---------- | -------------------------------------------------------------------------- |
-| Framework  | Next.js 16.3 (App Router, Turbopack) + React 19.2 + TypeScript 5.9 estrito |
-| Estilo     | Tailwind CSS 4.3 + shadcn/ui (Radix) + lucide-react                        |
-| Validação  | Zod 4 (dados, formulários e API)                                           |
-| Mapa       | Leaflet + OpenStreetMap (sem chave de API)                                 |
-| Testes     | Vitest 5 (unidades) + Playwright 1.63 (E2E, celular e desktop)             |
-| Hospedagem | Vercel                                                                     |
+| Camada     | Tecnologia                                                                  |
+| ---------- | --------------------------------------------------------------------------- |
+| Framework  | Next.js 16.3 (App Router, Turbopack) + React 19.2 + TypeScript 5.9 estrito  |
+| Estilo     | Tailwind CSS 4.3 + shadcn/ui (Radix) + lucide-react                         |
+| Validação  | Zod 4 (dados, formulários e API)                                            |
+| Mapa       | Leaflet + OpenStreetMap (sem chave de API)                                  |
+| Testes     | Vitest 5 (unidades) + Playwright 1.63 (E2E, celular e desktop)              |
+| Banco/Auth | Supabase (Postgres com RLS, Auth com MFA/TOTP, Storage) via `@supabase/ssr` |
+| Hospedagem | Vercel                                                                      |
 
 ## Comandos
 
@@ -32,6 +35,12 @@ npm run typecheck           # TypeScript
 npm run format              # Prettier
 npm test                    # testes unitários (cálculos, CSV, filtros, leads)
 npm run test:e2e            # testes E2E (requer build; sobe o servidor na porta 3100)
+                            # os testes do painel rodam só com o Supabase configurado no .env.local
+
+npm run supabase:migrar     # aplica supabase/migrations + seed no banco (SUPABASE_DB_URL)
+npm run supabase:importar   # planilha + fotos (WebP) → Supabase (não sobrescreve; --atualizar sobrescreve)
+npm run supabase:admin -- email "Nome"   # cria o primeiro administrador
+npm run supabase:status     # conta os registros de cada tabela
 bash scripts/lighthouse.sh http://localhost:3000 3 / /imoveis   # Lighthouse mobile (mediana)
 ```
 
@@ -53,7 +62,7 @@ Para testar a versão estática localmente: `rm -rf src/app/api` (em uma cópia)
 
 1. Crie um repositório Git com este projeto e envie ao GitHub.
 2. Na Vercel: _Add New → Project_ → importe o repositório (framework detectado: Next.js).
-3. Em _Environment Variables_, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO` e `LEADS_WEBHOOK_URL`.
+3. Em _Environment Variables_, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY` e, se quiser cópia dos leads, `LEADS_WEBHOOK_URL`.
 4. _Deploy_. Cada push gera uma pré-visualização por branch; a `main` vai para produção.
 5. O `prebuild` roda `npm run importar`: se a planilha tiver erro, o deploy é bloqueado e o site anterior continua no ar.
 
@@ -69,7 +78,12 @@ src/config/                 site.ts, financiamento.ts, custos-aquisicao.ts, pend
 src/content/                FAQ, glossário, jornada, documentos, depoimentos
 src/data/                   JSON gerado pela importação (não editar à mão)
 src/lib/financiamento/      cálculos puros e testados (taxas, Price, SAC, faixas, poder de compra, custos)
-src/lib/repositorio/        interface + implementação local (trocar por Supabase/CMS na Fase 2)
+src/lib/repositorio/        interface + implementações local (src/data) e Supabase; escolhida em index.ts
+src/lib/admin/              painel: sessão (DAL), Server Actions, consultas, revalidação
+src/lib/supabase/           clientes (sessão, público com cache, serviço) e tipos das tabelas
+src/app/admin/              painel /admin (entrar, MFA, imóveis, leads, equipe, histórico, conta)
+src/proxy.ts                renova a sessão do Supabase e protege /admin
+supabase/migrations/        SQL versionado: tabelas, RLS, auditoria, Storage; supabase/seed.sql
 src/lib/busca/              filtros ⇄ URL, ordenação, paginação, chips
 src/lib/schemas/            Zod (imóvel, lead)
 tests/unit, tests/e2e
@@ -90,7 +104,8 @@ Princípios: páginas só falam com `repositorio`; nenhum número de regra de ne
 | `/minha-casa-minha-vida`, `/como-comprar`                                         | Guias (checklist imprimível)                                                                                                             |
 | `/favoritos`                                                                      | Salvos no navegador, sem login                                                                                                           |
 | `/anuncie`, `/contato`, `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`    | Institucional                                                                                                                            |
-| `POST /api/leads`                                                                 | Zod + honeypot + limite por IP → `LEADS_WEBHOOK_URL` (ou log)                                                                            |
+| `POST /api/leads`                                                                 | Zod + honeypot + limite por IP → tabela `leads` (Supabase) e/ou `LEADS_WEBHOOK_URL` (ou log)                                             |
+| `/admin`                                                                          | Painel: imóveis (CRUD, fotos, prévia, duplicar, histórico), leads (funil, XLSX), equipe — ver `docs/MANUAL_ADMIN.md`                     |
 | `GET /api/imoveis/contagem`, `/api/imoveis/resumos`                               | Contagem ao vivo dos filtros; resumos para favoritos/comparador                                                                          |
 
 ## Leads
@@ -99,8 +114,7 @@ Formato enviado ao webhook (JSON): `id, criadoEm, origem, nome, whatsapp (55DDDN
 
 ## Preparação para a Fase 2
 
-- **Painel administrativo (Supabase ou CMS):** implementar `RepositorioImoveis` (`src/lib/repositorio/tipos.ts`) com o novo banco e trocar a linha em `src/lib/repositorio/index.ts`. Os schemas Zod servem de contrato das tabelas.
-- **CRM e distribuição de leads:** o webhook já recebe o lead completo com origem e UTM; `corretorResponsavelId` existe em cada imóvel.
+- ~~Painel administrativo e CRM de leads~~: feito na Fase 1.5 (Supabase).
 - **Busca em linguagem natural com IA:** converter a frase em `Filtros` (`src/lib/busca/query.ts`) e redirecionar com `paraQueryString` — toda a listagem já funciona por URL.
 - **Pré-qualificação via WhatsApp:** reutilizar `calcularCabeNoBolso` (função pura) no assistente.
 - **Portais (XML/feed):** gerar a partir de `repositorio.listar()` em uma rota `app/feed/.../route.ts`.

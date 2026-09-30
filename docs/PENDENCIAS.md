@@ -35,7 +35,9 @@ Já preenchidos em `src/config/site.ts`: razão social Contemplar Imobiliaria LT
 
 | Item                  | Recomendação                                                                                                                                                            |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Webhook de leads      | Configurar `LEADS_WEBHOOK_URL` (n8n, Make, Google Sheets ou CRM). Sem ele, os leads só ficam no log do servidor                                                         |
+| Leads                 | Com o Supabase configurado, os leads ficam no painel `/admin/leads`. `LEADS_WEBHOOK_URL` é opcional (cópia extra)                                                       |
+| Supabase              | Desativar cadastro público (Authentication → Sign In → _Allow new users to sign up_). Plano gratuito pausa o projeto após 7 dias sem uso: usar plano pago em produção   |
+| Backups               | Plano gratuito do Supabase não tem backup diário recuperável pelo painel: exportar periodicamente ou usar plano Pro                                                     |
 | Limite de requisições | Em memória por instância. Na Vercel (várias instâncias), migrar para Upstash Redis/Vercel KV                                                                            |
 | Tiles do mapa         | OpenStreetMap público tem política de uso justo. Com tráfego alto, contratar provedor de tiles (MapTiler, Stadia etc.)                                                  |
 | Analytics             | Camada pronta (`src/lib/analytics.ts`), desativada. Ao ativar provedor não essencial, incluir banner de consentimento                                                   |
