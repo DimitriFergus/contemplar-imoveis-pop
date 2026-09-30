@@ -24,7 +24,7 @@ export default function PaginaNovoImovel() {
       </p>
       <TituloPagina
         titulo="Cadastrar imóvel"
-        descricao="Preencha os dados e salve como rascunho. Depois envie as fotos e publique."
+        descricao="Preencha os dados, coloque as fotos, escolha o status e clique em Salvar."
       />
       {!corretores ? (
         <Carregando />

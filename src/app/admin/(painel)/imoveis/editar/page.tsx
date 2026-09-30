@@ -83,9 +83,10 @@ function Edicao() {
       />
       {params.get('novo') && (
         <Aviso tom="sucesso" className="mb-4">
+          Imóvel salvo com o código {linha.codigo}.{' '}
           {linha.status === 'rascunho'
-            ? `Rascunho criado com o código ${linha.codigo}.${linha.fotos.length ? '' : ' Agora envie as fotos e publique.'}`
-            : `Imóvel ${linha.codigo} cadastrado com ${linha.fotos.length} ${linha.fotos.length === 1 ? 'foto' : 'fotos'} e publicado no site.`}
+            ? 'Ele está como rascunho e não aparece no site.'
+            : 'O site já foi atualizado.'}
         </Aviso>
       )}
       {params.get('falhas') && (

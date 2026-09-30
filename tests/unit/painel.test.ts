@@ -70,13 +70,9 @@ describe('formulário do painel (mesmo schema do site)', () => {
     expect(imovelFormularioSchema.safeParse(base()).success).toBe(true);
   });
 
-  it('rascunho pode ficar sem fotos; publicado não', () => {
-    expect(
-      imovelFormularioSchema.safeParse({ ...base(), fotos: [], status: 'rascunho' }).success,
-    ).toBe(true);
-    const r = imovelFormularioSchema.safeParse({ ...base(), fotos: [] });
-    expect(r.success).toBe(false);
-    expect(r.error?.issues[0]?.path).toEqual(['fotos']);
+  it('o status não impede salvar: qualquer status salva com ou sem fotos', () => {
+    for (const status of ['rascunho', 'publicado', 'reservado', 'vendido'] as const)
+      expect(imovelFormularioSchema.safeParse({ ...base(), fotos: [], status }).success).toBe(true);
   });
 
   it('exige descrição (alt) em todas as fotos', () => {

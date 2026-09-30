@@ -71,7 +71,7 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
 
   await page.goto('/admin/imoveis/novo');
   // Validação no navegador: sem título, não salva.
-  await page.getByRole('button', { name: 'Salvar rascunho' }).click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
   await expect(page.locator('#titulo-erro')).toBeVisible();
 
   const titulo = `Casa teste E2E ${Date.now().toString().slice(-6)}`;
@@ -83,30 +83,24 @@ test('corretor cadastra imóvel, envia foto e publica', async ({ page }) => {
   await page.getByLabel('Bairro').fill('Bairro Teste E2E');
   await page.getByLabel('Latitude').fill('-3.795, -38.587');
   await page.getByLabel('Área útil (m²)').fill('60');
-  await page.getByRole('button', { name: 'Salvar rascunho' }).click();
+  // Fotos no próprio cadastro (a foto é convertida para WebP no navegador).
+  await page.getByTestId('entrada-fotos').setInputFiles(FOTO);
+  await expect(page.getByLabel(/Descrição da foto 1/)).toBeVisible({ timeout: 30_000 });
+  await page.getByLabel(/Descrição da foto 1/).fill('Fachada da casa de teste com portão');
+  // O status escolhido é salvo junto, sem passar por rascunho.
+  await page.getByLabel('Status').selectOption('publicado');
+  await page.getByRole('button', { name: 'Salvar' }).click();
 
   await expect(page).toHaveURL(/\/admin\/imoveis\/editar\/?\?id=[0-9a-f-]{36}&novo=1/, {
-    timeout: 20_000,
+    timeout: 30_000,
   });
   imovelA.id = page.url().match(/id=([0-9a-f-]{36})/)?.[1] ?? '';
-  await expect(page.getByText(/Rascunho criado com o código CP-\d{4}/)).toBeVisible();
-  imovelA.codigo = (await page.getByText(/Rascunho criado/).innerText()).match(/CP-\d{4}/)![0];
-
-  // Publicar sem foto: bloqueado.
-  await page.getByRole('button', { name: 'Publicar' }).click();
-  await expect(page.getByText('adicione pelo menos uma foto antes de publicar')).toBeVisible();
-
-  // Upload (a foto é convertida para WebP no navegador).
-  await page.getByTestId('entrada-fotos').setInputFiles(FOTO);
-  const alt = page.getByLabel(/Descrição da foto 1/);
-  await expect(alt).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText(/Imóvel salvo com o código CP-\d{4}/)).toBeVisible();
+  imovelA.codigo = (await page.getByText(/Imóvel salvo com o código/).innerText()).match(
+    /CP-\d{4}/,
+  )![0];
   await expect(page.locator('img[src*="/storage/v1/object/public/imoveis/"]')).toHaveCount(1);
   await expect(page.locator('img[src$=".webp"]')).toHaveCount(1);
-
-  // Descrição (alt) vazia usa o título; aqui a pessoa escreve uma própria.
-  await alt.fill('Fachada da casa de teste com portão');
-  await page.getByRole('button', { name: 'Publicar' }).click();
-  await expect(page.getByText('Salvo! O site já foi atualizado')).toBeVisible({ timeout: 20_000 });
 
   // Pré-visualização e site público atualizado na hora.
   await page.goto(`/admin/imoveis/previa?id=${imovelA.id}`);

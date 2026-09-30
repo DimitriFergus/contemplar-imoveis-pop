@@ -171,7 +171,7 @@ export function GerenciadorFotos({ imovelId, fotos, onChange, erros }: Props) {
                 </div>
                 <div className="min-w-0 flex-1 space-y-1.5">
                   <label htmlFor={`foto-alt-${i}`} className="block text-sm font-semibold">
-                    Descrição da foto {i + 1} <span className="text-destructive">*</span>
+                    Descrição da foto {i + 1}
                   </label>
                   <input
                     id={`foto-alt-${i}`}
@@ -188,7 +188,8 @@ export function GerenciadorFotos({ imovelId, fotos, onChange, erros }: Props) {
                     </p>
                   ) : (
                     <p id={`foto-alt-${i}-ajuda`} className="text-xs text-muted-foreground">
-                      Obrigatória: é lida por quem usa leitor de tela e ajuda no Google.
+                      Se ficar vazia, usamos o título do anúncio. É lida por leitores de tela e
+                      ajuda no Google.
                     </p>
                   )}
                 </div>

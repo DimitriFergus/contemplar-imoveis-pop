@@ -209,7 +209,7 @@ export async function publicarImovel(sessao: SessaoPainel, id: string): Promise<
   const r = imovelFormularioSchema.safeParse({ ...linhaParaImovel(linha), status: 'publicado' });
   if (!r.success)
     return {
-      erro: 'Faltam informações para publicar (ex.: fotos ou descrição das fotos). Volte e edite.',
+      erro: 'Faltam informações no anúncio. Volte, edite e salve.',
     };
   const { error } = await supabase.from('imoveis').update({ status: 'publicado' }).eq('id', id);
   if (error) return { erro: 'Não foi possível publicar. Tente de novo.' };

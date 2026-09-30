@@ -116,16 +116,7 @@ export type StatusPainel = (typeof STATUS_PAINEL)[number];
 export const imovelFormularioSchema = imovelBaseSchema
   .omit(CAMPOS_DE_SISTEMA)
   .extend({ status: z.enum(STATUS_PAINEL) })
-  .superRefine(regrasImovel)
-  .superRefine((imovel, ctx) => {
-    if (imovel.status !== 'rascunho' && imovel.fotos.length === 0) {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['fotos'],
-        message: 'adicione pelo menos uma foto antes de publicar',
-      });
-    }
-  });
+  .superRefine(regrasImovel);
 export type ImovelFormulario = z.infer<typeof imovelFormularioSchema>;
 
 export { CAMPOS_FORA_DE_DADOS } from '@/lib/repositorio/linha';

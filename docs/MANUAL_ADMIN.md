@@ -49,8 +49,9 @@ burlar o site, um corretor não consegue ver nem mudar o que é de outro.
      que aparecem (eles são copiados) e cole no campo **Latitude**. O site mostra só um círculo
      aproximado, **nunca o endereço exato**.
    - **Destaques / Lazer**: um item por linha.
-3. Clique em **Salvar rascunho**. O imóvel ganha um código (ex.: CP-0025).
-4. Envie as **fotos** (próximo item) e clique em **Publicar**.
+3. Coloque as **fotos** (próximo item).
+4. Escolha o **Status** (Rascunho, Disponível, Reservado ou Vendido) e clique em **Salvar**.
+   O imóvel ganha um código (ex.: CP-0025). Tudo é salvo de uma vez, em qualquer status.
 
 Se algo estiver faltando, o campo fica vermelho com a explicação. O site confere tudo de novo
 ao salvar.
@@ -60,8 +61,8 @@ ao salvar.
 - **Arraste as fotos** para o quadro ou clique em _escolha no computador/celular_.
 - As fotos são reduzidas automaticamente (no máximo 1920 px) e convertidas para WebP, que
   carrega rápido no celular.
-- **Descrição da foto é obrigatória** (ex.: _Sala com janela ampla_). Ela é lida por pessoas
-  cegas e ajuda o Google.
+- **Descrição da foto** (ex.: _Sala com janela ampla_): se ficar vazia, o painel usa o título do
+  anúncio. Ela é lida por pessoas cegas e ajuda o Google.
 - A **primeira foto é a capa**. Para mudar a ordem, arraste a foto ou use as setas ↑ ↓.
 - Para tirar uma foto, clique na lixeira e depois em **Salvar**.
 

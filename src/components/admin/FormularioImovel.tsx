@@ -1,6 +1,6 @@
 'use client';
 
-import { Eye, Plus, Save, Send, Trash2 } from 'lucide-react';
+import { Eye, Plus, Save, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -145,8 +145,8 @@ export function FormularioImovel({
     });
   }
 
-  function salvar(statusForcado?: StatusPainel) {
-    const dados = { ...r, status: statusForcado ?? r.status };
+  function salvar() {
+    const dados = r;
     const entrada = paraEntrada(dados);
     const validacao = imovelFormularioSchema.safeParse(entrada);
     if (!validacao.success) {
@@ -166,13 +166,9 @@ export function FormularioImovel({
         };
 
         if (id === null) {
-          // Imóvel novo, tudo no mesmo clique: cria o imóvel, envia as fotos para a pasta
-          // dele (o Storage só aceita fotos de imóvel existente) e grava fotos + status.
-          const novo = await salvarImovel(sessao, null, {
-            ...validacao.data,
-            status: 'rascunho',
-            fotos: [],
-          });
+          // Imóvel novo: cria o imóvel com o status escolhido e, se houver fotos, envia para
+          // a pasta dele (o Storage só aceita fotos de imóvel que já existe) e grava as fotos.
+          const novo = await salvarImovel(sessao, null, { ...validacao.data, fotos: [] });
           if (!novo.ok) return falhou(novo);
           setAlterado(false);
           let falhas = 0;
@@ -183,7 +179,6 @@ export function FormularioImovel({
             const final = await salvarImovel(sessao, novo.id, {
               ...validacao.data,
               fotos: envio.fotos,
-              status: envio.fotos.length ? validacao.data.status : 'rascunho',
             });
             if (!final.ok) falhas = validacao.data.fotos.length;
           }
@@ -694,24 +689,10 @@ export function FormularioImovel({
               </Link>
             </Button>
           )}
-          <Button
-            type="submit"
-            variant={r.status === 'rascunho' ? 'outline' : 'default'}
-            disabled={salvando}
-          >
+          <Button type="submit" variant="default" disabled={salvando}>
             <Save aria-hidden />
-            {salvando ? 'Salvando…' : r.status === 'rascunho' ? 'Salvar rascunho' : 'Salvar'}
+            {salvando ? 'Salvando…' : 'Salvar'}
           </Button>
-          {r.status === 'rascunho' && (
-            <Button
-              type="button"
-              variant="destaque"
-              disabled={salvando}
-              onClick={() => salvar('publicado')}
-            >
-              <Send aria-hidden /> Publicar
-            </Button>
-          )}
         </div>
       </div>
       {erros.geral && <Aviso tom="erro">{erros.geral}</Aviso>}
