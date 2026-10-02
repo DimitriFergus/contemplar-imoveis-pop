@@ -24,6 +24,8 @@ const FOTO = path.join(process.cwd(), 'public', 'imoveis', 'CP-0001', '01.jpg');
 let corretorA: ContaTeste;
 let corretorB: ContaTeste;
 let admin: ContaTeste;
+let segredoAdmin = '';
+const extras: ContaTeste[] = [];
 const imovelA = { id: '', slug: '', codigo: '' };
 
 test.beforeEach(({}, info) => {
@@ -42,7 +44,7 @@ test.beforeAll(async ({}, info) => {
 
 test.afterAll(async ({}, info) => {
   if (!supabaseDisponivel || info.project.name !== 'desktop') return;
-  await limparContas([corretorA, corretorB, admin].filter(Boolean));
+  await limparContas([corretorA, corretorB, admin, ...extras].filter(Boolean));
 });
 
 async function entrar(page: Page, conta: ContaTeste) {
@@ -209,14 +211,49 @@ test('admin precisa do app autenticador (MFA) e vê tudo', async ({ page }) => {
   await expect(page).toHaveURL(/\/admin\/mfa/);
   await page.getByRole('button', { name: 'Gerar QR Code' }).click();
   const novoSegredo = (await page.locator('code').innerText()).trim();
-  await page.getByLabel('Código de 6 números').fill(codigoTotp(novoSegredo || segredo));
+  segredoAdmin = novoSegredo || segredo;
+  await page.getByLabel('Código de 6 números').fill(codigoTotp(segredoAdmin));
   await page.getByRole('button', { name: 'Confirmar' }).click();
   await expect(page.getByRole('heading', { name: /Olá, Teste/ })).toBeVisible({ timeout: 20_000 });
 
   await page.goto(`/admin/imoveis?busca=${imovelA.codigo}`);
   await expect(page.getByText(imovelA.codigo).first()).toBeVisible();
-  await page.goto('/admin/equipe');
-  await expect(page.getByRole('heading', { name: 'Equipe' })).toBeVisible();
   await page.goto('/admin/historico?filtro=precos');
   await expect(page.getByTestId('historico')).toContainText('R$ 179.900');
+});
+
+test('admin cadastra um corretor na Equipe e ele consegue entrar', async ({ page, browser }) => {
+  await entrarNoPainel(page, admin);
+  await page.getByLabel('Código de 6 números').fill(codigoTotp(segredoAdmin));
+  await page.getByRole('button', { name: 'Confirmar' }).click();
+  await expect(page.getByRole('heading', { name: /Olá, Teste/ })).toBeVisible({ timeout: 20_000 });
+
+  await page.goto('/admin/equipe');
+  const email = `e2e-painel-novo-${Date.now()}@teste.contemplar.dev`;
+  await page.getByLabel('Nome completo').fill('Corretor Cadastrado Pelo Painel');
+  await page.getByLabel('E-mail (login)').fill(email);
+  await page.getByLabel('Senha provisória').fill('SenhaProvisoria123');
+  await page.getByLabel('CRECI').first().fill('12345-F');
+  await page.getByRole('button', { name: 'Criar acesso' }).click();
+  await expect(page.getByText(/já pode entrar no painel/)).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByText(email)).toBeVisible();
+
+  const { data } = await servico()
+    .from('perfis')
+    .select('id, corretor_id')
+    .eq('email', email)
+    .single();
+  extras.push({
+    id: data!.id as string,
+    email,
+    senha: 'SenhaProvisoria123',
+    nome: '',
+    papel: 'corretor',
+    corretorId: data!.corretor_id as string,
+  });
+
+  const outra = await browser.newPage();
+  await entrarNoPainel(outra, extras.at(-1)!);
+  await expect(outra.getByRole('heading', { name: /Olá, Corretor/ })).toBeVisible();
+  await outra.close();
 });

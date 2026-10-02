@@ -1,5 +1,10 @@
 import { LISTAGEM } from '@/config/site';
-import { aplicarFiltros, buscarEmLista, ordenar, type Filtros } from '@/lib/busca/query';
+import {
+  aplicarFiltros,
+  buscarEmLista,
+  selecionarDestaques,
+  type Filtros,
+} from '@/lib/busca/query';
 import { slugify } from '@/lib/utils/slug';
 import type { Corretor, Imovel, ImovelResumo } from '@/types';
 import { paraResumo } from './resumo';
@@ -69,11 +74,7 @@ export function criarRepositorioEmMemoria(
     },
 
     async destaques(limite) {
-      const { resumos } = await dados();
-      return ordenar(
-        resumos.filter((r) => r.status === 'disponivel'),
-        'relevancia',
-      ).slice(0, limite);
+      return selecionarDestaques((await dados()).resumos, limite);
     },
 
     async semelhantes(imovel, limite) {

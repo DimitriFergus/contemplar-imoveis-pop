@@ -2,7 +2,7 @@
 
 import { Carrossel } from '@/components/comum/Carrossel';
 import { MODO_ESTATICO } from '@/config/site';
-import { ordenar } from '@/lib/busca/query';
+import { selecionarDestaques } from '@/lib/busca/query';
 import { useTodosResumos } from '@/lib/cliente/resumos';
 import type { ImovelResumo } from '@/types';
 import { CardImovel } from './CardImovel';
@@ -10,7 +10,7 @@ import { CardImovel } from './CardImovel';
 /**
  * Carrossel "Imóveis em destaque" da página inicial. Na versão estática (GitHub Pages) os
  * destaques gerados na publicação são trocados pelos lidos do banco na hora, com a mesma
- * regra do repositório (disponíveis, marcados como destaque primeiro, depois os mais novos).
+ * regra do repositório (todos os imóveis da equipe, depois exemplos até completar).
  */
 export function DestaquesAoVivo({
   iniciais,
@@ -20,12 +20,7 @@ export function DestaquesAoVivo({
   limite?: number;
 }) {
   const { imoveis: aoVivo } = useTodosResumos(MODO_ESTATICO);
-  const destaques = aoVivo
-    ? ordenar(
-        aoVivo.filter((r) => r.status === 'disponivel'),
-        'relevancia',
-      ).slice(0, limite)
-    : iniciais;
+  const destaques = aoVivo ? selecionarDestaques(aoVivo, limite) : iniciais;
   return (
     <Carrossel rotulo="Imóveis em destaque (use as setas ou arraste para o lado)">
       {destaques.map((i, idx) => (

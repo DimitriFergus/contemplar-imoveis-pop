@@ -10,7 +10,9 @@ import { caminhoDaFoto } from '@/lib/supabase/config';
 import { paraEntrada, rascunhoVazio } from '@/lib/admin/rascunho-imovel';
 import type { LinhaImovel } from '@/lib/supabase/tipos';
 import dadosImoveis from '@/data/imoveis.json';
-import type { Imovel } from '@/types';
+import type { Imovel, ImovelResumo } from '@/types';
+import { selecionarDestaques } from '@/lib/busca/query';
+import { paraResumo } from '@/lib/repositorio/resumo';
 
 const exemplo = imovelSchema.parse(dadosImoveis[0]) as Imovel;
 
@@ -138,5 +140,41 @@ describe('formulário do painel: texto digitado → imóvel', () => {
     expect(paraEntrada(preenchido()).fotos[0]?.alt).toBe(
       'Casa 2 quartos com quintal no Jangurussu - foto 1',
     );
+  });
+});
+
+describe('esteira de destaques da página inicial', () => {
+  const base = imovelSchema.parse(dadosImoveis[0]) as Imovel;
+  const resumo = (codigo: string, extra: Partial<ImovelResumo>): ImovelResumo => ({
+    ...paraResumo(base),
+    id: codigo.toLowerCase(),
+    codigo,
+    ...extra,
+  });
+  const exemplos = Array.from({ length: 10 }, (_, i) =>
+    resumo(`CP-${String(i + 1).padStart(4, '0')}`, { exemplo: true, destaque: true }),
+  );
+
+  it('todos os imóveis da equipe entram, mesmo sem destaque e além do limite', () => {
+    const reais = Array.from({ length: 10 }, (_, i) =>
+      resumo(`CP-${String(i + 50).padStart(4, '0')}`, {
+        exemplo: false,
+        destaque: false,
+        publicadoEm: `2026-10-${String(i + 1).padStart(2, '0')}`,
+      }),
+    );
+    const lista = selecionarDestaques([...exemplos, ...reais], 8);
+    expect(lista).toHaveLength(10);
+    expect(lista.every((r) => !r.exemplo)).toBe(true);
+    expect(lista[0]?.codigo).toBe('CP-0059'); // mais novo primeiro
+  });
+
+  it('exemplos completam a esteira; vendidos e reservados ficam de fora', () => {
+    const real = resumo('CP-0099', { exemplo: false, destaque: false });
+    const vendido = resumo('CP-0098', { exemplo: false, status: 'vendido' });
+    const lista = selecionarDestaques([...exemplos, real, vendido], 8);
+    expect(lista).toHaveLength(8);
+    expect(lista[0]?.codigo).toBe('CP-0099');
+    expect(lista.map((r) => r.codigo)).not.toContain('CP-0098');
   });
 });

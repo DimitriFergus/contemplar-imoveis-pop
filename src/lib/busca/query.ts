@@ -176,6 +176,24 @@ export function ordenar(imoveis: ImovelResumo[], ordem: Ordenacao = 'relevancia'
   return lista.sort((a, b) => comparadores[ordem](a, b) || a.codigo.localeCompare(b.codigo));
 }
 
+/**
+ * Imóveis da esteira "Imóveis em destaque" da página inicial: todos os disponíveis cadastrados
+ * pela equipe (não exemplo) entram, do mais novo para o mais antigo; os de exemplo só
+ * completam a esteira até o mínimo de `minimo` cartões.
+ */
+export function selecionarDestaques(imoveis: ImovelResumo[], minimo = 8): ImovelResumo[] {
+  const disponiveis = imoveis.filter((r) => r.status === 'disponivel');
+  const reais = ordenar(
+    disponiveis.filter((r) => !r.exemplo),
+    'recentes',
+  );
+  const exemplos = ordenar(
+    disponiveis.filter((r) => r.exemplo),
+    'relevancia',
+  );
+  return [...reais, ...exemplos.slice(0, Math.max(0, minimo - reais.length))];
+}
+
 export interface Pagina<T> {
   itens: T[];
   total: number;

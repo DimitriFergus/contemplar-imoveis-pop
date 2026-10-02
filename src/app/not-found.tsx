@@ -11,7 +11,10 @@ import { SUPABASE_CONFIGURADO } from '@/lib/supabase/config';
 
 /** 404 útil: busca e imóveis em destaque. */
 export default async function NaoEncontrado() {
-  const [destaques, bairros] = await Promise.all([repositorio.destaques(3), repositorio.bairros()]);
+  const [destaques, bairros] = await Promise.all([
+    repositorio.destaques(3).then((d) => d.slice(0, 3)),
+    repositorio.bairros(),
+  ]);
   const conteudo = (
     <div className="container-site py-10">
       <div className="mx-auto max-w-2xl text-center">

@@ -336,21 +336,25 @@ export async function chamarEquipe(
   acao: 'criar' | 'ativar' | 'desativar' | 'senha',
   dados: Record<string, unknown>,
 ): Promise<Resultado> {
-  const { data, error } = await sessao.supabase.functions.invoke<Resultado>('equipe', {
-    body: { acao, ...dados },
-  });
-  if (error) {
-    let mensagem = 'Não foi possível concluir.';
-    try {
-      const corpo = (await (error as { context?: Response }).context?.json()) as Resultado;
-      if (corpo?.erro) mensagem = corpo.erro;
-    } catch {
-      if (/Failed to send|not found|404/i.test(error.message))
-        mensagem = 'A função "equipe" ainda não foi instalada no Supabase (ver MANUAL_ADMIN).';
-    }
-    return { erro: mensagem };
-  }
-  return data ?? { ok: 'Feito.' };
+  // Funções do banco (supabase/migrations/..._equipe_no_banco.sql): conferem se quem chama é
+  // administrador com MFA e só então criam o acesso, desativam ou trocam a senha.
+  const texto = (k: string) => String(dados[k] ?? '');
+  const chamada =
+    acao === 'criar'
+      ? sessao.supabase.rpc('equipe_criar', {
+          p_nome: texto('nome'),
+          p_email: texto('email'),
+          p_senha: texto('senha'),
+          p_papel: texto('papel') || 'corretor',
+          p_creci: texto('creci'),
+          p_whatsapp: texto('whatsapp'),
+        })
+      : acao === 'senha'
+        ? sessao.supabase.rpc('equipe_senha', { p_id: texto('id'), p_senha: texto('senha') })
+        : sessao.supabase.rpc('equipe_ativar', { p_id: texto('id'), p_ativo: acao === 'ativar' });
+  const { data, error } = await chamada;
+  if (error) return { erro: error.message || 'Não foi possível concluir.' };
+  return { ok: typeof data === 'string' ? data : 'Feito.' };
 }
 
 export async function atualizarCorretor(

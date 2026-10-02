@@ -15,16 +15,22 @@ export function Selo({
   tom = 'neutro',
   className,
   icone,
+  quebrar = false,
 }: {
   children: ReactNode;
   tom?: keyof typeof ESTILOS;
   className?: string;
   icone?: ReactNode;
+  /** Texto digitado pela equipe (pode ser longo): quebra a linha em vez de estourar a tela. */
+  quebrar?: boolean;
 }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.8rem] leading-none font-semibold whitespace-nowrap',
+        'inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.8rem] font-semibold',
+        quebrar
+          ? 'max-w-full leading-snug [overflow-wrap:anywhere]'
+          : 'leading-none whitespace-nowrap',
         ESTILOS[tom],
         className,
       )}

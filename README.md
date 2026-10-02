@@ -52,7 +52,7 @@ Cada push na `main` dispara o workflow [`.github/workflows/pages.yml`](.github/w
 
 Como funciona sem servidor:
 
-- **painel `/admin`**: roda no navegador e fala direto com o Supabase (login, MFA, RLS, Storage); a gestão da equipe usa a Edge Function `supabase/functions/equipe`;
+- **painel `/admin`**: roda no navegador e fala direto com o Supabase (login, MFA, RLS, Storage); a gestão da equipe usa funções do banco (`equipe_criar`, `equipe_ativar`, `equipe_senha`), que exigem admin com MFA;
 - **leads**: os formulários chamam a função `registrar_lead` do banco (validação, honeypot e limite por WhatsApp/minuto) e o lead cai no CRM na hora; se o banco falhar, o contato segue pelo WhatsApp;
 - **dados ao vivo**: busca, favoritos, comparação e página do imóvel leem o banco ao abrir; imóvel novo ainda sem página gerada é mostrado pela página 404 (que busca no banco);
 - cabeçalhos de segurança (CSP, HSTS) e otimização de imagens do Next não se aplicam.

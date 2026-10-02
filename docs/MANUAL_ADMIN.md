@@ -187,13 +187,10 @@ Sem servidor, o painel e os formulários falam direto com o Supabase pelo navega
 segurança não depende do site: as regras RLS do banco decidem o que cada pessoa pode ver e
 alterar, e os leads entram só pela função `registrar_lead` (valida os dados e limita abusos).
 
-Criar/desativar pessoas da equipe usa a função **equipe** do Supabase (Edge Function, roda nos
-servidores do Supabase com a chave secreta). Instalar/atualizar, uma vez:
-
-```bash
-npx supabase login                                   # abre o navegador para autorizar
-npx supabase functions deploy equipe --project-ref SEU-PROJETO
-```
+Criar, desativar e trocar a senha de pessoas da equipe usa funções do próprio banco
+(`equipe_criar`, `equipe_ativar`, `equipe_senha`). Cada uma confere se quem chama é
+administrador com o app autenticador confirmado. Não é preciso instalar nada além das
+migrações (`npm run supabase:migrar`).
 
 **Vercel (opcional, com servidor).** O mesmo código roda na Vercel com atualização instantânea
 de todas as páginas: importe o repositório, cadastre `NEXT_PUBLIC_SUPABASE_URL`,
@@ -204,7 +201,6 @@ de todas as páginas: importe o repositório, cadastre `NEXT_PUBLIC_SUPABASE_URL
 ### 7.4 Estrutura (para quem mantém o código)
 
 - `supabase/migrations/`: SQL versionado (tabelas, RLS, auditoria, Storage, `registrar_lead`).
-- `supabase/functions/equipe/`: Edge Function da gestão da equipe.
 - `supabase/seed.sql`: dados mínimos (corretor de exemplo).
 - `src/lib/repositorio/supabase.ts`: o site lê daqui (no build e no servidor) quando o Supabase
   está configurado; sem ele, lê `src/data`. As páginas não mudam.

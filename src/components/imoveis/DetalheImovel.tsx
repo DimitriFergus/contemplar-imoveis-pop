@@ -86,7 +86,9 @@ export function DetalheImovel({
               )}
             </div>
             <div>
-              <h1 className="text-3xl font-extrabold sm:text-4xl">{imovel.titulo}</h1>
+              <h1 className="text-3xl font-extrabold [overflow-wrap:anywhere] sm:text-4xl">
+                {imovel.titulo}
+              </h1>
               <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-lg text-muted-foreground">
                 <span className="inline-flex items-center gap-1">
                   <MapPin className="size-5" aria-hidden />
@@ -119,7 +121,7 @@ export function DetalheImovel({
             <h2 id="titulo-sobre" className="text-2xl font-bold">
               Sobre o imóvel
             </h2>
-            <p className="text-lg leading-relaxed">{imovel.descricao}</p>
+            <p className="text-lg leading-relaxed [overflow-wrap:anywhere]">{imovel.descricao}</p>
             <dl className="grid gap-3 rounded-2xl bg-muted/60 p-4 sm:grid-cols-2">
               <div>
                 <dt className="text-sm text-muted-foreground">Situação</dt>
@@ -161,7 +163,9 @@ export function DetalheImovel({
                   {imovel.caracteristicas.map((c) => (
                     <li key={c} className="flex items-center gap-2">
                       <Check className="size-5 shrink-0 text-sucesso" aria-hidden />{' '}
-                      <span className="first-letter:uppercase">{c}</span>
+                      <span className="min-w-0 [overflow-wrap:anywhere] first-letter:uppercase">
+                        {c}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -173,7 +177,7 @@ export function DetalheImovel({
                 <ul className="mt-2 flex flex-wrap gap-2">
                   {imovel.lazer.map((l) => (
                     <li key={l}>
-                      <Selo tom="info" className="text-sm first-letter:uppercase">
+                      <Selo tom="info" quebrar className="text-sm first-letter:uppercase">
                         {l}
                       </Selo>
                     </li>
