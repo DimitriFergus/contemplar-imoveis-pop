@@ -135,25 +135,25 @@ export default async function PaginaInicial() {
         >
           <ChevronDown className="size-8" aria-hidden />
         </a>
-        <div className="container-site relative w-full py-12 sm:py-16">
-          <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-semibold">
+        <div className="container-site relative w-full py-8 sm:py-16">
+          <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold sm:text-sm">
             <Home className="size-4" aria-hidden /> Imóveis a partir de{' '}
             {formatarPrecoCurto(SITE.precoAPartirDe)} em {CIDADE_BASE}
           </p>
-          <h1 className="mt-4 max-w-3xl text-4xl leading-tight font-extrabold sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-[2rem] leading-tight font-extrabold sm:mt-4 sm:text-5xl">
             Seu primeiro imóvel, com uma parcela que{' '}
             <span className="text-destaque">cabe no seu bolso</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/85">
+          <p className="mt-3 max-w-2xl text-base text-white/85 sm:mt-4 sm:text-lg">
             Casas e apartamentos com Minha Casa, Minha Vida, uso do FGTS e entrada facilitada.
-            Busque pelo preço ou pela parcela mensal.
+            <span className="hidden sm:inline"> Busque pelo preço ou pela parcela mensal.</span>
           </p>
-          <div className="mt-8 max-w-4xl">
+          <div className="mt-6 max-w-4xl sm:mt-8">
             <BuscaHero bairros={bairros} />
           </div>
           <Link
             href="/simulador"
-            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl text-lg font-bold text-destaque underline-offset-4 hover:underline"
+            className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl text-base font-bold text-destaque underline-offset-4 hover:underline sm:mt-5 sm:text-lg"
           >
             <PiggyBank className="size-6" aria-hidden /> Descubra quanto você pode pagar em 1 minuto
             <ArrowRight className="size-5" aria-hidden />

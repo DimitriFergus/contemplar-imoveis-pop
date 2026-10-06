@@ -1,6 +1,6 @@
 'use client';
 
-import { Search } from 'lucide-react';
+import { ChevronDown, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useId, useState, type FormEvent } from 'react';
 import { BASE_PATH, OPCOES_PARCELA_MAXIMA, OPCOES_PRECO_MAXIMO } from '@/config/site';
@@ -11,6 +11,7 @@ import type { BairroComTotal } from '@/lib/repositorio/tipos';
 import { formatarBRL, formatarPrecoCurto } from '@/lib/utils/formatar';
 import type { TipoImovel } from '@/types';
 import { Alternancia } from '@/components/simulador/Campos';
+import { cn } from '@/lib/utils';
 
 const TIPOS: TipoImovel[] = ['casa', 'apartamento', 'casa_condominio', 'sobrado', 'duplex'];
 
@@ -19,6 +20,9 @@ export function BuscaHero({ bairros }: { bairros: BairroComTotal[] }) {
   const router = useRouter();
   const id = useId();
   const [modo, setModo] = useState<'preco' | 'parcela'>('preco');
+  // No celular, tipo e bairro ficam recolhidos para a busca caber no vídeo do topo.
+  const [maisFiltros, setMaisFiltros] = useState(false);
+  const recolhido = cn('col-span-2 md:col-span-1', !maisFiltros && 'hidden md:block');
 
   const buscar = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,12 +54,12 @@ export function BuscaHero({ bairros }: { bairros: BairroComTotal[] }) {
         valor={modo}
         aoMudar={setModo}
         opcoes={[
-          { valor: 'preco', rotulo: 'Buscar por preço' },
-          { valor: 'parcela', rotulo: 'Buscar por parcela' },
+          { valor: 'preco', rotulo: 'Por preço' },
+          { valor: 'parcela', rotulo: 'Por parcela' },
         ]}
       />
-      <div className="mt-4 grid gap-3 md:grid-cols-[1fr_1fr_1fr_auto] md:items-end">
-        <div>
+      <div className="mt-4 grid grid-cols-[1fr_auto] items-end gap-3 md:grid-cols-[1fr_1fr_1fr_auto]">
+        <div id={`${id}-filtros-tipo`} className={recolhido}>
           <label htmlFor={`${id}-tipo`} className="mb-1 block font-semibold">
             Tipo
           </label>
@@ -68,7 +72,7 @@ export function BuscaHero({ bairros }: { bairros: BairroComTotal[] }) {
             ))}
           </select>
         </div>
-        <div>
+        <div id={`${id}-filtros-bairro`} className={recolhido}>
           <label htmlFor={`${id}-bairro`} className="mb-1 block font-semibold">
             Bairro
           </label>
@@ -105,10 +109,23 @@ export function BuscaHero({ bairros }: { bairros: BairroComTotal[] }) {
             </select>
           )}
         </div>
-        <Button type="submit" size="lg" variant="destaque" className="w-full md:w-auto">
+        <Button type="submit" size="lg" variant="destaque" className="md:w-auto">
           <Search className="size-5" aria-hidden /> Buscar
         </Button>
       </div>
+      <button
+        type="button"
+        className="mt-3 inline-flex min-h-11 items-center gap-1 font-semibold text-primary md:hidden"
+        aria-expanded={maisFiltros}
+        aria-controls={`${id}-filtros-tipo ${id}-filtros-bairro`}
+        onClick={() => setMaisFiltros((v) => !v)}
+      >
+        {maisFiltros ? 'Menos filtros' : 'Mais filtros: tipo e bairro'}
+        <ChevronDown
+          className={cn('size-5 transition-transform', maisFiltros && 'rotate-180')}
+          aria-hidden
+        />
+      </button>
     </form>
   );
 }
