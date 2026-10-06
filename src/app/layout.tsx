@@ -9,6 +9,7 @@ import { CapturaUTM } from '@/components/layout/CapturaUTM';
 import { FaixaDemo } from '@/components/layout/FaixaDemo';
 import { Rodape } from '@/components/layout/Rodape';
 import { SomenteSitePublico } from '@/components/layout/SomenteSitePublico';
+import { TopoRolagem } from '@/components/layout/TopoRolagem';
 import { WhatsAppFlutuante } from '@/components/layout/WhatsAppFlutuante';
 import './globals.css';
 
@@ -71,8 +72,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           Pular para o conteúdo
         </a>
         <SomenteSitePublico>
-          <FaixaDemo />
-          <Cabecalho />
+          <TopoRolagem faixa={<FaixaDemo />}>
+            <Cabecalho />
+          </TopoRolagem>
         </SomenteSitePublico>
         <main id="conteudo" className="flex-1">
           {children}

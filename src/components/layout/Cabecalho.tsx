@@ -9,7 +9,7 @@ import { LINKS_PRINCIPAIS } from './navegacao';
 
 export function Cabecalho() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
+    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="container-site flex h-16 items-center justify-between gap-3">
         <Logo />
         <nav aria-label="Principal" className="hidden lg:block">

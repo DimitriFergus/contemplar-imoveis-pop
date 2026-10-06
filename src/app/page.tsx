@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Building2,
   CalendarClock,
+  ChevronDown,
   Hammer,
   Home,
   PiggyBank,
@@ -118,13 +119,23 @@ export default async function PaginaInicial() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-marinho text-white">
+      {/* Quase tela cheia (a barra do topo só aparece ao rolar): sobra uma faixa do conteúdo
+          abaixo para mostrar que a página continua. */}
+      <section className="relative flex min-h-[88svh] items-center overflow-hidden bg-marinho text-white">
         <VideoFundoHero />
         <div
           aria-hidden
           className="absolute -top-24 -right-24 size-96 rounded-full bg-destaque/25 blur-3xl"
         />
-        <div className="container-site relative py-10 sm:py-16">
+        <a
+          href="#atalhos"
+          aria-label="Ver mais conteúdo"
+          className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 rounded-full p-2 text-white/80 hover:text-white motion-safe:animate-bounce sm:block"
+          data-sem-sublinhado
+        >
+          <ChevronDown className="size-8" aria-hidden />
+        </a>
+        <div className="container-site relative w-full py-12 sm:py-16">
           <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-semibold">
             <Home className="size-4" aria-hidden /> Imóveis a partir de{' '}
             {formatarPrecoCurto(SITE.precoAPartirDe)} em {CIDADE_BASE}
@@ -151,7 +162,11 @@ export default async function PaginaInicial() {
       </section>
 
       {/* Atalhos */}
-      <nav aria-label="Atalhos de busca" className="container-site -mt-1 pt-8">
+      <nav
+        id="atalhos"
+        aria-label="Atalhos de busca"
+        className="container-site -mt-1 scroll-mt-20 pt-8"
+      >
         <ul className="rolagem-horizontal -mx-4 flex gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-6 md:px-0">
           {ATALHOS.map(({ rotulo, href, icone: Icone }) => (
             <li key={rotulo} className="shrink-0">
