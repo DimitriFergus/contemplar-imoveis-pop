@@ -22,6 +22,7 @@ import {
   estaDefinido,
 } from '@/config/site';
 import { BuscaHero } from '@/components/busca/BuscaHero';
+import { VideoFundoHero } from '@/components/layout/VideoFundoHero';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { FaixasMcmv, type FaixaComImoveis } from '@/components/conteudo/FaixasMcmv';
 import { condicoesNaFaixa, limiteImovelPorFaixa } from '@/lib/financiamento';
@@ -118,6 +119,7 @@ export default async function PaginaInicial() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-marinho text-white">
+        <VideoFundoHero />
         <div
           aria-hidden
           className="absolute -top-24 -right-24 size-96 rounded-full bg-destaque/25 blur-3xl"

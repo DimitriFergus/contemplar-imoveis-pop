@@ -126,3 +126,10 @@ Ao adicionar fotos reais, registre aqui a autoria e a autorização de cada conj
 | CP-0024/03.jpg | cozinha | desconhecido | [rawpixel](https://www.rawpixel.com/image/6042995/photo-image-public-domain-house-kitchen) | CC0 |
 | CP-0024/04.jpg | quarto | desconhecido | [rawpixel](https://www.rawpixel.com/image/5917355/image-public-domain-house-room) | CC0 |
 | CP-0024/05.jpg | banheiro | desconhecido | [rawpixel](https://www.rawpixel.com/image/5919752/photo-image-public-domain-shadow-blue) | CC0 |
+
+## Vídeo de fundo da página inicial
+
+`public/videos/hero.mp4` e `public/videos/hero-capa.webp`: trecho de 12 s (sem áudio, reduzido para 720p) de
+[Drone video of residential neighborhood near Frank Lloyd Wright's home and studio in Oak Park, IL](https://commons.wikimedia.org/wiki/File:Drone_video_of_residential_neighborhood_near_Frank_Lloyd_Wright%27s_home_and_studio_in_Oak_Park_,_IL.webm),
+de **Chris Cafiero**, licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) — imagem ilustrativa.
+Para trocar por um vídeo próprio, substitua os dois arquivos mantendo os nomes (MP4 H.264, sem som, até ~3 MB).

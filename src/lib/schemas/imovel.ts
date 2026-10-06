@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { urlMidiaPermitida } from '@/lib/utils/url-segura';
 import { SITUACOES_IMOVEL, STATUS_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE } from '@/lib/constantes';
 
 export { SITUACOES_IMOVEL, STATUS_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE };
@@ -11,7 +12,7 @@ const dataIso = z.string().refine((v) => !Number.isNaN(Date.parse(v)), 'data inv
 
 export const fotoSchema = z.object({
   arquivo: z.string().min(1),
-  alt: z.string().min(5, 'descrição da foto (alt) muito curta'),
+  alt: z.string().min(5, 'descrição da foto (alt) muito curta').max(300),
 });
 
 export const proximidadeSchema = z.object({
@@ -57,8 +58,11 @@ export const imovelBaseSchema = z.object({
     entradaFacilitada: z.boolean(),
   }),
   fotos: z.array(fotoSchema),
-  videoUrl: z.url().optional(),
-  tour360Url: z.url().optional(),
+  videoUrl: z.url().refine(urlMidiaPermitida, 'use um link https do YouTube').optional(),
+  tour360Url: z
+    .url()
+    .refine(urlMidiaPermitida, 'use um link https do Matterport, Kuula ou YouTube')
+    .optional(),
   proximidades: z.array(proximidadeSchema),
   destaque: z.boolean(),
   status: z.enum(STATUS_IMOVEL),

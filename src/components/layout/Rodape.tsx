@@ -106,6 +106,18 @@ export function Rodape() {
             Fotos e valores sujeitos a alteração sem aviso prévio. Imagens podem ser ilustrativas. A
             localização no mapa é aproximada.
           </p>
+          <p className="text-xs">
+            Vídeo da página inicial (ilustrativo): Chris Cafiero,{' '}
+            <a
+              href="https://commons.wikimedia.org/wiki/File:Drone_video_of_residential_neighborhood_near_Frank_Lloyd_Wright%27s_home_and_studio_in_Oak_Park_,_IL.webm"
+              className="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Wikimedia Commons
+            </a>
+            , CC BY 3.0.
+          </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Link
               className="inline-flex min-h-11 items-center underline"

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { montarCsp } from '@/config/seguranca';
 import { SITE } from '@/config/site';
 import { AlertaPendencias } from '@/components/layout/AlertaPendencias';
 import { SCRIPT_LEITURA_FACIL } from '@/components/layout/BotaoLeituraFacil';
@@ -53,6 +54,13 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       suppressHydrationWarning
     >
       <head>
+        {/* GitHub Pages não envia cabeçalhos de segurança: a mesma política vai como <meta>. */}
+        {process.env.NEXT_PUBLIC_MODO_ESTATICO === 'true' && (
+          <>
+            <meta httpEquiv="Content-Security-Policy" content={montarCsp({ comoMeta: true })} />
+            <meta name="referrer" content="strict-origin-when-cross-origin" />
+          </>
+        )}
         <script dangerouslySetInnerHTML={{ __html: SCRIPT_LEITURA_FACIL }} />
       </head>
       <body className="flex min-h-dvh flex-col antialiased">

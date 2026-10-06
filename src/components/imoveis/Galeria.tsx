@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/compone
 import type { Foto } from '@/types';
 import { cn } from '@/lib/utils';
 import { caminhoPublico } from '@/lib/utils/caminho';
+import { urlMidiaPermitida } from '@/lib/utils/url-segura';
 
 interface Props {
   fotos: Foto[];
@@ -18,8 +19,9 @@ interface Props {
   ilustrativa?: boolean;
 }
 
-/** Converte links do YouTube em endereço de incorporação sem cookies. */
-function urlIncorporacao(url: string): string {
+/** Converte links do YouTube em endereço de incorporação sem cookies (só serviços permitidos). */
+function urlIncorporacao(url: string): string | undefined {
+  if (!urlMidiaPermitida(url)) return undefined;
   const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]{6,})/);
   return yt ? `https://www.youtube-nocookie.com/embed/${yt[1]}` : url;
 }
@@ -95,7 +97,9 @@ function Carrossel({
   );
 }
 
-export function Galeria({ fotos, titulo, videoUrl, tour360Url, ilustrativa = false }: Props) {
+export function Galeria({ fotos, titulo, ilustrativa = false, ...links }: Props) {
+  const videoUrl = urlMidiaPermitida(links.videoUrl) ? links.videoUrl : undefined;
+  const tour360Url = urlMidiaPermitida(links.tour360Url) ? links.tour360Url : undefined;
   const [indice, setIndice] = useState(0);
   const [telaCheia, setTelaCheia] = useState(false);
   const [midia, setMidia] = useState<null | { tipo: 'video' | 'tour'; url: string }>(null);
@@ -256,6 +260,8 @@ export function Galeria({ fotos, titulo, videoUrl, tour360Url, ilustrativa = fal
                 title={`${midia.tipo === 'video' ? 'Vídeo' : 'Tour 360°'}: ${titulo}`}
                 className="size-full rounded-b-xl"
                 allow="accelerometer; gyroscope; fullscreen; picture-in-picture"
+                sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
                 loading="lazy"
               />

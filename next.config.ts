@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { montarCsp } from './src/config/seguranca';
 
 const desenvolvimento = process.env.NODE_ENV === 'development';
 /** Versão estática para o GitHub Pages (definida no workflow .github/workflows/pages.yml). */
@@ -14,22 +15,7 @@ const supabase = (() => {
     return null;
   }
 })();
-const origemSupabase = supabase ? ` ${supabase.origin}` : '';
-
-/** Política de segurança de conteúdo: só o próprio site, tiles do OpenStreetMap e vídeos incorporados. */
-const csp = [
-  "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${desenvolvimento ? " 'unsafe-eval'" : ''}`,
-  "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob: https://tile.openstreetmap.org${origemSupabase}`,
-  "font-src 'self'",
-  `connect-src 'self'${origemSupabase}${desenvolvimento ? ' ws: wss:' : ''}`,
-  'frame-src https://www.google.com https://www.youtube-nocookie.com https://my.matterport.com https://kuula.co',
-  "frame-ancestors 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "object-src 'none'",
-].join('; ');
+const csp = montarCsp({ desenvolvimento });
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,

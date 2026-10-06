@@ -1,5 +1,6 @@
 import type { LinhaImovel } from '@/lib/supabase/tipos';
 import type { Imovel, StatusImovel } from '@/types';
+import { fotoPermitida, urlMidiaPermitida } from '@/lib/utils/url-segura';
 
 /**
  * Conversão linha do banco → Imovel sem dependências pesadas (sem Zod), para poder rodar
@@ -29,14 +30,20 @@ export const CAMPOS_FORA_DE_DADOS = [
   'atualizadoEm',
 ] as const;
 
-/** Linha do banco → objeto Imovel, no mesmo formato do site (sem validar). */
+/**
+ * Linha do banco → objeto Imovel, no mesmo formato do site (sem validar o schema inteiro).
+ * Links de fotos, vídeo e tour passam pela lista de endereços permitidos.
+ */
 export function linhaParaImovel(l: LinhaImovel): Imovel {
+  const dados = l.dados as Omit<Imovel, (typeof CAMPOS_FORA_DE_DADOS)[number]>;
   return {
-    ...(l.dados as Omit<Imovel, (typeof CAMPOS_FORA_DE_DADOS)[number]>),
+    ...dados,
+    videoUrl: urlMidiaPermitida(dados.videoUrl) ? dados.videoUrl : undefined,
+    tour360Url: urlMidiaPermitida(dados.tour360Url) ? dados.tour360Url : undefined,
     id: l.codigo.toLowerCase(),
     codigo: l.codigo,
     slug: l.slug,
-    fotos: l.fotos,
+    fotos: Array.isArray(l.fotos) ? l.fotos.filter((f) => fotoPermitida(f?.arquivo)) : [],
     destaque: l.destaque,
     status: statusPublico(l.status),
     corretorResponsavelId: l.corretor_id,
