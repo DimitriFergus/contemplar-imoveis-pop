@@ -8,7 +8,6 @@ import { Ordenacao } from '@/components/busca/Ordenacao';
 import { PainelFiltros } from '@/components/busca/PainelFiltros';
 import { MapaClustersComprar } from '@/components/mapa/Mapas';
 import { Button } from '@/components/ui/button';
-import { bairrosComLocalizacao } from '@/lib/busca/bairros-mapa';
 import { paraQueryString, type Filtros, type ResultadoBusca } from '@/lib/busca/query';
 import type { BairroComTotal } from '@/lib/repositorio/tipos';
 import { plural } from '@/lib/utils/formatar';
@@ -77,11 +76,7 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
       ) : (
         <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
           <div className="h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:h-[calc(100dvh-6rem)]">
-            <MapaClustersComprar
-              bairros={bairrosComLocalizacao(resultado.todos)}
-              caminho={caminho}
-              filtrosAtuais={filtros}
-            />
+            <MapaClustersComprar imoveis={resultado.todos} />
           </div>
           <div className="mt-5 lg:mt-0">
             <GradeInfinita itens={resultado.todos} />
