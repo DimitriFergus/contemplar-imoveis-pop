@@ -14,7 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { LINKS_PRINCIPAIS } from './navegacao';
+import { LINKS_TODOS } from './navegacao';
 
 export function MenuCelular() {
   const [aberto, setAberto] = useState(false);
@@ -33,7 +33,7 @@ export function MenuCelular() {
         <nav aria-label="Menu do celular" className="flex-1 overflow-y-auto px-3 py-3">
           <ul className="flex flex-col">
             {[
-              ...LINKS_PRINCIPAIS,
+              ...LINKS_TODOS,
               { href: '/favoritos', rotulo: 'Meus favoritos' },
               { href: '/contato', rotulo: 'Contato' },
             ].map((l) => (
