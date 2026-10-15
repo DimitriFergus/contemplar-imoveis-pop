@@ -23,3 +23,7 @@ export const MapaBairros = dynamic(() => import('./MapaBairrosLeaflet'), {
   ssr: false,
   loading: Carregando,
 });
+export const MapaClustersComprar = dynamic(
+  () => import('@/components/comprar/MapaClustersComprarLeaflet'),
+  { ssr: false, loading: Carregando },
+);

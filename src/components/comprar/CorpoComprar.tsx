@@ -11,8 +11,9 @@ import { Paginacao } from '@/components/busca/Paginacao';
 import { PainelComparacao } from '@/components/comparacao/PainelComparacao';
 import { CardImovel } from '@/components/imoveis/CardImovel';
 import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
-import { MapaListagem } from '@/components/mapa/Mapas';
+import { MapaClustersComprar } from '@/components/mapa/Mapas';
 import { Button } from '@/components/ui/button';
+import { bairrosComLocalizacao } from '@/lib/busca/bairros-mapa';
 import { chipsAtivos, paraQueryString, type Filtros, type ResultadoBusca } from '@/lib/busca/query';
 import type { BairroComTotal } from '@/lib/repositorio/tipos';
 import { plural } from '@/lib/utils/formatar';
@@ -85,12 +86,9 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
           </div>
         </div>
       ) : (
-        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-5">
-          <div className="h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:h-[calc(100dvh-6rem)]">
-            <MapaListagem imoveis={resultado.todos} />
-          </div>
-          <div className="mt-5 lg:mt-0">
-            <ul className="grid gap-4">
+        <div className="lg:grid lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-5">
+          <div>
+            <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {resultado.itens.map((i, idx) => (
                 <li key={i.id}>
                   <Suspense>
@@ -105,6 +103,9 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
               pagina={resultado.pagina}
               totalPaginas={resultado.totalPaginas}
             />
+          </div>
+          <div className="mt-5 h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:mt-0 lg:h-[calc(100dvh-6rem)]">
+            <MapaClustersComprar bairros={bairrosComLocalizacao(resultado.todos)} caminho={caminho} filtrosAtuais={filtros} />
           </div>
         </div>
       )}
