@@ -14,6 +14,7 @@ import { ATRIBUICAO_OSM, URL_TILES_OSM } from '@/components/mapa/tiles';
 import { caminhoPublico } from '@/lib/utils/caminho';
 import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
 import type { ImovelResumo } from '@/types';
+import { FichaIconica } from './FichaIconica';
 
 function iconePreco(preco: number, indisponivel: boolean) {
   return L.divIcon({
@@ -97,7 +98,14 @@ export default function MapaClustersComprarLeaflet({ imoveis }: { imoveis: Imove
                 <p className="m-0! text-lg font-extrabold text-[#041a4b]">
                   {formatarPreco(i.preco)}
                 </p>
-                <p className="mt-1! mb-2! text-sm text-slate-700">{i.titulo}</p>
+                <FichaIconica
+                  className="mt-1.5 mb-2.5 gap-x-2.5 text-slate-700"
+                  quartos={i.quartos}
+                  suites={i.suites}
+                  banheiros={i.banheiros}
+                  vagas={i.vagas}
+                  areaUtilM2={i.areaUtilM2}
+                />
                 <Link
                   href={`/imoveis/${i.slug}`}
                   className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#041a4b] font-semibold text-white! no-underline"

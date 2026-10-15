@@ -17,6 +17,7 @@ export function paraResumo(i: Imovel): ImovelResumo {
     cidade: i.cidade,
     uf: i.uf,
     quartos: i.quartos,
+    suites: i.suites,
     banheiros: i.banheiros,
     vagas: i.vagas,
     areaUtilM2: i.areaUtilM2,

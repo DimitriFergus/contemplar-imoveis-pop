@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ROTULO_STATUS, ROTULO_TIPO } from '@/lib/rotulos';
 import { caminhoPublico } from '@/lib/utils/caminho';
-import { formatarArea, formatarPreco } from '@/lib/utils/formatar';
+import { formatarPreco } from '@/lib/utils/formatar';
 import { cn } from '@/lib/utils';
 import type { ImovelResumo } from '@/types';
+import { FichaIconica } from './FichaIconica';
 
 interface Props {
   imovel: ImovelResumo;
@@ -74,11 +75,14 @@ export function CardImovelComprar({ imovel: i, prioridade = false, className }: 
           <MapPin className="size-4 shrink-0" aria-hidden />
           {i.bairro}, {i.cidade}, {i.uf}
         </p>
-        <p className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.95rem] text-muted-foreground">
-          <span>Qtos {i.quartos}</span>
-          <span>WC {i.banheiros}</span>
-          <span>Área {formatarArea(i.areaUtilM2)}</span>
-        </p>
+        <FichaIconica
+          className="mt-1"
+          quartos={i.quartos}
+          suites={i.suites}
+          banheiros={i.banheiros}
+          vagas={i.vagas}
+          areaUtilM2={i.areaUtilM2}
+        />
       </div>
     </article>
   );

@@ -50,6 +50,7 @@ export interface ImovelResumo {
   cidade: string;
   uf: string;
   quartos: number;
+  suites: number;
   banheiros: number;
   vagas: number;
   areaUtilM2: number;
