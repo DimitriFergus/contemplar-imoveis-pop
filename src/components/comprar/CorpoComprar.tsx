@@ -9,7 +9,7 @@ import { Ordenacao } from '@/components/busca/Ordenacao';
 import { PainelFiltros } from '@/components/busca/PainelFiltros';
 import { Paginacao } from '@/components/busca/Paginacao';
 import { PainelComparacao } from '@/components/comparacao/PainelComparacao';
-import { CardImovel } from '@/components/imoveis/CardImovel';
+import { CardImovelComprar } from './CardImovelComprar';
 import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
 import { MapaClustersComprar } from '@/components/mapa/Mapas';
 import { Button } from '@/components/ui/button';
@@ -91,9 +91,7 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
             <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {resultado.itens.map((i, idx) => (
                 <li key={i.id}>
-                  <Suspense>
-                    <CardImovel imovel={i} nivelTitulo="h2" prioridade={idx < 2} comparavel />
-                  </Suspense>
+                  <CardImovelComprar imovel={i} prioridade={idx < 2} />
                 </li>
               ))}
             </ul>

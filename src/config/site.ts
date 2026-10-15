@@ -68,13 +68,13 @@ export const MENSAGENS_WHATSAPP = {
   sufixoOrigem: ' (origem: {origem})',
 } as const;
 
-/** Cidade base da operação. Enquanto não definida, usamos nomes claramente fictícios. */
-export const CIDADE_BASE = 'Cidade Exemplo';
-export const UF_BASE = 'EX';
-export const CIDADE_BASE_DEFINIDA = false;
+/** Cidade base da operação. */
+export const CIDADE_BASE = 'Fortaleza';
+export const UF_BASE = 'CE';
+export const CIDADE_BASE_DEFINIDA = true;
 
-/** Centro do mapa da cidade base (A_DEFINIR: coordenadas reais da cidade). */
-export const CENTRO_MAPA = { lat: -23.5505, lng: -46.6333, zoom: 13 } as const;
+/** Centro do mapa da cidade base. */
+export const CENTRO_MAPA = { lat: -3.7704, lng: -38.5124, zoom: 12 } as const;
 
 export interface BairroExemplo {
   nome: string;
@@ -82,14 +82,14 @@ export interface BairroExemplo {
   lng: number;
 }
 
-/** Bairros usados nos imóveis de exemplo (fictícios). Substituir pelos bairros reais. */
+/** Bairros de Fortaleza usados nos imóveis de exemplo (os imóveis em si são fictícios). */
 export const BAIRROS_EXEMPLO: BairroExemplo[] = [
-  { nome: 'Jardim Exemplo', lat: -23.5405, lng: -46.6453 },
-  { nome: 'Parque das Flores Demo', lat: -23.5615, lng: -46.6203 },
-  { nome: 'Vila Modelo', lat: -23.5352, lng: -46.6181 },
-  { nome: 'Residencial Horizonte Demo', lat: -23.5688, lng: -46.6451 },
-  { nome: 'Conjunto Esperança Demo', lat: -23.5512, lng: -46.6027 },
-  { nome: 'Jardim Ipê Fictício', lat: -23.5259, lng: -46.6352 },
+  { nome: 'Centro', lat: -3.7319, lng: -38.5267 },
+  { nome: 'Aldeota', lat: -3.7336, lng: -38.5013 },
+  { nome: 'Meireles', lat: -3.7306, lng: -38.4903 },
+  { nome: 'Cocó', lat: -3.7639, lng: -38.4779 },
+  { nome: 'Parangaba', lat: -3.7764, lng: -38.5559 },
+  { nome: 'Messejana', lat: -3.8192, lng: -38.4716 },
 ];
 
 /** Modo demonstração: faixa no topo e selo "Imóvel ilustrativo" nos imóveis de exemplo. */

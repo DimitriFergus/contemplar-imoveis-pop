@@ -2,9 +2,9 @@
 
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import { CENTRO_MAPA } from '@/config/site';
 import type { BairroComLocalizacao } from '@/lib/busca/bairros-mapa';
 import { paraQueryString, type Filtros } from '@/lib/busca/query';
@@ -23,10 +23,9 @@ function iconeCluster(total: number) {
   const px = tamanho(total);
   return L.divIcon({
     className: 'marcador-cluster',
-    html: `<span style="display:flex;align-items:center;justify-content:center;width:${px}px;height:${px}px;border-radius:999px;font:700 ${px >= 46 ? 15 : 13}px/1 var(--fonte-texto),system-ui,sans-serif;background:var(--primary);color:var(--primary-foreground);box-shadow:0 2px 8px rgba(0,0,0,.35);border:2px solid #fff">${total}</span>`,
+    html: `<span style="display:flex;align-items:center;justify-content:center;width:${px}px;height:${px}px;border-radius:999px;font:700 ${px >= 46 ? 15 : 13}px/1 var(--fonte-texto),system-ui,sans-serif;background:var(--primary);color:var(--primary-foreground);box-shadow:0 2px 8px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer">${total}</span>`,
     iconSize: [px, px],
     iconAnchor: [px / 2, px / 2],
-    popupAnchor: [0, -px / 2],
   });
 }
 
@@ -39,6 +38,7 @@ export default function MapaClustersComprarLeaflet({
   caminho: string;
   filtrosAtuais: Filtros;
 }) {
+  const router = useRouter();
   const limites = useMemo(() => {
     if (bairros.length === 0) return null;
     return L.latLngBounds(bairros.map((b) => [b.lat, b.lng]));
@@ -51,7 +51,7 @@ export default function MapaClustersComprarLeaflet({
         : { center: [CENTRO_MAPA.lat, CENTRO_MAPA.lng], zoom: CENTRO_MAPA.zoom })}
       scrollWheelZoom
       className="size-full"
-      aria-label="Mapa com a quantidade de imóveis por região"
+      aria-label="Mapa com a quantidade de imóveis por região. Toque numa região para ver só os imóveis de lá."
     >
       <TileLayer url={URL_TILES_OSM} attribution={ATRIBUICAO_OSM} />
       {bairros.map((b) => (
@@ -59,23 +59,18 @@ export default function MapaClustersComprarLeaflet({
           key={b.slug}
           position={[b.lat, b.lng]}
           icon={iconeCluster(b.total)}
-          title={`${b.nome} — ${plural(b.total, 'imóvel', 'imóveis')}`}
-        >
-          <Popup minWidth={200}>
-            <div className="font-sans">
-              <p className="m-0! text-base font-bold text-[#041a4b]">{b.nome}</p>
-              <p className="m-0! text-sm text-slate-600">
-                {plural(b.total, 'imóvel encontrado', 'imóveis encontrados')}
-              </p>
-              <Link
-                href={`${caminho}${paraQueryString({ ...filtrosAtuais, bairro: b.slug, pagina: undefined })}`}
-                className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#041a4b] font-semibold text-white! no-underline"
-              >
-                Ver só este bairro
-              </Link>
-            </div>
-          </Popup>
-        </Marker>
+          title={`Ver ${plural(b.total, 'imóvel', 'imóveis')} em ${b.nome}`}
+          alt={`Ver ${plural(b.total, 'imóvel', 'imóveis')} em ${b.nome}`}
+          keyboard
+          eventHandlers={{
+            click: () => {
+              router.push(
+                `${caminho}${paraQueryString({ ...filtrosAtuais, bairro: b.slug, pagina: undefined })}`,
+                { scroll: false },
+              );
+            },
+          }}
+        />
       ))}
     </MapContainer>
   );

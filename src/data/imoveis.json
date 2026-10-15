@@ -2,19 +2,19 @@
   {
     "id": "cp-0001",
     "codigo": "CP-0001",
-    "slug": "casa-2-quartos-no-jardim-exemplo-cp-0001",
-    "titulo": "Casa 2 quartos no Jardim Exemplo",
-    "descricao": "Casa de 2 quartos com 58 m² de área útil, localizada no bairro Jardim Exemplo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: cozinha americana, piso cerâmico, portão eletrônico. Perto de Parque Linear Demo a cerca de 380 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "casa-2-quartos-no-centro-cp-0001",
+    "titulo": "Casa 2 quartos no Centro",
+    "descricao": "Casa de 2 quartos com 58 m² de área útil, localizada no bairro Centro. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: cozinha americana, piso cerâmico, portão eletrônico. Perto de Parque Linear Demo a cerca de 380 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "usado",
     "preco": 160000,
     "iptuAnual": 800,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Exemplo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Centro",
     "localizacaoAproximada": {
-      "lat": -23.54,
-      "lng": -46.649,
+      "lat": -3.732,
+      "lng": -38.531,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -41,23 +41,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0001/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Centro (CP-0001), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0001/02.jpg",
-        "alt": "Sala de estar – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 2 quartos no Centro (CP-0001), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0001/03.jpg",
-        "alt": "Cozinha – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
+        "alt": "Cozinha – Casa 2 quartos no Centro (CP-0001), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0001/04.jpg",
-        "alt": "Quarto – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
+        "alt": "Quarto – Casa 2 quartos no Centro (CP-0001), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0001/05.jpg",
-        "alt": "Banheiro – Casa 2 quartos no Jardim Exemplo (CP-0001), imagem ilustrativa"
+        "alt": "Banheiro – Casa 2 quartos no Centro (CP-0001), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -73,7 +73,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Jardim",
+        "nome": "Posto de Saúde Exemplo Centro",
         "distanciaMetros": 550
       },
       {
@@ -97,21 +97,21 @@
   {
     "id": "cp-0002",
     "codigo": "CP-0002",
-    "slug": "apartamento-2-quartos-na-planta-no-parque-das-flores-demo-cp-0002",
-    "titulo": "Apartamento 2 quartos na planta no Parque das Flores Demo",
-    "descricao": "Apartamento de 2 quartos com 44 m² de área útil, localizado no bairro Parque das Flores Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: janelas amplas, varanda, interfone. O condomínio oferece salão de festas, playground, quadra, espaço pet. Perto de Padaria e Mercearia Modelo a cerca de 430 m e Terminal de ônibus Demo a cerca de 460 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "apartamento-2-quartos-na-planta-no-aldeota-cp-0002",
+    "titulo": "Apartamento 2 quartos na planta no Aldeota",
+    "descricao": "Apartamento de 2 quartos com 44 m² de área útil, localizado no bairro Aldeota. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: janelas amplas, varanda, interfone. O condomínio oferece salão de festas, playground, quadra, espaço pet. Perto de Padaria e Mercearia Modelo a cerca de 430 m e Terminal de ônibus Demo a cerca de 460 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "na_planta",
     "previsaoEntrega": "2027-12",
     "preco": 191000,
     "condominioMensal": 240,
     "iptuAnual": 450,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Parque das Flores Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Aldeota",
     "localizacaoAproximada": {
-      "lat": -23.561,
-      "lng": -46.618,
+      "lat": -3.733,
+      "lng": -38.499,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -142,23 +142,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0002/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Aldeota (CP-0002), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0002/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos na planta no Aldeota (CP-0002), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0002/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos na planta no Aldeota (CP-0002), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0002/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos na planta no Aldeota (CP-0002), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0002/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos na planta no Parque das Flores Demo (CP-0002), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos na planta no Aldeota (CP-0002), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -179,7 +179,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Clínica da Família Modelo Parque",
+        "nome": "Clínica da Família Modelo Aldeota",
         "distanciaMetros": 740
       }
     ],
@@ -193,19 +193,19 @@
   {
     "id": "cp-0003",
     "codigo": "CP-0003",
-    "slug": "casa-2-quartos-com-quintal-no-residencial-horizonte-demo-cp-0003",
-    "titulo": "Casa 2 quartos com quintal no Residencial Horizonte Demo",
-    "descricao": "Casa de 2 quartos com 62 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel pronto para morar. Destaques: quintal, aquecedor solar, área de serviço coberta. Perto de Terminal de ônibus Demo a cerca de 270 m e UBS Demo Residencial a cerca de 400 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "casa-2-quartos-com-quintal-no-coco-cp-0003",
+    "titulo": "Casa 2 quartos com quintal no Cocó",
+    "descricao": "Casa de 2 quartos com 62 m² de área útil, localizada no bairro Cocó. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel pronto para morar. Destaques: quintal, aquecedor solar, área de serviço coberta. Perto de Terminal de ônibus Demo a cerca de 270 m e UBS Demo Cocó a cerca de 400 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "pronto",
     "preco": 188000,
     "iptuAnual": 750,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Residencial Horizonte Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Cocó",
     "localizacaoAproximada": {
-      "lat": -23.568,
-      "lng": -46.643,
+      "lat": -3.763,
+      "lng": -38.476,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -234,23 +234,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0003/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Cocó (CP-0003), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0003/02.jpg",
-        "alt": "Sala de estar – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 2 quartos com quintal no Cocó (CP-0003), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0003/03.jpg",
-        "alt": "Cozinha – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
+        "alt": "Cozinha – Casa 2 quartos com quintal no Cocó (CP-0003), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0003/04.jpg",
-        "alt": "Quarto – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
+        "alt": "Quarto – Casa 2 quartos com quintal no Cocó (CP-0003), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0003/05.jpg",
-        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Residencial Horizonte Demo (CP-0003), imagem ilustrativa"
+        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Cocó (CP-0003), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -261,7 +261,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Residencial",
+        "nome": "UBS Demo Cocó",
         "distanciaMetros": 400
       },
       {
@@ -285,20 +285,20 @@
   {
     "id": "cp-0004",
     "codigo": "CP-0004",
-    "slug": "apartamento-2-quartos-com-varanda-no-jardim-exemplo-cp-0004",
-    "titulo": "Apartamento 2 quartos com varanda no Jardim Exemplo",
-    "descricao": "Apartamento de 2 quartos com 48 m² de área útil, localizado no bairro Jardim Exemplo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, piso cerâmico, elevador. O condomínio oferece bicicletário, salão de festas, quadra, churrasqueira, espaço pet. Perto de Estação Modelo a cerca de 80 m e Padaria e Mercearia Modelo a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "apartamento-2-quartos-com-varanda-no-centro-cp-0004",
+    "titulo": "Apartamento 2 quartos com varanda no Centro",
+    "descricao": "Apartamento de 2 quartos com 48 m² de área útil, localizado no bairro Centro. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, piso cerâmico, elevador. O condomínio oferece bicicletário, salão de festas, quadra, churrasqueira, espaço pet. Perto de Estação Modelo a cerca de 80 m e Padaria e Mercearia Modelo a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "pronto",
     "preco": 197000,
     "condominioMensal": 300,
     "iptuAnual": 680,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Exemplo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Centro",
     "localizacaoAproximada": {
-      "lat": -23.544,
-      "lng": -46.643,
+      "lat": -3.735,
+      "lng": -38.524,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -331,23 +331,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0004/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos com varanda no Centro (CP-0004), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0004/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos com varanda no Centro (CP-0004), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0004/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos com varanda no Centro (CP-0004), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0004/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos com varanda no Centro (CP-0004), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0004/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos com varanda no Jardim Exemplo (CP-0004), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos com varanda no Centro (CP-0004), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -373,7 +373,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Clínica da Família Modelo Jardim",
+        "nome": "Clínica da Família Modelo Centro",
         "distanciaMetros": 810
       }
     ],
@@ -387,20 +387,20 @@
   {
     "id": "cp-0005",
     "codigo": "CP-0005",
-    "slug": "casa-em-condominio-2-quartos-com-quintal-no-jardim-ipe-ficticio-cp-0005",
-    "titulo": "Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício",
-    "descricao": "Casa em condomínio de 2 quartos com 64 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 140 m². Imóvel pronto para morar. Destaques: quintal, área de serviço coberta, cozinha americana. O condomínio oferece quadra, bicicletário, piscina. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Estadual Modelo a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "casa-em-condominio-2-quartos-com-quintal-no-messejana-cp-0005",
+    "titulo": "Casa em condomínio 2 quartos com quintal no Messejana",
+    "descricao": "Casa em condomínio de 2 quartos com 64 m² de área útil, localizada no bairro Messejana. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 140 m². Imóvel pronto para morar. Destaques: quintal, área de serviço coberta, cozinha americana. O condomínio oferece quadra, bicicletário, piscina. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Estadual Modelo a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "casa_condominio",
     "situacao": "pronto",
     "preco": 235000,
     "condominioMensal": 280,
     "iptuAnual": 660,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Ipê Fictício",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Messejana",
     "localizacaoAproximada": {
-      "lat": -23.524,
-      "lng": -46.631,
+      "lat": -3.818,
+      "lng": -38.468,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -433,23 +433,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0005/01.jpg",
-        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
+        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos com quintal no Messejana (CP-0005), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0005/02.jpg",
-        "alt": "Sala de estar – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
+        "alt": "Sala de estar – Casa em condomínio 2 quartos com quintal no Messejana (CP-0005), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0005/03.jpg",
-        "alt": "Cozinha – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
+        "alt": "Cozinha – Casa em condomínio 2 quartos com quintal no Messejana (CP-0005), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0005/04.jpg",
-        "alt": "Quarto – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
+        "alt": "Quarto – Casa em condomínio 2 quartos com quintal no Messejana (CP-0005), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0005/05.jpg",
-        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos com quintal no Jardim Ipê Fictício (CP-0005), imagem ilustrativa"
+        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos com quintal no Messejana (CP-0005), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -470,7 +470,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Clínica da Família Modelo Jardim",
+        "nome": "Clínica da Família Modelo Messejana",
         "distanciaMetros": 910
       }
     ],
@@ -484,19 +484,19 @@
   {
     "id": "cp-0006",
     "codigo": "CP-0006",
-    "slug": "casa-3-quartos-com-quintal-no-conjunto-esperanca-demo-cp-0006",
-    "titulo": "Casa 3 quartos com quintal no Conjunto Esperança Demo",
-    "descricao": "Casa de 3 quartos com 78 m² de área útil, localizada no bairro Conjunto Esperança Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 200 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: aquecedor solar, janelas com grade, lavanderia. Perto de Escola Estadual Modelo a cerca de 220 m e Praça Exemplo a cerca de 250 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-3-quartos-com-quintal-no-parangaba-cp-0006",
+    "titulo": "Casa 3 quartos com quintal no Parangaba",
+    "descricao": "Casa de 3 quartos com 78 m² de área útil, localizada no bairro Parangaba. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 200 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: aquecedor solar, janelas com grade, lavanderia. Perto de Escola Estadual Modelo a cerca de 220 m e Praça Exemplo a cerca de 250 m. Aceita uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "usado",
     "preco": 202000,
     "iptuAnual": 760,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Conjunto Esperança Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Parangaba",
     "localizacaoAproximada": {
-      "lat": -23.55,
-      "lng": -46.602,
+      "lat": -3.775,
+      "lng": -38.555,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -525,23 +525,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0006/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Parangaba (CP-0006), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0006/02.jpg",
-        "alt": "Sala de estar – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 3 quartos com quintal no Parangaba (CP-0006), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0006/03.jpg",
-        "alt": "Cozinha – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
+        "alt": "Cozinha – Casa 3 quartos com quintal no Parangaba (CP-0006), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0006/04.jpg",
-        "alt": "Quarto – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
+        "alt": "Quarto – Casa 3 quartos com quintal no Parangaba (CP-0006), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0006/05.jpg",
-        "alt": "Banheiro – Casa 3 quartos com quintal no Conjunto Esperança Demo (CP-0006), imagem ilustrativa"
+        "alt": "Banheiro – Casa 3 quartos com quintal no Parangaba (CP-0006), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -567,7 +567,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Conjunto",
+        "nome": "Posto de Saúde Exemplo Parangaba",
         "distanciaMetros": 1290
       }
     ],
@@ -581,20 +581,20 @@
   {
     "id": "cp-0007",
     "codigo": "CP-0007",
-    "slug": "apartamento-2-quartos-no-conjunto-esperanca-demo-cp-0007",
-    "titulo": "Apartamento 2 quartos no Conjunto Esperança Demo",
-    "descricao": "Apartamento de 2 quartos com 46 m² de área útil, localizado no bairro Conjunto Esperança Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: elevador, piso cerâmico, área de serviço. O condomínio oferece bicicletário, churrasqueira. Perto de Supermercado Demo a cerca de 130 m e Estação Modelo a cerca de 380 m.",
+    "slug": "apartamento-2-quartos-no-parangaba-cp-0007",
+    "titulo": "Apartamento 2 quartos no Parangaba",
+    "descricao": "Apartamento de 2 quartos com 46 m² de área útil, localizado no bairro Parangaba. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: elevador, piso cerâmico, área de serviço. O condomínio oferece bicicletário, churrasqueira. Perto de Supermercado Demo a cerca de 130 m e Estação Modelo a cerca de 380 m.",
     "tipo": "apartamento",
     "situacao": "usado",
     "preco": 152000,
     "condominioMensal": 250,
     "iptuAnual": 260,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Conjunto Esperança Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Parangaba",
     "localizacaoAproximada": {
-      "lat": -23.55,
-      "lng": -46.602,
+      "lat": -3.775,
+      "lng": -38.555,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -624,23 +624,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0007/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Parangaba (CP-0007), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0007/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos no Parangaba (CP-0007), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0007/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos no Parangaba (CP-0007), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0007/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos no Parangaba (CP-0007), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0007/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos no Conjunto Esperança Demo (CP-0007), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos no Parangaba (CP-0007), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -661,7 +661,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Conjunto",
+        "nome": "UBS Demo Parangaba",
         "distanciaMetros": 730
       },
       {
@@ -680,20 +680,20 @@
   {
     "id": "cp-0008",
     "codigo": "CP-0008",
-    "slug": "casa-2-quartos-na-planta-no-residencial-horizonte-demo-cp-0008",
-    "titulo": "Casa 2 quartos na planta no Residencial Horizonte Demo",
-    "descricao": "Casa de 2 quartos com 55 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portão eletrônico, churrasqueira, aquecedor solar. Perto de Padaria e Mercearia Modelo a cerca de 200 m e Terminal de ônibus Demo a cerca de 360 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-2-quartos-na-planta-no-coco-cp-0008",
+    "titulo": "Casa 2 quartos na planta no Cocó",
+    "descricao": "Casa de 2 quartos com 55 m² de área útil, localizada no bairro Cocó. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 125 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portão eletrônico, churrasqueira, aquecedor solar. Perto de Padaria e Mercearia Modelo a cerca de 200 m e Terminal de ônibus Demo a cerca de 360 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "na_planta",
     "previsaoEntrega": "2028-03",
     "preco": 169000,
     "iptuAnual": 600,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Residencial Horizonte Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Cocó",
     "localizacaoAproximada": {
-      "lat": -23.566,
-      "lng": -46.648,
+      "lat": -3.762,
+      "lng": -38.481,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -720,23 +720,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0008/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos na planta no Cocó (CP-0008), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0008/02.jpg",
-        "alt": "Sala de estar – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 2 quartos na planta no Cocó (CP-0008), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0008/03.jpg",
-        "alt": "Cozinha – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
+        "alt": "Cozinha – Casa 2 quartos na planta no Cocó (CP-0008), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0008/04.jpg",
-        "alt": "Quarto – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
+        "alt": "Quarto – Casa 2 quartos na planta no Cocó (CP-0008), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0008/05.jpg",
-        "alt": "Banheiro – Casa 2 quartos na planta no Residencial Horizonte Demo (CP-0008), imagem ilustrativa"
+        "alt": "Banheiro – Casa 2 quartos na planta no Cocó (CP-0008), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -762,7 +762,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Residencial",
+        "nome": "UBS Demo Cocó",
         "distanciaMetros": 1250
       }
     ],
@@ -776,19 +776,19 @@
   {
     "id": "cp-0009",
     "codigo": "CP-0009",
-    "slug": "duplex-2-quartos-no-parque-das-flores-demo-cp-0009",
-    "titulo": "Duplex 2 quartos no Parque das Flores Demo",
-    "descricao": "Duplex de 2 quartos com 72 m² de área útil, localizado no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, lavanderia, churrasqueira. Perto de Estação Modelo a cerca de 130 m e Escola Municipal Exemplo a cerca de 240 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "duplex-2-quartos-no-aldeota-cp-0009",
+    "titulo": "Duplex 2 quartos no Aldeota",
+    "descricao": "Duplex de 2 quartos com 72 m² de área útil, localizado no bairro Aldeota. Tem sala, cozinha, banheiro social e área de serviço. Imóvel pronto para morar. Destaques: cozinha americana, lavanderia, churrasqueira. Perto de Estação Modelo a cerca de 130 m e Escola Municipal Exemplo a cerca de 240 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "duplex",
     "situacao": "pronto",
     "preco": 273000,
     "iptuAnual": 310,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Parque das Flores Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Aldeota",
     "localizacaoAproximada": {
-      "lat": -23.563,
-      "lng": -46.619,
+      "lat": -3.735,
+      "lng": -38.5,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -814,23 +814,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0009/01.jpg",
-        "alt": "Fachada dos duplex, com garagem – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
+        "alt": "Fachada dos duplex, com garagem – Duplex 2 quartos no Aldeota (CP-0009), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0009/02.jpg",
-        "alt": "Sala de estar – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
+        "alt": "Sala de estar – Duplex 2 quartos no Aldeota (CP-0009), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0009/03.jpg",
-        "alt": "Cozinha – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
+        "alt": "Cozinha – Duplex 2 quartos no Aldeota (CP-0009), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0009/04.jpg",
-        "alt": "Quarto – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
+        "alt": "Quarto – Duplex 2 quartos no Aldeota (CP-0009), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0009/05.jpg",
-        "alt": "Banheiro – Duplex 2 quartos no Parque das Flores Demo (CP-0009), imagem ilustrativa"
+        "alt": "Banheiro – Duplex 2 quartos no Aldeota (CP-0009), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -851,7 +851,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Parque",
+        "nome": "Posto de Saúde Exemplo Aldeota",
         "distanciaMetros": 730
       },
       {
@@ -870,21 +870,21 @@
   {
     "id": "cp-0010",
     "codigo": "CP-0010",
-    "slug": "apartamento-2-quartos-na-vila-modelo-cp-0010",
-    "titulo": "Apartamento 2 quartos na Vila Modelo",
-    "descricao": "Apartamento de 2 quartos com 50 m² de área útil, localizado no bairro Vila Modelo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: piso laminado nos quartos, piso cerâmico, elevador. O condomínio oferece academia ao ar livre, churrasqueira, quadra. Perto de Terminal de ônibus Demo a cerca de 80 m e Supermercado Demo a cerca de 530 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "apartamento-2-quartos-no-meireles-cp-0010",
+    "titulo": "Apartamento 2 quartos no Meireles",
+    "descricao": "Apartamento de 2 quartos com 50 m² de área útil, localizado no bairro Meireles. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: piso laminado nos quartos, piso cerâmico, elevador. O condomínio oferece academia ao ar livre, churrasqueira, quadra. Perto de Terminal de ônibus Demo a cerca de 80 m e Supermercado Demo a cerca de 530 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "em_construcao",
     "previsaoEntrega": "2027-03",
     "preco": 235000,
     "condominioMensal": 330,
     "iptuAnual": 540,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Vila Modelo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Meireles",
     "localizacaoAproximada": {
-      "lat": -23.536,
-      "lng": -46.616,
+      "lat": -3.732,
+      "lng": -38.488,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -916,23 +916,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0010/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Meireles (CP-0010), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0010/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos no Meireles (CP-0010), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0010/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos no Meireles (CP-0010), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0010/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos no Meireles (CP-0010), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0010/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos na Vila Modelo (CP-0010), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos no Meireles (CP-0010), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -958,7 +958,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Vila",
+        "nome": "UBS Demo Meireles",
         "distanciaMetros": 1400
       }
     ],
@@ -972,19 +972,19 @@
   {
     "id": "cp-0011",
     "codigo": "CP-0011",
-    "slug": "casa-1-quarto-no-conjunto-esperanca-demo-cp-0011",
-    "titulo": "Casa 1 quarto no Conjunto Esperança Demo",
-    "descricao": "Casa de 1 quarto com 50 m² de área útil, localizada no bairro Conjunto Esperança Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 100 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, churrasqueira, muro alto. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Municipal Exemplo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-1-quarto-no-parangaba-cp-0011",
+    "titulo": "Casa 1 quarto no Parangaba",
+    "descricao": "Casa de 1 quarto com 50 m² de área útil, localizada no bairro Parangaba. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 100 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, churrasqueira, muro alto. Perto de Terminal de ônibus Demo a cerca de 100 m e Escola Municipal Exemplo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "usado",
     "preco": 150000,
     "iptuAnual": 660,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Conjunto Esperança Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Parangaba",
     "localizacaoAproximada": {
-      "lat": -23.55,
-      "lng": -46.6,
+      "lat": -3.775,
+      "lng": -38.553,
       "raioMetros": 400
     },
     "quartos": 1,
@@ -1013,23 +1013,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0011/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 1 quarto no Parangaba (CP-0011), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0011/02.jpg",
-        "alt": "Sala de estar – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 1 quarto no Parangaba (CP-0011), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0011/03.jpg",
-        "alt": "Cozinha – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
+        "alt": "Cozinha – Casa 1 quarto no Parangaba (CP-0011), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0011/04.jpg",
-        "alt": "Quarto – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
+        "alt": "Quarto – Casa 1 quarto no Parangaba (CP-0011), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0011/05.jpg",
-        "alt": "Banheiro – Casa 1 quarto no Conjunto Esperança Demo (CP-0011), imagem ilustrativa"
+        "alt": "Banheiro – Casa 1 quarto no Parangaba (CP-0011), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1050,7 +1050,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Conjunto",
+        "nome": "Posto de Saúde Exemplo Parangaba",
         "distanciaMetros": 490
       },
       {
@@ -1069,19 +1069,19 @@
   {
     "id": "cp-0012",
     "codigo": "CP-0012",
-    "slug": "sobrado-3-quartos-com-quintal-na-vila-modelo-cp-0012",
-    "titulo": "Sobrado 3 quartos com quintal na Vila Modelo",
-    "descricao": "Sobrado de 3 quartos com 90 m² de área útil, localizado no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: quintal, cozinha americana, piso cerâmico. Perto de Estação Modelo a cerca de 90 m e Padaria e Mercearia Modelo a cerca de 130 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "slug": "sobrado-3-quartos-com-quintal-no-meireles-cp-0012",
+    "titulo": "Sobrado 3 quartos com quintal no Meireles",
+    "descricao": "Sobrado de 3 quartos com 90 m² de área útil, localizado no bairro Meireles. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: quintal, cozinha americana, piso cerâmico. Perto de Estação Modelo a cerca de 90 m e Padaria e Mercearia Modelo a cerca de 130 m. Aceita uso do FGTS, sujeito à análise de crédito.",
     "tipo": "sobrado",
     "situacao": "pronto",
     "preco": 420000,
     "iptuAnual": 430,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Vila Modelo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Meireles",
     "localizacaoAproximada": {
-      "lat": -23.534,
-      "lng": -46.618,
+      "lat": -3.729,
+      "lng": -38.49,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -1109,23 +1109,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0012/01.jpg",
-        "alt": "Fachada do sobrado com garagem – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
+        "alt": "Fachada do sobrado com garagem – Sobrado 3 quartos com quintal no Meireles (CP-0012), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0012/02.jpg",
-        "alt": "Sala de estar – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
+        "alt": "Sala de estar – Sobrado 3 quartos com quintal no Meireles (CP-0012), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0012/03.jpg",
-        "alt": "Cozinha – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
+        "alt": "Cozinha – Sobrado 3 quartos com quintal no Meireles (CP-0012), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0012/04.jpg",
-        "alt": "Quarto – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
+        "alt": "Quarto – Sobrado 3 quartos com quintal no Meireles (CP-0012), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0012/05.jpg",
-        "alt": "Banheiro – Sobrado 3 quartos com quintal na Vila Modelo (CP-0012), imagem ilustrativa"
+        "alt": "Banheiro – Sobrado 3 quartos com quintal no Meireles (CP-0012), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1151,7 +1151,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Vila",
+        "nome": "UBS Demo Meireles",
         "distanciaMetros": 1120
       }
     ],
@@ -1165,21 +1165,21 @@
   {
     "id": "cp-0013",
     "codigo": "CP-0013",
-    "slug": "apartamento-3-quartos-na-planta-no-jardim-ipe-ficticio-cp-0013",
-    "titulo": "Apartamento 3 quartos na planta no Jardim Ipê Fictício",
-    "descricao": "Apartamento de 3 quartos com 58 m² de área útil, localizado no bairro Jardim Ipê Fictício. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: área de serviço, piso cerâmico, portaria 24 horas. O condomínio oferece piscina, academia ao ar livre, espaço pet. Perto de Escola Estadual Modelo a cerca de 250 m e Estação Modelo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "apartamento-3-quartos-na-planta-no-messejana-cp-0013",
+    "titulo": "Apartamento 3 quartos na planta no Messejana",
+    "descricao": "Apartamento de 3 quartos com 58 m² de área útil, localizado no bairro Messejana. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: área de serviço, piso cerâmico, portaria 24 horas. O condomínio oferece piscina, academia ao ar livre, espaço pet. Perto de Escola Estadual Modelo a cerca de 250 m e Estação Modelo a cerca de 350 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "na_planta",
     "previsaoEntrega": "2028-06",
     "preco": 251000,
     "condominioMensal": 220,
     "iptuAnual": 860,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Ipê Fictício",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Messejana",
     "localizacaoAproximada": {
-      "lat": -23.528,
-      "lng": -46.633,
+      "lat": -3.821,
+      "lng": -38.47,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -1209,23 +1209,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0013/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 3 quartos na planta no Messejana (CP-0013), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0013/02.jpg",
-        "alt": "Sala de estar – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 3 quartos na planta no Messejana (CP-0013), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0013/03.jpg",
-        "alt": "Cozinha – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 3 quartos na planta no Messejana (CP-0013), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0013/04.jpg",
-        "alt": "Quarto – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 3 quartos na planta no Messejana (CP-0013), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0013/05.jpg",
-        "alt": "Banheiro – Apartamento 3 quartos na planta no Jardim Ipê Fictício (CP-0013), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 3 quartos na planta no Messejana (CP-0013), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1241,7 +1241,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Jardim",
+        "nome": "UBS Demo Messejana",
         "distanciaMetros": 440
       },
       {
@@ -1265,19 +1265,19 @@
   {
     "id": "cp-0014",
     "codigo": "CP-0014",
-    "slug": "casa-3-quartos-com-quintal-no-jardim-exemplo-cp-0014",
-    "titulo": "Casa 3 quartos com quintal no Jardim Exemplo",
-    "descricao": "Casa de 3 quartos com 70 m² de área útil, localizada no bairro Jardim Exemplo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 160 m². Imóvel pronto para morar. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Mercado do Bairro (exemplo) a cerca de 130 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-3-quartos-com-quintal-no-centro-cp-0014",
+    "titulo": "Casa 3 quartos com quintal no Centro",
+    "descricao": "Casa de 3 quartos com 70 m² de área útil, localizada no bairro Centro. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 160 m². Imóvel pronto para morar. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Mercado do Bairro (exemplo) a cerca de 130 m e Estação Modelo a cerca de 430 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "pronto",
     "preco": 219000,
     "iptuAnual": 640,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Exemplo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Centro",
     "localizacaoAproximada": {
-      "lat": -23.538,
-      "lng": -46.642,
+      "lat": -3.729,
+      "lng": -38.524,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -1307,23 +1307,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0014/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Centro (CP-0014), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0014/02.jpg",
-        "alt": "Sala de estar – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 3 quartos com quintal no Centro (CP-0014), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0014/03.jpg",
-        "alt": "Cozinha – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
+        "alt": "Cozinha – Casa 3 quartos com quintal no Centro (CP-0014), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0014/04.jpg",
-        "alt": "Quarto – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
+        "alt": "Quarto – Casa 3 quartos com quintal no Centro (CP-0014), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0014/05.jpg",
-        "alt": "Banheiro – Casa 3 quartos com quintal no Jardim Exemplo (CP-0014), imagem ilustrativa"
+        "alt": "Banheiro – Casa 3 quartos com quintal no Centro (CP-0014), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1349,7 +1349,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Jardim",
+        "nome": "UBS Demo Centro",
         "distanciaMetros": 1090
       }
     ],
@@ -1363,21 +1363,21 @@
   {
     "id": "cp-0015",
     "codigo": "CP-0015",
-    "slug": "casa-em-condominio-2-quartos-na-planta-no-residencial-horizonte-demo-cp-0015",
-    "titulo": "Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo",
-    "descricao": "Casa em condomínio de 2 quartos com 56 m² de área útil, localizada no bairro Residencial Horizonte Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 120 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: aquecedor solar, janelas com grade, lavanderia. O condomínio oferece playground, salão de festas, piscina. Perto de Terminal de ônibus Demo a cerca de 150 m e Mercado do Bairro (exemplo) a cerca de 200 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-em-condominio-2-quartos-na-planta-no-coco-cp-0015",
+    "titulo": "Casa em condomínio 2 quartos na planta no Cocó",
+    "descricao": "Casa em condomínio de 2 quartos com 56 m² de área útil, localizada no bairro Cocó. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 120 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: aquecedor solar, janelas com grade, lavanderia. O condomínio oferece playground, salão de festas, piscina. Perto de Terminal de ônibus Demo a cerca de 150 m e Mercado do Bairro (exemplo) a cerca de 200 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa_condominio",
     "situacao": "na_planta",
     "previsaoEntrega": "2028-06",
     "preco": 199000,
     "condominioMensal": 190,
     "iptuAnual": 600,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Residencial Horizonte Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Cocó",
     "localizacaoAproximada": {
-      "lat": -23.567,
-      "lng": -46.643,
+      "lat": -3.762,
+      "lng": -38.476,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -1409,23 +1409,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0015/01.jpg",
-        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
+        "alt": "Casas do condomínio fechado – Casa em condomínio 2 quartos na planta no Cocó (CP-0015), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0015/02.jpg",
-        "alt": "Sala de estar – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
+        "alt": "Sala de estar – Casa em condomínio 2 quartos na planta no Cocó (CP-0015), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0015/03.jpg",
-        "alt": "Cozinha – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
+        "alt": "Cozinha – Casa em condomínio 2 quartos na planta no Cocó (CP-0015), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0015/04.jpg",
-        "alt": "Quarto – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
+        "alt": "Quarto – Casa em condomínio 2 quartos na planta no Cocó (CP-0015), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0015/05.jpg",
-        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos na planta no Residencial Horizonte Demo (CP-0015), imagem ilustrativa"
+        "alt": "Piscina do condomínio – Casa em condomínio 2 quartos na planta no Cocó (CP-0015), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1451,7 +1451,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Clínica da Família Modelo Residencial",
+        "nome": "Clínica da Família Modelo Cocó",
         "distanciaMetros": 1490
       }
     ],
@@ -1465,20 +1465,20 @@
   {
     "id": "cp-0016",
     "codigo": "CP-0016",
-    "slug": "apartamento-1-quarto-com-varanda-na-vila-modelo-cp-0016",
-    "titulo": "Apartamento 1 quarto com varanda na Vila Modelo",
-    "descricao": "Apartamento de 1 quarto com 41 m² de área útil, localizado no bairro Vila Modelo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: varanda, piso laminado nos quartos, medidor de água individual. O condomínio oferece quadra, churrasqueira, salão de festas. Perto de Terminal de ônibus Demo a cerca de 90 m e Supermercado Demo a cerca de 480 m. Aceita Minha Casa, Minha Vida, sujeito à análise de crédito.",
+    "slug": "apartamento-1-quarto-com-varanda-no-meireles-cp-0016",
+    "titulo": "Apartamento 1 quarto com varanda no Meireles",
+    "descricao": "Apartamento de 1 quarto com 41 m² de área útil, localizado no bairro Meireles. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel pronto para morar. Destaques: varanda, piso laminado nos quartos, medidor de água individual. O condomínio oferece quadra, churrasqueira, salão de festas. Perto de Terminal de ônibus Demo a cerca de 90 m e Supermercado Demo a cerca de 480 m. Aceita Minha Casa, Minha Vida, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "pronto",
     "preco": 190000,
     "condominioMensal": 260,
     "iptuAnual": 370,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Vila Modelo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Meireles",
     "localizacaoAproximada": {
-      "lat": -23.533,
-      "lng": -46.622,
+      "lat": -3.728,
+      "lng": -38.494,
       "raioMetros": 400
     },
     "quartos": 1,
@@ -1510,23 +1510,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0016/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 1 quarto com varanda no Meireles (CP-0016), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0016/02.jpg",
-        "alt": "Sala de estar – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 1 quarto com varanda no Meireles (CP-0016), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0016/03.jpg",
-        "alt": "Cozinha – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 1 quarto com varanda no Meireles (CP-0016), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0016/04.jpg",
-        "alt": "Quarto – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 1 quarto com varanda no Meireles (CP-0016), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0016/05.jpg",
-        "alt": "Banheiro – Apartamento 1 quarto com varanda na Vila Modelo (CP-0016), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 1 quarto com varanda no Meireles (CP-0016), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1552,7 +1552,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Vila",
+        "nome": "Posto de Saúde Exemplo Meireles",
         "distanciaMetros": 830
       }
     ],
@@ -1566,19 +1566,19 @@
   {
     "id": "cp-0017",
     "codigo": "CP-0017",
-    "slug": "casa-2-quartos-com-quintal-no-parque-das-flores-demo-cp-0017",
-    "titulo": "Casa 2 quartos com quintal no Parque das Flores Demo",
-    "descricao": "Casa de 2 quartos com 66 m² de área útil, localizada no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 175 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: quintal, garagem coberta, área de serviço coberta. Perto de Padaria e Mercearia Modelo a cerca de 120 m e ponto de ônibus a cerca de 340 m. Aceita uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "casa-2-quartos-com-quintal-no-aldeota-cp-0017",
+    "titulo": "Casa 2 quartos com quintal no Aldeota",
+    "descricao": "Casa de 2 quartos com 66 m² de área útil, localizada no bairro Aldeota. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 175 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: quintal, garagem coberta, área de serviço coberta. Perto de Padaria e Mercearia Modelo a cerca de 120 m e ponto de ônibus a cerca de 340 m. Aceita uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "usado",
     "preco": 201000,
     "iptuAnual": 370,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Parque das Flores Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Aldeota",
     "localizacaoAproximada": {
-      "lat": -23.563,
-      "lng": -46.623,
+      "lat": -3.735,
+      "lng": -38.504,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -1608,23 +1608,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0017/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos com quintal no Aldeota (CP-0017), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0017/02.jpg",
-        "alt": "Sala de estar – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 2 quartos com quintal no Aldeota (CP-0017), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0017/03.jpg",
-        "alt": "Cozinha – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
+        "alt": "Cozinha – Casa 2 quartos com quintal no Aldeota (CP-0017), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0017/04.jpg",
-        "alt": "Quarto – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
+        "alt": "Quarto – Casa 2 quartos com quintal no Aldeota (CP-0017), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0017/05.jpg",
-        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Parque das Flores Demo (CP-0017), imagem ilustrativa"
+        "alt": "Quintal gramado com churrasqueira – Casa 2 quartos com quintal no Aldeota (CP-0017), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1640,7 +1640,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Parque",
+        "nome": "UBS Demo Aldeota",
         "distanciaMetros": 550
       },
       {
@@ -1664,19 +1664,19 @@
   {
     "id": "cp-0018",
     "codigo": "CP-0018",
-    "slug": "duplex-3-quartos-com-quintal-no-jardim-ipe-ficticio-cp-0018",
-    "titulo": "Duplex 3 quartos com quintal no Jardim Ipê Fictício",
-    "descricao": "Duplex de 3 quartos com 86 m² de área útil, localizado no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, muro alto, quintal. Perto de Posto de Saúde Exemplo Jardim a cerca de 320 m e Escola Municipal Exemplo a cerca de 380 m. Aceita uso do FGTS, sujeito à análise de crédito.",
+    "slug": "duplex-3-quartos-com-quintal-no-messejana-cp-0018",
+    "titulo": "Duplex 3 quartos com quintal no Messejana",
+    "descricao": "Duplex de 3 quartos com 86 m² de área útil, localizado no bairro Messejana. Tem sala, cozinha, banheiro social e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: área de serviço coberta, muro alto, quintal. Perto de Posto de Saúde Exemplo Messejana a cerca de 320 m e Escola Municipal Exemplo a cerca de 380 m. Aceita uso do FGTS, sujeito à análise de crédito.",
     "tipo": "duplex",
     "situacao": "usado",
     "preco": 280000,
     "iptuAnual": 550,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Ipê Fictício",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Messejana",
     "localizacaoAproximada": {
-      "lat": -23.524,
-      "lng": -46.637,
+      "lat": -3.817,
+      "lng": -38.473,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -1704,29 +1704,29 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0018/01.jpg",
-        "alt": "Fachada dos duplex, com garagem – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
+        "alt": "Fachada dos duplex, com garagem – Duplex 3 quartos com quintal no Messejana (CP-0018), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0018/02.jpg",
-        "alt": "Sala de estar – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
+        "alt": "Sala de estar – Duplex 3 quartos com quintal no Messejana (CP-0018), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0018/03.jpg",
-        "alt": "Cozinha – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
+        "alt": "Cozinha – Duplex 3 quartos com quintal no Messejana (CP-0018), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0018/04.jpg",
-        "alt": "Quarto – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
+        "alt": "Quarto – Duplex 3 quartos com quintal no Messejana (CP-0018), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0018/05.jpg",
-        "alt": "Banheiro – Duplex 3 quartos com quintal no Jardim Ipê Fictício (CP-0018), imagem ilustrativa"
+        "alt": "Banheiro – Duplex 3 quartos com quintal no Messejana (CP-0018), imagem ilustrativa"
       }
     ],
     "proximidades": [
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Jardim",
+        "nome": "Posto de Saúde Exemplo Messejana",
         "distanciaMetros": 320
       },
       {
@@ -1760,20 +1760,20 @@
   {
     "id": "cp-0019",
     "codigo": "CP-0019",
-    "slug": "apartamento-2-quartos-no-residencial-horizonte-demo-cp-0019",
-    "titulo": "Apartamento 2 quartos no Residencial Horizonte Demo",
-    "descricao": "Apartamento de 2 quartos com 52 m² de área útil, localizado no bairro Residencial Horizonte Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: medidor de água individual, piso laminado nos quartos, área de serviço. O condomínio oferece academia ao ar livre, bicicletário, quadra, piscina, churrasqueira. Perto de Padaria e Mercearia Modelo a cerca de 190 m e ponto de ônibus a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
+    "slug": "apartamento-2-quartos-no-coco-cp-0019",
+    "titulo": "Apartamento 2 quartos no Cocó",
+    "descricao": "Apartamento de 2 quartos com 52 m² de área útil, localizado no bairro Cocó. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: medidor de água individual, piso laminado nos quartos, área de serviço. O condomínio oferece academia ao ar livre, bicicletário, quadra, piscina, churrasqueira. Perto de Padaria e Mercearia Modelo a cerca de 190 m e ponto de ônibus a cerca de 190 m. Aceita Minha Casa, Minha Vida, uso do FGTS, carta de consórcio contemplada, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "usado",
     "preco": 175000,
     "condominioMensal": 240,
     "iptuAnual": 620,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Residencial Horizonte Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Cocó",
     "localizacaoAproximada": {
-      "lat": -23.57,
-      "lng": -46.641,
+      "lat": -3.765,
+      "lng": -38.474,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -1805,23 +1805,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0019/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos no Cocó (CP-0019), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0019/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos no Cocó (CP-0019), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0019/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos no Cocó (CP-0019), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0019/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos no Cocó (CP-0019), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0019/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos no Residencial Horizonte Demo (CP-0019), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos no Cocó (CP-0019), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1847,7 +1847,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Residencial",
+        "nome": "UBS Demo Cocó",
         "distanciaMetros": 1270
       }
     ],
@@ -1861,20 +1861,20 @@
   {
     "id": "cp-0020",
     "codigo": "CP-0020",
-    "slug": "casa-3-quartos-na-planta-no-jardim-ipe-ficticio-cp-0020",
-    "titulo": "Casa 3 quartos na planta no Jardim Ipê Fictício",
-    "descricao": "Casa de 3 quartos com 72 m² de área útil, localizada no bairro Jardim Ipê Fictício. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Praça Exemplo a cerca de 410 m e ponto de ônibus a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-3-quartos-na-planta-no-messejana-cp-0020",
+    "titulo": "Casa 3 quartos na planta no Messejana",
+    "descricao": "Casa de 3 quartos com 72 m² de área útil, localizada no bairro Messejana. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 150 m². Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: quintal, garagem coberta, aquecedor solar. Perto de Praça Exemplo a cerca de 410 m e ponto de ônibus a cerca de 440 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "na_planta",
     "previsaoEntrega": "2028-06",
     "preco": 247000,
     "iptuAnual": 750,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Jardim Ipê Fictício",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Messejana",
     "localizacaoAproximada": {
-      "lat": -23.522,
-      "lng": -46.634,
+      "lat": -3.816,
+      "lng": -38.47,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -1904,23 +1904,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0020/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos na planta no Messejana (CP-0020), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0020/02.jpg",
-        "alt": "Sala de estar – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 3 quartos na planta no Messejana (CP-0020), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0020/03.jpg",
-        "alt": "Cozinha – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
+        "alt": "Cozinha – Casa 3 quartos na planta no Messejana (CP-0020), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0020/04.jpg",
-        "alt": "Quarto – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
+        "alt": "Quarto – Casa 3 quartos na planta no Messejana (CP-0020), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0020/05.jpg",
-        "alt": "Banheiro – Casa 3 quartos na planta no Jardim Ipê Fictício (CP-0020), imagem ilustrativa"
+        "alt": "Banheiro – Casa 3 quartos na planta no Messejana (CP-0020), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -1941,7 +1941,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Jardim",
+        "nome": "UBS Demo Messejana",
         "distanciaMetros": 530
       },
       {
@@ -1960,20 +1960,20 @@
   {
     "id": "cp-0021",
     "codigo": "CP-0021",
-    "slug": "casa-em-condominio-3-quartos-com-quintal-na-vila-modelo-cp-0021",
-    "titulo": "Casa em condomínio 3 quartos com quintal na Vila Modelo",
-    "descricao": "Casa em condomínio de 3 quartos com 82 m² de área útil, localizada no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: cozinha americana, portão eletrônico, lavanderia. O condomínio oferece piscina, playground. Perto de Estação Modelo a cerca de 110 m e Padaria e Mercearia Modelo a cerca de 250 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-em-condominio-3-quartos-com-quintal-no-meireles-cp-0021",
+    "titulo": "Casa em condomínio 3 quartos com quintal no Meireles",
+    "descricao": "Casa em condomínio de 3 quartos com 82 m² de área útil, localizada no bairro Meireles. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 180 m². Imóvel pronto para morar. Destaques: cozinha americana, portão eletrônico, lavanderia. O condomínio oferece piscina, playground. Perto de Estação Modelo a cerca de 110 m e Padaria e Mercearia Modelo a cerca de 250 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa_condominio",
     "situacao": "pronto",
     "preco": 341000,
     "condominioMensal": 200,
     "iptuAnual": 280,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Vila Modelo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Meireles",
     "localizacaoAproximada": {
-      "lat": -23.538,
-      "lng": -46.616,
+      "lat": -3.733,
+      "lng": -38.488,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -2005,23 +2005,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0021/01.jpg",
-        "alt": "Casas do condomínio fechado – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
+        "alt": "Casas do condomínio fechado – Casa em condomínio 3 quartos com quintal no Meireles (CP-0021), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0021/02.jpg",
-        "alt": "Sala de estar – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
+        "alt": "Sala de estar – Casa em condomínio 3 quartos com quintal no Meireles (CP-0021), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0021/03.jpg",
-        "alt": "Cozinha – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
+        "alt": "Cozinha – Casa em condomínio 3 quartos com quintal no Meireles (CP-0021), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0021/04.jpg",
-        "alt": "Quarto – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
+        "alt": "Quarto – Casa em condomínio 3 quartos com quintal no Meireles (CP-0021), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0021/05.jpg",
-        "alt": "Banheiro – Casa em condomínio 3 quartos com quintal na Vila Modelo (CP-0021), imagem ilustrativa"
+        "alt": "Banheiro – Casa em condomínio 3 quartos com quintal no Meireles (CP-0021), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2042,7 +2042,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Vila",
+        "nome": "Posto de Saúde Exemplo Meireles",
         "distanciaMetros": 580
       }
     ],
@@ -2056,19 +2056,19 @@
   {
     "id": "cp-0022",
     "codigo": "CP-0022",
-    "slug": "casa-2-quartos-no-parque-das-flores-demo-cp-0022",
-    "titulo": "Casa 2 quartos no Parque das Flores Demo",
-    "descricao": "Casa de 2 quartos com 54 m² de área útil, localizada no bairro Parque das Flores Demo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 110 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: churrasqueira, área de serviço coberta, piso cerâmico. Perto de Terminal de ônibus Demo a cerca de 210 m e Escola Estadual Modelo a cerca de 450 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-2-quartos-no-aldeota-cp-0022",
+    "titulo": "Casa 2 quartos no Aldeota",
+    "descricao": "Casa de 2 quartos com 54 m² de área útil, localizada no bairro Aldeota. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 110 m². Imóvel usado, em bom estado de conservação; recomendamos visitar para conferir os detalhes. Destaques: churrasqueira, área de serviço coberta, piso cerâmico. Perto de Terminal de ônibus Demo a cerca de 210 m e Escola Estadual Modelo a cerca de 450 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "usado",
     "preco": 157000,
     "iptuAnual": 640,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Parque das Flores Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Aldeota",
     "localizacaoAproximada": {
-      "lat": -23.559,
-      "lng": -46.619,
+      "lat": -3.731,
+      "lng": -38.5,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -2096,23 +2096,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0022/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 2 quartos no Aldeota (CP-0022), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0022/02.jpg",
-        "alt": "Sala de estar – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 2 quartos no Aldeota (CP-0022), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0022/03.jpg",
-        "alt": "Cozinha – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
+        "alt": "Cozinha – Casa 2 quartos no Aldeota (CP-0022), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0022/04.jpg",
-        "alt": "Quarto – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
+        "alt": "Quarto – Casa 2 quartos no Aldeota (CP-0022), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0022/05.jpg",
-        "alt": "Banheiro – Casa 2 quartos no Parque das Flores Demo (CP-0022), imagem ilustrativa"
+        "alt": "Banheiro – Casa 2 quartos no Aldeota (CP-0022), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2133,7 +2133,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "Posto de Saúde Exemplo Parque",
+        "nome": "Posto de Saúde Exemplo Aldeota",
         "distanciaMetros": 650
       }
     ],
@@ -2147,21 +2147,21 @@
   {
     "id": "cp-0023",
     "codigo": "CP-0023",
-    "slug": "apartamento-2-quartos-na-planta-no-conjunto-esperanca-demo-cp-0023",
-    "titulo": "Apartamento 2 quartos na planta no Conjunto Esperança Demo",
-    "descricao": "Apartamento de 2 quartos com 47 m² de área útil, localizado no bairro Conjunto Esperança Demo. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portaria 24 horas, interfone, área de serviço. O condomínio oferece espaço pet, playground, piscina, salão de festas. Perto de ponto de ônibus a cerca de 470 m e Padaria e Mercearia Modelo a cerca de 730 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "apartamento-2-quartos-na-planta-no-parangaba-cp-0023",
+    "titulo": "Apartamento 2 quartos na planta no Parangaba",
+    "descricao": "Apartamento de 2 quartos com 47 m² de área útil, localizado no bairro Parangaba. Tem sala integrada à cozinha, banheiro e área de serviço. Imóvel em lançamento: as condições de entrada e o cronograma de obra são informados pela construtora no contrato. Destaques: portaria 24 horas, interfone, área de serviço. O condomínio oferece espaço pet, playground, piscina, salão de festas. Perto de ponto de ônibus a cerca de 470 m e Padaria e Mercearia Modelo a cerca de 730 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "apartamento",
     "situacao": "na_planta",
     "previsaoEntrega": "2027-12",
     "preco": 176000,
     "condominioMensal": 180,
     "iptuAnual": 520,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Conjunto Esperança Demo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Parangaba",
     "localizacaoAproximada": {
-      "lat": -23.549,
-      "lng": -46.6,
+      "lat": -3.774,
+      "lng": -38.554,
       "raioMetros": 400
     },
     "quartos": 2,
@@ -2193,23 +2193,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0023/01.jpg",
-        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
+        "alt": "Fachada do prédio residencial – Apartamento 2 quartos na planta no Parangaba (CP-0023), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0023/02.jpg",
-        "alt": "Sala de estar – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
+        "alt": "Sala de estar – Apartamento 2 quartos na planta no Parangaba (CP-0023), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0023/03.jpg",
-        "alt": "Cozinha – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
+        "alt": "Cozinha – Apartamento 2 quartos na planta no Parangaba (CP-0023), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0023/04.jpg",
-        "alt": "Quarto – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
+        "alt": "Quarto – Apartamento 2 quartos na planta no Parangaba (CP-0023), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0023/05.jpg",
-        "alt": "Banheiro – Apartamento 2 quartos na planta no Conjunto Esperança Demo (CP-0023), imagem ilustrativa"
+        "alt": "Banheiro – Apartamento 2 quartos na planta no Parangaba (CP-0023), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2235,7 +2235,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Conjunto",
+        "nome": "UBS Demo Parangaba",
         "distanciaMetros": 1260
       }
     ],
@@ -2249,19 +2249,19 @@
   {
     "id": "cp-0024",
     "codigo": "CP-0024",
-    "slug": "casa-3-quartos-com-quintal-na-vila-modelo-cp-0024",
-    "titulo": "Casa 3 quartos com quintal na Vila Modelo",
-    "descricao": "Casa de 3 quartos com 88 m² de área útil, localizada no bairro Vila Modelo. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 240 m². Imóvel pronto para morar. Destaques: quintal, janelas com grade, lavanderia. Perto de Terminal de ônibus Demo a cerca de 140 m e UBS Demo Vila a cerca de 600 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
+    "slug": "casa-3-quartos-com-quintal-no-meireles-cp-0024",
+    "titulo": "Casa 3 quartos com quintal no Meireles",
+    "descricao": "Casa de 3 quartos com 88 m² de área útil, localizada no bairro Meireles. Tem sala, cozinha, banheiro social e área de serviço. O terreno tem 240 m². Imóvel pronto para morar. Destaques: quintal, janelas com grade, lavanderia. Perto de Terminal de ônibus Demo a cerca de 140 m e UBS Demo Meireles a cerca de 600 m. Aceita Minha Casa, Minha Vida, uso do FGTS, sujeito à análise de crédito.",
     "tipo": "casa",
     "situacao": "pronto",
     "preco": 340000,
     "iptuAnual": 430,
-    "cidade": "Cidade Exemplo",
-    "uf": "EX",
-    "bairro": "Vila Modelo",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Meireles",
     "localizacaoAproximada": {
-      "lat": -23.539,
-      "lng": -46.622,
+      "lat": -3.734,
+      "lng": -38.494,
       "raioMetros": 400
     },
     "quartos": 3,
@@ -2290,23 +2290,23 @@
     "fotos": [
       {
         "arquivo": "/imoveis/CP-0024/01.jpg",
-        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
+        "alt": "Fachada da casa com jardim na frente – Casa 3 quartos com quintal no Meireles (CP-0024), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0024/02.jpg",
-        "alt": "Sala de estar – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
+        "alt": "Sala de estar – Casa 3 quartos com quintal no Meireles (CP-0024), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0024/03.jpg",
-        "alt": "Cozinha – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
+        "alt": "Cozinha – Casa 3 quartos com quintal no Meireles (CP-0024), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0024/04.jpg",
-        "alt": "Quarto – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
+        "alt": "Quarto – Casa 3 quartos com quintal no Meireles (CP-0024), imagem ilustrativa"
       },
       {
         "arquivo": "/imoveis/CP-0024/05.jpg",
-        "alt": "Banheiro – Casa 3 quartos com quintal na Vila Modelo (CP-0024), imagem ilustrativa"
+        "alt": "Banheiro – Casa 3 quartos com quintal no Meireles (CP-0024), imagem ilustrativa"
       }
     ],
     "proximidades": [
@@ -2317,7 +2317,7 @@
       },
       {
         "tipo": "saude",
-        "nome": "UBS Demo Vila",
+        "nome": "UBS Demo Meireles",
         "distanciaMetros": 600
       },
       {
