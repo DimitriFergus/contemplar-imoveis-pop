@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { CIDADE_BASE, MODO_ESTATICO } from '@/config/site';
-import { Trilha } from '@/components/comum/Trilha';
 import { CorpoComprar } from '@/components/comprar/CorpoComprar';
 import { ListagemCompraEstatica } from '@/components/comprar/ListagemCompraEstatica';
 import { lerFiltros } from '@/lib/busca/query';
@@ -30,12 +29,8 @@ export default async function PaginaComprar({ searchParams }: PageProps<'/compra
   );
 
   return (
-    <div className="container-site py-6 lg:py-8">
-      <Trilha itens={[{ nome: 'Comprar', href: '/comprar' }]} />
-      <div className="mt-3 mb-5">
-        <h1 className="text-3xl font-extrabold sm:text-4xl">{TITULO}</h1>
-        <p className="mt-2 max-w-3xl text-lg text-muted-foreground">{DESCRICAO}</p>
-      </div>
+    <div className="container-site py-4 lg:py-6">
+      <h1 className="sr-only">{TITULO}</h1>
       {MODO_ESTATICO ? (
         <Suspense fallback={corpo}>
           <ListagemCompraEstatica

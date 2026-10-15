@@ -3,20 +3,16 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { MENSAGENS_WHATSAPP } from '@/config/site';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
-import { ChamadaCabeNoBolso } from '@/components/busca/ChamadaCabeNoBolso';
 import { ChipsFiltros } from '@/components/busca/ChipsFiltros';
 import { Ordenacao } from '@/components/busca/Ordenacao';
 import { PainelFiltros } from '@/components/busca/PainelFiltros';
-import { Paginacao } from '@/components/busca/Paginacao';
-import { PainelComparacao } from '@/components/comparacao/PainelComparacao';
-import { CardImovelComprar } from './CardImovelComprar';
-import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
 import { MapaClustersComprar } from '@/components/mapa/Mapas';
 import { Button } from '@/components/ui/button';
 import { bairrosComLocalizacao } from '@/lib/busca/bairros-mapa';
-import { chipsAtivos, paraQueryString, type Filtros, type ResultadoBusca } from '@/lib/busca/query';
+import { paraQueryString, type Filtros, type ResultadoBusca } from '@/lib/busca/query';
 import type { BairroComTotal } from '@/lib/repositorio/tipos';
 import { plural } from '@/lib/utils/formatar';
+import { GradeInfinita } from './GradeInfinita';
 
 export interface PropsCorpoComprar {
   filtrosUrl: Filtros;
@@ -27,24 +23,22 @@ export interface PropsCorpoComprar {
 }
 
 /**
- * Página "Comprar": mapa fixo à esquerda com todos os imóveis filtrados e, à direita, a lista
- * com rolagem própria — os dois sempre visíveis juntos (sem alternar entre lista e mapa). No
- * celular o mapa fica em cima e a lista embaixo, na mesma ordem.
+ * Catálogo "Comprar": mapa fixo à esquerda (clusters por bairro, clicáveis) e, à direita, a
+ * grade de imóveis que carrega mais sozinha ao rolar — sem páginas e sem texto explicando a
+ * seção. No celular o mapa fica em cima e a grade embaixo.
  */
 export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }: PropsCorpoComprar) {
   const filtros: Filtros = { ...filtrosUrl, ...fixos };
   const nomesBairros = Object.fromEntries(bairros.map((b) => [b.slug, b.nome]));
-  const semFixos: Partial<Filtros> = { ...filtrosUrl };
   const chaveFiltros = paraQueryString(filtros);
-  const temFiltros = chipsAtivos(filtrosUrl).length > 0;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-lg font-bold" role="status" aria-live="polite">
+        <p className="font-semibold" role="status" aria-live="polite">
           {resultado.total === 0
             ? 'Nenhum imóvel encontrado'
-            : `${plural(resultado.total, 'imóvel encontrado', 'imóveis encontrados')}`}
+            : plural(resultado.total, 'imóvel', 'imóveis')}
         </p>
         <div className="flex flex-wrap items-center gap-2">
           <Suspense>
@@ -63,16 +57,11 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
       </div>
 
       <ChipsFiltros filtros={filtros} caminho={caminho} nomesBairros={nomesBairros} fixos={fixos} />
-      <ChamadaCabeNoBolso />
 
       {resultado.total === 0 ? (
         <div className="rounded-2xl border border-dashed p-8 text-center">
           <SearchX className="mx-auto size-12 text-muted-foreground" aria-hidden />
-          <h2 className="mt-3 text-xl font-bold">Não achamos imóveis com todos esses filtros</h2>
-          <p className="mx-auto mt-2 max-w-md text-muted-foreground">
-            Tente remover algum filtro acima, aumentar o preço ou a parcela máxima, ou buscar em
-            outros bairros. Novos imóveis chegam toda semana.
-          </p>
+          <h2 className="mt-3 text-xl font-bold">Nenhum imóvel com esses filtros</h2>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild variant="outline" size="lg">
               <Link href={caminho}>Ver todos os imóveis</Link>
@@ -86,34 +75,18 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
           </div>
         </div>
       ) : (
-        <div className="lg:grid lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-5">
-          <div>
-            <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {resultado.itens.map((i, idx) => (
-                <li key={i.id}>
-                  <CardImovelComprar imovel={i} prioridade={idx < 2} />
-                </li>
-              ))}
-            </ul>
-            <Paginacao
-              filtros={semFixos}
+        <div className="lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
+          <div className="h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:h-[calc(100dvh-6rem)]">
+            <MapaClustersComprar
+              bairros={bairrosComLocalizacao(resultado.todos)}
               caminho={caminho}
-              pagina={resultado.pagina}
-              totalPaginas={resultado.totalPaginas}
+              filtrosAtuais={filtros}
             />
           </div>
-          <div className="mt-5 h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:mt-0 lg:h-[calc(100dvh-6rem)]">
-            <MapaClustersComprar bairros={bairrosComLocalizacao(resultado.todos)} caminho={caminho} filtrosAtuais={filtros} />
+          <div className="mt-5 lg:mt-0">
+            <GradeInfinita itens={resultado.todos} />
           </div>
         </div>
-      )}
-
-      {resultado.total > 0 && <NotaPremissas />}
-      <PainelComparacao />
-      {temFiltros && (
-        <p className="sr-only">
-          Os filtros ficam salvos no endereço da página; você pode compartilhar este link.
-        </p>
       )}
     </div>
   );
