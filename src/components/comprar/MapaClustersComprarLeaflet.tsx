@@ -6,13 +6,16 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import L from 'leaflet';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { CENTRO_MAPA } from '@/config/site';
 import { ATRIBUICAO_OSM, URL_TILES_OSM } from '@/components/mapa/tiles';
+import { useMobile } from '@/lib/cliente/useMobile';
 import { caminhoPublico } from '@/lib/utils/caminho';
 import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
+import { slugify } from '@/lib/utils/slug';
 import type { ImovelResumo } from '@/types';
 import { FichaIconica } from './FichaIconica';
 
@@ -51,6 +54,8 @@ function criarIconeCluster(cluster: L.MarkerCluster) {
  * só aproxima, nunca filtra ou navega.
  */
 export default function MapaClustersComprarLeaflet({ imoveis }: { imoveis: ImovelResumo[] }) {
+  const router = useRouter();
+  const celular = useMobile();
   const limites = useMemo(() => {
     if (imoveis.length === 0) return null;
     return L.latLngBounds(
@@ -75,47 +80,62 @@ export default function MapaClustersComprarLeaflet({ imoveis }: { imoveis: Imove
         spiderfyOnMaxZoom
         maxClusterRadius={70}
       >
-        {imoveis.map((i) => (
-          <Marker
-            key={i.id}
-            position={[i.localizacaoAproximada.lat, i.localizacaoAproximada.lng]}
-            icon={iconePreco(i.preco, i.status !== 'disponivel')}
-            title={`${i.titulo} — ${formatarPreco(i.preco)}`}
-          >
-            <Popup minWidth={240} maxWidth={260}>
-              <div className="w-60 font-sans">
-                {i.foto && (
-                  <div className="relative mb-2 aspect-[3/2] overflow-hidden rounded-lg bg-muted">
-                    <Image
-                      src={caminhoPublico(i.foto.arquivo)}
-                      alt={i.foto.alt}
-                      fill
-                      sizes="240px"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <p className="m-0! text-lg font-extrabold text-[#041a4b]">
-                  {formatarPreco(i.preco)}
-                </p>
-                <FichaIconica
-                  className="mt-1.5 mb-2.5 gap-x-2.5 text-slate-700"
-                  quartos={i.quartos}
-                  suites={i.suites}
-                  banheiros={i.banheiros}
-                  vagas={i.vagas}
-                  areaUtilM2={i.areaUtilM2}
-                />
-                <Link
-                  href={`/imoveis/${i.slug}`}
-                  className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#041a4b] font-semibold text-white! no-underline"
-                >
-                  Ver imóvel
-                </Link>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        {imoveis.map((i) =>
+          celular ? (
+            // Celular: tocar num imóvel individual (já no nível do bairro) leva direto para a
+            // lista daquele bairro, em vez de abrir o popup de um único imóvel.
+            <Marker
+              key={i.id}
+              position={[i.localizacaoAproximada.lat, i.localizacaoAproximada.lng]}
+              icon={iconePreco(i.preco, i.status !== 'disponivel')}
+              title={`Ver imóveis no bairro ${i.bairro}`}
+              alt={`Ver imóveis no bairro ${i.bairro}`}
+              eventHandlers={{
+                click: () => router.push(`/comprar?bairro=${slugify(i.bairro)}#lista`),
+              }}
+            />
+          ) : (
+            <Marker
+              key={i.id}
+              position={[i.localizacaoAproximada.lat, i.localizacaoAproximada.lng]}
+              icon={iconePreco(i.preco, i.status !== 'disponivel')}
+              title={`${i.titulo} — ${formatarPreco(i.preco)}`}
+            >
+              <Popup minWidth={240} maxWidth={260}>
+                <div className="w-60 font-sans">
+                  {i.foto && (
+                    <div className="relative mb-2 aspect-[3/2] overflow-hidden rounded-lg bg-muted">
+                      <Image
+                        src={caminhoPublico(i.foto.arquivo)}
+                        alt={i.foto.alt}
+                        fill
+                        sizes="240px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <p className="m-0! text-lg font-extrabold text-[#041a4b]">
+                    {formatarPreco(i.preco)}
+                  </p>
+                  <FichaIconica
+                    className="mt-1.5 mb-2.5 gap-x-2.5 text-slate-700"
+                    quartos={i.quartos}
+                    suites={i.suites}
+                    banheiros={i.banheiros}
+                    vagas={i.vagas}
+                    areaUtilM2={i.areaUtilM2}
+                  />
+                  <Link
+                    href={`/imoveis/${i.slug}`}
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#041a4b] font-semibold text-white! no-underline"
+                  >
+                    Ver imóvel
+                  </Link>
+                </div>
+              </Popup>
+            </Marker>
+          ),
+        )}
       </MarkerClusterGroup>
     </MapContainer>
   );

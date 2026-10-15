@@ -78,7 +78,7 @@ export function CorpoComprar({ filtrosUrl, fixos, resultado, bairros, caminho }:
           <div className="h-80 overflow-hidden rounded-2xl ring-1 ring-border sm:h-96 lg:sticky lg:top-20 lg:h-[calc(100dvh-6rem)]">
             <MapaClustersComprar imoveis={resultado.todos} />
           </div>
-          <div className="mt-5 lg:mt-0">
+          <div id="lista" className="mt-5 scroll-mt-20 lg:mt-0">
             <GradeInfinita itens={resultado.todos} />
           </div>
         </div>
