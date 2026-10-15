@@ -90,6 +90,10 @@ export const BAIRROS_EXEMPLO: BairroExemplo[] = [
   { nome: 'Cocó', lat: -3.7639, lng: -38.4779 },
   { nome: 'Parangaba', lat: -3.7764, lng: -38.5559 },
   { nome: 'Messejana', lat: -3.8192, lng: -38.4716 },
+  { nome: 'Presidente Kennedy', lat: -3.7544, lng: -38.5698 },
+  { nome: 'Papicu', lat: -3.7489, lng: -38.4789 },
+  { nome: 'Benfica', lat: -3.74, lng: -38.5408 },
+  { nome: 'Cajazeiras', lat: -3.8268, lng: -38.5586 },
 ];
 
 /** Modo demonstração: faixa no topo e selo "Imóvel ilustrativo" nos imóveis de exemplo. */
