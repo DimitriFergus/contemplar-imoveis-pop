@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { CIDADE_BASE, SITE } from '@/config/site';
+import { BuscaPorRegiao } from '@/components/busca/BuscaPorRegiao';
 import { PaginaListagem } from '@/components/busca/PaginaListagem';
+import { bairrosComLocalizacao } from '@/lib/busca/bairros-mapa';
+import { repositorio } from '@/lib/repositorio';
 import { formatarPrecoCurto } from '@/lib/utils/formatar';
 import { metadadosListagem } from '@/lib/seo';
 
@@ -12,6 +15,7 @@ export async function generateMetadata({ searchParams }: PageProps<'/imoveis'>):
 }
 
 export default async function PaginaImoveis({ searchParams }: PageProps<'/imoveis'>) {
+  const regioes = bairrosComLocalizacao(await repositorio.listarResumos());
   return (
     <PaginaListagem
       searchParams={searchParams}
@@ -19,6 +23,7 @@ export default async function PaginaImoveis({ searchParams }: PageProps<'/imovei
       titulo={TITULO}
       introducao="Encontre o imóvel pelo preço ou pela parcela mensal. Todos os valores mostram o preço total e a parcela estimada."
       trilha={[{ nome: 'Imóveis', href: '/imoveis' }]}
+      regiao={<BuscaPorRegiao bairros={regioes} />}
     />
   );
 }

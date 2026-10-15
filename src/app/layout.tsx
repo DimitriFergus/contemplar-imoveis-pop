@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import Script from 'next/script';
 import { montarCsp } from '@/config/seguranca';
 import { SITE } from '@/config/site';
 import { AlertaPendencias } from '@/components/layout/AlertaPendencias';
@@ -62,7 +63,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <meta name="referrer" content="strict-origin-when-cross-origin" />
           </>
         )}
-        <script dangerouslySetInnerHTML={{ __html: SCRIPT_LEITURA_FACIL }} />
+        <Script
+          id="leitura-facil-inicial"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: SCRIPT_LEITURA_FACIL }}
+        />
       </head>
       <body className="flex min-h-dvh flex-col antialiased">
         <a

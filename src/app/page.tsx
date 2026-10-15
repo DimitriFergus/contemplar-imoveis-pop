@@ -23,6 +23,7 @@ import {
   estaDefinido,
 } from '@/config/site';
 import { BuscaHero } from '@/components/busca/BuscaHero';
+import { BuscaPorRegiao } from '@/components/busca/BuscaPorRegiao';
 import { VideoFundoHero } from '@/components/layout/VideoFundoHero';
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
 import { FaixasMcmv, type FaixaComImoveis } from '@/components/conteudo/FaixasMcmv';
@@ -36,6 +37,7 @@ import { Jornada } from '@/components/conteudo/Jornada';
 import { NotaPremissas } from '@/components/imoveis/NotaPremissas';
 import { Button } from '@/components/ui/button';
 import { FAQ_HOME } from '@/content/faq';
+import { bairrosComLocalizacao } from '@/lib/busca/bairros-mapa';
 import { paraQueryString } from '@/lib/busca/filtros';
 import { repositorio } from '@/lib/repositorio';
 import { formatarPrecoCurto } from '@/lib/utils/formatar';
@@ -75,6 +77,7 @@ export default async function PaginaInicial() {
     repositorio.bairros(),
     repositorio.listarResumos(),
   ]);
+  const regioes = bairrosComLocalizacao(resumos);
   // Para cada faixa do MCMV: até quanto a renda permite comprar e quais imóveis se encaixam.
   const faixasMcmv: FaixaComImoveis[] = FAIXAS.filter((f) => f.programa === 'MCMV').map((f) => {
     const limite = limiteImovelPorFaixa(f);
@@ -182,6 +185,13 @@ export default async function PaginaInicial() {
           ))}
         </ul>
       </nav>
+
+      {/* Busca por região */}
+      <div className="bg-muted/60">
+        <Secao id="regiao" titulo="Busque por região" subtitulo="Toque num bairro no mapa ou na lista para ver os imóveis disponíveis por lá.">
+          <BuscaPorRegiao bairros={regioes} />
+        </Secao>
+      </div>
 
       {/* Destaques */}
       <Secao
