@@ -53,13 +53,13 @@ export async function PaginaListagem({
         {introducao && <p className="mt-2 max-w-3xl text-lg text-muted-foreground">{introducao}</p>}
       </div>
       {regiao && (
-        <details className="mb-6 rounded-2xl border bg-card p-4 open:pb-5 sm:p-5">
-          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-lg font-bold">
+        <div className="mb-8 rounded-2xl border bg-card p-4 sm:p-5">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
             <MapPinned className="size-5 text-destaque-texto" aria-hidden />
             Buscar por região
-          </summary>
-          <div className="mt-4">{regiao}</div>
-        </details>
+          </h2>
+          {regiao}
+        </div>
       )}
       {MODO_ESTATICO ? (
         <Suspense fallback={corpo}>
