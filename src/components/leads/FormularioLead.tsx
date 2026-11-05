@@ -149,8 +149,9 @@ export function FormularioLead({
       aoEnviar?.();
     };
 
-    if (MODO_ESTATICO) {
-      // Versão estática (sem servidor): valida aqui.
+    if (MODO_ESTATICO || SUPABASE_CONFIGURADO) {
+      // Com o Supabase (ou na versão estática): valida aqui e grava pela função segura
+      // registrar_lead, só com a chave pública. A chave secreta nunca é usada pelo site.
       const errosLocais: Erros = {};
       if (corpo.nome.length < 2) errosLocais.nome = 'Informe seu nome';
       const digitos = corpo.whatsapp.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '');

@@ -65,7 +65,7 @@ Testar a versão estática localmente (em uma cópia): `rm -rf src/app/api`, `NE
 
 1. Crie um repositório Git com este projeto e envie ao GitHub.
 2. Na Vercel: _Add New → Project_ → importe o repositório (framework detectado: Next.js).
-3. Em _Environment Variables_, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY` e, se quiser cópia dos leads, `LEADS_WEBHOOK_URL`.
+3. Em _Environment Variables_, defina `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_MODO_DEMO`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` e, se quiser cópia dos leads, `LEADS_WEBHOOK_URL`. **Não** cadastre `SUPABASE_SECRET_KEY` na Vercel: o site só usa a chave pública, e os leads são gravados pela função `registrar_lead` com RLS.
 4. _Deploy_. Cada push gera uma pré-visualização por branch; a `main` vai para produção.
 5. O `prebuild` roda `npm run importar`: se a planilha tiver erro, o deploy é bloqueado e o site anterior continua no ar.
 

@@ -19,19 +19,3 @@ export function clientePublico() {
     },
   });
 }
-
-/**
- * Cliente com a chave secreta: ignora RLS. Uso restrito ao servidor, para gravar leads do
- * site e para o admin criar usuários. Nunca exponha SUPABASE_SECRET_KEY no navegador.
- */
-export function clienteServico() {
-  const chave = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!chave) throw new Error('SUPABASE_SECRET_KEY não configurada');
-  return createClient(SUPABASE_URL, chave, {
-    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
-  });
-}
-
-export function servicoConfigurado(): boolean {
-  return Boolean(process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY);
-}

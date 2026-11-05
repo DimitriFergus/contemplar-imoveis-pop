@@ -158,7 +158,8 @@ Feita uma vez só.
    SUPABASE_SECRET_KEY=...
    SUPABASE_DB_URL=...
    ```
-   **A secret key e a senha do banco nunca vão para o GitHub, chat ou e-mail.**
+   **A secret key e a senha do banco nunca vão para o GitHub, a Vercel, chat ou e-mail.** Elas
+   servem só para os comandos `npm run supabase:*` no seu computador.
 
 ### 7.2 Montar o banco
 
@@ -194,8 +195,8 @@ migrações (`npm run supabase:migrar`).
 
 **Vercel (opcional, com servidor).** O mesmo código roda na Vercel com atualização instantânea
 de todas as páginas: importe o repositório, cadastre `NEXT_PUBLIC_SUPABASE_URL`,
-`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `NEXT_PUBLIC_SITE_URL` e
-`NEXT_PUBLIC_MODO_DEMO=true` e faça o deploy. **Não** cadastre `SUPABASE_DB_URL` nem
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL` e
+`NEXT_PUBLIC_MODO_DEMO=true` e faça o deploy. **Não** cadastre `SUPABASE_SECRET_KEY`, `SUPABASE_DB_URL` nem
 `NEXT_PUBLIC_MODO_ESTATICO`.
 
 ### 7.4 Estrutura (para quem mantém o código)
