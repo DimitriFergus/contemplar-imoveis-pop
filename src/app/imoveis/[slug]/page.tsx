@@ -23,7 +23,7 @@ export async function generateMetadata({
   const i = await repositorio.obterPorSlug(slug);
   if (!i) return { title: 'Imóvel não encontrado' };
   const parcela = parcelaEstimadaAnuncio(i.preco).parcela;
-  const descricao = `${i.titulo} por ${formatarPreco(i.preco)} (parcelas a partir de ${formatarPreco(parcela)}/mês, estimativa). ${i.quartos} quartos, ${i.areaUtilM2} m². Cód. ${i.codigo}.`;
+  const descricao = `${i.titulo} por ${formatarPreco(i.preco)} (parcelas a partir de ${formatarPreco(parcela)}/mês, estimativa). ${i.quartos} quartos${i.areaUtilM2 ? `, ${i.areaUtilM2} m²` : ''}. Cód. ${i.codigo}.`;
   return {
     title: `${i.titulo} — ${formatarPreco(i.preco)}`,
     description: descricao,

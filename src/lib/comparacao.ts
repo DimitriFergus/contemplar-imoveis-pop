@@ -63,14 +63,23 @@ export function compararImoveis(imovel: Campos, base: Campos): Diferenca[] {
       ),
       texto: `Parcela ${reais(Math.round(dif(imovel.parcelaEstimada, base.parcelaEstimada)))} ${imovel.parcelaEstimada < base.parcelaEstimada ? 'menor' : 'maior'}`,
     },
-    {
-      chave: 'area',
-      rotulo: 'Área útil',
-      valor: `${imovel.areaUtilM2} m²`,
-      valorBase: `${base.areaUtilM2} m²`,
-      resultado: comparar(imovel.areaUtilM2, base.areaUtilM2, false),
-      texto: `${dif(imovel.areaUtilM2, base.areaUtilM2)} m² ${imovel.areaUtilM2 > base.areaUtilM2 ? 'maior' : 'menor'}`,
-    },
+    imovel.areaUtilM2 && base.areaUtilM2
+      ? {
+          chave: 'area' as const,
+          rotulo: 'Área útil',
+          valor: `${imovel.areaUtilM2} m²`,
+          valorBase: `${base.areaUtilM2} m²`,
+          resultado: comparar(imovel.areaUtilM2, base.areaUtilM2, false),
+          texto: `${dif(imovel.areaUtilM2, base.areaUtilM2)} m² ${imovel.areaUtilM2 > base.areaUtilM2 ? 'maior' : 'menor'}`,
+        }
+      : {
+          chave: 'area' as const,
+          rotulo: 'Área útil',
+          valor: imovel.areaUtilM2 ? `${imovel.areaUtilM2} m²` : 'Não informada',
+          valorBase: base.areaUtilM2 ? `${base.areaUtilM2} m²` : 'Não informada',
+          resultado: 'igual' as const,
+          texto: 'Área a confirmar',
+        },
     {
       chave: 'quartos',
       rotulo: 'Quartos',

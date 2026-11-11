@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { urlMidiaPermitida } from '@/lib/utils/url-segura';
+import { urlMidiaPermitida, videoPermitido } from '@/lib/utils/url-segura';
 import { SITUACOES_IMOVEL, STATUS_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE } from '@/lib/constantes';
 
 export { SITUACOES_IMOVEL, STATUS_IMOVEL, TIPOS_IMOVEL, TIPOS_PROXIMIDADE };
@@ -45,7 +45,7 @@ export const imovelBaseSchema = z.object({
   suites: z.number().int().min(0).max(10),
   banheiros: z.number().int().min(1).max(10),
   vagas: z.number().int().min(0).max(10),
-  areaUtilM2: z.number().positive(),
+  areaUtilM2: z.number().positive().optional(),
   areaTerrenoM2: z.number().positive().optional(),
   caracteristicas: z.array(z.string().min(2)),
   lazer: z.array(z.string().min(2)),
@@ -58,7 +58,13 @@ export const imovelBaseSchema = z.object({
     entradaFacilitada: z.boolean(),
   }),
   fotos: z.array(fotoSchema),
-  videoUrl: z.url().refine(urlMidiaPermitida, 'use um link https do YouTube').optional(),
+  videoUrl: z
+    .string()
+    .refine(
+      videoPermitido,
+      'use um link https do YouTube ou um arquivo /imoveis/<código>/video.mp4',
+    )
+    .optional(),
   tour360Url: z
     .url()
     .refine(urlMidiaPermitida, 'use um link https do Matterport, Kuula ou YouTube')

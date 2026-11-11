@@ -72,7 +72,6 @@ const OBRIGATORIAS: ColunaCSV[] = [
   'longitude',
   'quartos',
   'banheiros',
-  'area_util_m2',
   'status',
   'corretor_id',
 ];
@@ -239,7 +238,7 @@ export function converterLinha(
     suites: numero('suites') ?? 0,
     banheiros: numero('banheiros', false),
     vagas: numero('vagas') ?? 0,
-    areaUtilM2: numero('area_util_m2', false),
+    areaUtilM2: numero('area_util_m2'),
     areaTerrenoM2: numero('area_terreno_m2'),
     caracteristicas: lerLista(v('caracteristicas')),
     lazer: lerLista(v('lazer')),

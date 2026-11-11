@@ -7,7 +7,7 @@ interface Props {
   suites?: number;
   banheiros: number;
   vagas: number;
-  areaUtilM2: number;
+  areaUtilM2?: number;
   className?: string;
 }
 
@@ -25,11 +25,14 @@ export function FichaIconica({
     suites > 0 ? { Icone: Bed, texto: `${suites} ${suites === 1 ? 'suíte' : 'suítes'}` } : null,
     { Icone: Bath, texto: `${banheiros} ${banheiros === 1 ? 'banheiro' : 'banheiros'}` },
     vagas > 0 ? { Icone: Car, texto: `${vagas} ${vagas === 1 ? 'vaga' : 'vagas'}` } : null,
-    { Icone: Maximize, texto: formatarArea(areaUtilM2) },
+    areaUtilM2 ? { Icone: Maximize, texto: formatarArea(areaUtilM2) } : null,
   ].filter((item): item is { Icone: typeof BedDouble; texto: string } => item !== null);
 
   return (
-    <ul className={cn('flex flex-wrap items-center gap-x-3 gap-y-1.5', className)} aria-label="Características do imóvel">
+    <ul
+      className={cn('flex flex-wrap items-center gap-x-3 gap-y-1.5', className)}
+      aria-label="Características do imóvel"
+    >
       {itens.map(({ Icone, texto }, idx) => (
         <li key={idx} className="flex items-center gap-1.5 text-sm font-semibold">
           <Icone className="size-4 shrink-0 text-primary" aria-hidden />

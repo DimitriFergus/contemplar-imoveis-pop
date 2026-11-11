@@ -40,7 +40,8 @@ async function otimizarFoto(codigo: string, arquivo: string): Promise<string | n
   await mkdir(backup, { recursive: true });
   await copyFile(caminho, path.join(backup, arquivo));
 
-  let pipeline = sharp(caminho)
+  // Lê para a memória: no Windows o sharp mantém o arquivo aberto e a gravação falharia.
+  let pipeline = sharp(await readFile(caminho))
     .rotate()
     .resize({ width: LARGURA_MAXIMA, withoutEnlargement: true });
   if (/\.jpe?g$/i.test(arquivo)) pipeline = pipeline.jpeg({ quality: 80, mozjpeg: true });

@@ -7,7 +7,7 @@ interface Props {
   suites?: number;
   banheiros: number;
   vagas: number;
-  areaUtilM2: number;
+  areaUtilM2?: number;
   tamanho?: 'card' | 'anuncio';
   className?: string;
 }
@@ -30,8 +30,10 @@ export function FichaTecnica({
     },
     { icone: Bath, texto: plural(banheiros, 'banheiro', 'banheiros'), extra: '' },
     { icone: Car, texto: vagas ? plural(vagas, 'vaga', 'vagas') : 'Sem vaga', extra: '' },
-    { icone: Maximize, texto: formatarArea(areaUtilM2), extra: grande ? 'área útil' : '' },
-  ];
+    areaUtilM2
+      ? { icone: Maximize, texto: formatarArea(areaUtilM2), extra: grande ? 'área útil' : '' }
+      : null,
+  ].filter((item) => item !== null);
   return (
     <ul
       className={cn(

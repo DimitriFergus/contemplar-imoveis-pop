@@ -1,6 +1,6 @@
 import type { LinhaImovel } from '@/lib/supabase/tipos';
 import type { Imovel, StatusImovel } from '@/types';
-import { fotoPermitida, urlMidiaPermitida } from '@/lib/utils/url-segura';
+import { fotoPermitida, urlMidiaPermitida, videoPermitido } from '@/lib/utils/url-segura';
 
 /**
  * Conversão linha do banco → Imovel sem dependências pesadas (sem Zod), para poder rodar
@@ -38,7 +38,7 @@ export function linhaParaImovel(l: LinhaImovel): Imovel {
   const dados = l.dados as Omit<Imovel, (typeof CAMPOS_FORA_DE_DADOS)[number]>;
   return {
     ...dados,
-    videoUrl: urlMidiaPermitida(dados.videoUrl) ? dados.videoUrl : undefined,
+    videoUrl: videoPermitido(dados.videoUrl) ? dados.videoUrl : undefined,
     tour360Url: urlMidiaPermitida(dados.tour360Url) ? dados.tour360Url : undefined,
     id: l.codigo.toLowerCase(),
     codigo: l.codigo,

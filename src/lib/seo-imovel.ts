@@ -49,7 +49,9 @@ export function jsonLdImovel(i: Imovel): Record<string, unknown> {
       numberOfRooms: i.quartos,
       numberOfBedrooms: i.quartos,
       numberOfBathroomsTotal: i.banheiros,
-      floorSize: { '@type': 'QuantitativeValue', value: i.areaUtilM2, unitCode: 'MTK' },
+      ...(i.areaUtilM2
+        ? { floorSize: { '@type': 'QuantitativeValue', value: i.areaUtilM2, unitCode: 'MTK' } }
+        : {}),
       address: {
         '@type': 'PostalAddress',
         addressLocality: i.cidade,

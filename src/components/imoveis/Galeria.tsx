@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/compone
 import type { Foto } from '@/types';
 import { cn } from '@/lib/utils';
 import { caminhoPublico } from '@/lib/utils/caminho';
-import { urlMidiaPermitida } from '@/lib/utils/url-segura';
+import { urlMidiaPermitida, videoLocal, videoPermitido } from '@/lib/utils/url-segura';
 
 interface Props {
   fotos: Foto[];
@@ -98,7 +98,7 @@ function Carrossel({
 }
 
 export function Galeria({ fotos, titulo, ilustrativa = false, ...links }: Props) {
-  const videoUrl = urlMidiaPermitida(links.videoUrl) ? links.videoUrl : undefined;
+  const videoUrl = videoPermitido(links.videoUrl) ? links.videoUrl : undefined;
   const tour360Url = urlMidiaPermitida(links.tour360Url) ? links.tour360Url : undefined;
   const [indice, setIndice] = useState(0);
   const [telaCheia, setTelaCheia] = useState(false);
@@ -253,7 +253,18 @@ export function Galeria({ fotos, titulo, ilustrativa = false, ...links }: Props)
             {midia?.tipo === 'video' ? 'Vídeo do imóvel' : 'Tour 360°'}
           </DialogTitle>
           <DialogDescription className="sr-only">{titulo}</DialogDescription>
-          {midia && (
+          {midia && videoLocal(midia.url) && (
+            <video
+              src={caminhoPublico(midia.url)}
+              title={`Vídeo: ${titulo}`}
+              className="max-h-[80vh] w-full rounded-b-xl bg-black"
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+            />
+          )}
+          {midia && !videoLocal(midia.url) && (
             <div className="aspect-video w-full">
               <iframe
                 src={urlIncorporacao(midia.url)}

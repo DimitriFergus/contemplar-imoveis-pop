@@ -4,7 +4,7 @@ Site imobiliário da **Contemplar Imóveis Pop** (Grupo Ordnas): imóveis popula
 
 > **Fase 1.5:** painel administrativo em `/admin` (Supabase: banco, login com MFA e fotos) para cadastrar imóveis e atender leads. Manual em linguagem simples: [`docs/MANUAL_ADMIN.md`](docs/MANUAL_ADMIN.md).
 >
-> Fase 1 lançada com **24 imóveis fictícios** (`exemplo: true`) e modo demonstração. Veja [`docs/PENDENCIAS.md`](docs/PENDENCIAS.md) antes de publicar.
+> Imóveis reais em `dados/imoveis.csv` (fotos em `public/imoveis/<CÓDIGO>/`, vídeo opcional em `video.mp4`). Imóveis aguardando dados ficam em `dados/imoveis-pendentes.csv`. Modo demonstração desligado. Veja [`docs/PENDENCIAS.md`](docs/PENDENCIAS.md) antes de publicar.
 
 ## Stack
 
@@ -26,7 +26,7 @@ npx playwright install chromium   # (uma vez) navegador para os testes E2E
 
 npm run dev                 # desenvolvimento em http://localhost:3000 (roda a importação antes)
 npm run importar            # valida dados/imoveis.csv e gera src/data/*.json
-npm run gerar-exemplos      # recria os 24 imóveis fictícios (sobrescreve a planilha!)
+npm run gerar-exemplos      # NÃO use: recria os 24 imóveis fictícios e apaga os reais da planilha
 npm run fotos-exemplo       # baixa/otimiza as fotos CC0 dos imóveis de exemplo (dados/fotos-exemplo.json)
 
 npm run build && npm start  # produção local

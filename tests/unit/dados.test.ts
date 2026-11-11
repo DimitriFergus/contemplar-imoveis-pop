@@ -77,13 +77,13 @@ describe('formatação e números', () => {
 describe('importação da planilha', () => {
   const base = imovelParaLinha(imoveis[0]!);
 
-  it('todos os imóveis gerados são válidos e fictícios', () => {
-    expect(imoveis).toHaveLength(24);
+  it('todos os imóveis da planilha são válidos e reais', () => {
+    expect(imoveis.length).toBeGreaterThan(0);
     for (const i of imoveis) {
       expect(imovelSchema.safeParse(i).success).toBe(true);
-      expect(i.exemplo).toBe(true);
-      expect(i.preco).toBeGreaterThanOrEqual(150_000);
-      expect(i.preco).toBeLessThanOrEqual(420_000);
+      expect(i.exemplo).toBe(false);
+      expect(i.preco).toBeGreaterThan(0);
+      expect(i.fotos.length).toBeGreaterThan(0);
       expect(i.localizacaoAproximada.raioMetros).toBeGreaterThanOrEqual(150);
     }
   });
@@ -180,11 +180,12 @@ describe('busca e filtros', () => {
   it('ordena por menor preço e pagina', () => {
     const ordenados = ordenar(resumos, 'menor_preco');
     expect(ordenados[0]!.preco).toBeLessThanOrEqual(ordenados[1]!.preco);
-    const p = paginar(ordenados, 3, 10);
-    expect(p.pagina).toBe(3);
-    expect(p.totalPaginas).toBe(3);
-    expect(p.itens).toHaveLength(4);
-    expect(paginar(ordenados, 99, 10).pagina).toBe(3);
+    const total = Math.ceil(ordenados.length / 2);
+    const p = paginar(ordenados, total, 2);
+    expect(p.pagina).toBe(total);
+    expect(p.totalPaginas).toBe(total);
+    expect(p.itens).toHaveLength(ordenados.length - (total - 1) * 2);
+    expect(paginar(ordenados, 99, 2).pagina).toBe(total);
   });
 
   it('gera chips removíveis', () => {

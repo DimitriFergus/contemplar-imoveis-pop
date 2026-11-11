@@ -53,7 +53,7 @@ export interface ImovelResumo {
   suites: number;
   banheiros: number;
   vagas: number;
-  areaUtilM2: number;
+  areaUtilM2?: number;
   condicoes: CondicoesPagamento;
   foto: Foto | null;
   totalFotos: number;

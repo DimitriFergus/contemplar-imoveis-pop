@@ -15,6 +15,20 @@ export function urlMidiaPermitida(url: string | null | undefined): url is string
   return typeof url === 'string' && url.length <= 500 && MIDIA_PERMITIDA.test(url);
 }
 
+/** Vídeo enviado para a pasta /imoveis do próprio site (MP4). */
+const VIDEO_LOCAL = /^\/imoveis\/[A-Za-z0-9/._-]+\.mp4$/;
+
+export function videoLocal(url: string | null | undefined): url is string {
+  return (
+    typeof url === 'string' && url.length <= 500 && !url.includes('..') && VIDEO_LOCAL.test(url)
+  );
+}
+
+/** Vídeo do imóvel: YouTube ou arquivo MP4 na pasta /imoveis do site. */
+export function videoPermitido(url: string | null | undefined): url is string {
+  return urlMidiaPermitida(url) || videoLocal(url);
+}
+
 export function fotoPermitida(arquivo: unknown): arquivo is string {
   return typeof arquivo === 'string' && FOTO_PERMITIDA.test(arquivo);
 }

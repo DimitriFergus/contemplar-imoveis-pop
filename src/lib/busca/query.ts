@@ -153,7 +153,7 @@ export function aplicarFiltros(imoveis: ImovelResumo[], f: Filtros): ImovelResum
     if (f.quartos && i.quartos < f.quartos) return false;
     if (f.banheiros && i.banheiros < f.banheiros) return false;
     if (f.vagas && i.vagas < f.vagas) return false;
-    if (f.areaMin && i.areaUtilM2 < f.areaMin) return false;
+    if (f.areaMin && (i.areaUtilM2 ?? 0) < f.areaMin) return false;
     if (f.condicoes.some((c) => !i.condicoes[c])) return false;
     if (f.bolso && i.preco > f.bolso) return false;
     return true;
@@ -171,7 +171,7 @@ export function ordenar(imoveis: ImovelResumo[], ordem: Ordenacao = 'relevancia'
     menor_preco: (a, b) => a.preco - b.preco,
     menor_parcela: (a, b) => a.parcelaEstimada - b.parcelaEstimada,
     recentes: porData,
-    maior_area: (a, b) => b.areaUtilM2 - a.areaUtilM2,
+    maior_area: (a, b) => (b.areaUtilM2 ?? 0) - (a.areaUtilM2 ?? 0),
   };
   return lista.sort((a, b) => comparadores[ordem](a, b) || a.codigo.localeCompare(b.codigo));
 }

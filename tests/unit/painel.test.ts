@@ -26,7 +26,7 @@ describe('status do painel x site', () => {
 });
 
 describe('conversão banco ⇄ imóvel', () => {
-  it('ida e volta preserva o imóvel e o marcador de exemplo', () => {
+  it('ida e volta preserva o imóvel e o marcador de exemplo/real', () => {
     const linha: LinhaImovel = {
       id: '00000000-0000-4000-8000-000000000001',
       codigo: exemplo.codigo,
@@ -47,7 +47,7 @@ describe('conversão banco ⇄ imóvel', () => {
     };
     const volta = imovelSchema.parse(linhaParaImovel(linha));
     expect(volta).toEqual(exemplo);
-    expect(volta.exemplo).toBe(true);
+    expect(volta.exemplo).toBe(exemplo.exemplo);
     expect(volta.id).toBe(exemplo.codigo.toLowerCase());
   });
 
