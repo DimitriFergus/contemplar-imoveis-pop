@@ -198,6 +198,101 @@
     "atualizadoEm": "2026-11-11T00:00:00.000Z"
   },
   {
+    "id": "cp-0003",
+    "codigo": "CP-0003",
+    "slug": "casa-2-quartos-com-suite-em-horizonte-cp-0003",
+    "titulo": "Casa 2 quartos com suíte em Horizonte",
+    "descricao": "Casa de 2 quartos em Horizonte (CE), sendo 1 suíte, com 2 banheiros: a suíte e um banheiro social reversível. Tem ampla área externa, garagem para 2 carros, área de serviço e despensa.",
+    "tipo": "casa",
+    "situacao": "pronto",
+    "cidade": "Horizonte",
+    "uf": "CE",
+    "bairro": "Horizonte",
+    "localizacaoAproximada": {
+      "lat": -4.096,
+      "lng": -38.49,
+      "raioMetros": 1500
+    },
+    "quartos": 2,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "caracteristicas": [
+      "suíte",
+      "banheiro social reversível",
+      "ampla área externa",
+      "garagem para 2 carros",
+      "área de serviço",
+      "despensa"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": false,
+      "aceitaSBPE": false,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0003/01.jpg",
+        "alt": "Fachada com portões de garagem – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/02.jpg",
+        "alt": "Entrada lateral e quintal – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/03.jpg",
+        "alt": "Corredor lateral externo – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/04.jpg",
+        "alt": "Área externa murada – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/05.jpg",
+        "alt": "Sala com porta de entrada – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/06.jpg",
+        "alt": "Sala integrada à cozinha – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/07.jpg",
+        "alt": "Ambiente amplo com piso cerâmico – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/08.jpg",
+        "alt": "Quarto com janela – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/09.jpg",
+        "alt": "Quarto – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/10.jpg",
+        "alt": "Banheiro com pia de granito – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/11.jpg",
+        "alt": "Banheiro da suíte – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0003/12.jpg",
+        "alt": "Área de serviço – Casa 2 quartos com suíte em Horizonte (CP-0003)"
+      }
+    ],
+    "proximidades": [],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": false,
+    "publicadoEm": "2026-11-11T00:00:00.000Z",
+    "atualizadoEm": "2026-11-11T00:00:00.000Z"
+  },
+  {
     "id": "cp-0004",
     "codigo": "CP-0004",
     "slug": "casa-2-quartos-com-garagem-em-horizonte-cp-0004",
@@ -300,6 +395,358 @@
       }
     ],
     "videoUrl": "/imoveis/CP-0004/video.mp4",
+    "proximidades": [],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": false,
+    "publicadoEm": "2026-11-11T00:00:00.000Z",
+    "atualizadoEm": "2026-11-11T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0005",
+    "codigo": "CP-0005",
+    "slug": "casa-3-quartos-com-suite-no-jose-walter-cp-0005",
+    "titulo": "Casa 3 quartos com suíte no José Walter",
+    "descricao": "Casa de 3 quartos no bairro Prefeito José Walter, em Fortaleza (CE), sendo 1 suíte, com 2 banheiros. Tem garagem, quintal e área externa na frente.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "cidade": "Fortaleza",
+    "uf": "CE",
+    "bairro": "Prefeito José Walter",
+    "localizacaoAproximada": {
+      "lat": -3.83,
+      "lng": -38.553,
+      "raioMetros": 1000
+    },
+    "quartos": 3,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 1,
+    "caracteristicas": [
+      "suíte",
+      "garagem",
+      "quintal",
+      "área externa na frente"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": false,
+      "aceitaSBPE": false,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0005/01.jpg",
+        "alt": "Fachada com portão da garagem – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/02.jpg",
+        "alt": "Fachada vista da rua – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/03.jpg",
+        "alt": "Área coberta com vista para o quintal – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/04.jpg",
+        "alt": "Área coberta nos fundos – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/05.jpg",
+        "alt": "Quintal – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/06.jpg",
+        "alt": "Quintal com muro – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/07.jpg",
+        "alt": "Sala com janelas de vitral – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/08.jpg",
+        "alt": "Sala ampla – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/09.jpg",
+        "alt": "Sala com porta gradeada – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/10.jpg",
+        "alt": "Ambiente interno com porta para fora – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/11.jpg",
+        "alt": "Cozinha com pia – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/12.jpg",
+        "alt": "Quarto com janela – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/13.jpg",
+        "alt": "Quarto – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/14.jpg",
+        "alt": "Quarto com janela – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/15.jpg",
+        "alt": "Quarto com piso escuro – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/16.jpg",
+        "alt": "Banheiro com pia – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0005/17.jpg",
+        "alt": "Banheiro revestido – Casa 3 quartos com suíte no José Walter (CP-0005)"
+      }
+    ],
+    "proximidades": [],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": false,
+    "publicadoEm": "2026-11-11T00:00:00.000Z",
+    "atualizadoEm": "2026-11-11T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0006",
+    "codigo": "CP-0006",
+    "slug": "casa-2-quartos-com-area-gourmet-em-itaitinga-cp-0006",
+    "titulo": "Casa 2 quartos com área gourmet em Itaitinga",
+    "descricao": "Casa de 2 quartos em Itaitinga (CE), na região do Ancuri, sendo 1 suíte, com 2 banheiros. Tem área de lazer com deck e churrasqueira, garagem para 2 carros e área de serviço.",
+    "tipo": "casa",
+    "situacao": "usado",
+    "cidade": "Itaitinga",
+    "uf": "CE",
+    "bairro": "Ancuri",
+    "localizacaoAproximada": {
+      "lat": -3.93,
+      "lng": -38.53,
+      "raioMetros": 2000
+    },
+    "quartos": 2,
+    "suites": 1,
+    "banheiros": 2,
+    "vagas": 2,
+    "caracteristicas": [
+      "suíte",
+      "área de lazer com deck",
+      "churrasqueira",
+      "garagem para 2 carros",
+      "área de serviço"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": false,
+      "aceitaSBPE": false,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0006/01.jpg",
+        "alt": "Fachada com portão – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/02.jpg",
+        "alt": "Fachada vista da rua – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/03.jpg",
+        "alt": "Área externa com garagem – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/04.jpg",
+        "alt": "Área externa e cobertura – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/05.jpg",
+        "alt": "Área de lazer coberta – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/06.jpg",
+        "alt": "Área gourmet com churrasqueira – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/07.jpg",
+        "alt": "Sala ampla com parede decorada – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/08.jpg",
+        "alt": "Sala de jantar – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/09.jpg",
+        "alt": "Sala de jantar integrada – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/10.jpg",
+        "alt": "Cozinha com armários e bancada de granito – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/11.jpg",
+        "alt": "Cozinha com bancada – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/12.jpg",
+        "alt": "Quarto com janela – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/13.jpg",
+        "alt": "Quarto – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/14.jpg",
+        "alt": "Quarto – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/15.jpg",
+        "alt": "Quarto com porta para o banheiro – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/16.jpg",
+        "alt": "Banheiro da suíte – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/17.jpg",
+        "alt": "Banheiro com pia de granito – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/18.jpg",
+        "alt": "Banheiro com espelho – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/19.jpg",
+        "alt": "Corredor lateral – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/20.jpg",
+        "alt": "Corredor lateral coberto – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/21.jpg",
+        "alt": "Área de serviço – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0006/22.jpg",
+        "alt": "Quintal dos fundos – Casa 2 quartos com área gourmet em Itaitinga (CP-0006)"
+      }
+    ],
+    "videoUrl": "/imoveis/CP-0006/video.mp4",
+    "proximidades": [],
+    "destaque": true,
+    "status": "disponivel",
+    "corretorResponsavelId": "corretor-exemplo",
+    "exemplo": false,
+    "publicadoEm": "2026-11-11T00:00:00.000Z",
+    "atualizadoEm": "2026-11-11T00:00:00.000Z"
+  },
+  {
+    "id": "cp-0007",
+    "codigo": "CP-0007",
+    "slug": "casa-de-campo-com-varanda-cp-0007",
+    "titulo": "Casa de campo com varanda",
+    "descricao": "Casa térrea nova em terreno amplo, com varanda coberta em volta de toda a casa. Tem sala, cozinha com bancada, 2 quartos e 2 banheiros. Imóvel em fase de acabamento. Localização e valor sob consulta: fale com a gente pelo WhatsApp.",
+    "tipo": "casa",
+    "situacao": "pronto",
+    "cidade": "Região metropolitana de Fortaleza",
+    "uf": "CE",
+    "bairro": "Localização sob consulta",
+    "localizacaoAproximada": {
+      "lat": -3.85,
+      "lng": -38.56,
+      "raioMetros": 20000
+    },
+    "quartos": 2,
+    "suites": 0,
+    "banheiros": 2,
+    "vagas": 0,
+    "caracteristicas": [
+      "varanda em volta da casa",
+      "terreno amplo"
+    ],
+    "lazer": [],
+    "condicoes": {
+      "aceitaMCMV": false,
+      "aceitaFGTS": false,
+      "aceitaSBPE": false,
+      "aceitaConsorcio": false,
+      "aceitaPermuta": false,
+      "entradaFacilitada": false
+    },
+    "fotos": [
+      {
+        "arquivo": "/imoveis/CP-0007/01.jpg",
+        "alt": "Vista da casa e do terreno – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/02.jpg",
+        "alt": "Casa com varanda coberta – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/03.jpg",
+        "alt": "Lateral da casa – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/04.jpg",
+        "alt": "Casa vista do terreno – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/05.jpg",
+        "alt": "Varanda coberta – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/06.jpg",
+        "alt": "Varanda em volta da casa – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/07.jpg",
+        "alt": "Sala – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/08.jpg",
+        "alt": "Cozinha com bancada – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/09.jpg",
+        "alt": "Cozinha com porta para a varanda – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/10.jpg",
+        "alt": "Quarto com janela – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/11.jpg",
+        "alt": "Quarto – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/12.jpg",
+        "alt": "Quarto com janela – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/13.jpg",
+        "alt": "Cômodo interno – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/14.jpg",
+        "alt": "Banheiro – Casa de campo com varanda (CP-0007)"
+      },
+      {
+        "arquivo": "/imoveis/CP-0007/15.jpg",
+        "alt": "Banheiro com janela – Casa de campo com varanda (CP-0007)"
+      }
+    ],
+    "videoUrl": "/imoveis/CP-0007/video.mp4",
     "proximidades": [],
     "destaque": true,
     "status": "disponivel",

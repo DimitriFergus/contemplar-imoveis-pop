@@ -82,7 +82,7 @@ describe('importação da planilha', () => {
     for (const i of imoveis) {
       expect(imovelSchema.safeParse(i).success).toBe(true);
       expect(i.exemplo).toBe(false);
-      expect(i.preco).toBeGreaterThan(0);
+      if (i.preco !== undefined) expect(i.preco).toBeGreaterThan(0);
       expect(i.fotos.length).toBeGreaterThan(0);
       expect(i.localizacaoAproximada.raioMetros).toBeGreaterThanOrEqual(150);
     }
@@ -102,9 +102,15 @@ describe('importação da planilha', () => {
   });
 
   it('gera mensagem legível para campo vazio', () => {
-    const r = converterLinha({ ...base, codigo: 'CP-0007', preco: '' }, 7, []);
+    const r = converterLinha({ ...base, codigo: 'CP-0007', titulo: '' }, 7, []);
     expect(r.imovel).toBeNull();
-    expect(r.erros).toContain("Linha 7, CP-0007: campo 'preco' vazio");
+    expect(r.erros).toContain("Linha 7, CP-0007: campo 'titulo' vazio");
+  });
+
+  it('aceita imóvel sem preço (preço sob consulta)', () => {
+    const r = converterLinha({ ...base, preco: '' }, 8, []);
+    expect(r.erros).toEqual([]);
+    expect(r.imovel?.preco).toBeUndefined();
   });
 
   it('aceita nomes amigáveis de tipo e sim/não variados', () => {
@@ -179,7 +185,7 @@ describe('busca e filtros', () => {
 
   it('ordena por menor preço e pagina', () => {
     const ordenados = ordenar(resumos, 'menor_preco');
-    expect(ordenados[0]!.preco).toBeLessThanOrEqual(ordenados[1]!.preco);
+    expect(ordenados[0]!.preco ?? Infinity).toBeLessThanOrEqual(ordenados[1]!.preco ?? Infinity);
     const total = Math.ceil(ordenados.length / 2);
     const p = paginar(ordenados, total, 2);
     expect(p.pagina).toBe(total);

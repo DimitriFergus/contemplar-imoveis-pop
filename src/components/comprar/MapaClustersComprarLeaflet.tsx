@@ -14,12 +14,12 @@ import { CENTRO_MAPA } from '@/config/site';
 import { ATRIBUICAO_OSM, URL_TILES_OSM } from '@/components/mapa/tiles';
 import { useMobile } from '@/lib/cliente/useMobile';
 import { caminhoPublico } from '@/lib/utils/caminho';
-import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
+import { formatarPrecoCurto, formatarPrecoImovel } from '@/lib/utils/formatar';
 import { slugify } from '@/lib/utils/slug';
 import type { ImovelResumo } from '@/types';
 import { FichaIconica } from './FichaIconica';
 
-function iconePreco(preco: number, indisponivel: boolean) {
+function iconePreco(preco: number | undefined, indisponivel: boolean) {
   return L.divIcon({
     className: 'marcador-preco',
     html: `<span style="display:inline-block;white-space:nowrap;padding:6px 10px;border-radius:999px;font:700 14px/1 var(--fonte-texto),system-ui,sans-serif;background:${indisponivel ? '#585e6c' : '#041a4b'};color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.3);border:2px solid #fff">${formatarPrecoCurto(preco)}</span>`,
@@ -99,7 +99,7 @@ export default function MapaClustersComprarLeaflet({ imoveis }: { imoveis: Imove
               key={i.id}
               position={[i.localizacaoAproximada.lat, i.localizacaoAproximada.lng]}
               icon={iconePreco(i.preco, i.status !== 'disponivel')}
-              title={`${i.titulo} — ${formatarPreco(i.preco)}`}
+              title={`${i.titulo} — ${formatarPrecoImovel(i.preco)}`}
             >
               <Popup minWidth={240} maxWidth={260}>
                 <div className="w-60 font-sans">
@@ -115,7 +115,7 @@ export default function MapaClustersComprarLeaflet({ imoveis }: { imoveis: Imove
                     </div>
                   )}
                   <p className="m-0! text-lg font-extrabold text-[#041a4b]">
-                    {formatarPreco(i.preco)}
+                    {formatarPrecoImovel(i.preco)}
                   </p>
                   <FichaIconica
                     className="mt-1.5 mb-2.5 gap-x-2.5 text-slate-700"

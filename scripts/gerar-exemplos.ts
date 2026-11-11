@@ -507,7 +507,7 @@ async function main() {
         [['corretor-exemplo', 'Equipe de corretores (exemplo)', 'A_DEFINIR', 'A_DEFINIR', '']],
       ),
   );
-  const precos = imoveis.map((i) => i.preco).sort((a, b) => a - b);
+  const precos = imoveis.map((i) => i.preco ?? 0).sort((a, b) => a - b);
   const contagem = imoveis.reduce<Record<string, number>>(
     (acc, i) => ({ ...acc, [i.tipo]: (acc[i.tipo] ?? 0) + 1 }),
     {},

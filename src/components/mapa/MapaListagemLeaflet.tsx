@@ -7,12 +7,12 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { CENTRO_MAPA } from '@/config/site';
-import { formatarPreco, formatarPrecoCurto } from '@/lib/utils/formatar';
+import { formatarPreco, formatarPrecoCurto, formatarPrecoImovel } from '@/lib/utils/formatar';
 import type { ImovelResumo } from '@/types';
 import { ATRIBUICAO_OSM, URL_TILES_OSM } from './tiles';
 import { caminhoPublico } from '@/lib/utils/caminho';
 
-function iconePreco(preco: number, indisponivel: boolean) {
+function iconePreco(preco: number | undefined, indisponivel: boolean) {
   return L.divIcon({
     className: 'marcador-preco',
     html: `<span style="display:inline-block;white-space:nowrap;padding:6px 10px;border-radius:999px;font:700 14px/1 var(--fonte-texto),system-ui,sans-serif;background:${indisponivel ? '#585e6c' : '#041a4b'};color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.3);border:2px solid #fff">${formatarPrecoCurto(preco)}</span>`,
@@ -45,7 +45,7 @@ export default function MapaListagemLeaflet({ imoveis }: { imoveis: ImovelResumo
           key={i.id}
           position={[i.localizacaoAproximada.lat, i.localizacaoAproximada.lng]}
           icon={iconePreco(i.preco, i.status !== 'disponivel')}
-          title={`${i.titulo} — ${formatarPreco(i.preco)}`}
+          title={`${i.titulo} — ${formatarPrecoImovel(i.preco)}`}
         >
           <Popup minWidth={240} maxWidth={260}>
             <div className="w-60 font-sans">
@@ -60,13 +60,19 @@ export default function MapaListagemLeaflet({ imoveis }: { imoveis: ImovelResumo
                   />
                 </div>
               )}
-              <p className="m-0! text-sm text-slate-600">Parcelas a partir de</p>
-              <p className="m-0! text-lg font-extrabold text-[#041a4b]">
-                {formatarPreco(i.parcelaEstimada)}/mês*
-              </p>
-              <p className="m-0! text-sm font-semibold text-slate-900">
-                Valor total: {formatarPreco(i.preco)}
-              </p>
+              {i.preco && i.parcelaEstimada ? (
+                <>
+                  <p className="m-0! text-sm text-slate-600">Parcelas a partir de</p>
+                  <p className="m-0! text-lg font-extrabold text-[#041a4b]">
+                    {formatarPreco(i.parcelaEstimada)}/mês*
+                  </p>
+                  <p className="m-0! text-sm font-semibold text-slate-900">
+                    Valor total: {formatarPreco(i.preco)}
+                  </p>
+                </>
+              ) : (
+                <p className="m-0! text-lg font-extrabold text-[#041a4b]">Preço sob consulta</p>
+              )}
               <p className="mt-1! mb-2! text-sm text-slate-700">{i.titulo}</p>
               <Link
                 href={`/imoveis/${i.slug}`}

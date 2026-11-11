@@ -43,26 +43,48 @@ export function compararImoveis(imovel: Campos, base: Campos): Diferenca[] {
   const dif = (a: number, b: number) => Math.abs(a - b);
 
   const itens: Diferenca[] = [
-    {
-      chave: 'preco',
-      rotulo: 'Preço',
-      valor: formatarPrecoCurto(imovel.preco),
-      valorBase: formatarPrecoCurto(base.preco),
-      resultado: comparar(imovel.preco, base.preco, true),
-      texto: `${formatarPrecoCurto(dif(imovel.preco, base.preco))} ${imovel.preco < base.preco ? 'mais barato' : 'mais caro'}`,
-    },
-    {
-      chave: 'parcela',
-      rotulo: 'Parcela estimada',
-      valor: `${reais(Math.round(imovel.parcelaEstimada))}/mês`,
-      valorBase: `${reais(Math.round(base.parcelaEstimada))}/mês`,
-      resultado: comparar(
-        Math.round(imovel.parcelaEstimada),
-        Math.round(base.parcelaEstimada),
-        true,
-      ),
-      texto: `Parcela ${reais(Math.round(dif(imovel.parcelaEstimada, base.parcelaEstimada)))} ${imovel.parcelaEstimada < base.parcelaEstimada ? 'menor' : 'maior'}`,
-    },
+    imovel.preco && base.preco
+      ? {
+          chave: 'preco' as const,
+          rotulo: 'Preço',
+          valor: formatarPrecoCurto(imovel.preco),
+          valorBase: formatarPrecoCurto(base.preco),
+          resultado: comparar(imovel.preco, base.preco, true),
+          texto: `${formatarPrecoCurto(dif(imovel.preco, base.preco))} ${imovel.preco < base.preco ? 'mais barato' : 'mais caro'}`,
+        }
+      : {
+          chave: 'preco' as const,
+          rotulo: 'Preço',
+          valor: imovel.preco ? formatarPrecoCurto(imovel.preco) : 'Sob consulta',
+          valorBase: base.preco ? formatarPrecoCurto(base.preco) : 'Sob consulta',
+          resultado: 'igual' as const,
+          texto: 'Preço sob consulta',
+        },
+    imovel.parcelaEstimada && base.parcelaEstimada
+      ? {
+          chave: 'parcela' as const,
+          rotulo: 'Parcela estimada',
+          valor: `${reais(Math.round(imovel.parcelaEstimada))}/mês`,
+          valorBase: `${reais(Math.round(base.parcelaEstimada))}/mês`,
+          resultado: comparar(
+            Math.round(imovel.parcelaEstimada),
+            Math.round(base.parcelaEstimada),
+            true,
+          ),
+          texto: `Parcela ${reais(Math.round(dif(imovel.parcelaEstimada, base.parcelaEstimada)))} ${imovel.parcelaEstimada < base.parcelaEstimada ? 'menor' : 'maior'}`,
+        }
+      : {
+          chave: 'parcela' as const,
+          rotulo: 'Parcela estimada',
+          valor: imovel.parcelaEstimada
+            ? `${reais(Math.round(imovel.parcelaEstimada))}/mês`
+            : 'Sob consulta',
+          valorBase: base.parcelaEstimada
+            ? `${reais(Math.round(base.parcelaEstimada))}/mês`
+            : 'Sob consulta',
+          resultado: 'igual' as const,
+          texto: 'Parcela sob consulta',
+        },
     imovel.areaUtilM2 && base.areaUtilM2
       ? {
           chave: 'area' as const,

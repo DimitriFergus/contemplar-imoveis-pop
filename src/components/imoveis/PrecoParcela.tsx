@@ -11,12 +11,24 @@ export function PrecoParcela({
   tamanho = 'card',
   className,
 }: {
-  preco: number;
-  parcela: number;
+  preco?: number;
+  parcela?: number;
   tamanho?: 'card' | 'anuncio';
   className?: string;
 }) {
   const grande = tamanho === 'anuncio';
+  if (!preco || !parcela) {
+    return (
+      <div className={cn('flex flex-col', className)}>
+        <span className={cn('numero-destaque text-primary', grande ? 'text-3xl' : 'text-xl')}>
+          Preço sob consulta
+        </span>
+        <span className={cn('text-muted-foreground', grande ? 'text-base' : 'text-sm')}>
+          Fale com a gente pelo WhatsApp
+        </span>
+      </div>
+    );
+  }
   return (
     <div className={cn('flex flex-col', className)}>
       <span className={cn('text-muted-foreground', grande ? 'text-base' : 'text-sm')}>

@@ -16,7 +16,7 @@ import { compararImoveis, placar } from '@/lib/comparacao';
 import { useMontado } from '@/lib/cliente/armazenamento';
 import { useComparacao } from '@/lib/cliente/estado';
 import { useTodosResumos, type ResumoComFotos } from '@/lib/cliente/resumos';
-import { formatarPreco } from '@/lib/utils/formatar';
+import { formatarPrecoImovel } from '@/lib/utils/formatar';
 import { cn } from '@/lib/utils';
 import { FotosFade } from './FotosFade';
 
@@ -119,7 +119,7 @@ function Conteudo({ base, comparado }: { base: ResumoComFotos; comparado?: Resum
             <div className="min-w-0 flex-1">
               <p className="line-clamp-2 text-[0.8rem] leading-snug font-bold">{destaque.titulo}</p>
               <p className="truncate text-[0.7rem] text-muted-foreground">
-                {destaque.bairro} · {formatarPreco(destaque.preco)}
+                {destaque.bairro} · {formatarPrecoImovel(destaque.preco)}
               </p>
               {comparado && (
                 <Link

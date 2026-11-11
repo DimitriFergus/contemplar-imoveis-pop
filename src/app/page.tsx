@@ -87,8 +87,11 @@ export default async function PaginaInicial() {
       limite,
       imoveis: resumos
         .filter(
-          (i) =>
-            i.status === 'disponivel' && i.condicoes.aceitaMCMV && i.preco <= limite.precoMaximo,
+          (i): i is typeof i & { preco: number } =>
+            i.status === 'disponivel' &&
+            i.condicoes.aceitaMCMV &&
+            i.preco !== undefined &&
+            i.preco <= limite.precoMaximo,
         )
         .sort((a, b) => a.preco - b.preco)
         .map((i) => ({

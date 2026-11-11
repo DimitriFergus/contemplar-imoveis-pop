@@ -1,5 +1,5 @@
 import { BotaoWhatsApp } from '@/components/comum/BotaoWhatsApp';
-import { formatarPreco } from '@/lib/utils/formatar';
+import { formatarPrecoImovel } from '@/lib/utils/formatar';
 import { mensagemImovel } from '@/lib/utils/whatsapp';
 import type { Foto } from '@/types';
 import { AgendarVisita } from './AgendarVisita';
@@ -11,8 +11,8 @@ interface Props {
   id: string;
   codigo: string;
   titulo: string;
-  preco: number;
-  parcela: number;
+  preco?: number;
+  parcela?: number;
   disponivel: boolean;
   bairro: string;
   foto: Foto | null;
@@ -33,7 +33,7 @@ export function AcoesImovel({
 }: Props) {
   const imovel = { codigo, titulo, preco, bairro, foto };
   const mensagem = mensagemImovel({ codigo, titulo });
-  const textoCompartilhar = `${titulo} — ${formatarPreco(preco)} (cód. ${codigo})`;
+  const textoCompartilhar = `${titulo} — ${formatarPrecoImovel(preco)} (cód. ${codigo})`;
   if (modo === 'lateral') {
     return (
       <div className="rounded-2xl border bg-card p-5 shadow-card">

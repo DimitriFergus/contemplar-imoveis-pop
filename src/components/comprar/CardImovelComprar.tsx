@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ROTULO_STATUS, ROTULO_TIPO } from '@/lib/rotulos';
 import { caminhoPublico } from '@/lib/utils/caminho';
-import { formatarPreco } from '@/lib/utils/formatar';
+import { formatarPrecoImovel } from '@/lib/utils/formatar';
 import { cn } from '@/lib/utils';
 import type { ImovelResumo } from '@/types';
 import { FichaIconica } from './FichaIconica';
@@ -47,7 +47,7 @@ export function CardImovelComprar({ imovel: i, prioridade = false, className }: 
           </span>
         )}
         <span className="absolute bottom-3 left-3 rounded-lg bg-primary px-3 py-1.5 text-base font-extrabold text-primary-foreground shadow">
-          {formatarPreco(i.preco)}
+          {formatarPrecoImovel(i.preco)}
         </span>
         <span
           className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full bg-black/60 text-white"

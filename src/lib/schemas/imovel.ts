@@ -30,7 +30,7 @@ export const imovelBaseSchema = z.object({
   tipo: tipoImovelSchema,
   situacao: situacaoImovelSchema,
   previsaoEntrega: z.string().optional(),
-  preco: z.number().positive(),
+  preco: z.number().positive().optional(),
   condominioMensal: z.number().nonnegative().optional(),
   iptuAnual: z.number().nonnegative().optional(),
   cidade: z.string().min(2),

@@ -16,7 +16,7 @@ import {
 import { rastrear } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
 import { caminhoPublico } from '@/lib/utils/caminho';
-import { formatarPreco } from '@/lib/utils/formatar';
+import { formatarPrecoImovel } from '@/lib/utils/formatar';
 import type { Foto } from '@/types';
 
 export interface DiaDisponivel {
@@ -72,7 +72,7 @@ function Passo({
 interface Props {
   codigo: string;
   titulo: string;
-  preco: number;
+  preco?: number;
   bairro: string;
   foto: Foto | null;
   mensagemWhatsApp: string;
@@ -146,7 +146,7 @@ export function AgendarVisita({
               <p className="truncate text-muted-foreground">
                 {bairro} · Cód. {codigo}
               </p>
-              <p className="font-semibold text-primary">{formatarPreco(preco)}</p>
+              <p className="font-semibold text-primary">{formatarPrecoImovel(preco)}</p>
             </div>
           </div>
         </div>

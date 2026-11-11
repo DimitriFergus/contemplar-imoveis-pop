@@ -80,17 +80,22 @@ export function criarRepositorioEmMemoria(
     async semelhantes(imovel, limite) {
       const { resumos } = await dados();
       const variacao = LISTAGEM.variacaoPrecoSemelhantes;
+      const preco = imovel.preco;
+      // Sem preço: semelhantes são os demais disponíveis (o tipo igual vem primeiro).
       const candidatos = resumos.filter(
         (r) =>
           r.id !== imovel.id &&
           r.status === 'disponivel' &&
-          r.preco >= imovel.preco * (1 - variacao) &&
-          r.preco <= imovel.preco * (1 + variacao),
+          (!preco ||
+            (r.preco !== undefined &&
+              r.preco >= preco * (1 - variacao) &&
+              r.preco <= preco * (1 + variacao))),
       );
       const mesmoTipo = candidatos.filter((r) => r.tipo === imovel.tipo);
       const outros = candidatos.filter((r) => r.tipo !== imovel.tipo);
-      const proximidadePreco = (a: { preco: number }, b: { preco: number }) =>
-        Math.abs(a.preco - imovel.preco) - Math.abs(b.preco - imovel.preco);
+      const distancia = (p?: number) => (preco && p ? Math.abs(p - preco) : 0);
+      const proximidadePreco = (a: { preco?: number }, b: { preco?: number }) =>
+        distancia(a.preco) - distancia(b.preco);
       return [...mesmoTipo.sort(proximidadePreco), ...outros.sort(proximidadePreco)].slice(
         0,
         limite,

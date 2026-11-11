@@ -298,7 +298,7 @@ export function FormularioImovel({
 
       <Cartao titulo="Valores">
         <div className="grid gap-4 sm:grid-cols-3">
-          <Campo rotulo="Preço (R$)" id="preco" erro={erro('preco')} obrigatorio>
+          <Campo rotulo="Preço (R$)" id="preco" erro={erro('preco')}>
             <Input
               id="preco"
               inputMode="decimal"

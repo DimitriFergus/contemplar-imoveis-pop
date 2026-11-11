@@ -22,7 +22,12 @@ import { SimuladorImovel } from '@/components/simulador/SimuladorImovel';
 import { parcelaEstimadaAnuncio } from '@/lib/financiamento';
 import { ROTULO_SITUACAO, ROTULO_TIPO_PLURAL, SLUG_CATEGORIA_TIPO } from '@/lib/rotulos';
 import { jsonLdImovel } from '@/lib/seo-imovel';
-import { formatarBRL, formatarData, formatarMesAno, formatarPreco } from '@/lib/utils/formatar';
+import {
+  formatarBRL,
+  formatarData,
+  formatarMesAno,
+  formatarPrecoImovel,
+} from '@/lib/utils/formatar';
 import { slugify } from '@/lib/utils/slug';
 import { mensagemImovel } from '@/lib/utils/whatsapp';
 import type { Corretor, Imovel, ImovelResumo } from '@/types';
@@ -37,7 +42,7 @@ export function DetalheImovel({
   corretor: Corretor | null;
   semelhantes: ImovelResumo[];
 }) {
-  const parcela = parcelaEstimadaAnuncio(imovel.preco).parcela;
+  const parcela = imovel.preco ? parcelaEstimadaAnuncio(imovel.preco).parcela : undefined;
   const disponivel = imovel.status === 'disponivel';
   const categoria = SLUG_CATEGORIA_TIPO[imovel.tipo];
   const mensagem = mensagemImovel(imovel);
@@ -188,16 +193,18 @@ export function DetalheImovel({
             <div className="flex flex-wrap gap-2 lg:hidden">
               <BotaoCompartilhar
                 titulo={imovel.titulo}
-                texto={`${imovel.titulo} — ${formatarPreco(imovel.preco)} (cód. ${imovel.codigo})`}
+                texto={`${imovel.titulo} — ${formatarPrecoImovel(imovel.preco)} (cód. ${imovel.codigo})`}
                 codigo={imovel.codigo}
               />
             </div>
           </section>
 
           {/* Fronteiras de Suspense: o React hidrata em partes e libera a pintura mais cedo. */}
-          <Suspense>
-            <SimuladorImovel preco={imovel.preco} cidade={imovel.cidade} uf={imovel.uf} />
-          </Suspense>
+          {imovel.preco ? (
+            <Suspense>
+              <SimuladorImovel preco={imovel.preco} cidade={imovel.cidade} uf={imovel.uf} />
+            </Suspense>
+          ) : null}
 
           <section aria-labelledby="titulo-localizacao" className="space-y-4">
             <h2 id="titulo-localizacao" className="text-2xl font-bold">

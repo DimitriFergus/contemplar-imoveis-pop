@@ -43,8 +43,8 @@ export interface ImovelResumo {
   tipo: TipoImovel;
   situacao: SituacaoImovel;
   previsaoEntrega?: string;
-  preco: number;
-  parcelaEstimada: number;
+  preco?: number;
+  parcelaEstimada?: number;
   condominioMensal?: number;
   bairro: string;
   cidade: string;

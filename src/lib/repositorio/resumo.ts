@@ -11,7 +11,7 @@ export function paraResumo(i: Imovel): ImovelResumo {
     situacao: i.situacao,
     previsaoEntrega: i.previsaoEntrega,
     preco: i.preco,
-    parcelaEstimada: parcelaEstimadaAnuncio(i.preco).parcela,
+    parcelaEstimada: i.preco ? parcelaEstimadaAnuncio(i.preco).parcela : undefined,
     condominioMensal: i.condominioMensal,
     bairro: i.bairro,
     cidade: i.cidade,

@@ -40,7 +40,7 @@ describe('conversão banco ⇄ imóvel', () => {
       titulo: exemplo.titulo,
       tipo: exemplo.tipo,
       bairro: exemplo.bairro,
-      preco: exemplo.preco,
+      preco: exemplo.preco ?? null,
       publicado_em: exemplo.publicadoEm,
       criado_em: exemplo.publicadoEm,
       atualizado_em: exemplo.atualizadoEm,

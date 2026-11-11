@@ -62,7 +62,7 @@ export default async function Imagem({ params }: { params: Promise<{ slug: strin
       size,
     );
   const foto = await fotoComoDataUri(i.fotos[0]?.arquivo);
-  const parcela = parcelaEstimadaAnuncio(i.preco).parcela;
+  const parcela = i.preco ? parcelaEstimadaAnuncio(i.preco).parcela : undefined;
   return new ImageResponse(
     <div
       style={{
@@ -113,13 +113,23 @@ export default async function Imagem({ params }: { params: Promise<{ slug: strin
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', fontSize: 24, opacity: 0.85 }}>Parcelas a partir de*</div>
-          <div
-            style={{ display: 'flex', fontSize: 64, fontWeight: 800, color: '#f28234' }}
-          >{`${formatarPreco(parcela)}/mês`}</div>
-          <div
-            style={{ display: 'flex', fontSize: 34, fontWeight: 700, marginTop: 6 }}
-          >{`Valor total: ${formatarPreco(i.preco)}`}</div>
+          {i.preco && parcela ? (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', fontSize: 24, opacity: 0.85 }}>
+                Parcelas a partir de*
+              </div>
+              <div
+                style={{ display: 'flex', fontSize: 64, fontWeight: 800, color: '#f28234' }}
+              >{`${formatarPreco(parcela)}/mês`}</div>
+              <div
+                style={{ display: 'flex', fontSize: 34, fontWeight: 700, marginTop: 6 }}
+              >{`Valor total: ${formatarPreco(i.preco)}`}</div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', fontSize: 56, fontWeight: 800, color: '#f28234' }}>
+              Preço sob consulta
+            </div>
+          )}
           <div
             style={{ display: 'flex', fontSize: 22, marginTop: 18, opacity: 0.8 }}
           >{`Cód. ${i.codigo} · ${i.bairro} · *simulação ilustrativa`}</div>

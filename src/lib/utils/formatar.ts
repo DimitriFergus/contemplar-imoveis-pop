@@ -22,7 +22,8 @@ export function formatarPreco(valor: number): string {
 }
 
 /** "R$ 215 mil" — forma curta para marcadores de mapa e chips. */
-export function formatarPrecoCurto(valor: number): string {
+export function formatarPrecoCurto(valor: number | undefined): string {
+  if (!valor) return 'Consulte';
   if (valor >= 1_000_000) return `R$ ${numero.format(Math.round(valor / 100_000) / 10)} mi`;
   if (valor >= 1_000) return `R$ ${numero.format(Math.round(valor / 1_000))} mil`;
   return formatarPreco(valor);
@@ -82,4 +83,9 @@ export function lerNumeroBR(texto: string): number {
 
 export function plural(qtd: number, singular: string, pluralForma: string): string {
   return `${qtd} ${qtd === 1 ? singular : pluralForma}`;
+}
+
+/** Preço do imóvel, ou "Preço sob consulta" quando não foi informado. */
+export function formatarPrecoImovel(valor: number | undefined): string {
+  return valor ? formatarPreco(valor) : 'Preço sob consulta';
 }

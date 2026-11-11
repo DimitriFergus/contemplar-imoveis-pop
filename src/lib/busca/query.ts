@@ -147,18 +147,21 @@ export function aplicarFiltros(imoveis: ImovelResumo[], f: Filtros): ImovelResum
     if (f.tipo.length && !f.tipo.includes(i.tipo)) return false;
     if (f.situacao.length && !f.situacao.includes(i.situacao)) return false;
     if (f.bairro && slugify(i.bairro) !== f.bairro) return false;
-    if (f.precoMin && i.preco < f.precoMin) return false;
-    if (f.precoMax && i.preco > f.precoMax) return false;
-    if (f.parcelaMax && i.parcelaEstimada > f.parcelaMax) return false;
+    // Sem preço informado: não entra quando o visitante filtra por valor.
+    if (f.precoMin && (i.preco ?? 0) < f.precoMin) return false;
+    if (f.precoMax && (i.preco ?? Infinity) > f.precoMax) return false;
+    if (f.parcelaMax && (i.parcelaEstimada ?? Infinity) > f.parcelaMax) return false;
     if (f.quartos && i.quartos < f.quartos) return false;
     if (f.banheiros && i.banheiros < f.banheiros) return false;
     if (f.vagas && i.vagas < f.vagas) return false;
     if (f.areaMin && (i.areaUtilM2 ?? 0) < f.areaMin) return false;
     if (f.condicoes.some((c) => !i.condicoes[c])) return false;
-    if (f.bolso && i.preco > f.bolso) return false;
+    if (f.bolso && (i.preco ?? Infinity) > f.bolso) return false;
     return true;
   });
 }
+
+const semValor = (v: number | undefined) => v ?? Number.MAX_SAFE_INTEGER;
 
 const pesoStatus = (i: ImovelResumo) => (i.status === 'disponivel' ? 0 : 1);
 
@@ -168,8 +171,9 @@ export function ordenar(imoveis: ImovelResumo[], ordem: Ordenacao = 'relevancia'
   const comparadores: Record<Ordenacao, (a: ImovelResumo, b: ImovelResumo) => number> = {
     relevancia: (a, b) =>
       pesoStatus(a) - pesoStatus(b) || Number(b.destaque) - Number(a.destaque) || porData(a, b),
-    menor_preco: (a, b) => a.preco - b.preco,
-    menor_parcela: (a, b) => a.parcelaEstimada - b.parcelaEstimada,
+    // Sem preço vai para o fim da lista.
+    menor_preco: (a, b) => semValor(a.preco) - semValor(b.preco),
+    menor_parcela: (a, b) => semValor(a.parcelaEstimada) - semValor(b.parcelaEstimada),
     recentes: porData,
     maior_area: (a, b) => (b.areaUtilM2 ?? 0) - (a.areaUtilM2 ?? 0),
   };
